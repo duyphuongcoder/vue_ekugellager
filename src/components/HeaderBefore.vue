@@ -135,4 +135,9 @@ export default {
     }
   }
 }
+@media screen and (max-width: 768px) {
+  .header-before-right-nav {
+    display: none !important;
+  }
+}
 </style>
