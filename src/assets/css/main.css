@@ -1,0 +1,34 @@
+button:focus {
+    box-shadow: none !important;
+}
+
+.btn-circle {
+    background-color: #F0F0F0;
+    color: #12407E !important;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    transition: all .5s ease;
+    cursor: pointer;
+    text-align: center;
+    display: block;
+    font-size: 20px;
+    border-color: transparent;
+    margin: 0px 7px;
+}
+
+.btn-circle:hover {
+    background: #12407E !important;
+    color: #fff !important;
+}
+
+.tooltip.bs-tooltip-bottom .tooltip-inner {
+    background: white;
+    color: black;
+    font-size: 12px;
+    border: 1px solid black;
+}
+
+.tooltip.b-tooltip .arrow {
+    display: none;
+}

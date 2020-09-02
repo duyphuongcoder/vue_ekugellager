@@ -5,6 +5,10 @@
     "Clothes": "Wälzlager",
     "Men": "Kugellager",
     "Women": "Rollenlager",
+    "header": {
+        "search_for_catalog": "Search our catalog",
+        "log_in_to_your_customer_account": "Log in to your customer account"
+    },
     "footer": {
         "contact": {
             "self": "Contact"
