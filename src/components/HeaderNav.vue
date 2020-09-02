@@ -126,8 +126,7 @@ export default {
         border-radius: 9px;
         height: 20px;
         width: 271px;
-        text-align: center;
-
+        position: relative;
         #tp_timer {
           color: #fff;
           font-weight: 300;
@@ -135,6 +134,8 @@ export default {
           transition: all .5s ease;
           z-index: 3;
           font-size: 12px;
+          position: absolute;
+          left: 40%;
         }
 
         .red_triger {
