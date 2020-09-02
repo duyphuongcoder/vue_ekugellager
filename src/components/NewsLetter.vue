@@ -82,8 +82,8 @@
   form .input-wrapper {
     overflow: hidden;
   }
-  form input[type=email] {
 
+  form input[type=email] {
     background: #fff;
     border: 2px solid #fff;
     border-radius: 8px;
@@ -95,6 +95,12 @@
     border-bottom-right-radius: 0;
     padding: 11px;
     width: 100%;
+    box-shadow: none;
+  }
+  form input[type=email]:focus {
+      border: 1px solid #113D79;
+      padding: 8px 8px 9px;
+      outline: 0;
   }
   @media (min-width: 576px){
     .hidden-sm-up {
