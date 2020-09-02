@@ -3,7 +3,7 @@
     <nav class="header-nav">
       <b-container>
         <b-row>
-          <b-col cols="8" class="left_nav_section">
+          <b-col md="8" sm="12" class="left_nav_section">
             <div class="top_hint">
               <b-icon icon="check-circle"></b-icon>
               AB 99€ FREI HAUS
@@ -119,7 +119,6 @@ export default {
     .top_treker {
       max-width: 272px;
       margin-left: auto;
-      margin-right: 10%;
       margin-top: 14px;
 
       .top_counter {
@@ -127,17 +126,15 @@ export default {
         border-radius: 9px;
         height: 20px;
         width: 271px;
+        text-align: center;
 
         #tp_timer {
-          position: absolute;
           color: #fff;
           font-weight: 300;
           -webkit-transition: all .5s ease;
           transition: all .5s ease;
           z-index: 3;
-          text-align: center;
           font-size: 12px;
-          // width: 271px;
         }
 
         .red_triger {
@@ -148,15 +145,16 @@ export default {
           width: 0px;
           -webkit-transition: all .5s ease;
           transition: all .5s ease;
+          float: left;
         }
 
         .target {
           position: relative;
-          top: -22px;
           float: right;
           right: 7px;
           color: #fff;
           font-size: 18px;
+          transform: translateY(-3px);
         }
       }
     }
@@ -193,6 +191,22 @@ export default {
         }
       }
     }
+  }
+}
+@media screen and (max-width: 768px) {
+  .header-nav .right_nav_section {
+    display: none !important;
+  }
+  .left_nav_section {
+    display: inline-flex !important;
+  }
+  .header-nav .top_treker {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    max-width: 200px !important;
+  }
+  .top_treker .top_counter {
+    width: 200px !important;
   }
 }
 </style>

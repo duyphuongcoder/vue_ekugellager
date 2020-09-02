@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <Header />
+    <HeaderNav />
+    <HeaderBefore />
+    <HeaderTop />
     <div id="nav">
       <router-link :to="$i18nRoute({ name: 'home'})">{{ $t('Home') }}</router-link> |
       <router-link :to="$i18nRoute({ name: 'clothes'})">{{ $t('Clothes') }}</router-link> |
@@ -16,12 +18,16 @@
 </template>
 
 <script>
-import Header from '@/components/Header'
+import HeaderNav from '@/components/HeaderNav'
+import HeaderBefore from '@/components/HeaderBefore'
+import HeaderTop from '@/components/HeaderTop'
 import Footer from '@/components/Footer'
 export default {
   name: 'app',
   components: {
-    Header,
+    HeaderNav,
+    HeaderBefore,
+    HeaderTop,
     Footer
   }
 }

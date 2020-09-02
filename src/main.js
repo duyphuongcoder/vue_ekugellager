@@ -6,7 +6,7 @@ import store from './store'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
-import './assets/styles/main.css'
+import './assets/css/main.css'
 
 import { i18n } from './lang/i18n.js'
 import { Trans } from './lang/Translation'
