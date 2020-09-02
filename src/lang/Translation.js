@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { SUPPORTED_LANGUAGES, DEFAULT_LANGUAGE } from '@/constants/trans'
+import { SUPPORTED_LANGUAGES, DEFAULT_LANGUAGE, SUPPORTED_LANGUAGES_OBJECT } from '@/constants/trans'
 import { i18n } from './i18n'
 
 const Trans = {
@@ -8,6 +8,9 @@ const Trans = {
   },
   get supportedLanguages () {
     return SUPPORTED_LANGUAGES
+  },
+  get supportedLanguagesObject () {
+    return SUPPORTED_LANGUAGES_OBJECT
   },
   get currentLanguage () {
     return i18n.locale
