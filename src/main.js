@@ -7,10 +7,11 @@ import store from './store'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import './assets/css/main.css'
-
+import 'font-awesome/css/font-awesome.min.css'
 import { i18n } from './lang/i18n.js'
 import { Trans } from './lang/Translation'
 
+Vue.component('VueFontawesome', require('vue-fontawesome-icon/VueFontawesome.vue').default)
 Vue.prototype.$i18nRoute = Trans.i18nRoute.bind(Trans)
 
 Vue.config.productionTip = false

@@ -13,6 +13,7 @@
     <b-container fluid>
       <router-view/>
     </b-container>
+    <Contact />
     <Footer />
   </div>
 </template>
@@ -21,6 +22,7 @@
 import HeaderNav from '@/components/HeaderNav'
 import HeaderBefore from '@/components/HeaderBefore'
 import HeaderTop from '@/components/HeaderTop'
+import Contact from '@/components/Contact'
 import Footer from '@/components/Footer'
 export default {
   name: 'app',
@@ -28,6 +30,7 @@ export default {
     HeaderNav,
     HeaderBefore,
     HeaderTop,
+    Contact,
     Footer
   }
 }

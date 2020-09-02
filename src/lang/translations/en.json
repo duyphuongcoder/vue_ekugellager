@@ -5,7 +5,33 @@
     "Clothes": "Clothes",
     "Men": "Men",
     "Women": "Women",
+    "contact": {
+        "free_shipping": {
+            "self": "VESANDKOSTENFREI",
+            "detail": "EUROPA WEIT AB 99€"
+        },
+        "sameday_shipping": {
+            "self": "VERSAND AM SELBEN TAG",
+            "detail": "MO-FR: 10:00 - 19 UHR"
+        },
+        "customer_service": {
+            "self": "KUNDENSERVICE",
+            "detail": "+49 (0)234 54 50 120"
+        },
+        "free_cutting": {
+            "self": "KOSTENFREIER ZUSCHNITT",
+            "detail": "NACH IHREN VORGABEN"
+        }
+    },
     "footer": {
+        "newsletter":{
+            "title": "Get our latest news and special sales",
+            "text1": "You may unsubscribe at any moment. For that purpose, please find our contact info in the legal notice.",
+            "text2": "Enim quis fugiat consequat elit minim nisi eu occaecat occaecat deserunt aliquip nisi ex deserunt.",
+            "email_placeholder": "Your email address",
+            "subscribe": "Subscribe",
+            "sign_up": "Sign Up"
+        },
         "contact": {
             "self": "Contact"
         },

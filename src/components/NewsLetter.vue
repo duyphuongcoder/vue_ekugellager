@@ -5,8 +5,8 @@
         <b-col md="12" lg="12" sm="12" >
           <b-row class="justify-content-between">
             <b-col md="4" cols="12">
-              <h1>Get our latest news and special sales</h1>
-              <p>You may unsubscribe at any moment. For that purpose, please find our contact info in the legal notice.</p>
+              <h1>{{ $t('footer.newsletter.title') }}</h1>
+              <p>{{ $t('footer.newsletter.text1') }}</p>
             </b-col>
             <b-col md="4" cols="12">
               <label class="form-check-label checkbox-field psgdpr_consent_message">
@@ -14,15 +14,15 @@
                     <input id="psgdpr_consent_checkbox_17" name="psgdpr_consent_checkbox" type="checkbox" value="1">
                     <span></span>
                 </span>
-                <span class="check-box-label">Enim quis fugiat consequat elit minim nisi eu occaecat occaecat deserunt aliquip nisi ex deserunt.</span>
+                <span class="check-box-label">{{ $t('footer.newsletter.text2') }}</span>
               </label>
             </b-col>
             <b-col md="4" cols="12">
               <form action="https://ekugellager.roccshow.com/en/#footer" method="post">
                 <b-row>
                   <b-col sm="12">
-                    <b-button variant="primary" class="float-right hidden-sm-down" type="submit">Subscribe</b-button>
-                    <b-button variant="primary" class="float-right hidden-sm-up" type="submit">Sign up</b-button>
+                    <b-button variant="primary" class="float-right hidden-sm-down" type="submit">{{ $t('footer.newsletter.subscribe') }}</b-button>
+                    <b-button variant="primary" class="float-right hidden-sm-up" type="submit">{{ $t('footer.newsletter.sign_up') }}</b-button>
                     <div class="input-wrapper">
                       <b-form-input type="email" placeholder="Your email address" aria-labelledby="block-newsletter-label"></b-form-input>
                     </div>
@@ -61,6 +61,7 @@
   .form-check-label {
     padding-left: 1.25rem;
     margin-bottom: 0;
+    font-size: .875rem;
     cursor: pointer;
   }
   .btn-primary {
