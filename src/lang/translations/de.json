@@ -5,6 +5,10 @@
     "Clothes": "Wälzlager",
     "Men": "Kugellager",
     "Women": "Rollenlager",
+    "header": {
+        "search_for_catalog": "Search for Catalog",
+        "log_in_to_your_customer_account": "Log in to your customer account"
+    },
     "contact": {
         "free_shipping": {
             "self": "VESANDKOSTENFREI",
