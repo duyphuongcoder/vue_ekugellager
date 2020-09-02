@@ -4,5 +4,40 @@
     "Home": "STARTSEITE",
     "Clothes": "Wälzlager",
     "Men": "Kugellager",
-    "Women": "Rollenlager"
+    "Women": "Rollenlager",
+    "footer": {
+        "contact": {
+            "self": "Contact"
+        },
+        "products": {
+            "self": "Products",
+            "about_us": "Über uns",
+            "shipping_process": "Versandprozess",
+            "quality_promise": "Qualitätsversprechen"
+        },
+        "information": {
+            "self": "Information",
+            "discount_levels": "Rabattstufen",
+            "quality_levels": "Qualitätsstufen",
+            "graduated_prices": "Staffelpreise",
+            "personal_statement": "Persona Erklärung"
+        },
+        "legal": {
+            "self": "Rechtliches",
+            "about_us": "About Us",
+            "delivery_information": "Develivery Informatioin",
+            "returns": "Returns",
+            "privacy_policy": "Privacy & Policy"
+        },
+        "customer_service": {
+            "self": "Kundenservice",
+            "return": "Return",
+            "faq": "Faq",
+            "size_charts": "Size Charts",
+            "cookie_preferences": "Cookie Preferences"
+        },
+        "shippment_payment": {
+            "self": "Shipment & Payment"
+        }
+    }
 }

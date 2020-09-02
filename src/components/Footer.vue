@@ -5,46 +5,46 @@
       <mdb-row class="my-4">
         <mdb-col md="2" lg="2">
           <img class="logo img-responsive" src="../assets/images/logo.jpg"/>
-          <h5 class="font-weight-bold">Kontakt</h5>
+          <h5 class="font-weight-bold">{{ $t('footer.contact.self') }}</h5>
           <p>+49 (0)234 5450120</p>
           <a href="mailto:" class="email-contact">info@ekugellager.de</a>
         </mdb-col>
         <hr class="clearfix w-100 d-md-none"/>
         <mdb-col md="2" lg="2" class="ml-auto">
-          <h5 class="text-uppercase mb-4 font-weight-bold">Products</h5>
+          <h5 class="text-uppercase mb-4 font-weight-bold">{{ $t('footer.products.self') }}</h5>
           <ul class="list-unstyled">
-            <p><a href="#!">Über uns</a></p>
-            <p><a href="#!">Versandprozess</a></p>
-            <p><a href="#!">Qualitätsversprechen</a></p>
+            <p><a href="#!">{{ $t('footer.products.about_us') }}</a></p>
+            <p><a href="#!">{{ $t('footer.products.shipping_process') }}</a></p>
+            <p><a href="#!">{{ $t('footer.products.quality_promise') }}</a></p>
           </ul>
         </mdb-col>
         <hr class="clearfix w-100 d-md-none"/>
         <mdb-col md="2" lg="2">
-          <h5 class="text-uppercase mb-4 font-weight-bold">Information</h5>
-          <p><a href="#!">Rabattstufen</a></p>
-          <p><a href="#!"> Qualitätsstufen</a></p>
-          <p><a href="#!">Staffelpreise</a></p>
-          <p><a href="#!">Persona Erklärung</a></p>
+          <h5 class="text-uppercase mb-4 font-weight-bold">{{ $t('footer.information.self') }}</h5>
+          <p><a href="#!">{{ $t('footer.information.discount_levels') }}</a></p>
+          <p><a href="#!"> {{ $t('footer.information.quality_levels') }}</a></p>
+          <p><a href="#!">{{ $t('footer.information.graduated_prices') }}</a></p>
+          <p><a href="#!">{{ $t('footer.information.personal_statement') }}</a></p>
         </mdb-col>
         <hr class="clearfix w-100 d-md-none"/>
         <mdb-col md="2" lg="2">
-          <h5 class="text-uppercase mb-4 font-weight-bold">Rechtliches</h5>
-          <p><a href="#!">About Us</a></p>
-          <p><a href="#!"> Delivery Information</a></p>
-          <p><a href="#!">Returns</a></p>
-          <p><a href="#!">Privacy & Policy</a></p>
+          <h5 class="text-uppercase mb-4 font-weight-bold">{{ $t('footer.legal.self') }}</h5>
+          <p><a href="#!">{{ $t('footer.legal.about_us') }}</a></p>
+          <p><a href="#!">{{ $t('footer.legal.delivery_information') }}</a></p>
+          <p><a href="#!">{{ $t('footer.legal.returns') }}</a></p>
+          <p><a href="#!">{{ $t('footer.legal.privacy_policy') }}</a></p>
         </mdb-col>
         <hr class="clearfix w-100 d-md-none"/>
         <mdb-col md="2" lg="2">
-          <h5 class="text-uppercase mb-4 font-weight-bold">Kundenservice</h5>
-          <p><a href="#!">Retouren</a></p>
-          <p><a href="#!"> Faq</a></p>
-          <p><a href="#!">Size Charts</a></p>
-          <p><a href="#!">Cookie Preferences</a></p>
+          <h5 class="text-uppercase mb-4 font-weight-bold">{{ $t('footer.customer_service.self') }}</h5>
+          <p><a href="#!">{{ $t('footer.customer_service.return') }}</a></p>
+          <p><a href="#!"> {{ $t('footer.customer_service.faq') }}</a></p>
+          <p><a href="#!">{{ $t('footer.customer_service.size_charts') }}</a></p>
+          <p><a href="#!">{{ $t('footer.customer_service.cookie_preferences') }}</a></p>
         </mdb-col>
         <hr class="clearfix w-100 d-md-none"/>
         <mdb-col md="2" lg="2" class="text-center">
-          <h5 class="text-uppercase mb-4 font-weight-bold">Shipment & Payment</h5>
+          <h5 class="text-uppercase mb-4 font-weight-bold">{{ $t('footer.shippment_payment.self') }}</h5>
           <div class="mt-2 ">
             <ul class="list-unstyled shipping">
               <p><img src="../assets/images/visa.png"></p>
