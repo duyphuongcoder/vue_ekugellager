@@ -6,6 +6,10 @@ import Clothes from '../views/Clothes.vue'
 import Men from '../views/Men.vue'
 import Women from '../views/Women.vue'
 
+import Login from '../views/Login.vue'
+import Register from '../views/Register.vue'
+import Account from '../views/Account.vue'
+
 import { Trans } from '@/lang/Translation.js'
 
 Vue.use(VueRouter)
@@ -47,6 +51,21 @@ const routes = [
         path: 'laufrolle',
         name: 'laufrolle',
         component: Women
+      },
+      {
+        path: 'login',
+        name: 'login',
+        component: Login
+      },
+      {
+        path: 'register',
+        name: 'register',
+        component: Register
+      },
+      {
+        path: 'my-account',
+        name: 'account',
+        component: Account
       }
     ]
   },
