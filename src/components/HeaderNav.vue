@@ -210,4 +210,9 @@ export default {
     width: 200px !important;
   }
 }
+@media screen and (max-width: 410px) {
+  .left_nav_section .top_treker {
+    display: none !important;
+  }
+}
 </style>

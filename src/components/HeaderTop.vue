@@ -7,6 +7,10 @@
             <b-container>
               <div class="desktop_menu">
                 <ul class="menu-desktop-list">
+                  <li class="menu-left menu_bar_btn" v-b-toggle.collapse-menu>
+                    <b-icon icon="list" class="collapsed-icon"></b-icon>
+                    <b-icon icon="x" class="opened-icon"></b-icon>
+                  </li>
                   <li class="menu-left" v-for="(item, index) in menulist" :key="index">
                     <a href="javascript:void(0)" @click="clickItem(index)" :class="{ 'active': isActive(index) }">
                       <b-img :src="getImgUrl(item.imgname)" class="menu-img"/>
@@ -17,6 +21,7 @@
               </div>
             </b-container>
           </div>
+          <Menu />
         </b-col>
       </b-row>
     </b-container>
@@ -24,7 +29,11 @@
 </template>
 
 <script>
+import Menu from '@/components/Menu'
 export default {
+  components: {
+    Menu
+  },
   data () {
     return {
       activeIndex: 0,
@@ -63,14 +72,13 @@ export default {
     },
     clickItem (index) {
       this.activeIndex = index
-      console.log('click', this.activeIndex)
     },
     isActive (index) {
       return index === this.activeIndex
     }
   }
 }
-</script>>
+</script>
 
 <style scoped lang="scss">
 .header-top {
@@ -91,6 +99,12 @@ export default {
         display: flex;
         margin: 0px;
         padding: 0px;
+        li.menu_bar_btn {
+          font-size: 35px !important;
+          outline: none;
+          color: white;
+          cursor: pointer;
+        }
         li {
           width: auto;
           display: inline;
@@ -119,6 +133,11 @@ export default {
         }
       }
     }
+  }
+}
+@media screen and (max-width: 1200px) {
+  .desktop_menu span {
+    display: none;
   }
 }
 @media screen and (max-width: 768px) {
