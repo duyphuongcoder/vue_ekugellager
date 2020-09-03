@@ -21,6 +21,9 @@
         "spannlager_gehauselager": "Spannlager/ Gehäuselager",
         "kegelrollenlager": "Kegelrollenlager"
     },
+    "manufacturer": {
+        "self": "MANUFACTURER"
+    },
     "contact": {
         "free_shipping": {
             "self": "VESANDKOSTENFREI",
