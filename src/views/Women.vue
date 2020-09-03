@@ -1,11 +1,10 @@
 <template>
-  <div class="women">
-    <h2> Women </h2>
+  <div class="women m-5">
+    <h1> This is Women page </h1>
   </div>
 </template>
 
 <script>
-
 export default {
   name: 'women'
 }
