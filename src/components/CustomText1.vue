@@ -3,13 +3,12 @@
     <b-row>
       <b-col cols="12" xl="6"  class="business-left">
         <div class="business-details">
-          <!-- <img src="../assets/img/custom_text_1_back1.png"> -->
-          <p class="left_block_desc">Fachhändler für Kugellager,Lineartechnik & Keilriemen</p>
+          <p class="left_block_desc">{{$t('custom_text_1.left')}}</p>
         </div>
       </b-col>
       <b-col cols="12" xl="6"  class="business-right">
         <div class="business-details">
-          <p class="right_block_desc">Genau die richtigen Kugellager für Profis in Fertigung, Service und Werkstatt: Bestellen Sie Ihre Standard Rillenkugellager, Nadellager oder andere technische Produkte direkt online. Einfach Ihre Lagertype oben in die Schnellsuche eingeben – fertig! Auch 2018 sind wir wieder mit Rat und Tat für Sie da. Wählen Sie aus über 35.000 Artikeln von SKF, FAG, INA, NSK, NKE und weiteren Premiummarken. Wir liefern SKF, FAG Wälzlager, Gehäuse und komplette Wälzlagereinheiten, Kegelrollenlager, Rillenkugellager, Rollenlager, Keilriemen, Simmerringe, Ersatzlager für Linearführungen sowie das INA Programm: Nadellager, Gelenklager, Gelenkköpfe in erster Linie für Industrieanlagen, Maschinenbau, Schifffahrt und Landtechnik. Dank umfassendem Lagerbestand wickeln wir Ihren Auftrag per Expressversand noch am gleichen Tag ab. Wir haben alle gelisteten Artikel im Bestand. Nicht gelistete Artikel fragen Sie gerne bei uns an. Versand ist täglich Montag bis Freitag per UPS-Paketdienst oder Spedition, für eilige Sendungen per Express, oder bei Maschinenstillstand noch am gleichen Tag per Direktfahrt zu Ihnen. Wir bevorraten alle Größen und Bauformen fabrikneuer Qualitätslager. Vom Rillen kugellager über Zylinderrollenlager, Pendelkugellager, Pendelrollenlager, Kegelrollenlager, Schrägkugellager, axiale Lager, Nadellager und Zubehör wie Hülsen, Gehäuse und Dichtringe. ekugellager.de ist ein reiner Online-Händler. Wir sind nicht vertraglich an einen einzelnen Hersteller gebunden. Wir bieten Ihnen eine sehr große Auswahl an Kugellagern der führenden Premiumhersteller.</p>
+          <p class="right_block_desc">{{$t('custom_text_1.right')}}</p>
         </div>
       </b-col>
     </b-row>

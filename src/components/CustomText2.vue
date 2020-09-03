@@ -3,9 +3,9 @@
     <b-row>
       <b-col lg="12" class="header-title">
         <h2>
-          Ihr Onlineshop für Kugellager, Lineartechnik &amp; Keilriemen
+          {{header.title}}
         </h2>
-        <span>Nutzen Sie die Vorteile </span>
+        <span>{{header.description}}</span>
       </b-col>
       <b-col lg="12" cols="12"  class="align-self-end">
         <carousel
@@ -47,6 +47,10 @@ import carousel from 'vue-owl-carousel'
 export default {
   data () {
     return {
+      header: {
+        title: 'Ihr Onlineshop für Kugellager, Lineartechnik & Keilriemen',
+        description: 'Nutzen Sie die Vorteile'
+      },
       carousel_items: [
         {
           title: 'VERSAND',
