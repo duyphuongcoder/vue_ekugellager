@@ -42,6 +42,11 @@ const routes = [
         path: 'women',
         name: 'women',
         component: Women
+      },
+      {
+        path: 'laufrolle',
+        name: 'laufrolle',
+        component: Women
       }
     ]
   },
