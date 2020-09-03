@@ -21,6 +21,9 @@
           0: {
             items: 1
           },
+          576: {
+            items: 2
+          },
           768: {
             items: 2
           },
@@ -136,6 +139,12 @@ export default {
       border-radius: 4px;
       background-color: #fff;
       margin-bottom: 10px;
+      margin-left: auto;
+      margin-right: auto;
+      @media screen and (max-width: 576px) {
+        height: 150px;
+        width: 150px;
+      }
     }
     .title-logos {
       text-transform: uppercase;
