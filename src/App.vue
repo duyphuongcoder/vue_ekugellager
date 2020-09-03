@@ -13,6 +13,7 @@
     <b-container fluid>
       <router-view/>
     </b-container>
+    <CustomText1 />
     <CustomText2 />
     <Manufacturer />
     <Contact />
@@ -24,6 +25,7 @@
 import HeaderNav from '@/components/HeaderNav'
 import HeaderBefore from '@/components/HeaderBefore'
 import HeaderTop from '@/components/HeaderTop'
+import CustomText1 from '@/components/CustomText1'
 import CustomText2 from '@/components/CustomText2'
 import Manufacturer from '@/components/Manufacturer'
 import Contact from '@/components/Contact'
@@ -34,6 +36,7 @@ export default {
     HeaderNav,
     HeaderBefore,
     HeaderTop,
+    CustomText1,
     CustomText2,
     Manufacturer,
     Contact,
