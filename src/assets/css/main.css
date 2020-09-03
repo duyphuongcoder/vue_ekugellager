@@ -32,3 +32,7 @@ button:focus {
 .tooltip.b-tooltip .arrow {
     display: none;
 }
+
+a:hover {
+    text-decoration: none;
+}
