@@ -106,6 +106,7 @@ export default {
           outline: none;
           color: white;
           cursor: pointer;
+          padding-left: 5px;
         }
         li {
           width: auto;
@@ -146,12 +147,16 @@ export default {
   .header-top {
     height: 40px;
     background: #fff;
+    margin-top: 5px;
     .mainmenu {
       border-radius: 8px;
       overflow: hidden;
       .desktop_menu {
         margin-left: -15px;
         margin-right: -15px;
+        ul li.menu_bar_btn {
+          padding-top: 4px !important;
+        }
         ul li {
           display: block;
           padding: 0 0%;

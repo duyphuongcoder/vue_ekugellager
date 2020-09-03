@@ -2,12 +2,12 @@
   <div class="header-before">
     <b-container fluid>
       <b-row class="top_section">
-          <b-col md="3" sm="12" class="mt-1">
+          <b-col md="3" sm="12" class="top-logo mt-2">
             <a href="/">
               <img class="logo img-responsive" src="../assets/img/logo.jpg"/>
             </a>
           </b-col>
-          <b-col md="6" sm="12" class="search-section mt-1">
+          <b-col md="6" sm="12" class="search-section mt-2">
             <div id="search_widget" class="search-widget">
               <b-form-input v-model="search_key" :placeholder="$t('header.search_for_catalog')"></b-form-input>
               <b-button variant="outline-primary">
@@ -15,13 +15,13 @@
               </b-button>
             </div>
           </b-col>
-          <b-col md="3" sm="12" class="header-before-right-nav mt-1">
+          <b-col md="3" sm="12" class="header-before-right-nav mt-2">
             <div>
               <div class="user-info">
                 <b-button variant="outline-primary" class="btn-circle user-rank">
                  0 Rank
                 </b-button>
-                <router-link :to="$i18nRoute({ name: 'home'})">
+                <router-link :to="$i18nRoute({ name: 'login'})">
                   <b-button variant="outline-primary" class="btn-circle" v-b-tooltip.hover.bottomright :title="$t('header.log_in_to_your_customer_account')">
                     <b-icon icon="person"></b-icon>
                   </b-button>
@@ -67,6 +67,7 @@ export default {
     justify-content: space-between!important;
     display: flex;
     width: 100%;
+    margin: auto;
     img {
       max-width: 220px;
     }
@@ -136,6 +137,23 @@ export default {
   }
 }
 @media screen and (max-width: 768px) {
+  .header-before .container-fluid {
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+  }
+  .header-before .top_section .top-logo {
+    box-shadow: 0px 0px 3px 0px #0004!important;
+    border-bottom: 1px solid #e7e7e7;
+    padding: 10px;
+  }
+  .header-before .top_section .search-section .search-widget button {
+    border-top-left-radius: 0%;
+    border-bottom-left-radius: 0%;
+    border-top-right-radius: 20%;
+    border-bottom-right-radius: 20%;
+    height: 40px !important;
+    transform: translate(-8px, -1px) !important;
+  }
   .header-before-right-nav {
     display: none !important;
   }
