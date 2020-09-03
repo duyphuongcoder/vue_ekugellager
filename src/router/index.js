@@ -9,6 +9,7 @@ import Women from '../views/Women.vue'
 import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
 import Account from '../views/Account.vue'
+import PasswordRecovery from '../views/PasswordRecovery.vue'
 
 import { Trans } from '@/lang/Translation.js'
 
@@ -66,6 +67,11 @@ const routes = [
         path: 'my-account',
         name: 'account',
         component: Account
+      },
+      {
+        path: 'password-recovery',
+        name: 'password-recovery',
+        component: PasswordRecovery
       }
     ]
   },
