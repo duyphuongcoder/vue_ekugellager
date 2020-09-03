@@ -17,7 +17,6 @@
         :loop="true"
         :nav="false"
         :dots="false"
-        :items="4"
         :responsive="{
           0: {
             items: 1
@@ -29,69 +28,17 @@
             items: 3
           },
           1200: {
-            items:4
+            items: 4
           }
         }">
-        <div class="item">
+        <div class="item" v-for="(item, index) in carousel_items" :key="index">
           <div class="img-logos">
-            <img
-              class=""
-              src="../assets/img/manufacturer_logos/ntn.png"
+            <b-img
+              :src="getImgUrl(item.name)"
               alt="image slot"
-            >
+            ></b-img>
           </div>
-          <h4 class="title-logos">NTN</h4>
-        </div>
-        <div class="item">
-          <div class="img-logos">
-            <img
-              class=""
-              src="../assets/img/manufacturer_logos/nke.png"
-              alt="image slot"
-            >
-          </div>
-          <h4 class="title-logos">NKE</h4>
-        </div>
-
-        <div class="item">
-          <div class="img-logos">
-            <img
-              class=""
-              src="../assets/img/manufacturer_logos/zen.png"
-              alt="image slot"
-            >
-          </div>
-          <h4 class="title-logos">ZEN</h4>
-        </div>
-        <div class="item">
-          <div class="img-logos">
-            <img
-              class=""
-              src="../assets/img/manufacturer_logos/skf.png"
-              alt="image slot"
-            >
-          </div>
-          <h4 class="title-logos">SKF</h4>
-        </div>
-        <div class="item">
-          <div class="img-logos">
-            <img
-              class=""
-              src="../assets/img/manufacturer_logos/fag.png"
-              alt="image slot"
-            >
-          </div>
-          <h4 class="title-logos">FAG</h4>
-        </div>
-        <div class="item">
-          <div class="img-logos">
-            <img
-              class=""
-              src="../assets/img/manufacturer_logos/nsk.png"
-              alt="image slot"
-            >
-          </div>
-          <h4 class="title-logos">NSK</h4>
+          <h4 class="title-logos">{{item.name}}</h4>
         </div>
       </carousel>
       </b-container>
@@ -100,12 +47,41 @@
 </template>
 <script>
 
-import carousel from 'vue-owl-carousel2'
+import carousel from 'vue-owl-carousel'
 
 export default {
+  data () {
+    return {
+      carousel_items: [
+        {
+          name: 'ntn'
+        },
+        {
+          name: 'nke'
+        },
+        {
+          name: 'zen'
+        },
+        {
+          name: 'skf'
+        },
+        {
+          name: 'fag'
+        },
+        {
+          name: 'nsk'
+        }
+      ]
+    }
+  },
+  methods: {
+    getImgUrl (name) {
+      var images = require.context('../assets/img/manufacturer_logos', false, /\.png$/)
+      return images('./' + name + '.png')
+    }
+  },
   components: { carousel }
 }
-
 </script>
 <style scoped lang="scss">
 .manufacturer-logos {
@@ -160,6 +136,9 @@ export default {
       border-radius: 4px;
       background-color: #fff;
       margin-bottom: 10px;
+    }
+    .title-logos {
+      text-transform: uppercase;
     }
   }
   .manufacturer-carousel:before {
