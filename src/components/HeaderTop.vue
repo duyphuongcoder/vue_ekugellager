@@ -87,6 +87,8 @@ export default {
   height: 66px;
   .position-static {
     position: static;
+    padding-left: 5px;
+    padding-right: 5px;
     .mainmenu {
       line-height: 66px;
       border-top: 0px;

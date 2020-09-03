@@ -92,6 +92,11 @@ export default {
     box-shadow: 0px 3px 30px #00000029;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
+    #collapse-menu-sub {
+      .list-group {
+        max-width: 310px;
+      }
+    }
     .sub-menu-bar {
       outline: none;
       svg {
@@ -102,16 +107,16 @@ export default {
     }
     .sub-sub-menu-bar {
       outline: none;
+      float: right;
       svg {
         font-size: 25px;
-        margin-left: 220px;
       }
     }
     .sub-sub-menu-bar-1 {
       outline: none;
+      float: right;
       svg {
         font-size: 25px;
-        margin-left: 197px;
       }
     }
     .list-group-item {
@@ -147,10 +152,14 @@ export default {
   .menu-content .list-group-item[data-depth="0"] .sub-sub-menu-bar-1 svg {
     margin-left: 0px !important;
     float: right;
+    margin-right: 50px;
   }
   .menu.container {
     padding-right: 0px !important;
     padding-left: 0px !important;
+  }
+  #collapse-menu-sub .list-group {
+    max-width: 767px !important;
   }
 }
 </style>
