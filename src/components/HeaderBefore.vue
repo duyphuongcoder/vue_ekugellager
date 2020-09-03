@@ -2,12 +2,12 @@
   <div class="header-before">
     <b-container fluid>
       <b-row class="top_section">
-          <b-col md="3" sm="12">
+          <b-col md="3" sm="12" class="mt-1">
             <a href="/">
               <img class="logo img-responsive" src="../assets/img/logo.jpg"/>
             </a>
           </b-col>
-          <b-col md="6" sm="12" class="search-section">
+          <b-col md="6" sm="12" class="search-section mt-1">
             <div id="search_widget" class="search-widget">
               <b-form-input v-model="search_key" :placeholder="$t('header.search_for_catalog')"></b-form-input>
               <b-button variant="outline-primary">
@@ -15,7 +15,7 @@
               </b-button>
             </div>
           </b-col>
-          <b-col md="3" sm="12" class="header-before-right-nav">
+          <b-col md="3" sm="12" class="header-before-right-nav mt-1">
             <div>
               <div class="user-info">
                 <b-button variant="outline-primary" class="btn-circle user-rank">

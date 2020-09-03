@@ -3,18 +3,9 @@
     <HeaderNav />
     <HeaderBefore />
     <HeaderTop />
-    <div id="nav">
-      <router-link :to="$i18nRoute({ name: 'home'})">{{ $t('Home') }}</router-link> |
-      <router-link :to="$i18nRoute({ name: 'clothes'})">{{ $t('Clothes') }}</router-link> |
-      <router-link :to="$i18nRoute({ name: 'men'})">{{ $t('Men') }}</router-link> |
-      <router-link :to="$i18nRoute({ name: 'women'})">{{ $t('Women') }}</router-link> |
-      <router-link :to="$i18nRoute({ name: 'about'})">{{ $t('About') }}</router-link>
-    </div>
     <b-container fluid>
       <router-view/>
     </b-container>
-    <CustomText2 />
-    <Manufacturer />
     <Contact />
     <Footer />
   </div>
@@ -24,8 +15,6 @@
 import HeaderNav from '@/components/HeaderNav'
 import HeaderBefore from '@/components/HeaderBefore'
 import HeaderTop from '@/components/HeaderTop'
-import CustomText2 from '@/components/CustomText2'
-import Manufacturer from '@/components/Manufacturer'
 import Contact from '@/components/Contact'
 import Footer from '@/components/Footer'
 export default {
@@ -34,8 +23,6 @@ export default {
     HeaderNav,
     HeaderBefore,
     HeaderTop,
-    CustomText2,
-    Manufacturer,
     Contact,
     Footer
   }
@@ -49,18 +36,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
 }
 </style>
