@@ -86,7 +86,6 @@ export default {
 .menu {
   text-align: left;
   .menu-content {
-    padding: 0px 15px;
     background: #f0f0f0;
     width: 100%;
     box-shadow: 0px 3px 30px #00000029;
