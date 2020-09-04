@@ -109,7 +109,6 @@ export default {
           padding-left: 5px;
         }
         li {
-          width: auto;
           display: inline;
           position: relative;
           a {
