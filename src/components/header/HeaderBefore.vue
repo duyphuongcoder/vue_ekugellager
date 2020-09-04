@@ -4,7 +4,7 @@
       <b-row class="top_section">
           <b-col md="3" sm="12" class="top-logo mt-2">
             <a href="/">
-              <img class="logo img-responsive" src="../assets/img/logo.jpg"/>
+              <img class="logo img-responsive" src="../../assets/img/logo.jpg"/>
             </a>
           </b-col>
           <b-col md="6" sm="12" class="search-section mt-2">
@@ -44,7 +44,7 @@
 </template>
 
 <script>
-import CartModal from '@/components/CartModal'
+import CartModal from '@/components/common/CartModal'
 export default {
   components: {
     CartModal

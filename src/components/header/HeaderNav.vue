@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import TheLanguageSwitcher from '@/components/TheLanguageSwitcher'
+import TheLanguageSwitcher from '@/components/common/TheLanguageSwitcher'
 export default {
   components: {
     TheLanguageSwitcher

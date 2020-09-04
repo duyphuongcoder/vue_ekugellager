@@ -35,7 +35,7 @@
   </b-container>
 </template>
 <script>
-import QuestionBox from '@/components/QuestionBox'
+import QuestionBox from './QuestionBox'
 export default {
   components: {
     QuestionBox

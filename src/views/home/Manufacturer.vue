@@ -79,7 +79,7 @@ export default {
   },
   methods: {
     getImgUrl (name) {
-      var images = require.context('../assets/img/manufacturer_logos', false, /\.png$/)
+      var images = require.context('../../assets/img/manufacturer_logos', false, /\.png$/)
       return images('./' + name + '.png')
     }
   },

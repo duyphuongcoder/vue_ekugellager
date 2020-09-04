@@ -76,7 +76,7 @@ export default {
 </script>
 <style scoped lang="scss">
   .custom_text_2 {
-    background: url('../assets/img/custom_text2_background.jpg') no-repeat top center #12407D;
+    background: url('../../assets/img/custom_text2_background.jpg') no-repeat top center #12407D;
     padding: 0px;
     border-radius: 8px;
     margin-bottom: 80px;

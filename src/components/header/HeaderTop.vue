@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import Menu from '@/components/Menu'
+import Menu from './Menu'
 export default {
   components: {
     Menu
@@ -67,7 +67,7 @@ export default {
   },
   methods: {
     getImgUrl (imgname) {
-      var images = require.context('../assets/img', false, /\.jpg$/)
+      var images = require.context('../../assets/img', false, /\.jpg$/)
       return images('./' + imgname + '.jpg')
     },
     clickItem (index) {
@@ -109,7 +109,10 @@ export default {
           padding-left: 5px;
         }
         li {
+<<<<<<< HEAD:src/components/HeaderTop.vue
           // width: auto;
+=======
+>>>>>>> 1eb69b45813dcfc3b6b628b6b4d28650bb01f14c:src/components/header/HeaderTop.vue
           display: inline;
           position: relative;
           a {

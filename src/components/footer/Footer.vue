@@ -6,7 +6,7 @@
       <mdb-container class="text-center text-md-left footer-container">
         <mdb-row class="my-4">
           <mdb-col md="2" lg="2">
-            <img class="logo img-responsive" src="../assets/img/logo.jpg"/>
+            <img class="logo img-responsive" src="../../assets/img/logo.jpg"/>
             <h5 class="font-weight-bold">{{ $t('footer.contact.self') }}</h5>
             <p>+49 (0)234 5450120</p>
             <a href="mailto:" class="email-contact">info@ekugellager.de</a>
@@ -49,11 +49,11 @@
             <h5 class="text-uppercase mb-4 font-weight-bold">{{ $t('footer.shippment_payment.self') }}</h5>
             <div class="mt-2 ">
               <ul class="list-unstyled shipping">
-                <p><img src="../assets/img/visa.png"></p>
-                <p><img src="../assets/img/mastercard.png"></p>
-                <p><img src="../assets/img/paypal.png"></p>
-                <p><img src="../assets/img/sepa.png"></p>
-                <p><img src="../assets/img/invoice_alternate.png"></p>
+                <p><img src="../../assets/img/visa.png"></p>
+                <p><img src="../../assets/img/mastercard.png"></p>
+                <p><img src="../../assets/img/paypal.png"></p>
+                <p><img src="../../assets/img/sepa.png"></p>
+                <p><img src="../../assets/img/invoice_alternate.png"></p>
               </ul>
             </div>
           </mdb-col>
@@ -109,4 +109,4 @@ export default {
     display: flex;
     flex-wrap: wrap;
 }
-</style>>
+</style>

@@ -27,7 +27,7 @@ export default {
     padding: 0px;
     overflow: hidden;
     .business-left {
-      background: url('../assets/img/custom_text_1_back1.png') no-repeat top right;
+      background: url('../../assets/img/custom_text_1_back1.png') no-repeat top right;
       background-size: cover;
       padding: 0px;
       padding-bottom: 50%;
@@ -48,7 +48,7 @@ export default {
       }
     }
     .business-right {
-      background: url('../assets/img/custom_text_1_back.png') no-repeat top right #12407D;
+      background: url('../../assets/img/custom_text_1_back.png') no-repeat top right #12407D;
       padding: 0px;
       .business-details {
         display: flex;

@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h1> Home Page </h1>
+    <ParallaxWindow />
     <ProductAdvisor />
     <LastOrder />
     <CustomText1 />
@@ -11,15 +11,17 @@
 </template>
 
 <script>
-import ProductAdvisor from '@/components/ProductAdvisor'
-import LastOrder from '@/components/LastOrder'
-import CustomText1 from '@/components/CustomText1'
-import CustomText2 from '@/components/CustomText2'
-import Manufacturer from '@/components/Manufacturer'
-import Contact from '@/components/Contact'
+import ParallaxWindow from './ParallaxWindow'
+import ProductAdvisor from './ProductAdvisor'
+import LastOrder from './LastOrder'
+import CustomText1 from './CustomText1'
+import CustomText2 from './CustomText2'
+import Manufacturer from './Manufacturer'
+import Contact from './Contact'
 export default {
   name: 'home',
   components: {
+    ParallaxWindow,
     ProductAdvisor,
     LastOrder,
     CustomText1,
