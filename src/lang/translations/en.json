@@ -21,6 +21,19 @@
         "spannlager_gehauselager": "Spannlager/ Gehäuselager",
         "kegelrollenlager": "Kegelrollenlager"
     },
+    "login": {
+        "log_in_to_your_account": "Login to your Account",
+        "sign_in": "Sign In",
+        "no_account": "No account?",
+        "create_one_here": "Create one here",
+        "forgot_your_password": "Forgot your password?"
+    },
+    "register": {
+        "create_an_account": "Create an account",
+        "save": "Save",
+        "already_have_an_account": "Already have an account?",
+        "log_in_instead": "Log in instead!"
+    },
     "last_order": {
         "self": "STATUS IHRER LETZTEN BESTELLUNG"
     },

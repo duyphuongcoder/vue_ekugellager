@@ -30,7 +30,7 @@
             </div>
             <div>
               <div class="blockcart cart-preview inactive">
-                <b-button variant="outline-primary" class="btn-circle">
+                <b-button variant="outline-primary" v-b-modal.shopping_cart class="btn-circle">
                   <b-icon icon="cart3"></b-icon>
                   <span class="cart-products-count">0</span>
                 </b-button>
@@ -39,11 +39,16 @@
           </b-col>
       </b-row>
     </b-container>
+    <CartModal />
   </div>
 </template>
 
 <script>
+import CartModal from '@/components/CartModal'
 export default {
+  components: {
+    CartModal
+  },
   data () {
     return {
       search_key: ''
