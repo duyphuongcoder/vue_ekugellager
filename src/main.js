@@ -6,7 +6,7 @@ import store from './store'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
-import './assets/css/main.css'
+import './assets/css/main.scss'
 import 'font-awesome/css/font-awesome.min.css'
 import { i18n } from './lang/i18n.js'
 import { Trans } from './lang/Translation'

@@ -1,0 +1,65 @@
+<template>
+  <div class="advisor_question_block" v-if="currentQuestion!=null">
+    <div class="head mb-1 font-weight-bold"> About you</div>
+    <div class="question mb-3 font-weight-bold">{{currentQuestion.question}}</div>
+    <b-form>
+      <b-form-group class="pl-5 text-left">
+        <b-form-radio name="answer" class="pb-1"
+          v-for="(answer, index) in currentQuestion.answers"
+          :key="index"
+          :value="index"
+          v-model="selectedIndex"
+          >
+          {{answer}}
+        </b-form-radio>
+      </b-form-group>
+      <b-button  variant="danger" @click="nextQuestion">WEITER</b-button>
+    </b-form>
+  </div>
+  <div class="advisor_question_block" v-else>
+    <b-button  variant="danger" @click="register">Register</b-button>
+  </div>
+</template>
+<script>
+// import _ from 'lodash'
+export default {
+  props: {
+    currentQuestion: Object,
+    next: Function,
+    register: Function
+  },
+  data () {
+    return {
+      selectedIndex: null,
+      questionAnswers: []
+    }
+  },
+  watch: {
+    currentQuestion: {
+      immediate: true,
+      handler () {
+        this.selectedIndex = null
+      }
+    }
+  },
+  methods: {
+    nextQuestion () {
+      if (this.selectedIndex != null) {
+        console.log('selected')
+        this.next(this.selectedIndex)
+      } else {
+        console.log('please select one')
+      }
+    }
+  }
+}
+</script>
+<style lang="scss" scoped>
+  .advisor_question_block {
+    .btn{
+      background-color: #B2162C;
+      width: 60%;
+      border: none;
+    }
+  }
+</style>
