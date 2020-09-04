@@ -178,14 +178,7 @@ export default {
           background: #b60d27;
           font-weight: 700;
         }
-        button:focus {
-          background: #b60d27;
-          font-weight: 700;
-        }
         button:hover {
-          background: #b60d27;
-        }
-        button:visited {
           background: #b60d27;
         }
       }
