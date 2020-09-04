@@ -11,14 +11,7 @@
           <div class="advisor_contents">
             <b-collapse id="contents"  class="contents pt-3 pb-3">
               <QuestionBox
-              v-if="questions.length > index"
-              :currentQuestion="questions[index]"
-              :next="next"
-              :register="register"
-              />
-              <QuestionBox
-              v-else
-              :currentQuestion="null"
+              :currentQuestion="questions.length > index?questions[index]:null"
               :next="next"
               :register="register"
               />
