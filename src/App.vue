@@ -3,9 +3,9 @@
     <HeaderNav />
     <HeaderBefore />
     <HeaderTop />
-    <b-container fluid>
+    <div>
       <router-view/>
-    </b-container>
+    </div>
     <Footer />
   </div>
 </template>

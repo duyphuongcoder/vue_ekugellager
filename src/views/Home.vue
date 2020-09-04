@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     <ParallaxWindow />
+    <ProductAdvisor />
     <LastOrder />
     <CustomText1 />
     <CustomText2 />
@@ -11,6 +12,7 @@
 
 <script>
 import ParallaxWindow from '@/components/ParallaxWindow'
+import ProductAdvisor from '@/components/ProductAdvisor'
 import LastOrder from '@/components/LastOrder'
 import CustomText1 from '@/components/CustomText1'
 import CustomText2 from '@/components/CustomText2'
@@ -20,6 +22,7 @@ export default {
   name: 'home',
   components: {
     ParallaxWindow,
+    ProductAdvisor,
     LastOrder,
     CustomText1,
     CustomText2,

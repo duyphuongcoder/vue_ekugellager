@@ -37,32 +37,15 @@ a:hover {
     text-decoration: none;
 }
 
-.menu_bar_btn.collapsed .collapsed-icon, 
-.sub-menu-bar.collapsed .collapsed-icon, 
-.sub-sub-menu-bar.collapsed .collapsed-icon,
-.sub-sub-menu-bar-1.collapsed .collapsed-icon {
-    display: inline-block;
+.collapsed {
+    .opened-icon {
+        display: none;
+    }
 }
-
-.menu_bar_btn.not-collapsed .collapsed-icon, 
-.sub-menu-bar.not-collapsed .collapsed-icon, 
-.sub-sub-menu-bar.not-collapsed .collapsed-icon,
-.sub-sub-menu-bar-1.not-collapsed .collapsed-icon {
-    display: none;
-}
-
-.menu_bar_btn.not-collapsed .opened-icon, 
-.sub-menu-bar.not-collapsed .opened-icon, 
-.sub-sub-menu-bar.not-collapsed .opened-icon,
-.sub-sub-menu-bar-1.not-collapsed .opened-icon {
-    display: inline-block;
-}
-
-.menu_bar_btn.collapsed .opened-icon, 
-.sub-menu-bar.collapsed .opened-icon, 
-.sub-sub-menu-bar.collapsed .opened-icon,
-.sub-sub-menu-bar-1.collapsed .opened-icon {
-    display: none;
+.not-collapsed {
+    .collapsed-icon {
+        display: none;
+    }
 }
 
 /* ----------------- Shopping Cart Detail Modal ----------------- */
@@ -182,4 +165,4 @@ a:hover {
     -webkit-transition: all .5s ease;
     transition: all .5s ease;
 }
-/* ------------------------------------------------------------------- */
+/* ---------------------------------------------------- */
