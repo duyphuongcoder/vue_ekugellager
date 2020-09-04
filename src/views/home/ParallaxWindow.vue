@@ -18,7 +18,7 @@ export default {
     width: 100%;
     height: 100%;
     opacity: 0.3;
-    background: url(../assets/img/bg-animation.png) 0 0 no-repeat;
+    background: url(../../assets/img/bg-animation.png) 0 0 no-repeat;
     background-size: 100%;
     background-attachment: fixed;
     z-index: 1;

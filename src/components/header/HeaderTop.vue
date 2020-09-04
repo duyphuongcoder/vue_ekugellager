@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import Menu from '@/components/Menu'
+import Menu from './Menu'
 export default {
   components: {
     Menu
@@ -67,7 +67,7 @@ export default {
   },
   methods: {
     getImgUrl (imgname) {
-      var images = require.context('../assets/img', false, /\.jpg$/)
+      var images = require.context('../../assets/img', false, /\.jpg$/)
       return images('./' + imgname + '.jpg')
     },
     clickItem (index) {

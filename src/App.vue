@@ -1,26 +1,20 @@
 <template>
   <div id="app">
-    <HeaderNav />
-    <HeaderBefore />
-    <HeaderTop />
-    <div>
+    <Header />
+    <b-container fluid>
       <router-view/>
-    </div>
+    </b-container>
     <Footer />
   </div>
 </template>
 
 <script>
-import HeaderNav from '@/components/HeaderNav'
-import HeaderBefore from '@/components/HeaderBefore'
-import HeaderTop from '@/components/HeaderTop'
-import Footer from '@/components/Footer'
+import Header from '@/components/header'
+import Footer from '@/components/footer/Footer'
 export default {
   name: 'app',
   components: {
-    HeaderNav,
-    HeaderBefore,
-    HeaderTop,
+    Header,
     Footer
   }
 }
@@ -28,7 +22,6 @@ export default {
 
 <style lang="scss">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

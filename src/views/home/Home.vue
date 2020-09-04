@@ -11,13 +11,13 @@
 </template>
 
 <script>
-import ParallaxWindow from '@/components/ParallaxWindow'
-import ProductAdvisor from '@/components/ProductAdvisor'
-import LastOrder from '@/components/LastOrder'
-import CustomText1 from '@/components/CustomText1'
-import CustomText2 from '@/components/CustomText2'
-import Manufacturer from '@/components/Manufacturer'
-import Contact from '@/components/Contact'
+import ParallaxWindow from './ParallaxWindow'
+import ProductAdvisor from './ProductAdvisor'
+import LastOrder from './LastOrder'
+import CustomText1 from './CustomText1'
+import CustomText2 from './CustomText2'
+import Manufacturer from './Manufacturer'
+import Contact from './Contact'
 export default {
   name: 'home',
   components: {

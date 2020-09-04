@@ -66,11 +66,11 @@ export default {
   }
 
   .flag-group span[flag=en] {
-    background-image: url(../assets/img/uk.png);
+    background-image: url(../../assets/img/uk.png);
   }
 
   .flag-group span[flag=de] {
-    background-image: url(../assets/img/german.png);
+    background-image: url(../../assets/img/german.png);
   }
 
   .flag-group span.is-selected {

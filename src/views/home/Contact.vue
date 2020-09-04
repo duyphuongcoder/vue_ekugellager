@@ -41,7 +41,7 @@
         <b-col lg="3" sm="6" cols="12" class="contact-box">
           <b-row class="justify-content-center">
             <b-col lg="3" cols="3" class="contact-icon">
-              <img src="../assets/img/saw_icon.svg" class="contact-saw" style="">
+              <img src="../../assets/img/saw_icon.svg" class="contact-saw" style="">
             </b-col>
             <b-col lg="7" cols="8" class="contact-text">
               <h3 class="title">{{ $t('contact.free_cutting.self') }}</h3>

@@ -1,15 +1,28 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-import About from '../views/About.vue'
-import Clothes from '../views/Clothes.vue'
-import Men from '../views/Men.vue'
-import Women from '../views/Women.vue'
 
-import Login from '../views/Login.vue'
-import Register from '../views/Register.vue'
-import Account from '../views/Account.vue'
-import PasswordRecovery from '../views/PasswordRecovery.vue'
+import Home from '../views/home/Home.vue'
+import Login from '../views/accounts/Login.vue'
+import Register from '../views/accounts/Register.vue'
+import MyAccount from '../views/accounts/MyAccount.vue'
+import PasswordRecovery from '../views/accounts/PasswordRecovery.vue'
+
+import Axiallager from '../views/products/Axiallager.vue'
+import Clothes from '../views/products/Clothes.vue'
+import GehaeuseEinheiten from '../views/products/GehaeuseEinheiten.vue'
+import Gleitlager from '../views/products/Gleitlager.vue'
+import Kegelrollenlager from '../views/products/Kegelrollenlager.vue'
+import Keilriemen from '../views/products/Keilriemen.vue'
+import KombinierteExialRadiallager from '../views/products/KombinierteExialRadiallager.vue'
+import Laufrolle from '../views/products/Laufrolle.vue'
+import Lineartechnik from '../views/products/Lineartechnik.vue'
+import Men from '../views/products/Men.vue'
+import Nadellager from '../views/products/Nadellager.vue'
+import Rillenkugellager from '../views/products/Rillenkugellager.vue'
+import SchraegkugellagerSpindellager from '../views/products/SchraegkugellagerSpindellager.vue'
+import SpannlagerGehaeuselager from '../views/products/SpannlagerGehaeuselager.vue'
+import Startseite from '../views/products/Startseite.vue'
+import Women from '../views/products/Women.vue'
 
 import { Trans } from '@/lang/Translation.js'
 
@@ -29,31 +42,6 @@ const routes = [
         component: Home
       },
       {
-        path: 'about',
-        name: 'about',
-        component: About
-      },
-      {
-        path: 'clothes',
-        name: 'clothes',
-        component: Clothes
-      },
-      {
-        path: 'men',
-        name: 'men',
-        component: Men
-      },
-      {
-        path: 'women',
-        name: 'women',
-        component: Women
-      },
-      {
-        path: 'laufrolle',
-        name: 'laufrolle',
-        component: Women
-      },
-      {
         path: 'login',
         name: 'login',
         component: Login
@@ -65,13 +53,93 @@ const routes = [
       },
       {
         path: 'my-account',
-        name: 'account',
-        component: Account
+        name: 'myaccount',
+        component: MyAccount
       },
       {
         path: 'password-recovery',
         name: 'password-recovery',
         component: PasswordRecovery
+      },
+      {
+        path: 'axiallager',
+        name: 'axiallager',
+        component: Axiallager
+      },
+      {
+        path: 'clothes',
+        name: 'clothes',
+        component: Clothes
+      },
+      {
+        path: 'gehaeuse-einheiten',
+        name: 'gehaeuse-einheiten',
+        component: GehaeuseEinheiten
+      },
+      {
+        path: 'gleitlager',
+        name: 'gleitlager',
+        component: Gleitlager
+      },
+      {
+        path: 'kegelrollenlager',
+        name: 'kegelrollenlager',
+        component: Kegelrollenlager
+      },
+      {
+        path: 'keilriemen',
+        name: 'keilriemen',
+        component: Keilriemen
+      },
+      {
+        path: 'kombinierte-exial-radiallager',
+        name: 'kombinierte-exial-radiallager',
+        component: KombinierteExialRadiallager
+      },
+      {
+        path: 'laufrolle',
+        name: 'laufrolle',
+        component: Laufrolle
+      },
+      {
+        path: 'lineartechnik',
+        name: 'lineartechnik',
+        component: Lineartechnik
+      },
+      {
+        path: 'men',
+        name: 'men',
+        component: Men
+      },
+      {
+        path: 'nadellager',
+        name: 'nadellager',
+        component: Nadellager
+      },
+      {
+        path: 'rillenkugellager',
+        name: 'rillenkugellager',
+        component: Rillenkugellager
+      },
+      {
+        path: 'schraegkugellager-spindellager',
+        name: 'schraegkugellager-spindellager',
+        component: SchraegkugellagerSpindellager
+      },
+      {
+        path: 'spannlager-gehaeuselager',
+        name: 'spannlager-gehaeuselager',
+        component: SpannlagerGehaeuselager
+      },
+      {
+        path: 'startseite',
+        name: 'startseite',
+        component: Startseite
+      },
+      {
+        path: 'women',
+        name: 'women',
+        component: Women
       }
     ]
   },
