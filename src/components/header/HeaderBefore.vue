@@ -84,7 +84,7 @@ export default {
       color: #12407E;
       position: absolute;
       left: 20px;
-      top: 0;
+      top: 10px;
     }
     img {
       max-width: 220px;

@@ -10,6 +10,7 @@
           :detail="data.content.items"
           :updatevalues="updatevalues"
           :isline="false"
+          :iscount="true"
         />
       </div>
       <div v-if="data.type === 'slide'">
