@@ -11,14 +11,7 @@
           <div class="advisor_contents">
             <b-collapse id="contents"  class="contents pt-3 pb-3">
               <QuestionBox
-              v-if="questions.length > index"
-              :currentQuestion="questions[index]"
-              :next="next"
-              :register="register"
-              />
-              <QuestionBox
-              v-else
-              :currentQuestion="null"
+              :currentQuestion="questions.length > index?questions[index]:null"
               :next="next"
               :register="register"
               />
@@ -129,7 +122,7 @@ export default {
       .card {
         border-radius: 8px;
         padding-top: 100px;
-        // margin-top: -110px;
+        margin-top: -110px;
         position: relative;
         background: rgba(255,255,255,.2);
         @media screen and (max-width: 768px) {
