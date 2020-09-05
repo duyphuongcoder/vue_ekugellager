@@ -173,7 +173,6 @@ export default {
 
       li {
         display: inline;
-        width: 50px;
         text-align: center;
 
         .topicon {

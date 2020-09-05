@@ -3,12 +3,16 @@
     <b-container fluid>
       <b-row class="top_section">
           <b-col md="3" sm="12" class="top-logo mt-2">
-            <a href="/">
+            <span class="menu_bar_btn mobile-show" v-b-toggle.collapse-menu>
+              <b-icon icon="list" class="collapsed-icon"></b-icon>
+              <b-icon icon="x" class="opened-icon"></b-icon>
+            </span>
+            <router-link :to="$i18nRoute({ name: 'home'})">
               <img class="logo img-responsive" src="../../assets/img/logo.jpg"/>
-            </a>
+            </router-link>
           </b-col>
           <b-col md="6" sm="12" class="search-section mt-2">
-            <div id="search_widget" class="search-widget">
+            <div id="search_widget" class="search-widget mb-2">
               <b-form-input v-model="search_key" :placeholder="$t('header.search_for_catalog')"></b-form-input>
               <b-button variant="outline-primary">
                 <b-icon icon="search"></b-icon>
@@ -38,6 +42,7 @@
             </div>
           </b-col>
       </b-row>
+      <Menu data="mobile-show"/>
     </b-container>
     <CartModal />
   </div>
@@ -45,9 +50,11 @@
 
 <script>
 import CartModal from '@/components/common/CartModal'
+import Menu from './Menu'
 export default {
   components: {
-    CartModal
+    CartModal,
+    Menu
   },
   data () {
     return {
@@ -73,6 +80,12 @@ export default {
     display: flex;
     width: 100%;
     margin: auto;
+    .menu_bar_btn {
+      color: #12407E;
+      position: absolute;
+      left: 20px;
+      top: 0;
+    }
     img {
       max-width: 220px;
     }
@@ -80,6 +93,7 @@ export default {
       display: flex;
       max-width: 400px;
       margin: auto;
+      margin-top: 3px;
       input {
         border: #D8D8D8 1px solid;
         border-radius: 8px;

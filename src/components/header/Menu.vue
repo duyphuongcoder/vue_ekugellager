@@ -1,7 +1,8 @@
 <template>
+<div :class="data">
   <b-container class="menu">
     <div class="menu-content">
-      <b-collapse id="collapse-menu" class="">
+      <b-collapse id="collapse-menu">
         <b-list-group>
           <b-list-group-item>
             <router-link :to="$i18nRoute({ name: 'startseite'})">{{ $t('header.home') }}</router-link>
@@ -51,7 +52,7 @@
                   <router-link :to="$i18nRoute({ name: 'axiallager'})">{{ $t('header.axiallager') }}</router-link>
                 </b-list-group-item>
                 <b-list-group-item>
-                  <router-link :to="$i18nRoute({ name: 'kombinierte-exial-radiallager'})">{{ $t('header.kombinierte_axial_adiallager') }}</router-link>
+                  <router-link :to="$i18nRoute({ name: 'kombinierte-exial-radiallager'})">{{ $t('header.kombinierte_axial_radiallager') }}</router-link>
                 </b-list-group-item>
               </b-list-group>
             </b-collapse>
@@ -75,10 +76,14 @@
       </b-collapse>
     </div>
   </b-container>
+</div>
 </template>
 
 <script>
 export default {
+  props: {
+    data: String
+  }
 }
 </script>
 
