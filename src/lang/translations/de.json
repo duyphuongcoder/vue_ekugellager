@@ -1,6 +1,11 @@
 {
     "English": "English",
     "Deutsch": "Deutsch",
+    "placeholder": {
+        "email": "E-Mail",
+        "name": "Name",
+        "password": "Passwort"
+    },
     "header": {
         "home": "Startseite",
         "clothes": "Wälzlager",
@@ -33,6 +38,13 @@
         "save": "Save",
         "already_have_an_account": "Already have an account?",
         "log_in_instead": "Log in instead!"
+    },
+    "password_recovery": {
+        "title": "Passwort vergessen?",
+        "description": "Bitte geben Sie die E-Mail-Adresse ein, mit der Sie sich registriert haben. Sie erhalten einen temporären Link zum Zurücksetzen Ihres Passworts.",
+        "send_link": "Reset-Link senden",
+        "send": "senden",
+        "back_to_login": "Zurück zur Anmeldeseite"
     },
     "last_order": {
         "self": "STATUS IHRER LETZTEN BESTELLUNG"

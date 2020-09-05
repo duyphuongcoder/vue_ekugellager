@@ -1,6 +1,11 @@
 {
     "English": "English",
     "Deutsch": "Deutsch",
+    "placeholder": {
+        "email": "Email address",
+        "name": "Name",
+        "password": "Password"
+    },
     "header": {
         "home": "Home",
         "clothes": "Clothes",
@@ -33,6 +38,13 @@
         "save": "Save",
         "already_have_an_account": "Already have an account?",
         "log_in_instead": "Log in instead!"
+    },
+    "password_recovery": {
+        "title": "Forgot your password?",
+        "description": "Please enter the email address you used to register. You will receive a temporary link to reset your password.",
+        "send_link": "Send Rest Link",
+        "send": "Send",
+        "back_to_login": "Back to login"
     },
     "last_order": {
         "self": "STATUS IHRER LETZTEN BESTELLUNG"

@@ -1,6 +1,6 @@
 <template>
 <b-container>
-  <div class="parallax-window mt-4" data-parallax="scroll" data-image-src="../../assets/img/bg-animation.png">
+  <div class="parallax-window bluemain-col mt-4" v-if="!open_filter" data-parallax="scroll" data-image-src="../../assets/img/bg-animation.png">
     <div class="search-filters">
       <div class="head-title">
         <b-col md="2" class="d-none d-md-block"></b-col>
@@ -42,24 +42,29 @@
             {{item.pro}}
           </b-button>
         </carousel>
-        <SubProCarousel :current_pro="pro_carousel_items[current_pro_index]" :key="current_pro_index"/>
+        <SubProCarousel :current_pro="pro_carousel_items[current_pro_index]" :openFilter="openFilter" :key="current_pro_index"/>
       </div>
     </div>
   </div>
+  <ParallaxFilter :item="pro_carousel_items[current_pro_index].sub[sub_index]" v-else/>
 </b-container>
 </template>
 
 <script>
 import carousel from 'vue-owl-carousel'
 import SubProCarousel from './SubProCarousel'
+import ParallaxFilter from './ParallaxFilter'
 export default {
   components: {
     carousel,
-    SubProCarousel
+    SubProCarousel,
+    ParallaxFilter
   },
   data () {
     return {
       current_pro_index: 0,
+      sub_index: 0,
+      open_filter: false,
       pro_carousel_items: [
         {
           pro: 'Kugellager',
@@ -106,6 +111,11 @@ export default {
     selectPro (index) {
       this.current_pro_index = index
       // console.log(index)
+    },
+    openFilter (subIndex) {
+      console.log(this.current_pro_index, subIndex)
+      this.open_filter = true
+      this.sub_index = subIndex
     }
   },
   mounted: function () {
@@ -115,7 +125,11 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  .parallax-window {
+  // .bluemain-col.open {
+  //   display: block;
+  // }
+  .bluemain-col {
+    // display: none;
     background: linear-gradient(90deg,#12407e 0,#113d77 68%,#0e3160 100%);
     border-radius: 8px;
     border: 1px solid #fff;
@@ -184,14 +198,14 @@ export default {
       }
     }
   }
-  .parallax-window:before {
+  .bluemain-col:before {
     content: '';
     display: block;
     position: absolute;
     width: 100%;
     height: 100%;
     opacity: 0.3;
-    background: url('https://ekugellager.roccshow.com/modules/roccomediaproductfilter/images/bg-animation.png') 0 0 no-repeat;
+    background: url('../../assets/img/bg-animation.png') 0 0 no-repeat;
     background-size: 100%;
     background-attachment: fixed;
     z-index: 1;
