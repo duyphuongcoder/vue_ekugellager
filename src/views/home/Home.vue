@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import ParallaxWindow from './ParallaxWindow'
+import ParallaxWindow from './parallax/ParallaxWindow'
 import ProductAdvisor from './ProductAdvisor'
 import LastOrder from './LastOrder'
 import CustomText1 from './CustomText1'

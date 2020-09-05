@@ -42,6 +42,7 @@ export default {
     padding: 8px 0px !important;
     -webkit-transition: all .5s ease-in-out;
     transition: all .5s ease-in-out;
+    min-width: 150px;
     .title {
         display: block;
         height: 25px;
