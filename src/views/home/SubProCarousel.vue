@@ -29,7 +29,7 @@
               <b-img :src="getImageUrl(item.image)"></b-img>
             </div>
             <div class="morebtn"></div>
-            <a class="select">AUSWÄHLEN</a>
+            <a class="select" @click="openFilter(index)">AUSWÄHLEN</a>
           </div>
         </div>
       <!-- </div> -->
@@ -48,7 +48,8 @@ export default {
     }
   },
   props: {
-    current_pro: Object
+    current_pro: Object,
+    openFilter: Function
   },
   watch: {
     current_pro: {

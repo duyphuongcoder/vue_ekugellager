@@ -18,11 +18,11 @@
               </label>
             </b-col>
             <b-col md="4" cols="12">
-              <form action="https://ekugellager.roccshow.com/en/#footer" method="post">
+              <form action="#" method="post">
                 <b-row>
                   <b-col sm="12">
-                    <b-button variant="primary" class="float-right hidden-sm-down" type="submit">{{ $t('footer.newsletter.subscribe') }}</b-button>
-                    <b-button variant="primary" class="float-right hidden-sm-up" type="submit">{{ $t('footer.newsletter.sign_up') }}</b-button>
+                    <b-button variant="primary" class="float-right d-none d-sm-block" type="submit">{{ $t('footer.newsletter.subscribe') }}</b-button>
+                    <b-button variant="primary" class="float-right d-block d-sm-none" type="submit">{{ $t('footer.newsletter.sign_up') }}</b-button>
                     <div class="input-wrapper">
                       <b-form-input type="email" placeholder="Your email address" aria-labelledby="block-newsletter-label"></b-form-input>
                     </div>
