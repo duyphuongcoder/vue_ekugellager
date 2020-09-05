@@ -1,3 +1,27 @@
+@media screen and (max-width: 768px) {
+    .mobile-hide {
+        display: none !important;
+    }
+    .mobile-show {
+        display: initial !important;
+    }
+}
+
+@media screen and (min-width: 769px) {
+    .mobile-hide {
+        display: initial !important;
+    }
+    .mobile-show {
+        display: none !important;
+    }
+}
+
+.menu_bar_btn {
+    font-size: 35px;
+    outline: none;
+    cursor: pointer;
+}
+
 body {
     line-height: 1.25rem;
 }
@@ -152,7 +176,7 @@ a:hover {
     line-height: 30px;
 }
 
-/* ----------------- primary button ------------------ */
+/* ----------------- primary button ----------------- */
 .btn-primary {
     background-color: #113D79;
     border-radius: 8px;
@@ -167,5 +191,32 @@ a:hover {
     letter-spacing: 1px;
     -webkit-transition: all .5s ease;
     transition: all .5s ease;
+}
+/* ---------------------------------------------------- */
+
+/* -------------------- filter box style ---------------*/
+.filter-wrapper {
+    .custom-control-label::before {
+        background-color: transparent !important;
+    }
+    .custom-control-input:checked ~ .custom-control-label::before {
+        border-color: white;
+    }
+}
+/* ---------------------------------------------------- */
+
+/* ---------------------- silder style -----------------*/
+.vue-slider-rail {
+    background-color: #a2a0a0;
+}
+.vue-slider-process {
+    background-color: white;
+}
+.vue-slider-dot {
+    width: 20px !important;
+    height: 20px !important;
+    .vue-slider-dot-handle {
+        background-color: #B2162C
+    }
 }
 /* ---------------------------------------------------- */

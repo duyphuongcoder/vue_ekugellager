@@ -7,7 +7,7 @@
         "password": "Password"
     },
     "header": {
-        "home": "HOME",
+        "home": "Home",
         "clothes": "Clothes",
         "men": "Men",
         "women": "Women",
@@ -15,7 +15,7 @@
         "log_in_to_your_customer_account": "Log in to your customer account",
         "nadellager": "Nadellager",
         "axiallager": "Axiallager",
-        "kombinierte_axial_adiallager": "Kombinierte Axial-/ Radiallager",
+        "kombinierte_axial_radiallager": "Kombinierte Axial-/ Radiallager",
         "laufrolle": "Laufrolle",
         "lineartechnik": "Lineartechnik",
         "gehause_einheiten": "Gehäuse/-Einheiten",

@@ -7,7 +7,7 @@
             <b-container>
               <div class="desktop_menu">
                 <ul class="menu-desktop-list">
-                  <li class="menu-left menu_bar_btn" v-b-toggle.collapse-menu>
+                  <li class="menu-left menu_bar_btn mobile-hide" v-b-toggle.collapse-menu>
                     <b-icon icon="list" class="collapsed-icon"></b-icon>
                     <b-icon icon="x" class="opened-icon"></b-icon>
                   </li>
@@ -21,7 +21,7 @@
               </div>
             </b-container>
           </div>
-          <Menu />
+          <Menu data="mobile-hide"/>
         </b-col>
       </b-row>
     </b-container>
@@ -102,10 +102,7 @@ export default {
         margin: 0px;
         padding: 0px;
         li.menu_bar_btn {
-          font-size: 35px !important;
-          outline: none;
           color: white;
-          cursor: pointer;
           padding-left: 5px;
         }
         li {
