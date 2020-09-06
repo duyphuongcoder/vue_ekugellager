@@ -7,7 +7,7 @@
             <b-container>
               <div class="desktop_menu">
                 <ul class="menu-desktop-list">
-                  <li class="menu-left menu_bar_btn mobile-hide" v-b-toggle.collapse-menu>
+                  <li class="menu-left menu_bar_btn d-none d-md-block" v-b-toggle.collapse-menu>
                     <b-icon icon="list" class="collapsed-icon"></b-icon>
                     <b-icon icon="x" class="opened-icon"></b-icon>
                   </li>
@@ -21,7 +21,7 @@
               </div>
             </b-container>
           </div>
-          <Menu data="mobile-hide"/>
+          <Menu data="d-none d-md-block"/>
         </b-col>
       </b-row>
     </b-container>

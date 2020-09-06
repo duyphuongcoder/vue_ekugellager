@@ -5,7 +5,7 @@
         <b-row>
           <b-col md="8" sm="12" class="left_nav_section">
             <div class="top_hint">
-              <b-icon icon="check-circle"></b-icon>
+              <b-icon icon="check-circle" font-scale="1.2"></b-icon>
               AB 99€ FREI HAUS
             </div>
             <div class="top_treker">
@@ -155,7 +155,6 @@ export default {
           right: 7px;
           color: #fff;
           font-size: 18px;
-          transform: translateY(-3px);
         }
       }
     }

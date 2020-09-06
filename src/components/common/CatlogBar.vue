@@ -49,6 +49,7 @@ export default {
                     text-decoration: none;
                     -webkit-transition: all .5s ease;
                     transition: all .5s ease;
+                    font-weight: 600;
                 }
             }
             li:after {

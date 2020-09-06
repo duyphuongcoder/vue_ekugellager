@@ -2,10 +2,10 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 import Home from '../views/home/Home.vue'
-import Login from '../views/accounts/Login.vue'
-import Register from '../views/accounts/Register.vue'
-import MyAccount from '../views/accounts/MyAccount.vue'
-import PasswordRecovery from '../views/accounts/PasswordRecovery.vue'
+import Login from '../views/account/Login.vue'
+import Register from '../views/account/Register.vue'
+import MyAccount from '../views/account/MyAccount.vue'
+import PasswordRecovery from '../views/account/PasswordRecovery.vue'
 
 import Axiallager from '../views/products/Axiallager.vue'
 import Clothes from '../views/products/Clothes.vue'
@@ -23,6 +23,7 @@ import SchraegkugellagerSpindellager from '../views/products/SchraegkugellagerSp
 import SpannlagerGehaeuselager from '../views/products/SpannlagerGehaeuselager.vue'
 import Startseite from '../views/products/Startseite.vue'
 import Women from '../views/products/Women.vue'
+import Product from '../views/products/Product.vue'
 
 import { Trans } from '@/lang/Translation.js'
 
@@ -60,6 +61,11 @@ const routes = [
         path: 'password-recovery',
         name: 'password-recovery',
         component: PasswordRecovery
+      },
+      {
+        path: 'product',
+        name: 'product',
+        component: Product
       },
       {
         path: 'axiallager',

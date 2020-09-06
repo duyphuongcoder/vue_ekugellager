@@ -24,8 +24,8 @@ export default {
           route: 'clothes'
         },
         {
-          text: 'header.kombinierte_axial_radiallager',
-          route: 'kombinierte-axial-radiallager'
+          text: 'header.kombinierte_exial_radiallager',
+          route: 'kombinierte-exial-radiallager'
         }
       ]
     }

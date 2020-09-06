@@ -2,13 +2,13 @@
 <div :class="data">
   <b-container class="menu">
     <div class="menu-content">
-      <b-collapse id="collapse-menu">
+      <b-collapse id="collapse-menu" class="navbar-collapse">
         <b-list-group>
           <b-list-group-item>
-            <router-link :to="$i18nRoute({ name: 'startseite'})">{{ $t('header.home') }}</router-link>
+            <router-link :to="$i18nRoute({ name: 'startseite'})" v-b-toggle.collapse-menu>{{ $t('header.home') }}</router-link>
           </b-list-group-item>
           <b-list-group-item data-depth="0">
-            <router-link :to="$i18nRoute({ name: 'clothes'})">{{ $t('header.clothes') }}</router-link>
+            <router-link :to="$i18nRoute({ name: 'clothes'})" v-b-toggle.collapse-menu>{{ $t('header.clothes') }}</router-link>
             <span v-b-toggle.collapse-menu-sub class="sub-menu-bar">
               <b-icon icon="plus" class="collapsed-icon"></b-icon>
               <b-icon icon="dash" class="opened-icon"></b-icon>
@@ -16,61 +16,61 @@
             <b-collapse id="collapse-menu-sub" class="mt-1">
               <b-list-group>
                 <b-list-group-item>
-                  <router-link :to="$i18nRoute({ name: 'men'})">{{ $t('header.men') }}</router-link>
+                  <router-link :to="$i18nRoute({ name: 'men'})" v-b-toggle.collapse-menu>{{ $t('header.men') }}</router-link>
                   <span v-b-toggle.collapse-menu-sub-sub class="sub-sub-menu-bar">
                     <b-icon icon="chevron-right" class="collapsed-icon"></b-icon>
                     <b-icon icon="chevron-down" class="opened-icon"></b-icon>
                   </span>
                   <b-collapse id="collapse-menu-sub-sub" class="mt-1">
                     <b-list-group-item>
-                      <router-link :to="$i18nRoute({ name: 'rillenkugellager'})">{{ $t('header.rillenkugellager') }}</router-link>
+                      <router-link :to="$i18nRoute({ name: 'rillenkugellager'})" v-b-toggle.collapse-menu>{{ $t('header.rillenkugellager') }}</router-link>
                     </b-list-group-item>
                     <b-list-group-item>
-                      <router-link :to="$i18nRoute({ name: 'schraegkugellager-spindellager'})">{{ $t('header.achragkugellager_spindellager') }}</router-link>
+                      <router-link :to="$i18nRoute({ name: 'schraegkugellager-spindellager'})" v-b-toggle.collapse-menu>{{ $t('header.achragkugellager_spindellager') }}</router-link>
                     </b-list-group-item>
                     <b-list-group-item>
-                      <router-link :to="$i18nRoute({ name: 'spannlager-gehaeuselager'})">{{ $t('header.spannlager_gehauselager') }}</router-link>
+                      <router-link :to="$i18nRoute({ name: 'spannlager-gehaeuselager'})" v-b-toggle.collapse-menu>{{ $t('header.spannlager_gehauselager') }}</router-link>
                     </b-list-group-item>
                   </b-collapse>
                 </b-list-group-item>
                 <b-list-group-item>
-                  <router-link :to="$i18nRoute({ name: 'women'})">{{ $t('header.women') }}</router-link>
+                  <router-link :to="$i18nRoute({ name: 'women'})" v-b-toggle.collapse-menu>{{ $t('header.women') }}</router-link>
                   <span v-b-toggle.collapse-menu-sub-sub-1 class="sub-sub-menu-bar-1">
                     <b-icon icon="chevron-right" class="collapsed-icon"></b-icon>
                     <b-icon icon="chevron-down" class="opened-icon"></b-icon>
                   </span>
                   <b-collapse id="collapse-menu-sub-sub-1" class="mt-1">
                     <b-list-group-item>
-                      <router-link :to="$i18nRoute({ name: 'kegelrollenlager'})">{{ $t('header.kegelrollenlager') }}</router-link>
+                      <router-link :to="$i18nRoute({ name: 'kegelrollenlager'})" v-b-toggle.collapse-menu>{{ $t('header.kegelrollenlager') }}</router-link>
                     </b-list-group-item>
                   </b-collapse>
                 </b-list-group-item>
                 <b-list-group-item>
-                  <router-link :to="$i18nRoute({ name: 'nadellager'})">{{ $t('header.nadellager') }}</router-link>
+                  <router-link :to="$i18nRoute({ name: 'nadellager'})" v-b-toggle.collapse-menu>{{ $t('header.nadellager') }}</router-link>
                 </b-list-group-item>
                 <b-list-group-item>
-                  <router-link :to="$i18nRoute({ name: 'axiallager'})">{{ $t('header.axiallager') }}</router-link>
+                  <router-link :to="$i18nRoute({ name: 'axiallager'})" v-b-toggle.collapse-menu>{{ $t('header.axiallager') }}</router-link>
                 </b-list-group-item>
                 <b-list-group-item>
-                  <router-link :to="$i18nRoute({ name: 'kombinierte-exial-radiallager'})">{{ $t('header.kombinierte_axial_radiallager') }}</router-link>
+                  <router-link :to="$i18nRoute({ name: 'kombinierte-exial-radiallager'})" v-b-toggle.collapse-menu>{{ $t('header.kombinierte_exial_radiallager') }}</router-link>
                 </b-list-group-item>
               </b-list-group>
             </b-collapse>
           </b-list-group-item>
           <b-list-group-item data-depth="0">
-            <router-link :to="$i18nRoute({ name: 'laufrolle'})">{{ $t('header.laufrolle') }}</router-link>
+            <router-link :to="$i18nRoute({ name: 'laufrolle'})" v-b-toggle.collapse-menu>{{ $t('header.laufrolle') }}</router-link>
           </b-list-group-item>
           <b-list-group-item data-depth="0">
-            <router-link :to="$i18nRoute({ name: 'lineartechnik'})">{{ $t('header.lineartechnik') }}</router-link>
+            <router-link :to="$i18nRoute({ name: 'lineartechnik'})" v-b-toggle.collapse-menu>{{ $t('header.lineartechnik') }}</router-link>
           </b-list-group-item>
           <b-list-group-item data-depth="0">
-            <router-link :to="$i18nRoute({ name: 'gehaeuse-einheiten'})">{{ $t('header.gehause_einheiten') }}</router-link>
+            <router-link :to="$i18nRoute({ name: 'gehaeuse-einheiten'})" v-b-toggle.collapse-menu>{{ $t('header.gehause_einheiten') }}</router-link>
           </b-list-group-item>
           <b-list-group-item data-depth="0">
-            <router-link :to="$i18nRoute({ name: 'gleitlager'})">{{ $t('header.gleitlager') }}</router-link>
+            <router-link :to="$i18nRoute({ name: 'gleitlager'})" v-b-toggle.collapse-menu>{{ $t('header.gleitlager') }}</router-link>
           </b-list-group-item>
           <b-list-group-item data-depth="0">
-            <router-link :to="$i18nRoute({ name: 'keilriemen'})">{{ $t('header.keilriemen') }}</router-link>
+            <router-link :to="$i18nRoute({ name: 'keilriemen'})" v-b-toggle.collapse-menu>{{ $t('header.keilriemen') }}</router-link>
           </b-list-group-item>
         </b-list-group>
       </b-collapse>
@@ -136,6 +136,10 @@ export default {
         -webkit-transition: all .3s ease-in-out;
         transition: all .3s ease-in-out;
         text-decoration: none;
+      }
+      a:hover {
+        color: #0056b3 !important;
+        font-weight: 400 !important;
       }
     }
   }

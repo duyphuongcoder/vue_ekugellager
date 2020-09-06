@@ -3,7 +3,7 @@
     <b-container fluid>
       <b-row class="top_section">
           <b-col md="3" sm="12" class="top-logo mt-2">
-            <span class="menu_bar_btn mobile-show" v-b-toggle.collapse-menu>
+            <span class="menu_bar_btn d-block d-md-none" v-b-toggle.collapse-menu>
               <b-icon icon="list" class="collapsed-icon"></b-icon>
               <b-icon icon="x" class="opened-icon"></b-icon>
             </span>
@@ -42,7 +42,7 @@
             </div>
           </b-col>
       </b-row>
-      <Menu data="mobile-show"/>
+      <Menu data="d-block d-md-none"/>
     </b-container>
     <CartModal />
   </div>

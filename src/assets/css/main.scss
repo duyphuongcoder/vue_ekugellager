@@ -1,18 +1,12 @@
-@media screen and (max-width: 768px) {
-    .mobile-hide {
-        display: none !important;
-    }
-    .mobile-show {
-        display: initial !important;
-    }
+body {
+    line-height: 1.25rem;
+    font-family: 'Lato', 'robert';
 }
 
-@media screen and (min-width: 769px) {
-    .mobile-hide {
-        display: initial !important;
-    }
-    .mobile-show {
-        display: none !important;
+@media screen and (min-width: 1200px) {
+    .container {
+        width: 1440px;
+        max-width: 100%;
     }
 }
 
@@ -22,9 +16,6 @@
     cursor: pointer;
 }
 
-body {
-    line-height: 1.25rem;
-}
 button:focus {
     box-shadow: none !important;
 }
@@ -220,3 +211,14 @@ a:hover {
     }
 }
 /* ---------------------------------------------------- */
+
+.pagination {
+    .page-link {
+        color: #000;
+        font-weight: 600;
+    }
+    .page-item.active .page-link {
+        background-color: #12407E !important;
+        border-color: #12407E !important;
+    }
+}

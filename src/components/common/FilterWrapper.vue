@@ -43,8 +43,9 @@ export default {
   border-radius: 8px;
   color: white;
   padding: 1.563rem .8rem;
-  min-width: 250px;
+  min-width: 180px;
   max-width: 600px;
+  margin-bottom: 20px;
   p {
     font-size: 14px;
     font-weight: 500;

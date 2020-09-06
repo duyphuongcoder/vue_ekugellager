@@ -2,11 +2,28 @@
   <b-container class="startseite">
     <CatlogBar :catRoutes="catRoutes"/>
     <b-row>
-      <b-col md="4" sm="12">
+      <b-col md="3" sm="12">
         <FilterWrapper :filterdata="filterdata" :updatevalues="updatevalues" :dragend="dragend"/>
       </b-col>
-      <b-col md="8" sm="12">
-        <h1> This is startseite page </h1>
+      <b-col md="9" sm="12">
+        <b-row class="products">
+          <b-col lg="4" md="6" sm="12" v-for="(item, index) in products" :key="index">
+            <ProductBox :product="products[index]"/>
+          </b-col>
+        </b-row>
+        <nav class="pagination-nav">
+          <b-pagination
+            v-model="currentPage"
+            :total-rows="rows"
+            :per-page="perPage"
+            @input="selectPage"
+            first-text="<<"
+            prev-text="Previous"
+            next-text="Next"
+            last-text=">>"
+            align="right"
+          ></b-pagination>
+        </nav>
       </b-col>
     </b-row>
   </b-container>
@@ -15,11 +32,13 @@
 <script>
 import CatlogBar from '@/components/common/CatlogBar'
 import FilterWrapper from '@/components/common/FilterWrapper'
+import ProductBox from '@/components/common/ProductBox'
 export default {
   name: 'startseite',
   components: {
     CatlogBar,
-    FilterWrapper
+    FilterWrapper,
+    ProductBox
   },
   data () {
     return {
@@ -260,6 +279,46 @@ export default {
             ]
           }
         }
+      ],
+      rows: 100,
+      perPage: 10,
+      currentPage: 1,
+      products: [
+        {
+          id: 231,
+          name: 'Preis ab',
+          price: 15.35,
+          currency: '€',
+          image: 'https://ekugellager.roccshow.com/28-home_default/brown-bear-printed-sweater.jpg'
+        },
+        {
+          id: 1345,
+          name: 'Preis ab',
+          price: 15.35,
+          currency: '€',
+          image: 'https://ekugellager.roccshow.com/2-large_default/hummingbird-printed-t-shirt.jpg'
+        },
+        {
+          id: 342,
+          name: 'Preis ab',
+          price: 15.35,
+          currency: '€',
+          image: 'https://ekugellager.roccshow.com/28-home_default/brown-bear-printed-sweater.jpg'
+        },
+        {
+          id: 32,
+          name: 'Preis ab',
+          price: 15.35,
+          currency: '€',
+          image: 'https://ekugellager.roccshow.com/6-home_default/mug-the-best-is-yet-to-come.jpg'
+        },
+        {
+          id: 14,
+          name: 'Preis ab',
+          price: 15.35,
+          currency: '€',
+          image: 'https://ekugellager.roccshow.com/2-large_default/hummingbird-printed-t-shirt.jpg'
+        }
       ]
     }
   },
@@ -273,7 +332,16 @@ export default {
       const realMin = Math.round((max - min) / 100 * value[0])
       const realMax = Math.round((max - min) / 100 * value[1])
       console.log(this.filterdata[id].title, realMin, realMax)
+    },
+    selectPage (selectedpage) {
+      console.log(selectedpage)
     }
   }
 }
 </script>
+
+<style scoped lang="scss">
+.products {
+  margin-bottom: 20px;
+}
+</style>
