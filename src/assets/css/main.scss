@@ -2,7 +2,10 @@ body {
     line-height: 1.25rem;
     font-family: 'Lato', 'robert';
 }
-
+ul {
+    list-style: none;
+    padding-left: 0;
+}
 @media screen and (min-width: 1200px) {
     .container {
         width: 1440px;
@@ -238,4 +241,22 @@ a:hover {
     height: 35px;
     padding-bottom: 0px;
     margin: 5px 0px;
+}
+#product_detail_modal {
+    .modal-dialog {
+        max-width: none;
+        width: fit-content;
+    }
+    .modal-content {
+        background: none;
+        outline: none;
+        border: none;
+    }
+    .modal-body {
+        padding: 0;
+        .main_image {
+            background: #fff;
+        }
+    }
+    
 }
