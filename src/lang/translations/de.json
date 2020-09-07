@@ -47,6 +47,9 @@
         "back_to_login": "Zurück zur Anmeldeseite"
     },
     "products": {
+        "manufacturer": "Hersteller",
+        "quality": "Quality",
+        "product_quality_info": "Product Quality Info",
         "price_from": "Preis ab",
         "In_stock": "ab Lager",
         "in_stock": "ab Lager",

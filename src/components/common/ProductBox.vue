@@ -3,58 +3,75 @@
     <div class="thumbnail-eku-container">
         <b-row class="product-eku">
             <b-col cols="6" class="marke-product-thumb">
-                Hersteller
+                {{$t('products.manufacturer')}}
             </b-col>
             <b-col cols="6" class="name-product-thumb">
                 <h2 class="h3 product-title">
-                    <a href="">Hummingbird printed t-shirt</a>
+                <router-link :to="$i18nRoute({ name: 'product', params: { id_product: product.id }})">
+                    {{product.name}}
+                </router-link>
                 </h2>
             </b-col>
         </b-row>
-        <router-link :to="$i18nRoute({ name: 'product', query: { product_id: product.id }})" class="thumbnail product-thumbnail">
+        <router-link :to="$i18nRoute({ name: 'product', params: { id_product: product.id }})" class="thumbnail product-thumbnail">
             <img :src="product.image"/>
         </router-link>
         <div class="product-description">
+            <b-row class="heading-prislist" v-if="product.head">
+                <b-col cols="4" v-for="(item, index) in product.head.heading" :key="index">{{item}}</b-col>
+            </b-row>
+            <b-row class="subhead-prislist" v-if="product.head">
+                <b-col cols="4" v-for="(item, index) in product.head.subhead" :key="index">{{item}}</b-col>
+            </b-row>
+            <b-row class="quality-prislist" v-if="product.quality">
+                <b-col cols="4" class="quality-title">
+                    <span>{{$t('products.quality')}}</span>
+                    <b-icon icon="info-circle" v-b-tooltip.hover.bottomright :title="$t('products.product_quality_info')"></b-icon>
+                </b-col>
+                <b-col cols="8" class="quality-content">
+                    <ul class="grade">
+                        <li v-for="(item, index) in product.quality.content" :key="index" :class="item === 1 ? 'active' : ''"></li>
+                    </ul>
+                </b-col>
+            </b-row>
             <b-row class="best-preis-list">
-                <b-col cols="5">{{product.name}}</b-col>
+                <b-col cols="5" class="preis-title">{{$t('products.price_from')}}</b-col>
                 <b-col cols="7" class="preis">{{product.currency + product.price}}</b-col>
             </b-row>
             <b-row class="show-price-list">
                 <b-collapse :id="collapseid">
-                    <b-row class="table-prislist-header">
-                        <b-col cols="4">Quantity</b-col>
-                        <b-col cols="4">Discount</b-col>
-                        <b-col cols="4">Unit price</b-col>
-                    </b-row>
-                    <b-row class="table-prislist-content">
-                        <b-col cols="4">15</b-col>
-                        <b-col cols="4">15%</b-col>
-                        <b-col cols="4">€13.05</b-col>
-                    </b-row>
-                    <b-row class="table-prislist-content">
-                        <b-col cols="4">50</b-col>
-                        <b-col cols="4">25%</b-col>
-                        <b-col cols="4">€11.51</b-col>
-                    </b-row>
-                    <b-row class="table-prislist-content">
-                        <b-col cols="4">60</b-col>
-                        <b-col cols="4">35%</b-col>
-                        <b-col cols="4">€10.05</b-col>
-                    </b-row>
+                    <div v-if="product.pricelist && product.pricelist.length">
+                        <b-row class="table-prislist-header">
+                            <b-col cols="4">Quantity</b-col>
+                            <b-col cols="4">Discount</b-col>
+                            <b-col cols="4">Unit price</b-col>
+                        </b-row>
+                        <b-row class="table-prislist-content" v-for="(item, index) in product.pricelist" :key="index">
+                            <b-col cols="4">{{item.quantity}}</b-col>
+                            <b-col cols="4">{{item.discount}}</b-col>
+                            <b-col cols="4">{{product.currency + item.unitprice}}</b-col>
+                        </b-row>
+                    </div>
                     <b-card>
                         <div class="product-prislist-miniature">{{$t('products.In_stock')}}</div>
                         <b-row>
-                            <b-col cols="4">
+                            <b-col cols="5">
                                 <div class="product-add-to-cart">
-                                    <b-form-input type="number" value="1" min="1"></b-form-input>
+                                    <span @click="descreament">-</span>
+                                    <b-form-input type="number" v-model="count" value="1" min="1"></b-form-input>
+                                    <span @click="increament">+</span>
                                 </div>
                                 <div class="product-prislist-quantity">
                                     <span>493</span>{{$t('products.in_stock')}}
                                 </div>
                             </b-col>
-                            <b-col cols="8">
+                            <b-col cols="7">
                                 <div>
-                                    <b-button variant="danger" class="add-to-cart">{{$t('products.shoppingcart')}}</b-button>
+                                    <b-button
+                                     variant="danger"
+                                     class="add-to-cart"
+                                     @click="addtocart(count)"
+                                    >{{$t('products.shoppingcart')}}</b-button>
                                 </div>
                                 <div class="eku-compear">
                                     <a href="/">
@@ -78,13 +95,24 @@
 </template>
 
 <script>
+
 export default {
   props: {
-    product: Object
+    product: Object,
+    addtocart: Function
   },
   data () {
     return {
-      collapseid: 'product_collapse_' + this.product.id
+      collapseid: 'product_collapse_' + this.product.id,
+      count: 1
+    }
+  },
+  methods: {
+    increament () {
+      this.count++
+    },
+    descreament () {
+      this.count--
     }
   }
 }
@@ -163,6 +191,76 @@ export default {
             position: unset !important;
             background: #fff;
             height: auto;
+            .heading-prislist {
+                height: 29px;
+                line-height: 29px;
+                color: #fff;
+                background-color: #12407E;
+                font-size: 13px;
+                font-weight: 300;
+                text-align: center;
+                margin: 0;
+                .col-4 {
+                    padding-left: 0px !important;
+                    padding-right: 0px !important;
+                }
+            }
+            .subhead-prislist {
+                height: 40px;
+                line-height: 40px;
+                color: #303030;
+                background-color: #fff;
+                font-size: 14px;
+                font-weight: 400;
+                text-align: center;
+                border-bottom: 1px solid #707070;
+                margin: 0;
+                .col-4 {
+                    border-right: 1px solid #707070;
+                    padding-left: 0px !important;
+                    padding-right: 0px !important;
+                }
+                .col-4:last-child {
+                    border-right: none !important;
+                }
+            }
+            .quality-prislist {
+                background: #fff;
+                height: 40px;
+                line-height: 40px;
+                margin: 0;
+                border-bottom: 1px solid #707070;
+                .quality-title {
+                    padding-left: 0px !important;
+                    padding-right: 0px !important;
+                    font-size: 13px;
+                    svg {
+                        margin-left: 3px;
+                    }
+                }
+                .quality-content {
+                    padding-left: 0px !important;
+                    padding-right: 0px !important;
+                    .grade {
+                        margin: 0;
+                        margin-top: 15px;
+                        display: flex;
+                        justify-content: space-between!important;
+                        list-style: none;
+                        padding-left: 4px;
+                        li {
+                            width: 20%;
+                            margin-left: auto;
+                            margin-right: auto;
+                            background: #F0F0F0;
+                            height: 10px;
+                        }
+                        li.active {
+                            background: #36D94F;
+                        }
+                    }
+                }
+            }
             .best-preis-list {
                 -webkit-transition: all .3s ease;
                 transition: all .3s ease;
@@ -175,6 +273,13 @@ export default {
                 text-align: center;
                 border-bottom: 1px solid #707070;
                 margin: 0px;
+                .col-5 {
+                    padding-left: 0px !important;
+                    padding-right: 0px !important;
+                }
+                .col-7 {
+                    padding-right: 10px !important;
+                }
                 .preis {
                     text-align: right;
                 }
@@ -217,7 +322,7 @@ export default {
                 .table-prislist-content {
                     height: 40px;
                     line-height: 40px;
-                    color: #303030;
+                    color: #5f5a5a;
                     background-color: #fff;
                     font-size: 14px;
                     text-align: center;
@@ -235,7 +340,7 @@ export default {
                         margin-left: 0px !important;
                         margin-right: 0px !important;
                     }
-                    .col-4, .col-8 {
+                    .col-5, .col-7 {
                         padding: 5px !important;
                     }
                     .product-prislist-miniature {
@@ -250,6 +355,20 @@ export default {
                         margin-top: 5px;
                         span {
                             margin-right: 5px;
+                        }
+                    }
+                    .product-add-to-cart {
+                        display: flex !important;
+                        span {
+                            margin: 0px 2px;
+                            font-size: 15px;
+                            cursor: pointer;
+                            font-weight: 600;
+                            padding: 0px 3px;
+                        }
+                        span:hover {
+                            background: #12407E;
+                            color: white;
                         }
                     }
                     .product-add-to-cart .form-control {
