@@ -5,7 +5,7 @@
       <div v-if="data.type === 'box'">
         <FilterBox
           :id="index"
-          :collapseid="'collapse_' + index"
+          :collapseid="'filterbox_collapse_' + index"
           :title="data.content.title"
           :detail="data.content.items"
           :updatevalues="updatevalues"

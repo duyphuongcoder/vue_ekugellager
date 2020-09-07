@@ -46,6 +46,14 @@
         "send": "senden",
         "back_to_login": "Zurück zur Anmeldeseite"
     },
+    "products": {
+        "price_from": "Preis ab",
+        "In_stock": "ab Lager",
+        "in_stock": "ab Lager",
+        "compare_remember": "Vergleichen & Merken",
+        "details_quickl_purchase": "Details & Schnellkauf",
+        "shoppingcart": "Shoppingcart"
+    },
     "last_order": {
         "self": "STATUS IHRER LETZTEN BESTELLUNG"
     },

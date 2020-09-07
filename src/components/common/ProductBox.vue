@@ -20,6 +20,57 @@
                 <b-col cols="7" class="preis">{{product.currency + product.price}}</b-col>
             </b-row>
             <b-row class="show-price-list">
+                <b-collapse :id="collapseid">
+                    <b-row class="table-prislist-header">
+                        <b-col cols="4">Quantity</b-col>
+                        <b-col cols="4">Discount</b-col>
+                        <b-col cols="4">Unit price</b-col>
+                    </b-row>
+                    <b-row class="table-prislist-content">
+                        <b-col cols="4">15</b-col>
+                        <b-col cols="4">15%</b-col>
+                        <b-col cols="4">€13.05</b-col>
+                    </b-row>
+                    <b-row class="table-prislist-content">
+                        <b-col cols="4">50</b-col>
+                        <b-col cols="4">25%</b-col>
+                        <b-col cols="4">€11.51</b-col>
+                    </b-row>
+                    <b-row class="table-prislist-content">
+                        <b-col cols="4">60</b-col>
+                        <b-col cols="4">35%</b-col>
+                        <b-col cols="4">€10.05</b-col>
+                    </b-row>
+                    <b-card>
+                        <div class="product-prislist-miniature">{{$t('products.In_stock')}}</div>
+                        <b-row>
+                            <b-col cols="4">
+                                <div class="product-add-to-cart">
+                                    <b-form-input type="number" value="1" min="1"></b-form-input>
+                                </div>
+                                <div class="product-prislist-quantity">
+                                    <span>493</span>{{$t('products.in_stock')}}
+                                </div>
+                            </b-col>
+                            <b-col cols="8">
+                                <div>
+                                    <b-button variant="danger" class="add-to-cart">{{$t('products.shoppingcart')}}</b-button>
+                                </div>
+                                <div class="eku-compear">
+                                    <a href="/">
+                                        <span>{{$t('products.compare_remember')}}</span>
+                                        <b-icon icon="eye"></b-icon>
+                                    </a>
+                                </div>
+                            </b-col>
+                        </b-row>
+                    </b-card>
+                </b-collapse>
+                <div class="toggle-btn" v-b-toggle="collapseid">
+                    <b-icon icon="chevron-down" class="collapsed-icon"></b-icon>
+                    <b-icon icon="chevron-up" class="opened-icon"></b-icon>
+                    <span class="collapsed-icon">{{$t('products.details_quickl_purchase')}}</span>
+                </div>
             </b-row>
         </div>
     </div>
@@ -30,6 +81,11 @@
 export default {
   props: {
     product: Object
+  },
+  data () {
+    return {
+      collapseid: 'product_collapse_' + this.product.id
+    }
   }
 }
 </script>
@@ -125,19 +181,92 @@ export default {
             }
             .show-price-list {
                 color: #545454;
-                height: 40px;
                 line-height: 40px;
                 -webkit-transition: all .3s ease;
                 transition: all .3s ease;
                 display: block;
                 margin: 0px;
-                cursor: pointer;
                 border-bottom-left-radius: 8px;
                 border-bottom-right-radius: 8px;
                 text-align: center;
-                font-weight: 300;
+                font-weight: 400;
                 opacity: 1;
-                font-size: 16px;
+                .toggle-btn {
+                    outline: none;
+                    svg {
+                        font-size: 20px;
+                        margin-right: 5px;
+                    }
+                }
+                .table-prislist-header {
+                    height: 40px;
+                    line-height: 40px;
+                    color: #303030;
+                    background-color: #fff;
+                    font-size: 12px;
+                    font-weight: 600;
+                    text-align: center;
+                    border-bottom: 1px solid #707070;
+                    margin-left: 0px !important;
+                    margin-right: 0px !important;
+                    div {
+                        padding-left: 5px !important;
+                        padding-right: 5px !important;
+                    }
+                }
+                .table-prislist-content {
+                    height: 40px;
+                    line-height: 40px;
+                    color: #303030;
+                    background-color: #fff;
+                    font-size: 14px;
+                    text-align: center;
+                    border-bottom: 1px solid #707070;
+                    margin-left: 0px !important;
+                    margin-right: 0px !important;
+                    div {
+                        padding-left: 5px !important;
+                        padding-right: 5px !important;
+                    }
+                }
+                .card .card-body {
+                    padding: 5px !important;
+                    .row {
+                        margin-left: 0px !important;
+                        margin-right: 0px !important;
+                    }
+                    .col-4, .col-8 {
+                        padding: 5px !important;
+                    }
+                    .product-prislist-miniature {
+                        color: #36D94F;
+                        font-size: 13px;
+                        text-align: left;
+                        margin-left: 10px;
+                    }
+                    .product-prislist-quantity {
+                        font-size: 13px;
+                        line-height: 15px;
+                        margin-top: 5px;
+                        span {
+                            margin-right: 5px;
+                        }
+                    }
+                    .product-add-to-cart .form-control {
+                        text-align: center;
+                    }
+                    .eku-compear {
+                        font-size: 13px;
+                        line-height: 15px;
+                        font-weight: 500;
+                        a {
+                            color: #545454 !important;
+                            .svg {
+                                margin-left: 5px !important;
+                            }
+                        }
+                    }
+                }
             }
         }
     }

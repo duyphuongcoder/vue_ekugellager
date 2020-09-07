@@ -46,6 +46,14 @@
         "send": "Send",
         "back_to_login": "Back to login"
     },
+    "products": {
+        "price_from": "Price from",
+        "In_stock": "In Stock",
+        "in_stock": "in Stock",
+        "compare_remember": "Compare & remember",
+        "details_quickl_purchase": "Details & Quick Purchase",
+        "shoppingcart": "Shoppingcart"
+    },
     "last_order": {
         "self": "STATUS IHRER LETZTEN BESTELLUNG"
     },
