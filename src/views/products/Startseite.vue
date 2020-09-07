@@ -8,7 +8,7 @@
       <b-col md="9" sm="12">
         <b-row class="products">
           <b-col lg="4" md="6" sm="12" v-for="(item, index) in products" :key="index">
-            <ProductBox :product="products[index]" :addtocart="addToCard"/>
+            <ProductBox :product="products[index]" :addtocart="addToCart"/>
           </b-col>
         </b-row>
         <nav class="row page-bottom">
@@ -388,7 +388,7 @@ export default {
     selectPage (selectedpage) {
       console.log(selectedpage)
     },
-    addToCard (n) {
+    addToCart (n) {
       console.log('count to add', n)
       this.$bvModal.show('blockcart_modal')
     }

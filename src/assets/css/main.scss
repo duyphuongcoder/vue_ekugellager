@@ -155,18 +155,12 @@ a:hover {
 }
 /* ------------------------------------------------------------------- */
 
-/* ------------------------ BlockCartModal --------------------------- */
-// #blockcart_modal {
-//     .modal-title {
-//         text-align: center;
-//         .modal-header svg {
-//             color: #4cbb6c;
-//             margin-right: 20px !important;
-//         }
-//     }
-// }
+/* ------------------------ BlockCartModal style --------------------------- */
 #blockcart_modal .modal-content .modal-header h5 {
     margin: auto;
+}
+#blockcart_modal .modal-content .modal-header span {
+    font-size: 16px;
 }
 #blockcart_modal .modal-content .modal-header svg {
     color: #4cbb6c;
@@ -215,13 +209,32 @@ a:hover {
         display: inline-flex;
         .btn {
             white-space: inherit;
-            margin-right: 20px;
             text-transform: uppercase;
             font-weight: 500;
             svg {
                 margin-right: 5px;
             }
         }
+        .btn.btn-secondary {
+            margin-right: 10px;
+        }
+    }
+}
+@media (max-width: 767px) {
+    #blockcart_modal .divide-right {
+        border-right: none;
+        border-bottom: 1px solid #dbdbdb;
+    }
+}
+@media (max-width: 991px) {
+    #blockcart_modal .product-image {
+        width: 100%;
+        display: block;
+        max-width: 15.63rem;
+        margin: 0 auto .9375rem;
+    }
+    #blockcart_modal .cart-content {
+        padding-left: 0;
     }
 }
 /* ------------------------------------------------------------------- */
