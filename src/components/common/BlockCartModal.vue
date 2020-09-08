@@ -26,7 +26,7 @@
                         <p><span>Shipping:</span>&nbsp;<span class="value">Free </span></p>
                         <p class="product-total"><span class="label">Total&nbsp;(tax incl.)</span>&nbsp;<span class="value">€2,328.40</span></p>
                         <div class="cart-content-btn">
-                            <b-button variant="secondary" @click="$bvModal.hide('blockcart_modal')">Continue shopping</b-button>
+                            <b-button variant="secondary" @click="$bvModal.hide(modalId)">Continue shopping</b-button>
                             <router-link :to="$i18nRoute({ name: 'cart'})">
                                 <b-button variant="danger">
                                     <b-icon icon="check2"></b-icon>

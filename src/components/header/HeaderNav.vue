@@ -76,17 +76,25 @@ export default {
         Timer += hours > 0 ? hours + 'h ' : ''
         Timer += (minutes > 0) && (hours => 0) ? minutes + 'm ' : '00m'
         Timer += seconds > 0 ? seconds + 's ' : '00s'
-        document.getElementById('tp_timer').innerHTML = Timer
+        if (document.getElementById('tp_timer')) {
+          document.getElementById('tp_timer').innerHTML = Timer
+        }
         // If the count down is finished, write some text
         if (distance < 0) {
           clearInterval(x)
-          document.getElementById('tp_timer').innerHTML = message
+          if (document.getElementById('tp_timer')) {
+            document.getElementById('tp_timer').innerHTML = message
+          }
         } else {
-          document.getElementById('red_triger').style.width = width + '%'
+          if (document.getElementById('red_triger')) {
+            document.getElementById('red_triger').style.width = width + '%'
+          }
         }
       }, 1000)
     } else {
-      document.getElementById('tp_timer').innerHTML = 'Wochenende'
+      if (document.getElementById('tp_timer')) {
+        document.getElementById('tp_timer').innerHTML = 'Wochenende'
+      }
     }
   }
 }

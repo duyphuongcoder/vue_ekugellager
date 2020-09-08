@@ -1,11 +1,21 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import { Trans } from '@/lang/Translation.js'
 
 import Home from '../views/home/Home.vue'
 import Login from '../views/account/Login.vue'
 import Register from '../views/account/Register.vue'
 import MyAccount from '../views/account/MyAccount.vue'
 import PasswordRecovery from '../views/account/PasswordRecovery.vue'
+import OrderHistory from '../views/account/OrderHistory.vue'
+import OrderFollow from '../views/account/OrderFollow.vue'
+import Address from '../views/account/Address.vue'
+import Advisor from '../views/account/Advisor.vue'
+import Comparator from '../views/account/Comparator.vue'
+import Identity from '../views/account/Identity.vue'
+import OffenePosten from '../views/account/OffenePosten.vue'
+import Rank from '../views/account/Rank.vue'
+import Wishlist from '../views/account/Wishlist.vue'
 
 import Axiallager from '../views/products/Axiallager.vue'
 import Clothes from '../views/products/Clothes.vue'
@@ -26,7 +36,7 @@ import Women from '../views/products/Women.vue'
 import Product from '../views/products/Product.vue'
 import Cart from '../views/products/Cart.vue'
 
-import { Trans } from '@/lang/Translation.js'
+import Order from '../views/order/Order.vue'
 
 Vue.use(VueRouter)
 
@@ -55,13 +65,58 @@ const routes = [
       },
       {
         path: 'my-account',
-        name: 'myaccount',
+        name: 'my-account',
         component: MyAccount
       },
       {
         path: 'password-recovery',
         name: 'password-recovery',
         component: PasswordRecovery
+      },
+      {
+        path: 'order-history',
+        name: 'order-history',
+        component: OrderHistory
+      },
+      {
+        path: 'order-follow',
+        name: 'order-follow',
+        component: OrderFollow
+      },
+      {
+        path: 'address',
+        name: 'address',
+        component: Address
+      },
+      {
+        path: 'advisor',
+        name: 'advisor',
+        component: Advisor
+      },
+      {
+        path: 'comparator',
+        name: 'comparator',
+        component: Comparator
+      },
+      {
+        path: 'identity',
+        name: 'identity',
+        component: Identity
+      },
+      {
+        path: 'offene-posten',
+        name: 'offene-posten',
+        component: OffenePosten
+      },
+      {
+        path: 'rank',
+        name: 'rank',
+        component: Rank
+      },
+      {
+        path: 'wishlist',
+        name: 'wishlist',
+        component: Wishlist
       },
       {
         path: 'product/:id_product',
@@ -152,6 +207,14 @@ const routes = [
         path: 'women',
         name: 'women',
         component: Women
+      },
+      {
+        path: 'order',
+        name: 'order',
+        component: Order,
+        meta: {
+          layout: 'order'
+        }
       }
     ]
   },
