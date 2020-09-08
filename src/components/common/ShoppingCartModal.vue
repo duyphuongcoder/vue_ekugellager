@@ -4,7 +4,7 @@
         <div class="shopping_cart_top_heading">
             <h1>
                 WARENKORB
-                <a href="#" @click="$bvModal.hide('shopping_cart')" class="close_shopping_cart_top">
+                <a href="#" @click="$bvModal.hide(modalId)" class="close_shopping_cart_top">
                     <b-icon icon="x"></b-icon>
                 </a>
             </h1>

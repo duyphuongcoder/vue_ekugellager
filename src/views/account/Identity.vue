@@ -1,11 +1,11 @@
 <template>
-  <b-container class="my-account mt-5">
+  <b-container class="identity mt-5">
     <b-row>
       <b-col md="3" sm="12">
         <AccountNav />
       </b-col>
       <b-col class="account-right" md="9" sm="12">
-        <h1 class="header-title">Your account</h1>
+        <h1 class="header-title">Your personal information</h1>
       </b-col>
     </b-row>
   </b-container>
@@ -14,7 +14,6 @@
 <script>
 import AccountNav from '@/components/common/AccountNav'
 export default {
-  name: 'my-account',
   components: {
     AccountNav
   }

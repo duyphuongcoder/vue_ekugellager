@@ -1,11 +1,13 @@
 <template>
-  <b-container class="my-account mt-5">
+  <b-container class="rank mt-5">
     <b-row>
       <b-col md="3" sm="12">
         <AccountNav />
       </b-col>
       <b-col class="account-right" md="9" sm="12">
-        <h1 class="header-title">Your account</h1>
+        <h1 class="header-title">Rank</h1>
+        <div class="text-center">
+        </div>
       </b-col>
     </b-row>
   </b-container>
@@ -14,7 +16,7 @@
 <script>
 import AccountNav from '@/components/common/AccountNav'
 export default {
-  name: 'my-account',
+  name: 'rank',
   components: {
     AccountNav
   }

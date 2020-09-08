@@ -46,6 +46,19 @@
         "send": "Send",
         "back_to_login": "Back to login"
     },
+    "account": {
+        "my_account": "My Account",
+        "order_history": "Order History",
+        "offene_posten": "Offene Posten",
+        "merchandise_returns": "Merchandise Returns",
+        "addresses": "Addresses",
+        "information": "Information",
+        "personal_advisor": "Personal Advisor",
+        "compare": "Compare",
+        "my_wishlist": "My Wishlist",
+        "rank": "Rank",
+        "log_out": "Logout"
+    },
     "products": {
         "manufacturer": "Manufacturer",
         "quality": "Quality",

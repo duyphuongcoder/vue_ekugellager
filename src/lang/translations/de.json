@@ -46,6 +46,19 @@
         "send": "senden",
         "back_to_login": "Zurück zur Anmeldeseite"
     },
+    "account": {
+        "my_account": "Mein Konto",
+        "order_history": "Auftragsübersicht",
+        "offene_posten": "Offene Posten",
+        "merchandise_returns": "Warenrücksendung",
+        "addresses": "Adressen",
+        "information": "Information",
+        "personal_advisor": "Persona Advisor",
+        "compare": "Vergleichen Sie",
+        "my_wishlist": "Meine Wunschliste",
+        "rank": "Rank",
+        "log_out": "Abmelden"
+    },
     "products": {
         "manufacturer": "Hersteller",
         "quality": "Quality",

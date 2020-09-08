@@ -1,6 +1,7 @@
 <template>
   <!-- Footer -->
   <div>
+    <NewsLetter />
     <mdb-footer color="mdb-color" class="font-small lighten-3 pt-4 mt-4">
       <mdb-container class="text-center text-md-left footer-container">
         <mdb-row class="my-4">
@@ -70,21 +71,20 @@
 </template>
 <script>
 import { mdbFooter, mdbContainer, mdbRow, mdbCol } from 'mdbvue'
+import NewsLetter from './NewsLetter'
 export default {
   name: 'Footer',
   components: {
     mdbFooter,
     mdbContainer,
     mdbRow,
-    mdbCol
+    mdbCol,
+    NewsLetter
   }
 }
 </script>
 
 <style scoped>
-footer {
-  box-shadow: 2px 2px 8px 0 rgba(0,0,0,.2);
-}
 .logo {
     max-width: 180px;
     margin-bottom: 21px;
