@@ -1,6 +1,6 @@
 <template>
   <div class="shopping-cart-detail">
-    <b-modal id="blockcart_modal" hide-footer class="cart-details-subhe show-cart-detail" size="xl">
+    <b-modal :id="modalId" hide-footer class="cart-details-subhe show-cart-detail" size="xl">
         <div slot="modal-title">
             <b-icon icon="check2"></b-icon>
             <span>Product successfully added to your shopping cart</span>
@@ -41,6 +41,17 @@
     </b-modal>
   </div>
 </template>
+
+<script>
+import { BLOCK_CART_MODAL } from '@/constants/modal'
+export default {
+  data () {
+    return {
+      modalId: BLOCK_CART_MODAL
+    }
+  }
+}
+</script>
 
 <style scoped lang="scss">
 

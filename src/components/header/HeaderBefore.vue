@@ -34,7 +34,7 @@
             </div>
             <div>
               <div class="blockcart cart-preview inactive">
-                <b-button variant="outline-primary" v-b-modal.shopping_cart class="btn-circle">
+                <b-button variant="outline-primary" v-b-modal="modalId" class="btn-circle">
                   <b-icon icon="cart3"></b-icon>
                   <span class="cart-products-count">0</span>
                 </b-button>
@@ -44,25 +44,27 @@
       </b-row>
       <Menu data="d-block d-md-none"/>
     </b-container>
-    <CartModal />
+    <ShoppingCartModal />
   </div>
 </template>
 
 <script>
-import CartModal from '@/components/common/CartModal'
+import ShoppingCartModal from '@/components/common/ShoppingCartModal'
+import { SHOPPING_CART_MODAL } from '@/constants/modal'
 import Menu from './Menu'
 export default {
   components: {
-    CartModal,
+    ShoppingCartModal,
     Menu
   },
   data () {
     return {
+      modalId: SHOPPING_CART_MODAL,
       search_key: ''
     }
   }
 }
-</script>>
+</script>
 
 <style scoped lang="scss">
 .header-before {

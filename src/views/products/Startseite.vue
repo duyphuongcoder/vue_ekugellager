@@ -44,6 +44,7 @@ import FilterWrapper from '@/components/common/FilterWrapper'
 import ProductBox from '@/components/common/ProductBox'
 import { productService } from '@/services/index'
 import BlockCartModal from '@/components/common/BlockCartModal'
+import { BLOCK_CART_MODAL } from '@/constants/modal'
 export default {
   name: 'startseite',
   components: {
@@ -364,7 +365,8 @@ export default {
           currency: '€',
           image: 'https://ekugellager.roccshow.com/2-large_default/hummingbird-printed-t-shirt.jpg'
         }
-      ]
+      ],
+      modalId: BLOCK_CART_MODAL
     }
   },
   mounted () {
@@ -390,7 +392,7 @@ export default {
     },
     addToCart (n) {
       console.log('count to add', n)
-      this.$bvModal.show('blockcart_modal')
+      this.$bvModal.show(this.modalId)
     }
   },
   watch: {

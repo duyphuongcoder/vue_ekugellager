@@ -1,6 +1,6 @@
 <template>
   <div class="shopping-cart-detail">
-    <b-modal id="shopping_cart" hide-footer hide-header class="cart-details-subhe show-cart-detail">
+    <b-modal :id="modalId" hide-footer hide-header class="cart-details-subhe show-cart-detail">
         <div class="shopping_cart_top_heading">
             <h1>
                 WARENKORB
@@ -33,6 +33,17 @@
     </b-modal>
   </div>
 </template>
+
+<script>
+import { SHOPPING_CART_MODAL } from '@/constants/modal'
+export default {
+  data () {
+    return {
+      modalId: SHOPPING_CART_MODAL
+    }
+  }
+}
+</script>
 
 <style scoped lang="scss">
 
