@@ -155,6 +155,90 @@ a:hover {
 }
 /* ------------------------------------------------------------------- */
 
+/* ------------------------ BlockCartModal style --------------------------- */
+#blockcart_modal .modal-content .modal-header h5 {
+    margin: auto;
+}
+#blockcart_modal .modal-content .modal-header span {
+    font-size: 16px;
+}
+#blockcart_modal .modal-content .modal-header svg {
+    color: #4cbb6c;
+    margin-right: 20px !important;
+}
+#blockcart_modal .divide-right {
+    border-right: 1px solid #dbdbdb;
+}
+#blockcart_modal .product-image {
+    width: 100%;
+    max-width: 9.375rem;
+    display: block;
+    margin: 0 0 0 auto;
+}
+#blockcart_modal .product-name {
+    color: #12407E !important;
+    font-size: 1.125rem !important;
+}
+#blockcart_modal .modal-body .divide-right span {
+    display: inline-block;
+    margin-bottom: .3125rem;
+}
+#blockcart_modal .cart-content {
+    padding-left: 2.5rem;
+    p {
+        color: #363a42;
+        display: flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        padding: 0 .5rem;
+        .label {
+            font-weight: 700;
+        }
+    }
+    p.cart-products-count {
+        font-size: 1rem;
+        color: #6c868e;
+        font-weight: 600;
+    }
+    p.product-total {
+        background-color: #f1f1f1;
+        padding: .5rem;
+    }
+    .cart-content-btn {
+        display: inline-flex;
+        .btn {
+            white-space: inherit;
+            text-transform: uppercase;
+            font-weight: 500;
+            svg {
+                margin-right: 5px;
+            }
+        }
+        .btn.btn-secondary {
+            margin-right: 10px;
+        }
+    }
+}
+@media (max-width: 767px) {
+    #blockcart_modal .divide-right {
+        border-right: none;
+        border-bottom: 1px solid #dbdbdb;
+    }
+}
+@media (max-width: 991px) {
+    #blockcart_modal .product-image {
+        width: 100%;
+        display: block;
+        max-width: 15.63rem;
+        margin: 0 auto .9375rem;
+    }
+    #blockcart_modal .cart-content {
+        padding-left: 0;
+    }
+}
+/* ------------------------------------------------------------------- */
+
 .page-header {
     background: #F9F9F9 0% 0% no-repeat padding-box;
     padding-top: 20px;

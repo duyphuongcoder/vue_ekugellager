@@ -25,7 +25,7 @@
         <h4>Customers who bought this product also bought:</h4>
         <b-row class="products">
           <b-col lg="4" md="6" sm="12" v-for="(item, index) in featured_products" :key="index">
-              <ProductBox :product="item"/>
+              <ProductBox :product="item" :addtocart="addToCart"/>
           </b-col>
         </b-row>
       </div>
@@ -127,6 +127,12 @@ export default {
           image: 'https://ekugellager.roccshow.com/2-large_default/hummingbird-printed-t-shirt.jpg'
         }
       ]
+    }
+  },
+  methods: {
+    addToCart (n) {
+      console.log('count to add', n)
+      this.$bvModal.show('blockcart_modal')
     }
   }
 }

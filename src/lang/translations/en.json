@@ -47,6 +47,9 @@
         "back_to_login": "Back to login"
     },
     "products": {
+        "manufacturer": "Manufacturer",
+        "quality": "Quality",
+        "product_quality_info": "Product Quality Info",
         "price_from": "Price from",
         "In_stock": "In Stock",
         "in_stock": "in Stock",

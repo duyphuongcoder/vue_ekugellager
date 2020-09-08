@@ -24,6 +24,7 @@ import SpannlagerGehaeuselager from '../views/products/SpannlagerGehaeuselager.v
 import Startseite from '../views/products/Startseite.vue'
 import Women from '../views/products/Women.vue'
 import Product from '../views/products/Product.vue'
+import Cart from '../views/products/Cart.vue'
 
 import { Trans } from '@/lang/Translation.js'
 
@@ -63,9 +64,14 @@ const routes = [
         component: PasswordRecovery
       },
       {
-        path: 'product',
+        path: 'product/:id_product',
         name: 'product',
         component: Product
+      },
+      {
+        path: 'cart',
+        name: 'cart',
+        component: Cart
       },
       {
         path: 'axiallager',
