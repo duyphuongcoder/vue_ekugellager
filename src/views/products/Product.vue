@@ -4,7 +4,7 @@
       <b-row>
         <b-col md="5">
           <section class="page-content">
-            <ProductImages :images="images"/>
+            <ProductImages :images="images" />
             <div class="scroll-box-arrows"></div>
             <div class="product-configurators"></div>
             <ProductDescription />
@@ -16,7 +16,7 @@
               <ProductTechnical :items="items" />
             </b-col>
             <b-col lg="6" class="product_cart">
-              <ProductCart />
+              <ProductCart :addtocart="addToCart"/>
             </b-col>
           </b-row>
         </b-col>
@@ -30,6 +30,7 @@
         </b-row>
       </div>
     </div>
+    <BlockCartModal />
   </b-container>
 </template>
 <script>
@@ -38,6 +39,7 @@ import ProductTechnical from '@/components/common/ProductTechnical'
 import ProductDescription from '@/components/common/ProductDescription'
 import ProductBox from '@/components/common/ProductBox'
 import ProductCart from '@/components/common/ProductCart'
+import BlockCartModal from '@/components/common/BlockCartModal'
 export default {
   name: 'product',
   components: {
@@ -45,7 +47,8 @@ export default {
     ProductTechnical,
     ProductDescription,
     ProductBox,
-    ProductCart
+    ProductCart,
+    BlockCartModal
   },
   data () {
     return {

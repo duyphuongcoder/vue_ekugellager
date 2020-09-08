@@ -27,6 +27,7 @@
           </div>
           <figcaption class="image-caption">
             <div>
+              <p></p>
               <p><span>Regular fit, round neckline, short sleeves. Made of extra long staple pima cotton. </span></p>
               <p></p>
             </div>
@@ -144,7 +145,9 @@ export default {
   }
 }
 .image-caption {
-  padding: 20px;
+  // padding: 20px;
+  text-indent: 5%;
+
 }
 .product_detail_modal {
   img {
@@ -158,6 +161,9 @@ export default {
   .thumb-container {
     margin-bottom: 20px;
     background: #fff;
+    img {
+      border: 3px solid transparent;
+    }
     img:hover {
       border: 3px solid #2fb5d2;
     }

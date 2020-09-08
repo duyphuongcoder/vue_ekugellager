@@ -56,10 +56,10 @@
             <p>229 ready to ship</p>
             <b-row class="add-to-cart">
               <b-col cols="4" class="p-0">
-                <b-form-input type="number" value="1"></b-form-input>
+                <b-form-input type="number" v-model="count" value="1"></b-form-input>
               </b-col>
               <b-col cols="8" class="p-0">
-                <b-button>WARENKORB</b-button>
+                <b-button @click="addtocart(count)">WARENKORB</b-button>
               </b-col>
             </b-row>
             <b-row class="compare-remember">
@@ -76,8 +76,12 @@
 </template>
 <script>
 export default {
+  props: {
+    addtocart: Function
+  },
   data () {
     return {
+      count: 1,
       selected: '0',
       options:
       [
