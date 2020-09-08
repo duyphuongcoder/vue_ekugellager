@@ -50,19 +50,12 @@
 </template>
 <script>
 export default {
+  props: {
+    images: Array
+  },
   data () {
     return {
-      selected: 0,
-      images: [
-        {
-          id: 1,
-          url: 'https://ekugellager.roccshow.com/2-large_default/hummingbird-printed-t-shirt.jpg'
-        },
-        {
-          id: 2,
-          url: 'https://ekugellager.roccshow.com/28-home_default/brown-bear-printed-sweater.jpg'
-        }
-      ]
+      selected: 0
     }
   },
   methods: {

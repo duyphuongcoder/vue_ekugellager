@@ -4,7 +4,7 @@
       <b-row>
         <b-col md="5">
           <section class="page-content">
-            <ProductImages />
+            <ProductImages :images="images"/>
             <div class="scroll-box-arrows"></div>
             <div class="product-configurators"></div>
             <ProductDescription />
@@ -56,6 +56,16 @@ export default {
         { name: 'Ø Inside', value: '10' },
         { name: 'Ø External', value: '26' },
         { name: 'Width', value: '8' }
+      ],
+      images: [
+        {
+          id: 1,
+          url: 'https://ekugellager.roccshow.com/2-large_default/hummingbird-printed-t-shirt.jpg'
+        },
+        {
+          id: 2,
+          url: 'https://ekugellager.roccshow.com/28-home_default/brown-bear-printed-sweater.jpg'
+        }
       ],
       filterData:
       [
