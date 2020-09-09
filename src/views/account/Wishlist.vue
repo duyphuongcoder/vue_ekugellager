@@ -5,8 +5,31 @@
         <AccountNav />
       </b-col>
       <b-col class="account-right" md="9" sm="12">
-        <h1 class="header-title">Wishlist</h1>
-        <div class="text-center">
+        <h1 class="header-title text-left">Wishlist</h1>
+        <div v-for="(item, index) in items" :key="index">
+          <b-row class="wishlist align-items-center">
+            <b-col md="3">
+              <a href="#">
+                <img class="img-fluid" src="https://ekugellager.roccshow.com/2-cart_default/hummingbird-printed-t-shirt.jpg" alt="Hummingbird printed t-shirt">
+              </a>
+            </b-col>
+            <b-col md="4">
+              <a href="https://ekugellager.roccshow.com/en/men/1-1-hummingbird-printed-t-shirt.html#/1-size-s/8-color-white">Hummingbird printed t-shirt</a>
+              <div class="text-muted">
+                  Size: S
+                  Color: White
+              </div>
+            </b-col>
+            <b-col md="3">
+              <span class="product-price">€22.75</span>
+            </b-col>
+            <b-col md="2">
+              <a href="#" class="js-iqitwishlist-remove" data-id-product="11" data-url="//ekugellager.roccshow.com/en/module/roccomediawishlist/actions">
+                <b-icon icon="backspace"></b-icon>
+              </a>
+            </b-col>
+          </b-row>
+          <hr>
         </div>
       </b-col>
     </b-row>
@@ -18,6 +41,14 @@ import AccountNav from '@/components/common/AccountNav'
 export default {
   components: {
     AccountNav
+  },
+  data () {
+    return {
+      items:
+      [
+        1, 2, 3, 4
+      ]
+    }
   }
 }
 </script>
@@ -33,6 +64,9 @@ export default {
     padding-bottom: 20px;
     margin-bottom: 40px;
     border-bottom: 1px solid #707070;
+  }
+  .wishlist>div{
+    // margin: auto;
   }
 }
 </style>
