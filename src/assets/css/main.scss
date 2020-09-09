@@ -367,3 +367,18 @@ a:hover {
         }
     }
 }
+.carousel-with-arrow {
+    .owl-prev {
+        margin-left: -5px !important;
+        position: absolute;
+        left: 0;
+        top: 0;
+        transform: translate(-100%, 100%);
+    }
+    .owl-next {
+        position: absolute;
+        top: 0;
+        left: 100%;
+        transform: translate(0, 100%);
+    }
+}
