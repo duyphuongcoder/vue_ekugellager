@@ -21,10 +21,6 @@
               :total-rows="rows"
               :per-page="perPage"
               @input="selectPage"
-              first-text="<<"
-              prev-text="Previous"
-              next-text="Next"
-              last-text=">>"
               align="right"
             ></b-pagination>
           </b-col>

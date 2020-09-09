@@ -11,7 +11,8 @@ function getProduct () {
     headers: {
       Authorization: 'Basic WTRVNkc2M1JNMkc2RVpWNDc0WkU5WkhSVzNaWFdHM1A6',
       Accept: 'application/json',
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*'
     }
   }
   return fetch(`${apiBaseUrl}/products/18/&output_format=JSON`, requestOptions).then(handleResponse)
@@ -21,6 +22,7 @@ function getProduct () {
 function handleResponse (response) {
   return response.text().then(text => {
     const data = text && JSON.parse(text)
+    console.log('response test:', response)
     if (!response.ok) {
       if (response.status === 401) {
         // auto logout if 401 response returned from api

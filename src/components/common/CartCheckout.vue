@@ -28,7 +28,9 @@
       </div>
       <div class="checkout pt-3">
         <b-row>
-          <a href="#">checkout</a>
+          <router-link :to="$i18nRoute({ name: 'order'})">
+            checkout
+          </router-link>
         </b-row>
       </div>
       <div class="blockreassurance_product pt-5">

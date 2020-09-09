@@ -9,14 +9,14 @@
           <b-row>
             <b-col cols="12 text-left">
               <label class="form-control-label">
-                  Social title
+                {{$t('register.social_title')}}
               </label>
             </b-col>
             <b-col cols="12 text-left">
               <b-form-group id="input-group-4">
                 <b-form-checkbox-group id="checkboxes-sex">
-                  <b-form-radio v-model="form.sex" name="some-radios" value="male">Mr.</b-form-radio>
-                  <b-form-radio v-model="form.sex" name="some-radios" value="female">Mrs.</b-form-radio>
+                  <b-form-radio v-model="form.sex" name="some-radios" value="male">{{$t('register.Mr')}}</b-form-radio>
+                  <b-form-radio v-model="form.sex" name="some-radios" value="female">{{$t('register.Mrs')}}</b-form-radio>
                 </b-form-checkbox-group>
               </b-form-group>
             </b-col>
@@ -27,7 +27,7 @@
                   v-model="form.firstName"
                   type="text"
                   required
-                  placeholder="First name"
+                  :placeholder="$t('register.first_name')"
                 ></b-form-input>
               </b-form-group>
             </b-col>
@@ -38,7 +38,7 @@
                   id="input-last"
                   v-model="form.lastName"
                   required
-                  placeholder="Last name"
+                  :placeholder="$t('register.last_name')"
                 ></b-form-input>
               </b-form-group>
             </b-col>
@@ -52,7 +52,7 @@
                   v-model="form.email"
                   type="email"
                   required
-                  placeholder="Email"
+                  :placeholder="$t('register.email')"
                 ></b-form-input>
               </b-form-group>
             </b-col>
@@ -64,7 +64,7 @@
                     id="input-2"
                     v-model="form.password"
                     required
-                    placeholder="Password"
+                    :placeholder="$t('register.password')"
                   ></b-form-input>
                   <b-input-group-append>
                     <b-button variant="primary" @click="password_hidden = !password_hidden">Show</b-button>
@@ -81,8 +81,11 @@
                   id="input-birthday"
                   v-model="form.birthday"
                   type="text"
-                  placeholder="Birthdate"
+                  :placeholder="$t('register.birthday')"
                 ></b-form-input>
+                <span class="form-control-comment">
+                ({{$t('register.eg')}}: 1970-05-31 Optional)
+                </span>
               </b-form-group>
             </b-col>
           </b-row>
@@ -96,7 +99,7 @@
               :value="1"
               :unchecked-value="0"
             >
-              <label> Receive offers from our partners </label>
+              <label>{{$t('register.receive_offers_from_our_partners')}}</label>
             </b-form-checkbox>
             </b-col>
           </b-row>
@@ -110,9 +113,9 @@
               :value="1"
               :unchecked-value="0"
             >
-              <label> Sign up for our newsletter </label>
+              <label>{{$t('register.sign_up_for_our_newsletter')}}</label>
               <br>
-              <label> You may unsubscribe at any moment. For that purpose, please find our contact info in the legal notice. </label>
+              <label>{{$t('register.you_may_unsubscribe_at_any_moment_for_that_purpose_please_find_our_contact_info_in_the_legal_notice')}}</label>
             </b-form-checkbox>
             </b-col>
           </b-row>
@@ -126,7 +129,7 @@
               :value="1"
               :unchecked-value="0"
             >
-              <p> Ich akzeptiere die Allgemeinen Geschäftsbedingungen und die Datenschutzrichtlinie </p>
+              <p>{{$t('register.i_accept_the_terms_an_conditions_and_the_privacy_policy')}}</p>
             </b-form-checkbox>
             </b-col>
           </b-row>

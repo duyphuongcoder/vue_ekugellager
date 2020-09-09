@@ -11,18 +11,18 @@
         </div>
         <div>
             <div class="cart-canvas-price-button">
-                <div class="row netto-price">
-                    <div class="col-lg-8 px-0">Gesamt netto:</div>
-                    <div class="col-lg-4 px-0 text-right">0,00&nbsp;€</div>
-                </div>
-                <div class="row tax-price">
-                    <div class="col-lg-8 px-0">+ 19% MwSt.</div>
-                    <div class="col-lg-4 px-0 text-right ">0€</div>
-                </div>
-                <div class="row total-price">
-                    <div class="col-lg-8 px-0">Gesamt</div>
-                    <div class="col-lg-4 px-0 text-right"><span class="total_price">0,00&nbsp;€</span></div>
-                </div>
+                <b-row class="netto-price">
+                    <b-col class="col-lg-8 px-0">Gesamt netto:</b-col>
+                    <b-col class="col-lg-4 px-0 text-right">0,00&nbsp;€</b-col>
+                </b-row>
+                <b-row class="tax-price">
+                    <b-col class="col-lg-8 px-0">+ 19% MwSt.</b-col>
+                    <b-col class="col-lg-4 px-0 text-right ">0€</b-col>
+                </b-row>
+                <b-row class="total-price">
+                    <b-col class="col-lg-8 px-0">Gesamt</b-col>
+                    <b-col class="col-lg-4 px-0 text-right"><span class="total_price">0,00&nbsp;€</span></b-col>
+                </b-row>
                 <div class="continue-preview-cart continue-shopping">
                     <div class="col-md-12 col-12 text-center col-xs-12">
                         <a href="" class="continue-shopping-a continue-checkout">Zur Kasse</a>
