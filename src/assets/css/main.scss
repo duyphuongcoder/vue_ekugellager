@@ -236,6 +236,7 @@ a:hover {
     }
     #blockcart_modal .cart-content {
         padding-left: 0;
+        padding-top: 10px;
     }
 }
 /* ------------------------------------------------------------------- */
@@ -304,7 +305,7 @@ a:hover {
 .pagination {
     .page-link {
         color: #000;
-        font-weight: 600;
+        font-weight: 500;
     }
     .page-item.active .page-link {
         background-color: #12407E !important;
@@ -366,4 +367,45 @@ a:hover {
             font-weight: 400;
         }
     }
+}
+
+.order-btn-primary {
+    background-color: #113D79;
+    border-radius: 5px;
+    transition: all .5s ease;
+    font-family: Lato;
+    font-weight: 300;
+    font-size: 16px;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    transition: all .5s ease;
+}
+
+.order-btn-primary:hover {
+    color: #fff;
+    background-color: #0069d9;
+    border-color: #0062cc;
+}
+
+.float-xs-left {
+    float: left !important;
+}
+
+.float-xs-right {
+    float: right !important;
+}
+
+.form-control-comment {
+    font-size: .875rem;
+    padding-top: .5rem;
+    color: #b2162c;
+    position: absolute;
+    top: 42px;
+    margin-left: px;
+    background: #fff;
+    height: 20px;
+    padding: 0px 10px;
+    width: auto;
+    right: 10px;
+    float: right;
 }

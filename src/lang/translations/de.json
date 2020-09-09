@@ -29,15 +29,32 @@
     "login": {
         "log_in_to_your_account": "Melde dich in deinem Konto an",
         "sign_in": "Einloggen",
+        "email": "E-mail",
+        "password": "Passwort",
         "no_account": "Kein Account?",
         "create_one_here": "Erstellen Sie hier eine",
-        "forgot_your_password": "Passwort vergessen?"
+        "forgot_your_password": "Passwort vergessen?",
+        "remember_me": "Behalte mich in Erinnerung",
+        "login": "Login"
     },
     "register": {
-        "create_an_account": "Create an account",
-        "save": "Save",
-        "already_have_an_account": "Already have an account?",
-        "log_in_instead": "Log in instead!"
+        "social_title": "Anrede",
+        "Mr": "Herr",
+        "Mrs": "Frau",
+        "first_name": "Vorname",
+        "last_name": "Name",
+        "email": "E-mail",
+        "password": "Passwort",
+        "birthday": "Geburtstag",
+        "eg": "z.B.",
+        "receive_offers_from_our_partners": "Erhalten Sie Angebote von unseren Partnern",
+        "sign_up_for_our_newsletter": "Abonnieren Sie unseren Newsletter",
+        "you_may_unsubscribe_at_any_moment_for_that_purpose_please_find_our_contact_info_in_the_legal_notice": "Sie können Ihr Einverständnis jederzeit widerrufen. Unsere Kontaktinformationen finden Sie u. a. in der Datenschutzerklärung.",
+        "i_accept_the_terms_an_conditions_and_the_privacy_policy": "Ich akzeptiere die Allgemeinen Geschäftsbedingungen und die Datenschutzrichtlinie",
+        "create_an_account": "Ein Konto erstellen",
+        "save": "sparen",
+        "already_have_an_account": "Sie haben bereits ein Konto?",
+        "log_in_instead": "Loggen Sie sich stattdessen ein!"
     },
     "password_recovery": {
         "title": "Passwort vergessen?",
@@ -58,6 +75,21 @@
         "my_wishlist": "Meine Wunschliste",
         "rank": "Rank",
         "log_out": "Abmelden"
+    },
+    "order": {
+        "delivery_and_billing_address": "Liefer- und Rechnungsadresse",
+        "shipping_and_payment_method": "Versand- und Zahlungsart",
+        "confirmation": "Bestätigung",
+        "personal_information": "Persönliche Daten",
+        "new_user": "Neuer Benutzer",
+        "back": "ZURÜCK",
+        "further": "WEITER",
+        "overview": "ÜBERSICHT",
+        "coupon_code": "Gutschein Code",
+        "use": "VERWENDEN",
+        "shipping": "Versand",
+        "free": "Kostenlos",
+        "total": "Gesamt"
     },
     "products": {
         "manufacturer": "Hersteller",

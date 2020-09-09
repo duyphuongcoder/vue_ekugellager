@@ -29,11 +29,28 @@
     "login": {
         "log_in_to_your_account": "Login to your Account",
         "sign_in": "Sign In",
+        "email": "E-mail",
+        "password": "Password",
         "no_account": "No account?",
         "create_one_here": "Create one here",
-        "forgot_your_password": "Forgot your password?"
+        "forgot_your_password": "Forgot your password?",
+        "remember_me": "Remember Me",
+        "login": "Login"
     },
     "register": {
+        "social_title": "Social title",
+        "Mr": "Mr.",
+        "Mrs": "Mrs.",
+        "first_name": "First Name",
+        "last_name": "Last Name",
+        "email": "E-mail",
+        "password": "Password",
+        "birthday": "Birthdate",
+        "eg": "E.g.",
+        "receive_offers_from_our_partners": "Receive offers from our partners",
+        "sign_up_for_our_newsletter": "Sign up for our newsletter",
+        "you_may_unsubscribe_at_any_moment_for_that_purpose_please_find_our_contact_info_in_the_legal_notice": "You may unsubscribe at any moment. For that purpose, please find our contact info in the legal notice.",
+        "i_accept_the_terms_an_conditions_and_the_privacy_policy": "I accept the Terms And Conditions and the privacy policy",
         "create_an_account": "Create an account",
         "save": "Save",
         "already_have_an_account": "Already have an account?",
@@ -58,6 +75,21 @@
         "my_wishlist": "My Wishlist",
         "rank": "Rank",
         "log_out": "Logout"
+    },
+    "order": {
+        "delivery_and_billing_address": "Delivery and billing address",
+        "shipping_and_payment_method": "Shipping and payment method",
+        "confirmation": "Confirmation",
+        "personal_information": "Personal Information",
+        "new_user": "New User",
+        "back": "Back",
+        "further": "Further",
+        "overview": "Overview",
+        "coupon_code": "Coupon Code",
+        "use": "Use",
+        "shipping": "Shipping",
+        "free": "Free",
+        "total": "Total"
     },
     "products": {
         "manufacturer": "Manufacturer",
