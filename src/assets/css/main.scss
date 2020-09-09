@@ -368,7 +368,9 @@ a:hover {
         }
     }
 }
+/* ---------------------------------------------------- */
 
+/* ----------------- order page style ----------------- */
 .order-btn-primary {
     background-color: #113D79;
     border-radius: 5px;
@@ -408,4 +410,21 @@ a:hover {
     width: auto;
     right: 10px;
     float: right;
+}
+/* -------------------------------------------- */
+
+.carousel-with-arrow {
+    .owl-prev {
+        margin-left: -5px !important;
+        position: absolute;
+        left: 0;
+        top: 0;
+        transform: translate(-100%, 100%);
+    }
+    .owl-next {
+        position: absolute;
+        top: 0;
+        left: 100%;
+        transform: translate(0, 100%);
+    }
 }
