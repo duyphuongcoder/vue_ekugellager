@@ -74,7 +74,15 @@
         "compare": "Vergleichen Sie",
         "my_wishlist": "Meine Wunschliste",
         "rank": "Rank",
-        "log_out": "Abmelden"
+        "log_out": "Abmelden",
+        "order_reference": "Bestellnummer",
+        "date": "Datum",
+        "total_price": "Gesamtpreis",
+        "payment": "Zahlung",
+        "invoice": "Rechnung",
+        "details": "Details",
+        "new_address": "Neue Adresse",
+        "update_your_address": "Aktualisieren Sie Ihre Adresse"
     },
     "order": {
         "delivery_and_billing_address": "Liefer- und Rechnungsadresse",
@@ -91,13 +99,7 @@
         "free": "Kostenlos",
         "total": "Gesamt",
         "shipping_address": "Lieferungsadresse",
-        "invoice_address": "Rechnungsadresse",
-        "order_reference": "Bestellnummer",
-        "date": "Datum",
-        "total_price": "Gesamtpreis",
-        "payment": "Zahlung",
-        "invoice": "Rechnung",
-        "details": "Details"
+        "invoice_address": "Rechnungsadresse"
     },
     "products": {
         "manufacturer": "Hersteller",

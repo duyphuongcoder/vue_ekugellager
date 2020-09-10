@@ -74,7 +74,15 @@
         "compare": "Compare",
         "my_wishlist": "My Wishlist",
         "rank": "Rank",
-        "log_out": "Logout"
+        "log_out": "Logout",
+        "order_reference": "Order Reference",
+        "date": "Date",
+        "total_price": "Total price",
+        "payment": "Payment",
+        "invoice": "Invoice",
+        "details": "Details",
+        "new_address": "New Address",
+        "update_your_address": "Update Your Address"
     },
     "order": {
         "delivery_and_billing_address": "Delivery and billing address",
@@ -91,13 +99,7 @@
         "free": "Free",
         "total": "Total",
         "shipping_address": "Shipping Address",
-        "invoice_address": "Invoice Address",
-        "order_reference": "Order Reference",
-        "date": "Date",
-        "total_price": "Total price",
-        "payment": "Payment",
-        "invoice": "Invoice",
-        "details": "Details"
+        "invoice_address": "Invoice Address"
     },
     "products": {
         "manufacturer": "Manufacturer",

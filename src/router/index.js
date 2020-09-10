@@ -9,6 +9,7 @@ import MyAccount from '../views/account/MyAccount.vue'
 import PasswordRecovery from '../views/account/PasswordRecovery.vue'
 import OrderHistory from '../views/account/OrderHistory.vue'
 import OrderFollow from '../views/account/OrderFollow.vue'
+import Addresses from '../views/account/Addresses.vue'
 import Address from '../views/account/Address.vue'
 import Advisor from '../views/account/Advisor.vue'
 import Comparator from '../views/account/Comparator.vue'
@@ -82,6 +83,11 @@ const routes = [
         path: 'order-follow',
         name: 'order-follow',
         component: OrderFollow
+      },
+      {
+        path: 'addresses',
+        name: 'addresses',
+        component: Addresses
       },
       {
         path: 'address',

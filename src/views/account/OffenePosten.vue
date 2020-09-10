@@ -45,19 +45,19 @@ export default {
       fields: [
         {
           key: 'order_reference',
-          label: i18n.t('order.order_reference')
+          label: i18n.t('account.order_reference')
         },
         {
           key: 'date',
-          label: i18n.t('order.date')
+          label: i18n.t('account.date')
         },
         {
           key: 'total_price',
-          label: i18n.t('order.total_price')
+          label: i18n.t('account.total_price')
         },
         {
           key: 'payment',
-          label: i18n.t('order.payment')
+          label: i18n.t('account.payment')
         },
         {
           key: 'status',
@@ -65,11 +65,11 @@ export default {
         },
         {
           key: 'invoice',
-          label: i18n.t('order.invoice')
+          label: i18n.t('account.invoice')
         },
         {
           key: 'details',
-          label: i18n.t('order.details')
+          label: i18n.t('account.details')
         }
       ],
       items: [
@@ -79,27 +79,24 @@ export default {
       ]
     }
   },
-  mounted () {
-    console.log('mounted:', i18n.t('order.invoice'))
-  },
   watch: {
     $route (to, from) {
       this.fields = [
         {
           key: 'order_reference',
-          label: i18n.t('order.order_reference')
+          label: i18n.t('account.order_reference')
         },
         {
           key: 'date',
-          label: i18n.t('order.date')
+          label: i18n.t('account.date')
         },
         {
           key: 'total_price',
-          label: i18n.t('order.total_price')
+          label: i18n.t('account.total_price')
         },
         {
           key: 'payment',
-          label: i18n.t('order.payment')
+          label: i18n.t('account.payment')
         },
         {
           key: 'status',
@@ -107,11 +104,11 @@ export default {
         },
         {
           key: 'invoice',
-          label: i18n.t('order.invoice')
+          label: i18n.t('account.invoice')
         },
         {
           key: 'details',
-          label: i18n.t('order.details')
+          label: i18n.t('account.details')
         }
       ]
     }

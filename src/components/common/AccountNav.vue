@@ -22,8 +22,8 @@
                         <span>{{$t('account.merchandise_returns')}}</span>
                     </router-link>
                 </li>
-                <li :class="routePath === 'address' ? 'active' : ''">
-                    <router-link :to="$i18nRoute({ name: 'address'})">
+                <li :class="routePath === 'addresses' || routePath === 'address' ? 'active' : ''">
+                    <router-link :to="$i18nRoute({ name: 'addresses'})">
                         <span>{{$t('account.addresses')}}</span>
                     </router-link>
                 </li>
