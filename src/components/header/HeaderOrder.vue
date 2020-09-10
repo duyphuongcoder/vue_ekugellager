@@ -9,7 +9,8 @@
           </b-col>
           <b-col md="6" sm="12">
           </b-col>
-          <b-col md="3" sm="12">
+          <b-col md="3" sm="12" class="d-none d-md-block">
+            <TheLanguageSwitcher />
           </b-col>
       </b-row>
     </b-container>
@@ -17,7 +18,11 @@
 </template>
 
 <script>
+import TheLanguageSwitcher from '@/components/common/TheLanguageSwitcher'
 export default {
+  components: {
+    TheLanguageSwitcher
+  }
 }
 </script>
 
@@ -32,6 +37,10 @@ export default {
   -ms-flex-align: center!important;
   align-items: center!important;
   z-index: 2;
+  .container-fluid {
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+  }
   .top_section {
     -webkit-box-pack: justify!important;
     -ms-flex-pack: justify!important;

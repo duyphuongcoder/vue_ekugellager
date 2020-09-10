@@ -10,7 +10,7 @@
                         <label class="radio-block">
                             <span class="address-alias">
                                 <b-icon icon="house-door"></b-icon>
-                                Shipping Address
+                                {{$t('order.shipping_address')}}
                             </span>
                         </label>
                         <a href="" class="edit-address">
@@ -35,7 +35,7 @@
                         <label class="radio-block">
                             <span class="address-alias">
                                 <b-icon icon="receipt"></b-icon>
-                                Invoice Address
+                                {{$t('order.invoice_address')}}
                             </span>
                         </label>
                         <a href="" class="edit-address">

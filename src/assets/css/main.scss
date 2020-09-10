@@ -428,3 +428,26 @@ a:hover {
         transform: translate(0, 100%);
     }
 }
+
+.div-border {
+    table {
+        thead {
+            tr {
+                background: #f1f1f1 !important;
+                th {
+                    padding: 18px 0px;
+                    padding-left: 0px;
+                    color: #707070;
+                    font-size: 16px;
+                    font-weight: 500;
+                }
+            }
+        }
+        tbody {
+            tr {
+                background: white !important;
+                border-bottom: 1px solid #E9E9E9;
+            }
+        }
+    }
+}
