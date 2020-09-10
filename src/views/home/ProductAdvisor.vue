@@ -122,7 +122,7 @@ export default {
       .card {
         border-radius: 8px;
         padding-top: 100px;
-        margin-top: -110px;
+        // margin-top: -110px;
         position: relative;
         background: rgba(255,255,255,.2);
         @media screen and (max-width: 768px) {

@@ -5,7 +5,8 @@
         <AccountNav />
       </b-col>
       <b-col class="account-right" md="9" sm="12">
-        <h1 class="header-title">Advisor</h1>
+        <h1 class="header-title text-left">Advisor</h1>
+        <ProductAdvisor />
       </b-col>
     </b-row>
   </b-container>
@@ -13,9 +14,11 @@
 
 <script>
 import AccountNav from '@/components/common/AccountNav'
+import ProductAdvisor from '../home/ProductAdvisor'
 export default {
   components: {
-    AccountNav
+    AccountNav,
+    ProductAdvisor
   }
 }
 </script>
