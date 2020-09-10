@@ -5,7 +5,7 @@
         <AccountNav />
       </b-col>
       <b-col class="account-right" md="9" sm="12">
-        <h1 class="header-title text-left">Your personal information</h1>
+        <h1 class="header-title">Your personal information</h1>
         <div class="page-content">
           <div class="register-form register-form-mt">
             <b-form @submit="onSubmit" @reset="onReset" v-if="show">

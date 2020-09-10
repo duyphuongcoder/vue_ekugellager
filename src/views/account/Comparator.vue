@@ -5,7 +5,7 @@
         <AccountNav />
       </b-col>
       <b-col class="account-right" md="9" sm="12">
-        <h1 class="header-title text-left">Products compare</h1>
+        <h1 class="header-title">Products compare</h1>
         <div class="text-right">
           <a href="#">Remove all products</a>
           <hr>
