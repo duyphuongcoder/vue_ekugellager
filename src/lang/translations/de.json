@@ -89,7 +89,15 @@
         "use": "VERWENDEN",
         "shipping": "Versand",
         "free": "Kostenlos",
-        "total": "Gesamt"
+        "total": "Gesamt",
+        "shipping_address": "Lieferungsadresse",
+        "invoice_address": "Rechnungsadresse",
+        "order_reference": "Bestellnummer",
+        "date": "Datum",
+        "total_price": "Gesamtpreis",
+        "payment": "Zahlung",
+        "invoice": "Rechnung",
+        "details": "Details"
     },
     "products": {
         "manufacturer": "Hersteller",

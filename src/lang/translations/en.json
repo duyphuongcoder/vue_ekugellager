@@ -89,7 +89,15 @@
         "use": "Use",
         "shipping": "Shipping",
         "free": "Free",
-        "total": "Total"
+        "total": "Total",
+        "shipping_address": "Shipping Address",
+        "invoice_address": "Invoice Address",
+        "order_reference": "Order Reference",
+        "date": "Date",
+        "total_price": "Total price",
+        "payment": "Payment",
+        "invoice": "Invoice",
+        "details": "Details"
     },
     "products": {
         "manufacturer": "Manufacturer",
