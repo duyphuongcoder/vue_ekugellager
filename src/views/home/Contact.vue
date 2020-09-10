@@ -1,58 +1,54 @@
 <template>
-  <b-container fluid class="rocc-contact-section">
-    <b-container>
-      <b-row>
-        <b-col lg="3" sm="6" cols="12" class="contact-box">
-          <b-row class="justify-content-center">
-            <b-col lg="3" cols="3" class="contact-icon">
-              <b-icon icon="truck"></b-icon>
-            </b-col>
-            <b-col lg="7" cols="8" class="contact-text">
-              <h3 class="title">{{ $t('contact.free_shipping.self') }}</h3>
-              <span class="clear_line"></span>
-              <p>{{ $t('contact.free_shipping.detail') }}</p>
-            </b-col>
-          </b-row>
+  <b-row class="rocc-contact-section">
+    <b-col lg="3" sm="6" cols="12" class="contact-box">
+      <b-row class="justify-content-center">
+        <b-col lg="3" cols="3" class="contact-icon">
+          <b-icon icon="truck"></b-icon>
         </b-col>
-        <b-col lg="3" sm="6" cols="12" class="contact-box">
-          <b-row class="justify-content-center">
-            <b-col lg="3" cols="3" class="contact-icon">
-              <vue-fontawesome icon="rocket"></vue-fontawesome>
-            </b-col>
-            <b-col lg="7" cols="8" class="contact-text">
-              <h3 class="title">{{ $t('contact.sameday_shipping.self') }}</h3>
-              <span class="clear_line"></span>
-              <p>{{ $t('contact.sameday_shipping.detail') }}</p>
-            </b-col>
-          </b-row>
-        </b-col>
-        <b-col lg="3" sm="6" cols="12" class="contact-box">
-          <b-row class="justify-content-center">
-            <b-col lg="3" cols="3" class="contact-icon">
-              <b-icon icon="telephone"></b-icon>
-            </b-col>
-            <b-col lg="7" cols="8" class="contact-text">
-              <h3 class="title">{{ $t('contact.customer_service.self') }}</h3>
-              <span class="clear_line"></span>
-              <p>{{ $t('contact.customer_service.detail') }}</p>
-            </b-col>
-          </b-row>
-        </b-col>
-        <b-col lg="3" sm="6" cols="12" class="contact-box">
-          <b-row class="justify-content-center">
-            <b-col lg="3" cols="3" class="contact-icon">
-              <img src="../../assets/img/saw_icon.svg" class="contact-saw" style="">
-            </b-col>
-            <b-col lg="7" cols="8" class="contact-text">
-              <h3 class="title">{{ $t('contact.free_cutting.self') }}</h3>
-              <span class="clear_line"></span>
-              <p>{{ $t('contact.free_cutting.detail') }}</p>
-            </b-col>
-          </b-row>
+        <b-col lg="7" cols="8" class="contact-text">
+          <h3 class="title">{{ $t('contact.free_shipping.self') }}</h3>
+          <span class="clear_line"></span>
+          <p>{{ $t('contact.free_shipping.detail') }}</p>
         </b-col>
       </b-row>
-    </b-container>
-  </b-container>
+    </b-col>
+    <b-col lg="3" sm="6" cols="12" class="contact-box">
+      <b-row class="justify-content-center">
+        <b-col lg="3" cols="3" class="contact-icon">
+          <vue-fontawesome icon="rocket"></vue-fontawesome>
+        </b-col>
+        <b-col lg="7" cols="8" class="contact-text">
+          <h3 class="title">{{ $t('contact.sameday_shipping.self') }}</h3>
+          <span class="clear_line"></span>
+          <p>{{ $t('contact.sameday_shipping.detail') }}</p>
+        </b-col>
+      </b-row>
+    </b-col>
+    <b-col lg="3" sm="6" cols="12" class="contact-box">
+      <b-row class="justify-content-center">
+        <b-col lg="3" cols="3" class="contact-icon">
+          <b-icon icon="telephone"></b-icon>
+        </b-col>
+        <b-col lg="7" cols="8" class="contact-text">
+          <h3 class="title">{{ $t('contact.customer_service.self') }}</h3>
+          <span class="clear_line"></span>
+          <p>{{ $t('contact.customer_service.detail') }}</p>
+        </b-col>
+      </b-row>
+    </b-col>
+    <b-col lg="3" sm="6" cols="12" class="contact-box">
+      <b-row class="justify-content-center">
+        <b-col lg="3" cols="3" class="contact-icon">
+          <img src="../../assets/img/saw_icon.svg" class="contact-saw" style="">
+        </b-col>
+        <b-col lg="7" cols="8" class="contact-text">
+          <h3 class="title">{{ $t('contact.free_cutting.self') }}</h3>
+          <span class="clear_line"></span>
+          <p>{{ $t('contact.free_cutting.detail') }}</p>
+        </b-col>
+      </b-row>
+    </b-col>
+  </b-row>
 </template>
 <style scoped lang="scss">
 .rocc-contact-section {
