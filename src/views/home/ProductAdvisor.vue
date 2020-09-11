@@ -2,7 +2,7 @@
   <b-container>
     <b-row class="product_advisor">
       <b-col cols="12" class="header_block"></b-col>
-      <b-col cols="12" lg="8" class="question_block">
+      <b-col cols="12" lg="12" class="question_block">
         <b-card>
           <div class="advisor_head mb-3">
             <h2>PRODUKTBERATER</h2>

@@ -6,8 +6,8 @@
       </b-col>
       <b-col class="account-right" md="9" sm="12">
         <h1 class="header-title">Wishlist</h1>
-        <div v-for="(item, index) in items" :key="index">
-          <b-row class="wishlist align-items-center">
+        <div v-for="(item, index) in items" :key="index" class="wishlist align-items-center" :class="{removed:(removedItems.includes(index))}">
+          <b-row >
             <b-col md="3">
               <a href="#">
                 <img class="img-fluid" src="https://ekugellager.roccshow.com/2-cart_default/hummingbird-printed-t-shirt.jpg" alt="Hummingbird printed t-shirt">
@@ -24,7 +24,7 @@
               <span class="product-price">€22.75</span>
             </b-col>
             <b-col md="2">
-              <a href="#" class="js-iqitwishlist-remove" data-id-product="11" data-url="//ekugellager.roccshow.com/en/module/roccomediawishlist/actions">
+              <a href="#" @click="removeItem(index, $event)" class="js-iqitwishlist-remove">
                 <b-icon icon="backspace"></b-icon>
               </a>
             </b-col>
@@ -47,7 +47,14 @@ export default {
       items:
       [
         1, 2, 3, 4
-      ]
+      ],
+      removedItems: []
+    }
+  },
+  methods: {
+    removeItem (index, $e) {
+      $e.preventDefault()
+      this.removedItems.push(index)
     }
   }
 }

@@ -82,7 +82,19 @@
         "invoice": "Invoice",
         "details": "Details",
         "new_address": "New Address",
-        "update_your_address": "Update Your Address"
+        "update_your_address": "Update Your Address",
+        "alias": "Alias",
+        "first_name": "First Name",
+        "last_name": "Last Name",
+        "company": "Company",
+        "phone": "Phone",
+        "address": "Address",
+        "address_code": "Address Code",
+        "zip_postal_code": "Zip/Postal Code",
+        "city": "City",
+        "country": "Country",
+        "vat_number": "VAT Number",
+        "save": "save"
     },
     "order": {
         "delivery_and_billing_address": "Delivery and billing address",

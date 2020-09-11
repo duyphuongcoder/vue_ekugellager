@@ -1,9 +1,13 @@
 <template>
   <div class="home">
     <ParallaxWindow />
-    <div class="product-advisor">
-      <ProductAdvisor />
-    </div>
+    <b-container>
+      <b-row>
+        <b-col cols="12" lg="8" class="product-advisor">
+          <ProductAdvisor />
+        </b-col>
+      </b-row>
+    </b-container>
     <LastOrder />
     <CustomText1 />
     <CustomText2 />
@@ -36,5 +40,7 @@ export default {
 <style lang="scss" scoped>
 .product-advisor {
   margin-top: -110px;
+  margin-left: auto;
+  margin-right: auto;
 }
 </style>>
