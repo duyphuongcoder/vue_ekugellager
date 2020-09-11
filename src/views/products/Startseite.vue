@@ -38,9 +38,10 @@ import { Trans } from '../../lang/Translation'
 import CatlogBar from '@/components/common/CatlogBar'
 import FilterWrapper from '@/components/common/FilterWrapper'
 import ProductBox from '@/components/common/ProductBox'
-import { ProductService } from '@/services/index'
+// import { ProductService } from '@/services/index'
 import BlockCartModal from '@/components/common/BlockCartModal'
 import { BLOCK_CART_MODAL } from '@/constants/modal'
+import { loadingSpinnerConfig } from '@/config/config'
 export default {
   name: 'startseite',
   components: {
@@ -362,19 +363,28 @@ export default {
           image: 'https://ekugellager.roccshow.com/2-large_default/hummingbird-printed-t-shirt.jpg'
         }
       ],
-      modalId: BLOCK_CART_MODAL
+      modalId: BLOCK_CART_MODAL,
+      loader: null
     }
   },
   mounted () {
+    // ProductService.getProduct().then(product => {
+    //   console.log(product)
+    // })
+    this.loader = this.$loading.show(loadingSpinnerConfig)
+    setTimeout(() => {
+      this.loader.hide()
+    }, 2000)
   },
   created () {
-    ProductService.getProduct().then(product => {
-      console.log(product)
-    })
   },
   methods: {
     updatevalues (values, id) {
       console.log(this.filterdata[id].content.title, values)
+      this.loader = this.$loading.show(loadingSpinnerConfig)
+      setTimeout(() => {
+        this.loader.hide()
+      }, 2000)
     },
     dragend (value, id) {
       const max = this.filterdata[id].max
@@ -382,6 +392,10 @@ export default {
       const realMin = Math.round((max - min) / 100 * value[0])
       const realMax = Math.round((max - min) / 100 * value[1])
       console.log(this.filterdata[id].title, realMin, realMax)
+      this.loader = this.$loading.show(loadingSpinnerConfig)
+      setTimeout(() => {
+        this.loader.hide()
+      }, 2000)
     },
     selectPage (selectedpage) {
       console.log(selectedpage)

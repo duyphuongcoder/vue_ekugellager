@@ -49,6 +49,7 @@
         <b-row>
           <b-col md="8">
             <Step1 />
+            <Step2 />
           </b-col>
           <b-col md="4" class="mart-70 cart-right-mart">
             <CartSummary />
@@ -61,11 +62,13 @@
 
 <script>
 import Step1 from './Step1'
+import Step2 from './Step2'
 import CartSummary from './CartSummary'
 export default {
   name: 'order',
   components: {
     Step1,
+    Step2,
     CartSummary
   }
 }

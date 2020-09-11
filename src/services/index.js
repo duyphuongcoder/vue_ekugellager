@@ -1,4 +1,4 @@
-import { apiBaseUrl } from '../config'
+import { apiBaseUrl } from '@/config/config'
 // import { authHeader } from './authHeader'
 
 export const ProductService = {
@@ -12,11 +12,13 @@ function getProduct () {
       Authorization: 'Basic WTRVNkc2M1JNMkc2RVpWNDc0WkU5WkhSVzNaWFdHM1A6',
       Accept: 'application/json',
       'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*'
+      'Access-Control-Allow-Origin': '*',
+      credentials: 'same-origin'
     }
   }
   return fetch(`${apiBaseUrl}/products/18/&output_format=JSON`, requestOptions).then(handleResponse)
   // return fetch('https://jsonplaceholder.typicode.com/todos/1', requestOptions).then(handleResponse)
+  // return fetch(`${apiBaseUrl}/products/18`).then(handleResponse)
 }
 
 function handleResponse (response) {
