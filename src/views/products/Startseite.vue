@@ -38,7 +38,7 @@ import { Trans } from '../../lang/Translation'
 import CatlogBar from '@/components/common/CatlogBar'
 import FilterWrapper from '@/components/common/FilterWrapper'
 import ProductBox from '@/components/common/ProductBox'
-// import { ProductService } from '@/services/index'
+import { ProductService } from '@/services/index'
 import BlockCartModal from '@/components/common/BlockCartModal'
 import { BLOCK_CART_MODAL } from '@/constants/modal'
 import { loadingSpinnerConfig } from '@/config/config'
@@ -368,9 +368,9 @@ export default {
     }
   },
   mounted () {
-    // ProductService.getProduct().then(product => {
-    //   console.log(product)
-    // })
+    ProductService.getProduct().then(product => {
+      console.log(product)
+    })
     this.loader = this.$loading.show(loadingSpinnerConfig)
     setTimeout(() => {
       this.loader.hide()

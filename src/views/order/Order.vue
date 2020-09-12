@@ -50,6 +50,7 @@
           <b-col md="8">
             <Step1 />
             <Step2 />
+            <Step3 />
           </b-col>
           <b-col md="4" class="mart-70 cart-right-mart">
             <CartSummary />
@@ -63,12 +64,14 @@
 <script>
 import Step1 from './Step1'
 import Step2 from './Step2'
+import Step3 from './Step3'
 import CartSummary from './CartSummary'
 export default {
   name: 'order',
   components: {
     Step1,
     Step2,
+    Step3,
     CartSummary
   }
 }
@@ -130,6 +133,11 @@ export default {
         }
       }
     }
+  }
+  section.-current {
+    padding-bottom: 20px !important;
+    border-top-left-radius: 8px !important;
+    border-top-right-radius: 8px !important;
   }
 }
 @media (min-width: 1200px) {
