@@ -7,9 +7,9 @@
       <b-col class="account-right" md="9" sm="12">
         <h1 class="header-title">Your Addresses</h1>
         <div class="address-list">
-          <b-row class="address align-items-center text-left" v-for="(address, index) in addresses" :key="index">
+          <b-row class="address align-items-center text-left" v-for="(address, index) in addresses" :key="index" :class="{removed:(removedAddresses.includes(index))}">
             <b-col md="1">
-              <a href="#">
+              <a href="#" @click="removeItem(index, $event)">
                 <b-icon icon="x-circle" font-scale="2"></b-icon>
               </a>
             </b-col>
@@ -46,7 +46,14 @@ export default {
       addresses:
       [
         1, 2, 3, 4, 5
-      ]
+      ],
+      removedAddresses: []
+    }
+  },
+  methods: {
+    removeItem (index, $event) {
+      $event.preventDefault()
+      this.removedAddresses.push(index)
     }
   }
 }
@@ -82,6 +89,7 @@ export default {
       font-weight: 500;
       color: #707070;
     }
+
   }
   .add-new-address {
     border: 0.5px solid #E9E9E9;
