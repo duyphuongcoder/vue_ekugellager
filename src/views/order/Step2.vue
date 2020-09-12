@@ -49,15 +49,9 @@
                                 </b-form-group>
                             </b-col>
                             <b-col md="6" sm="12">
-                                <b-form-group id="input-group-phone" label-for="phone_number">
-                                    <b-form-input
-                                    type="text"
-                                    id="phone_number"
-                                    v-model="addressform.phoneNumber"
-                                    required
-                                    :placeholder="'Phone'"
-                                    ></b-form-input>
-                                </b-form-group>
+                                <VuePhoneNumberInput v-model="addressform.phoneNumber" @update="getPayload"
+                                default-country-code="DE"
+                                :translations="this.$i18n.locale=='en'?translations:translations"/>
                             </b-col>
                         </b-row>
                         <b-row>
@@ -169,7 +163,13 @@ export default {
         vatNumber: '',
         isUseForInvoice: 1
       },
-      countries: countryList
+      countries: countryList,
+      translations: {
+        countrySelectorLabel: this.$i18n.t('account.countrySelectorLabel'),
+        countrySelectorError: this.$i18n.t('account.countrySelectorError'),
+        phoneNumberLabel: this.$i18n.t('account.phoneNumberLabel'),
+        example: this.$i18n.t('account.example')
+      }
     }
   },
   methods: {
@@ -179,6 +179,20 @@ export default {
     },
     onReset (evt) {
       evt.preventDefault()
+    },
+    getPayload (payload) {
+      // console.log(payload)
+      // console.log(this.$i18n.locale)
+    }
+  },
+  watch: {
+    $route (to, from) {
+      this.translations = {
+        countrySelectorLabel: this.$i18n.t('account.countrySelectorLabel'),
+        countrySelectorError: this.$i18n.t('account.countrySelectorError'),
+        phoneNumberLabel: this.$i18n.t('account.phoneNumberLabel'),
+        example: this.$i18n.t('account.example')
+      }
     }
   }
 }
