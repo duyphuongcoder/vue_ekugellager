@@ -18,34 +18,34 @@
                         </label>
                         </b-col>
                         <b-col cols="12 text-left">
-                        <b-form-group id="input-group-4">
-                            <b-form-checkbox-group id="checkboxes-sex">
-                            <b-form-radio v-model="form.sex" name="some-radios" value="male">{{$t('register.Mr')}}</b-form-radio>
-                            <b-form-radio v-model="form.sex" name="some-radios" value="female">{{$t('register.Mrs')}}</b-form-radio>
-                            </b-form-checkbox-group>
-                        </b-form-group>
+                            <b-form-group id="input-group-4">
+                                <b-form-checkbox-group id="checkboxes-sex">
+                                <b-form-radio v-model="form.sex" name="some-radios" value="male">{{$t('register.Mr')}}</b-form-radio>
+                                <b-form-radio v-model="form.sex" name="some-radios" value="female">{{$t('register.Mrs')}}</b-form-radio>
+                                </b-form-checkbox-group>
+                            </b-form-group>
                         </b-col>
                         <b-col md="6" xm="12">
-                        <b-form-group id="input-group-first-name" label-for="input-first">
-                            <b-form-input
-                            id="input-first"
-                            v-model="form.firstName"
-                            type="text"
-                            required
-                            :placeholder="$t('register.first_name')"
-                            ></b-form-input>
-                        </b-form-group>
+                            <b-form-group id="input-group-first-name" label-for="input-first">
+                                <b-form-input
+                                id="input-first"
+                                v-model="form.firstName"
+                                type="text"
+                                required
+                                :placeholder="$t('register.first_name')"
+                                ></b-form-input>
+                            </b-form-group>
                         </b-col>
                         <b-col md="6" xm="12">
-                        <b-form-group id="input-group-last-name" label-for="input-last">
-                            <b-form-input
-                            type="text"
-                            id="input-last"
-                            v-model="form.lastName"
-                            required
-                            :placeholder="$t('register.last_name')"
-                            ></b-form-input>
-                        </b-form-group>
+                            <b-form-group id="input-group-last-name" label-for="input-last">
+                                <b-form-input
+                                type="text"
+                                id="input-last"
+                                v-model="form.lastName"
+                                required
+                                :placeholder="$t('register.last_name')"
+                                ></b-form-input>
+                            </b-form-group>
                         </b-col>
                     </b-row>
 
@@ -57,6 +57,7 @@
                             v-model="form.email"
                             type="email"
                             required
+                            autocomplete="username"
                             :placeholder="$t('register.email')"
                             ></b-form-input>
                         </b-form-group>
@@ -69,6 +70,7 @@
                                 id="input-2"
                                 v-model="form.password"
                                 required
+                                autocomplete="current-password"
                                 :placeholder="$t('register.password')"
                             ></b-form-input>
                             <b-input-group-append>
@@ -124,15 +126,15 @@
 
                     <b-row class="text-left">
                         <b-col>
-                        <b-form-checkbox
-                        id="checkbox-3"
-                        v-model="form.check3"
-                        name="checkbox-3"
-                        :value="1"
-                        :unchecked-value="0"
-                        >
-                        <p>{{$t('register.i_accept_the_terms_an_conditions_and_the_privacy_policy')}}</p>
-                        </b-form-checkbox>
+                            <b-form-checkbox
+                            id="checkbox-3"
+                            v-model="form.check3"
+                            name="checkbox-3"
+                            :value="1"
+                            :unchecked-value="0"
+                            >
+                            <p>{{$t('register.i_accept_the_terms_an_conditions_and_the_privacy_policy')}}</p>
+                            </b-form-checkbox>
                         </b-col>
                     </b-row>
 
@@ -169,6 +171,7 @@
                                         id="input-2"
                                         v-model="loginform.password"
                                         required
+                                        autocomplete="current-password"
                                         :placeholder="$t('login.password')"
                                     ></b-form-input>
                                     <b-input-group-append>
@@ -208,7 +211,6 @@
 
 <script>
 export default {
-  name: 'register',
   data () {
     return {
       show: true,

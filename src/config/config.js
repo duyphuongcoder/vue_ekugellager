@@ -7,4 +7,4 @@ export const loadingSpinnerConfig = {
   backgroundColor: '#000000',
   opacity: 0.6
 }
-export const apiBaseUrl = 'https://Y4U6G63RM2G6EZV474ZE9ZHRW3ZXWG3P@ekugellager.roccshow.com/api'
+export const apiBaseUrl = 'https://vuefront.newsoftdemo.info/api'

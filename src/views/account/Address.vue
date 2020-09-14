@@ -70,7 +70,7 @@
                   </template>
                   <VuePhoneNumberInput v-model="form.phone" @update="getPayload"
                   default-country-code="DE"
-                  :translations="this.$i18n.locale=='de'?translations_de:{}"/>
+                  :translations="translations"/>
                 </b-form-group>
               </b-col>
               <b-col cols="12" md="6">
@@ -143,6 +143,8 @@
                   <b-form-select
                     required
                     v-model="form.country"
+                    value-field="code"
+                    text-field="name"
                     :options="country_options">
                   </b-form-select>
                 </b-form-group>
@@ -172,6 +174,7 @@
 
 <script>
 import AccountNav from '@/components/common/AccountNav'
+import { countryList } from '@/constants/countries'
 export default {
   components: {
     AccountNav
@@ -194,20 +197,15 @@ export default {
         address_code: '',
         zip_postal_code: '',
         city: '',
-        country: null,
+        country: 'DE',
         vat_number: ''
       },
-      country_options:
-      [
-        { value: null, text: 'please choose country' },
-        { value: 1, text: 'Germany' },
-        { value: 2, text: 'United States' }
-      ],
-      translations_de: {
-        countrySelectorLabel: 'Landesvorwahl',
-        countrySelectorError: 'Wähle ein Land',
-        phoneNumberLabel: 'Telefonnummer',
-        example: 'Beispiel :'
+      country_options: countryList,
+      translations: {
+        countrySelectorLabel: this.$i18n.t('account.countrySelectorLabel'),
+        countrySelectorError: this.$i18n.t('account.countrySelectorError'),
+        phoneNumberLabel: this.$i18n.t('account.phoneNumberLabel'),
+        example: this.$i18n.t('account.example')
       }
     }
   },
@@ -232,8 +230,18 @@ export default {
         address_code: 'test address code',
         zip_postal_code: 'test postal code',
         city: 'test city',
-        country: 1,
+        country: 'DE',
         vat_number: '13434'
+      }
+    }
+  },
+  watch: {
+    $route (to, from) {
+      this.translations = {
+        countrySelectorLabel: this.$i18n.t('account.countrySelectorLabel'),
+        countrySelectorError: this.$i18n.t('account.countrySelectorError'),
+        phoneNumberLabel: this.$i18n.t('account.phoneNumberLabel'),
+        example: this.$i18n.t('account.example')
       }
     }
   }

@@ -94,7 +94,11 @@
         "city": "City",
         "country": "Country",
         "vat_number": "VAT Number",
-        "save": "save"
+        "save": "save",
+        "countrySelectorLabel": "Country code",
+        "countrySelectorError": "Choose a country",
+        "phoneNumberLabel": "Phone number",
+        "example": "Example:"
     },
     "order": {
         "delivery_and_billing_address": "Delivery and billing address",

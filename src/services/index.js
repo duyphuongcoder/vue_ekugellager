@@ -9,12 +9,9 @@ function getProduct () {
   const requestOptions = {
     method: 'GET',
     headers: {
-      Authorization: 'Basic WTRVNkc2M1JNMkc2RVpWNDc0WkU5WkhSVzNaWFdHM1A6',
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-      credentials: 'same-origin'
-    }
+      Authorization: 'Basic VkxMNEhJVFRFWTIzM1hEMlpMWEFKU1lZTjVLNUg1Nlc6'
+    },
+    mode: 'no-cors'
   }
   return fetch(`${apiBaseUrl}/products/18/&output_format=JSON`, requestOptions).then(handleResponse)
   // return fetch('https://jsonplaceholder.typicode.com/todos/1', requestOptions).then(handleResponse)

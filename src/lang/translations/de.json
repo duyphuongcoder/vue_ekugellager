@@ -94,7 +94,11 @@
         "city": "City",
         "country": "Country",
         "vat_number": "VAT Number",
-        "save": "save"
+        "save": "save",
+        "countrySelectorLabel": "Landesvorwahl",
+        "countrySelectorError": "Wähle ein Land",
+        "phoneNumberLabel": "Telefonnummer",
+        "example": "Beispiel :"
     },
     "order": {
         "delivery_and_billing_address": "Liefer- und Rechnungsadresse",
