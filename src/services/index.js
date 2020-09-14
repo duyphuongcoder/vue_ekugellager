@@ -9,9 +9,8 @@ function getProduct () {
   const requestOptions = {
     method: 'GET',
     headers: {
-      Authorization: 'Basic VkxMNEhJVFRFWTIzM1hEMlpMWEFKU1lZTjVLNUg1Nlc6'
-    },
-    mode: 'no-cors'
+      Authorization: 'Basic WTRVNkc2M1JNMkc2RVpWNDc0WkU5WkhSVzNaWFdHM1A6'
+    }
   }
   return fetch(`${apiBaseUrl}/products/18/&output_format=JSON`, requestOptions).then(handleResponse)
   // return fetch('https://jsonplaceholder.typicode.com/todos/1', requestOptions).then(handleResponse)
