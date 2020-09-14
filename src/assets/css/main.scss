@@ -414,21 +414,35 @@ a:hover {
 /* -------------------------------------------- */
 
 .carousel-with-arrow {
+    .owl-theme .owl-nav [class*='owl-'] {
+        background: none;
+        @media screen and (max-width: 768px){
+            padding: 0;
+        }
+    }
     .owl-prev {
+        
         margin-left: -5px !important;
         position: absolute;
         left: 0;
-        top: 0;
-        transform: translate(-100%, 100%);
+        top: 50%;
+        transform: translate(-100%, -150%);
     }
     .owl-next {
         position: absolute;
-        top: 0;
+        top: 50%;
         left: 100%;
-        transform: translate(0, 100%);
+        transform: translate(0, -150%);
     }
 }
-
+.rank_carousel {
+    .owl-prev {
+        transform: translate(-100%, -75%)
+    }
+    .owl-next {
+        transform: translate(0, -75%)
+    }
+}
 .div-border {
     table {
         thead {
