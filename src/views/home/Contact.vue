@@ -67,6 +67,9 @@
       padding: 0em;
       padding-top: 5px;
       font-size: 47px;
+      img {
+        width: 67px;
+      }
     }
   }
   .contact-box:last-child {

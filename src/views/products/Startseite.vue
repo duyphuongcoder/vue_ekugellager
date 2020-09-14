@@ -30,6 +30,7 @@
     <div>
     </div>
     <BlockCartModal />
+    <CategoryForm />
   </b-container>
 </template>
 
@@ -40,6 +41,7 @@ import FilterWrapper from '@/components/common/FilterWrapper'
 import ProductBox from '@/components/common/ProductBox'
 import { ProductService } from '@/services/index'
 import BlockCartModal from '@/components/common/BlockCartModal'
+import CategoryForm from '@/components/common/CategoryForm'
 import { BLOCK_CART_MODAL } from '@/constants/modal'
 import { loadingSpinnerConfig } from '@/config/config'
 export default {
@@ -48,7 +50,8 @@ export default {
     CatlogBar,
     FilterWrapper,
     ProductBox,
-    BlockCartModal
+    BlockCartModal,
+    CategoryForm
   },
   data () {
     return {
