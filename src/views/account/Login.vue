@@ -75,7 +75,8 @@ export default {
   methods: {
     onSubmit (evt) {
       evt.preventDefault()
-      alert(JSON.stringify(this.form))
+      this.$store.dispatch('login', this.form)
+      this.$router.push('home')
     },
     onReset (evt) {
       evt.preventDefault()

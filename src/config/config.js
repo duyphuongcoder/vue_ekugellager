@@ -7,4 +7,7 @@ export const loadingSpinnerConfig = {
   backgroundColor: '#000000',
   opacity: 0.6
 }
-export const apiBaseUrl = 'https://ekugellager.roccshow.com/api'
+
+export const apiBaseUrl = process.env.VUE_APP_API_ENDPOINT
+
+export const appToken = process.env.VUE_APP_TOKEN

@@ -372,12 +372,13 @@ export default {
   },
   mounted () {
     this.loader = this.$loading.show(loadingSpinnerConfig)
-    ProductService.getProduct().then(product => {
+    ProductService.getTopIcons().then(product => {
       console.log(product)
       this.loader.hide()
     })
   },
   created () {
+    console.log('Startseite:', this.$store.state.auth)
   },
   methods: {
     updatevalues (values, id) {
