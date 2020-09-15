@@ -5,13 +5,13 @@
         <AccountNav />
       </b-col>
       <b-col class="account-right" md="9" sm="12">
-        <h1 class="header-title">Products compare</h1>
+        <h1 class="header-title">{{$t('account.compare')}}</h1>
         <div class="text-center" v-if="items.length==removedItems.length">
-          <p class="alert alert-danger" >There is no products to compare.</p>
+          <p class="alert alert-danger" >{{$t('compare.no_compare')}}</p>
         </div>
         <div v-else>
           <div class="text-right">
-            <a href="#" @click="removeAll($event)">Remove all products</a>
+            <a href="#" @click="removeAll($event)">{{$t('compare.remove_all')}}</a>
             <hr>
           </div>
           <div class="compare-table pt-5">
@@ -55,7 +55,13 @@ export default {
     return {
       fields:
       [
-        'product', 'composition', 'property', 'quality', 'Ø inside', 'Ø external', 'width'
+        this.$t('compare.product'),
+        this.$t('compare.composition'),
+        this.$t('compare.property'),
+        this.$t('compare.quality'),
+        this.$t('compare.inside'),
+        this.$t('compare.external'),
+        this.$t('compare.width')
       ],
       items:
       [
@@ -78,6 +84,19 @@ export default {
     removeAll ($event) {
       $event.preventDefault()
       this.removedItems = this.items
+    }
+  },
+  watch: {
+    $route (to, from) {
+      this.fields = [
+        this.$t('compare.product'),
+        this.$t('compare.composition'),
+        this.$t('compare.property'),
+        this.$t('compare.quality'),
+        this.$t('compare.inside'),
+        this.$t('compare.external'),
+        this.$t('compare.width')
+      ]
     }
   }
 }

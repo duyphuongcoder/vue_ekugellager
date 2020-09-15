@@ -5,9 +5,9 @@
       <b-col md="2" class="d-none d-md-block"></b-col>
       <b-col md="8" sm="12">
           <h1>{{item.title}}</h1>
-          <div class="subtitle">Bitte wählen Sie ihr Produkt aus 5 Artikeln</div>
+          <div class="subtitle">{{$t('parallax.description')}}</div>
       </b-col>
-      <b-col md="2" class="d-none d-md-block right-side"> <span class="eku-num"> 3 </span><span class="eku-text">SCHRITTE</span> </b-col>
+      <b-col md="2" class="d-none d-md-block right-side"> <span class="eku-num"> 3 </span><span class="eku-text">{{$t('parallax.step')}}</span> </b-col>
     </div>
     <b-row>
       <SliderBar
@@ -46,12 +46,12 @@
     </b-collapse>
 
     <div class="more-result" v-b-toggle.more>
-      <span class="collapsed-icon">Weitere Eigenschaften</span>
-      <span class="opened-icon">Weniger</span>
+      <span class="collapsed-icon">{{$t('parallax.other_properties')}}</span>
+      <span class="opened-icon">{{$t('parallax.fewer')}}</span>
       <b-icon icon="chevron-down" font-scale="1.5"></b-icon>
     </div>
     <b-col cols="12" class="detail-btn">
-      <a class="submitFilter" href="#">AUSWAHL ANZEIGEN</a>
+      <a class="submitFilter" href="#">{{$t('parallax.show_selection')}}</a>
     </b-col>
   </div>
 </div>

@@ -5,7 +5,7 @@
         <AccountNav />
       </b-col>
       <b-col class="account-right" md="9" sm="12">
-        <h1 class="header-title">Order history</h1>
+        <h1 class="header-title">{{$t('account.order_history')}}</h1>
       </b-col>
     </b-row>
   </b-container>

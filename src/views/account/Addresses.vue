@@ -5,7 +5,7 @@
         <AccountNav />
       </b-col>
       <b-col class="account-right" md="9" sm="12">
-        <h1 class="header-title">Your Addresses</h1>
+        <h1 class="header-title">{{$t('account.addresses')}}</h1>
         <div class="address-list">
           <b-row class="address align-items-center text-left" v-for="(address, index) in addresses" :key="index" :class="{removed:(removedAddresses.includes(index))}">
             <b-col md="1">

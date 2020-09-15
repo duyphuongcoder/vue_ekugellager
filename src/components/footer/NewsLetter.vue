@@ -9,7 +9,7 @@
               <p>{{ $t('footer.newsletter.text1') }}</p>
             </b-col>
             <b-col md="4" cols="12">
-              <label class="form-check-label checkbox-field psgdpr_consent_message">
+              <label class="form-check-label checkbox-field psgdpr_consent_message" style="display:none;">
                 <span class="custom-checkbox-form">
                     <input id="psgdpr_consent_checkbox_17" name="psgdpr_consent_checkbox" type="checkbox" value="1">
                     <span></span>
@@ -24,7 +24,7 @@
                     <b-button variant="primary" class="float-right d-none d-sm-block" type="submit">{{ $t('footer.newsletter.subscribe') }}</b-button>
                     <b-button variant="primary" class="float-right d-block d-sm-none" type="submit">{{ $t('footer.newsletter.sign_up') }}</b-button>
                     <div class="input-wrapper">
-                      <b-form-input type="email" placeholder="Your email address" aria-labelledby="block-newsletter-label"></b-form-input>
+                      <b-form-input type="email" :placeholder="$t('footer.newsletter.email_placeholder')" aria-labelledby="block-newsletter-label"></b-form-input>
                     </div>
                     <div class="clearfix"></div>
                   </b-col>

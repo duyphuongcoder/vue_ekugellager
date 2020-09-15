@@ -3,9 +3,9 @@
     <b-row>
       <b-col lg="12" class="header-title">
         <h2>
-          {{header.title}}
+          {{$t('custom_text_2.title')}}
         </h2>
-        <span>{{header.description}}</span>
+        <span>{{$t('custom_text_2.description')}}</span>
       </b-col>
       <b-col lg="12" cols="12"  class="align-self-end">
         <carousel

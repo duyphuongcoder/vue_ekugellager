@@ -5,8 +5,8 @@
       <b-col cols="12" lg="12" class="question_block">
         <b-card>
           <div class="advisor_head mb-3">
-            <h2>PRODUKTBERATER</h2>
-            <p>Nutzen Sie unseren Produktberater und lassen Sie sich bei der Suche nach dem richtigen Produkt helfen.</p>
+            <h2>{{$t('product_advisor.title')}}</h2>
+            <p>{{$t('product_advisor.description')}}</p>
           </div>
           <div class="advisor_contents">
             <b-collapse id="contents"  class="contents pt-3 pb-3">

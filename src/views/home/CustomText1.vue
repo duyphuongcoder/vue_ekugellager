@@ -29,7 +29,7 @@ export default {
     .business-left {
       background: url('../../assets/img/custom_text_1_back1.png') no-repeat top right;
       background-size: cover;
-      padding: 0px;
+      // padding: 0px;
       padding-bottom: 50%;
       position: relative;
       .business-details {

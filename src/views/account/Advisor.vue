@@ -5,7 +5,7 @@
         <AccountNav />
       </b-col>
       <b-col class="account-right" md="9" sm="12">
-        <h1 class="header-title">Advisor</h1>
+        <h1 class="header-title">{{$t('account.personal_advisor')}}</h1>
         <ProductAdvisor />
       </b-col>
     </b-row>

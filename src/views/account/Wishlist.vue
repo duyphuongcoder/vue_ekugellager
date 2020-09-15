@@ -5,7 +5,7 @@
         <AccountNav />
       </b-col>
       <b-col class="account-right" md="9" sm="12">
-        <h1 class="header-title">Wishlist</h1>
+        <h1 class="header-title">{{$t('account.my_wishlist')}}</h1>
         <div v-for="(item, index) in items" :key="index" class="wishlist align-items-center" :class="{removed:(removedItems.includes(index))}">
           <b-row >
             <b-col md="3">
