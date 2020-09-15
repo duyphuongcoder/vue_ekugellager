@@ -371,13 +371,11 @@ export default {
     }
   },
   mounted () {
+    this.loader = this.$loading.show(loadingSpinnerConfig)
     ProductService.getProduct().then(product => {
       console.log(product)
-    })
-    this.loader = this.$loading.show(loadingSpinnerConfig)
-    setTimeout(() => {
       this.loader.hide()
-    }, 2000)
+    })
   },
   created () {
   },
