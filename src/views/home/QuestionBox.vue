@@ -13,11 +13,11 @@
           {{answer}}
         </b-form-radio>
       </b-form-group>
-      <b-button  variant="danger" @click="nextQuestion">WEITER</b-button>
+      <b-button  variant="danger" @click="nextQuestion">{{$t('product_advisor.furthur')}}</b-button>
     </b-form>
   </div>
   <div class="advisor_question_block" v-else>
-    <b-button  variant="danger" @click="register">Register</b-button>
+    <b-button  variant="danger" @click="register">{{$t('product_advisor.register')}}</b-button>
   </div>
 </template>
 <script>

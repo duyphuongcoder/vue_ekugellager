@@ -5,7 +5,7 @@
         <AccountNav />
       </b-col>
       <b-col class="account-right" md="9" sm="12">
-        <h1 class="header-title">Rank</h1>
+        <h1 class="header-title">{{$t('account.rank')}}</h1>
         <div class="rank-rightbar">
           <div class="tab-content" :key="selected" v-if="selected!=null">
             <div class="rank_view">0<span>Rang</span></div>

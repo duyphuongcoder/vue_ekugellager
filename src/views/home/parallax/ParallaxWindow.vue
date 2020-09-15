@@ -5,10 +5,10 @@
       <div class="head-title">
         <b-col md="2" class="d-none d-md-block"></b-col>
         <b-col md="8" sm="12">
-            <h1>SCHNELL KATEGORIEN</h1>
-            <div class="subtitle">Bitte wählen Sie ihr Produkt aus 5 Artikeln</div>
+            <h1>{{$t('parallax.title')}}</h1>
+            <div class="subtitle">{{$t('parallax.description')}}</div>
         </b-col>
-        <b-col md="2" class="d-none d-md-block right-side"> <span class="eku-num"> 3 </span><span class="eku-text">SCHRITTE</span> </b-col>
+        <b-col md="2" class="d-none d-md-block right-side"> <span class="eku-num"> 3 </span><span class="eku-text">{{$t('parallax.step')}}</span> </b-col>
       </div>
       <div class="tab-carousel">
         <carousel class="pro_carousel"

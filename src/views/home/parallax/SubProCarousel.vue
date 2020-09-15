@@ -29,7 +29,7 @@
               <b-img :src="getImageUrl(item.image)"></b-img>
             </div>
             <div class="morebtn"></div>
-            <a class="select" @click="openFilter(index)">AUSWÄHLEN</a>
+            <a class="select" @click="openFilter(index)">{{$t('parallax.choose')}}</a>
           </div>
         </div>
       <!-- </div> -->

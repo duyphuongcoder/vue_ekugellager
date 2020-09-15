@@ -31,26 +31,34 @@ export default {
     return {
       steps: [
         {
-          description: 'Bestellung erhalten',
+          description: this.$t('last_order.step_1'),
           icon_type: 'b-icon',
           icon_name: 'cart3'
         },
         {
-          description: 'Zusammenstellung Ihrer Lieferung',
+          description: this.$t('last_order.step_2'),
           icon_type: 'fa-icon',
           icon_name: 'hand-paper-o'
         },
         {
-          description: 'Qualitätskontrolle',
+          description: this.$t('last_order.step_3'),
           icon_type: 'fa-icon',
           icon_name: 'thumbs-o-up'
         },
         {
-          description: 'Versand',
+          description: this.$t('last_order.step_4'),
           icon_type: 'b-icon',
           icon_name: 'truck'
         }
       ]
+    }
+  },
+  watch: {
+    $route (to, from) {
+      this.steps[0].description = this.$t('last_order.step_1')
+      this.steps[1].description = this.$t('last_order.step_2')
+      this.steps[2].description = this.$t('last_order.step_3')
+      this.steps[3].description = this.$t('last_order.step_4')
     }
   }
 }
