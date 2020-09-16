@@ -22,7 +22,7 @@
         </b-col>
       </b-row>
       <div class="featured-products clearfix mt-3">
-        <h4>Customers who bought this product also bought:</h4>
+        <h4>{{$t('products.also_bought')}}</h4>
         <b-row class="products">
           <b-col lg="4" md="6" sm="12" v-for="(item, index) in featured_products" :key="index">
               <ProductBox :product="item" :addtocart="addToCart"/>

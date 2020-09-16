@@ -126,7 +126,15 @@
         "in_stock": "in Stock",
         "compare_remember": "Compare & remember",
         "details_quickl_purchase": "Details & Quick Purchase",
-        "shoppingcart": "Shoppingcart"
+        "shoppingcart": "Shoppingcart",
+        "also_bought": "Customers who bought this product also bought:",
+        "technical_specifications": "Technical Specifications",
+        "description": "Description",
+        "details": "Product Details",
+        "tax_included": "Tax included",
+        "ready_to_ship": "ready to ship",
+        "compare": "Compare",
+        "remember": "Remember"
     },
     "compare": {
         "no_compare": "There is no products to compare.",
