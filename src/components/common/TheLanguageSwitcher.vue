@@ -42,12 +42,27 @@ export default {
     changeLanguage (e) {
       const lang = e.target.value
       const to = this.$router.resolve({ params: { lang } })
+      this.$store.dispatch('get_topnavbar', this.getLangId(lang))
       return Trans.changeLanguage(lang).then(() => {
         this.$router.push(to.location)
       })
     },
     isCurrentLanguage (lang, flag) {
       return lang === this.currentLanguage
+    },
+    getLangId (lang) {
+      let langId = 1
+      switch (lang) {
+        case 'en':
+          langId = 2
+          break
+        case 'de':
+          langId = 1
+          break
+        default:
+          break
+      }
+      return langId
     }
   }
 }

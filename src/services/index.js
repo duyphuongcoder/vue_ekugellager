@@ -1,6 +1,6 @@
 import { apiBaseUrl, appToken } from '@/config/config'
 
-export const ProductService = {
+export const Services = {
   getTopIcons,
   getProduct
 }
@@ -12,8 +12,8 @@ const requestOptions = {
   }
 }
 
-function getTopIcons () {
-  return fetch(`${apiBaseUrl}/rocctoppernavbar&language=1&output_format=JSON`, requestOptions).then(handleResponse)
+function getTopIcons (langId) {
+  return fetch(`${apiBaseUrl}/rocctoppernavbar&language=${langId}&output_format=JSON`, requestOptions).then(handleResponse)
 }
 
 function getProduct () {

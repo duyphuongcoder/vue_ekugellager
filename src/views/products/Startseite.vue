@@ -39,7 +39,7 @@ import { Trans } from '../../lang/Translation'
 import CatlogBar from '@/components/common/CatlogBar'
 import FilterWrapper from '@/components/common/FilterWrapper'
 import ProductBox from '@/components/common/ProductBox'
-import { ProductService } from '@/services/index'
+import { Services } from '@/services/index'
 import BlockCartModal from '@/components/common/BlockCartModal'
 import CategoryForm from '@/components/common/CategoryForm'
 import { BLOCK_CART_MODAL } from '@/constants/modal'
@@ -372,8 +372,8 @@ export default {
   },
   mounted () {
     this.loader = this.$loading.show(loadingSpinnerConfig)
-    ProductService.getTopIcons().then(product => {
-      console.log(product)
+    Services.getProduct(1).then(resp => {
+      console.log(resp)
       this.loader.hide()
     })
   },
