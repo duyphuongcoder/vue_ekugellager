@@ -4,7 +4,7 @@
       <div class="price">
         <b-row class="shipping pb-3">
           <b-col cols="8" class="desc">
-            <h6>shipping</h6>
+            <h6>{{$t('products.shipping')}}</h6>
             <h6>VERSANDKOSTENFREI AB 250€</h6>
           </b-col>
           <b-col cols="4" class="value">
@@ -13,7 +13,7 @@
         </b-row>
         <b-row class="total pt-3">
           <b-col cols="8" class="desc">
-            <h6>Gesamt</h6>
+            <h6>{{$t('products.total')}}</h6>
           </b-col>
           <b-col cols="4" class="value">
             <h6>€1080.98</h6>
@@ -22,14 +22,14 @@
       </div>
       <div class="voucher pt-3">
         <b-row>
-          <b-col cols="6" lg="8" class="pr-0"><b-form-input placeholder="Gutschein Code"></b-form-input></b-col>
-          <b-col cols="6" lg="4" class="pl-0"><b-button>Verwenden</b-button></b-col>
+          <b-col cols="6" lg="8" class="pr-0"><b-form-input :placeholder="$t('order.coupon_code')"></b-form-input></b-col>
+          <b-col cols="6" lg="4" class="pl-0"><b-button>{{$t('products.use')}}</b-button></b-col>
         </b-row>
       </div>
       <div class="checkout pt-3">
         <b-row>
           <router-link :to="$i18nRoute({ name: 'order'})">
-            checkout
+            {{$t('order.checkout')}}
           </router-link>
         </b-row>
       </div>

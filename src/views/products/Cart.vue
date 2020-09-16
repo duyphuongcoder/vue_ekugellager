@@ -1,7 +1,7 @@
 <template>
   <b-container class="cart mt-5">
     <div class="page-title text-center mb-5">
-      <h3>WARENKORB</h3>
+      <h3>{{$t('products.shoppingcart')}}</h3>
     </div>
     <div class="shopping-cart mb-5">
       <b-container>
@@ -102,5 +102,9 @@ export default {
 }
 </script>
 <style scoped lang="scss">
-
+.cart {
+  .page-title {
+    text-transform: uppercase;
+  }
+}
 </style>
