@@ -3,7 +3,7 @@
     <h1 class="h1 product_name_h1" itemprop="name">Hummingbird printed t-shirt</h1>
     <b-row class="quality-pricelist">
       <b-col lg="4" cols="4" class="title">
-        Qualität
+        {{$t('products.quality')}}
       </b-col>
       <b-col lg="8" cols="8">
         <ul class="grade">
@@ -50,22 +50,22 @@
                 <div class="product-price has-discount">
                   <span>€22.75</span>
                 </div>
-                <div class="tax-shipping-delivery-label">Tax included</div>
+                <div class="tax-shipping-delivery-label">{{$t('products.tax_included')}}</div>
               </b-col>
             </b-row>
-            <p>229 ready to ship</p>
+            <p>229 {{$t('products.ready_to_ship')}}</p>
             <b-row class="add-to-cart">
               <b-col cols="4" class="p-0">
                 <b-form-input type="number" v-model="count" value="1"></b-form-input>
               </b-col>
               <b-col cols="8" class="p-0">
-                <b-button @click="addtocart(count)">WARENKORB</b-button>
+                <b-button @click="addtocart(count)">{{$t('products.shoppingcart')}}</b-button>
               </b-col>
             </b-row>
             <b-row class="compare-remember">
               <b-col md="12">
-                <b-button>Remember</b-button>
-                <b-button>Compare &</b-button>
+                <b-button>{{$t('products.remember')}}</b-button>
+                <b-button>{{$t('products.compare')}} &</b-button>
               </b-col>
             </b-row>
           </div>
@@ -171,6 +171,7 @@ export default {
         button {
           width: 100%;
           background: #B2162C;
+          text-transform: uppercase;
         }
       }
       .compare-remember {

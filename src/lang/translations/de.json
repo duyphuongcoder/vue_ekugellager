@@ -119,14 +119,22 @@
     },
     "products": {
         "manufacturer": "Hersteller",
-        "quality": "Quality",
+        "quality": "Qualität",
         "product_quality_info": "Product Quality Info",
         "price_from": "Preis ab",
         "In_stock": "ab Lager",
         "in_stock": "ab Lager",
         "compare_remember": "Vergleichen & Merken",
         "details_quickl_purchase": "Details & Schnellkauf",
-        "shoppingcart": "Shoppingcart"
+        "shoppingcart": "WARENKORB",
+        "also_bought": "Kunden, die diesen Artikel gekauft haben, kauften auch:",
+        "technical_specifications": "Technische Daten",
+        "description": "Beschreibung",
+        "details": "Produktdetails",
+        "tax_included": "Steuern inklusive",
+        "ready_to_ship": "versandfertig",
+        "compare": "Vergleichen",
+        "remember": "Merken"
     },
     "compare": {
         "no_compare": "Es gibt keine vergleichbaren Produkte.",

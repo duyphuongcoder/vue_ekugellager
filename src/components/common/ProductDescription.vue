@@ -1,8 +1,8 @@
 <template>
   <div class="tabs product-description">
     <b-tabs content-class="">
-      <b-tab title="Description" active><p>Symbol of lightness and delicacy, the hummingbird evokes curiosity and joy. Studio Design' PolyFaune collection features classic products with colorful patterns, inspired by the traditional japanese origamis. To wear with a chino or jeans. The sublimation textile printing process provides an exceptional color rendering and a color, guaranteed overtime.</p></b-tab>
-      <b-tab title="Product Details">
+      <b-tab :title="$t('products.description')" active><p>Symbol of lightness and delicacy, the hummingbird evokes curiosity and joy. Studio Design' PolyFaune collection features classic products with colorful patterns, inspired by the traditional japanese origamis. To wear with a chino or jeans. The sublimation textile printing process provides an exceptional color rendering and a color, guaranteed overtime.</p></b-tab>
+      <b-tab :title="$t('products.details')">
         <div class="product-reference">
           <label class="label">Reference <span itemprop="sku">demo_1</span></label>
         </div>

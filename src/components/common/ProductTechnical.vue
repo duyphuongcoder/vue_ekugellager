@@ -1,6 +1,6 @@
 <template>
   <section class="product-features">
-    <h6>Technische Daten</h6>
+    <h6>{{$t('products.technical_specifications')}}</h6>
     <b-table :items="items" class="data-sheet no-header">
     </b-table>
   </section>
