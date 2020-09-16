@@ -24,10 +24,22 @@
             </div>
             <b-col>
               <ul class="navbar-icon">
-                <li><a href class="topicon"><b-icon icon="cash-stack"></b-icon></a></li>
-                <li><a href class="topicon"><b-icon icon="truck"></b-icon></a></li>
-                <li><a href class="topicon"><b-icon icon="telephone-plus"></b-icon></a></li>
-                <li><a href class="topicon"><b-icon icon="question-circle"></b-icon></a></li>
+                <li><a href class="topicon">
+                  <b-icon icon="cash-stack" id="topicon1"></b-icon>
+                  <b-tooltip target="topicon1"><span v-html="this.$store.state.header.topnavbar.descw1"></span></b-tooltip>
+                </a></li>
+                <li><a href class="topicon">
+                  <b-icon icon="truck" id="topicon2"></b-icon>
+                  <b-tooltip target="topicon2"><span v-html="this.$store.state.header.topnavbar.descw2"></span></b-tooltip>
+                </a></li>
+                <li><a href class="topicon">
+                  <b-icon icon="telephone-plus" id="topicon3"></b-icon>
+                  <b-tooltip target="topicon3"><span v-html="this.$store.state.header.topnavbar.descw3"></span></b-tooltip>
+                </a></li>
+                <li><a href class="topicon">
+                  <b-icon icon="question-circle" id="topicon4"></b-icon>
+                  <b-tooltip target="topicon4"><span v-html="this.$store.state.header.topnavbar.descw4"></span></b-tooltip>
+                </a></li>
               </ul>
             </b-col>
           </b-col>
@@ -39,61 +51,84 @@
 
 <script>
 import TheLanguageSwitcher from '@/components/common/TheLanguageSwitcher'
+import { Trans } from '@/lang/Translation'
 export default {
   components: {
     TheLanguageSwitcher
   },
-  mounted () {
-    // Set the date we're counting down to
-    const d = new Date()
-    const today = new Date().toISOString().slice(0, 10)
-    const startDate = new Date(today + ' 08:00:00').getTime()
-    let targetDate = new Date(today + ' 19:00:00').getTime()
-    if (d.getDay() === 5) {
-      targetDate = new Date(today + ' 17:00:00').getTime()
+  created () {
+    this.topCounter()
+    if (!this.$store.state.header.topnavbar) {
+      this.$store.dispatch('get_topnavbar', this.getLangId(Trans.currentLanguage))
     }
-    let message = ''
-    if (d.getDay() !== 0 && d.getDay() !== 6) {
-      if ((d.getDay() !== 0 && d.getDay() !== 6) && (d.getDay() + 1 !== 0 && d.getDay() + 1 !== 6)) {
-        message = ''
+  },
+  methods: {
+    getLangId (lang) {
+      let langId = 1
+      switch (lang) {
+        case 'en':
+          langId = 2
+          break
+        case 'de':
+          langId = 1
+          break
+        default:
+          break
       }
-      // Update the count down every 1 second
-      const x = setInterval(function () {
-        // Get today's date and time
-        const now = new Date().getTime()
-        const compleatDistance = now - startDate
-        const width = (compleatDistance * 100) / (targetDate - startDate)
-        // Find the distance between now and the count down date
-        const distance = targetDate - now
-        // Time calculations for days, hours, minutes and seconds
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24))
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000)
-        // Display the result in the element with id="tp_timer"
-        let Timer = ''
-        Timer += days > 0 ? days + 'd ' : ''
-        Timer += hours > 0 ? hours + 'h ' : ''
-        Timer += (minutes > 0) && (hours => 0) ? minutes + 'm ' : '00m'
-        Timer += seconds > 0 ? seconds + 's ' : '00s'
-        if (document.getElementById('tp_timer')) {
-          document.getElementById('tp_timer').innerHTML = Timer
+      return langId
+    },
+    topCounter () {
+      // Set the date we're counting down to
+      const d = new Date()
+      const today = new Date().toISOString().slice(0, 10)
+      const startDate = new Date(today + ' 08:00:00').getTime()
+      let targetDate = new Date(today + ' 19:00:00').getTime()
+      if (d.getDay() === 5) {
+        targetDate = new Date(today + ' 17:00:00').getTime()
+      }
+      let message = ''
+      if (d.getDay() !== 0 && d.getDay() !== 6) {
+        if ((d.getDay() !== 0 && d.getDay() !== 6) && (d.getDay() + 1 !== 0 && d.getDay() + 1 !== 6)) {
+          message = ''
         }
-        // If the count down is finished, write some text
-        if (distance < 0) {
-          clearInterval(x)
+        // Update the count down every 1 second
+        const x = setInterval(function () {
+          // Get today's date and time
+          const now = new Date().getTime()
+          const compleatDistance = now - startDate
+          const width = (compleatDistance * 100) / (targetDate - startDate)
+          // Find the distance between now and the count down date
+          const distance = targetDate - now
+          // Time calculations for days, hours, minutes and seconds
+          const days = Math.floor(distance / (1000 * 60 * 60 * 24))
+          const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+          const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
+          const seconds = Math.floor((distance % (1000 * 60)) / 1000)
+          // Display the result in the element with id="tp_timer"
+          let Timer = ''
+          Timer += days > 0 ? days + 'd ' : ''
+          Timer += hours > 0 ? hours + 'h ' : ''
+          Timer += (minutes > 0) && (hours => 0) ? minutes + 'm ' : '00m'
+          Timer += seconds > 0 ? seconds + 's ' : '00s'
           if (document.getElementById('tp_timer')) {
-            document.getElementById('tp_timer').innerHTML = message
+            document.getElementById('tp_timer').innerHTML = Timer
           }
-        } else {
-          if (document.getElementById('red_triger')) {
-            document.getElementById('red_triger').style.width = width + '%'
+          // If the count down is finished, write some text
+          if (distance < 0) {
+            clearInterval(x)
+            if (document.getElementById('tp_timer')) {
+              document.getElementById('tp_timer').innerHTML = message
+            }
+          } else {
+            if (document.getElementById('red_triger')) {
+              document.getElementById('red_triger').style.width = width + '%'
+            }
           }
+        }, 1000)
+      } else {
+        if (document.getElementById('tp_timer')) {
+          document.getElementById('tp_timer').innerHTML = 'Wochenende'
         }
-      }, 1000)
-    } else {
-      if (document.getElementById('tp_timer')) {
-        document.getElementById('tp_timer').innerHTML = 'Wochenende'
       }
     }
   }
