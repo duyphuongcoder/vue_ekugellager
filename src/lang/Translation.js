@@ -109,6 +109,23 @@ const Trans = {
       ...to,
       params: { lang: this.currentLanguage, ...to.params }
     }
+  },
+  /**
+   * Get language index
+   */
+  getLangId (locale) {
+    let langId = 1
+    switch (locale) {
+      case 'en':
+        langId = 2
+        break
+      case 'de':
+        langId = 1
+        break
+      default:
+        break
+    }
+    return langId
   }
 }
 

@@ -8,16 +8,38 @@
       </b-col>
       <b-col cols="12" xl="6"  class="business-right">
         <div class="business-details">
-          <p class="right_block_desc">{{$t('custom_text_1.right')}}</p>
+          <p class="right_block_desc">{{text_left}}</p>
         </div>
       </b-col>
     </b-row>
-
   </b-container>
 </template>
 <script>
+import { HomeServices } from '@/services/index'
+import { Trans } from '@/lang/Translation'
 export default {
-
+  data () {
+    return {
+      text_left: '',
+      text_right: ''
+    }
+  },
+  created () {
+    this.getCustomText1()
+  },
+  methods: {
+    getCustomText1 () {
+      HomeServices.getCustomText1(Trans.getLangId(Trans.currentLanguage)).then(resp => {
+        console.log(resp)
+        this.text_left = resp.customhtml.left_desc
+      })
+    }
+  },
+  watch: {
+    $route (to, from) {
+      this.getCustomText1()
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>

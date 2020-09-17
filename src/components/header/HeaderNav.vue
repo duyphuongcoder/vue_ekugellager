@@ -59,24 +59,10 @@ export default {
   created () {
     this.topCounter()
     if (!this.$store.state.header.topnavbar) {
-      this.$store.dispatch('get_topnavbar', this.getLangId(Trans.currentLanguage))
+      this.$store.dispatch('get_topnavbar', Trans.getLangId(Trans.currentLanguage))
     }
   },
   methods: {
-    getLangId (lang) {
-      let langId = 1
-      switch (lang) {
-        case 'en':
-          langId = 2
-          break
-        case 'de':
-          langId = 1
-          break
-        default:
-          break
-      }
-      return langId
-    },
     topCounter () {
       // Set the date we're counting down to
       const d = new Date()

@@ -1,4 +1,4 @@
-import { Services } from '@/services/index'
+import { HeaderServices } from '@/services/index'
 
 const state = {
   topnavbar: null
@@ -13,7 +13,7 @@ const mutations = {
 const actions = {
   get_topnavbar ({ commit }, langId) {
     return new Promise((resolve, reject) => {
-      Services.getTopIcons(langId).then(resp => {
+      HeaderServices.getTopIcons(langId).then(resp => {
         commit('set_toptopnavbar', resp.topnavbar)
         resolve(resp)
       }).catch(err => {

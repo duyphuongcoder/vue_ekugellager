@@ -1,37 +1,23 @@
-import { apiBaseUrl, appToken } from '@/config/config'
+import {
+  getTopIcons
+} from './headerService'
 
-export const Services = {
-  getTopIcons,
+import {
+  getCustomText1
+} from './homeService'
+
+import {
   getProduct
+} from './productService'
+
+export const HeaderServices = {
+  getTopIcons
 }
 
-const requestOptions = {
-  method: 'GET',
-  headers: {
-    Authorization: 'Basic ' + appToken
-  }
+export const HomeServices = {
+  getCustomText1
 }
 
-function getTopIcons (langId) {
-  return fetch(`${apiBaseUrl}/rocctoppernavbar&language=${langId}&output_format=JSON`, requestOptions).then(handleResponse)
-}
-
-function getProduct () {
-  return fetch(`${apiBaseUrl}/products/18/&output_format=JSON`, requestOptions).then(handleResponse)
-}
-
-function handleResponse (response) {
-  return response.text().then(text => {
-    const data = text && JSON.parse(text)
-    if (!response.ok) {
-      if (response.status === 401) {
-        // auto logout if 401 response returned from api
-        // logout()
-        location.reload(true)
-      }
-      const error = (data && data.message) || response.statusText
-      return Promise.reject(error)
-    }
-    return data
-  })
+export const ProductServices = {
+  getProduct
 }
