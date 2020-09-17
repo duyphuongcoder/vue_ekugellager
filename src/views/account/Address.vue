@@ -125,12 +125,19 @@
                       <template v-slot:label>
                         {{$t('account.city')}} <span class="text-danger">*</span>
                       </template>
-                      <b-form-input
+                      <!-- <b-form-input
                       v-model="form.city"
                       required
                       type="text"
                       :placeholder="$t('account.city')"
-                      ></b-form-input>
+                      ></b-form-input> -->
+                      <region-select v-model="form.city"
+                      :country="form.country"
+                      :placeholder="$t('account.select_region')"
+                      :region="form.city"
+                      :autocomplete="true"
+                      :usei18n="false"
+                      className="form-control" />
                     </b-form-group>
                   </b-col>
                 </b-row>
@@ -140,13 +147,20 @@
                   <template v-slot:label>
                     {{$t('account.country')}} <span class="text-danger">*</span>
                   </template>
-                  <b-form-select
+                  <!-- <b-form-select
                     required
                     v-model="form.country"
                     value-field="code"
                     text-field="name"
                     :options="country_options">
-                  </b-form-select>
+                  </b-form-select> -->
+                  <country-select v-model="form.country"
+                  :country="form.country"
+                  :placeholder="$t('account.select_country')"
+                  topCountry="DE"
+                  :autocomplete="true"
+                  :usei18n="false"
+                  className="form-control" />
                 </b-form-group>
               </b-col>
             </b-row>
