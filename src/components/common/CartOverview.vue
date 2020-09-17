@@ -4,11 +4,11 @@
       <ul class="cart-items">
         <li class="cart_page_heading_li d-none d-md-block">
           <b-row>
-            <b-col md="2">Produkt</b-col>
-            <b-col md="3">Bestelldetails</b-col>
-            <b-col md="2">Menge</b-col>
-            <b-col md="2">STÜCKPREIS</b-col>
-            <b-col md="2">Total</b-col>
+            <b-col md="2">{{$t('products.product')}}</b-col>
+            <b-col md="3">{{$t('products.order_details')}}</b-col>
+            <b-col md="2">{{$t('products.amount')}}</b-col>
+            <b-col md="2">{{$t('products.unit_price')}}</b-col>
+            <b-col md="2">{{$t('products.total')}}</b-col>
             <b-col md="1">&nbsp;</b-col>
           </b-row>
         </li>

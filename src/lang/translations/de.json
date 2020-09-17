@@ -115,7 +115,8 @@
         "free": "Kostenlos",
         "total": "Gesamt",
         "shipping_address": "Lieferungsadresse",
-        "invoice_address": "Rechnungsadresse"
+        "invoice_address": "Rechnungsadresse",
+        "checkout": "Auschecken"
     },
     "products": {
         "manufacturer": "Hersteller",
@@ -134,7 +135,14 @@
         "tax_included": "Steuern inklusive",
         "ready_to_ship": "versandfertig",
         "compare": "Vergleichen",
-        "remember": "Merken"
+        "remember": "Merken",
+        "product": "Produkt",
+        "order_details": "Bestelldetails",
+        "amount": "Menge",
+        "unit_price": "STÜCKPREIS",
+        "total": "Gesamt",
+        "shipping": "Versand",
+        "use": "Verwenden"
     },
     "compare": {
         "no_compare": "Es gibt keine vergleichbaren Produkte.",

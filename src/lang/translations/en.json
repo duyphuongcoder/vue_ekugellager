@@ -115,7 +115,8 @@
         "free": "Free",
         "total": "Total",
         "shipping_address": "Shipping Address",
-        "invoice_address": "Invoice Address"
+        "invoice_address": "Invoice Address",
+        "checkout": "checkout"
     },
     "products": {
         "manufacturer": "Manufacturer",
@@ -134,7 +135,14 @@
         "tax_included": "Tax included",
         "ready_to_ship": "ready to ship",
         "compare": "Compare",
-        "remember": "Remember"
+        "remember": "Remember",
+        "product": "product",
+        "order_details": "order details",
+        "amount": "amount",
+        "unit_price": "unit price",
+        "total": "total",
+        "shipping": "shipping",
+        "use": "use"
     },
     "compare": {
         "no_compare": "There is no products to compare.",
