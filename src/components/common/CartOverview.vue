@@ -12,7 +12,7 @@
             <b-col md="1">&nbsp;</b-col>
           </b-row>
         </li>
-        <li class="cart-item cart_page_detail_li" v-for="(item, index) in items" :key="index">
+        <li class="cart-item cart_page_detail_li" v-for="(item, index) in items" :key="index" :class="{removed:(removedItems.includes(index))}">
           <b-row class="product-line-grid cart-detail-desktop">
             <b-col md="2" class="img">
               <div><b-img :src="item.img"></b-img></div>
@@ -22,7 +22,7 @@
                 <a class="name" href="#">{{item.name}}</a>
             </b-col>
             <b-col md="2" class="quantity">
-              <b-form-input type="number" min="1" :value="item.quantity"></b-form-input>
+              <b-form-input type="number" min="1" :value="item.quantity" v-model="item.quantity"></b-form-input>
             </b-col>
             <b-col md="2" class="unit_price">
               <p class="regular_price">{{item.price.unit + item.price.regular}}</p>
@@ -30,9 +30,9 @@
               <p class="current_price">{{item.price.unit + item.price.current}}</p>
             </b-col>
             <b-col md="2" class="total_price">
-              <p>€{{item.price.current * item.quantity}}</p>
+              <p>€{{(item.price.current * item.quantity).toFixed(2)}}</p>
             </b-col>
-            <b-col md="1" class="remove">
+            <b-col md="1" class="remove" @click="removeItem(index)">
               <b-icon icon="trash" font-scale="1.5"></b-icon>
             </b-col>
           </b-row>
@@ -48,7 +48,12 @@ export default {
   },
   data () {
     return {
-
+      removedItems: []
+    }
+  },
+  methods: {
+    removeItem (index) {
+      this.removedItems.push(index)
     }
   }
 }

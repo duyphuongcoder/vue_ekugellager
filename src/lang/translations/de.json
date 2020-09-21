@@ -93,6 +93,8 @@
         "zip_postal_code": "Zip/Postal Code",
         "city": "City",
         "country": "Country",
+        "select_region": "Region wählen",
+        "select_country": "Land auswählen",
         "vat_number": "VAT Number",
         "save": "save",
         "countrySelectorLabel": "Landesvorwahl",

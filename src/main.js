@@ -3,6 +3,7 @@ import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import Loading from 'vue-loading-overlay'
 import VuePhoneNumberInput from 'vue-phone-number-input'
 import VueZipCodeInput from 'vue-zipcode-input'
+import vueCountryRegionSelect from 'vue-country-region-select'
 import App from './App.vue'
 import router from './router'
 import store from './store'
@@ -25,7 +26,7 @@ Vue.config.productionTip = false
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 Vue.use(Loading)
-
+Vue.use(vueCountryRegionSelect)
 new Vue({
   router,
   store,
