@@ -43,7 +43,7 @@ import { ProductServices } from '@/services/index'
 import BlockCartModal from '@/components/common/BlockCartModal'
 import CategoryForm from '@/components/common/CategoryForm'
 import { BLOCK_CART_MODAL } from '@/constants/modal'
-import { loadingSpinnerConfig } from '@/config/config'
+import { loadingSpinnerConfig } from '@/config/settings'
 export default {
   name: 'startseite',
   components: {
