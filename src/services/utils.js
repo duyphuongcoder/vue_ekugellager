@@ -1,4 +1,4 @@
-import { appToken } from '@/config/config'
+import { appToken } from '@/config/settings'
 
 export const requestOptions = {
   method: 'GET',

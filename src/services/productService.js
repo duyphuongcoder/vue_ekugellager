@@ -1,4 +1,4 @@
-import { apiBaseUrl } from '@/config/config'
+import { apiBaseUrl } from '@/config/settings'
 import { requestOptions, handleResponse } from './utils'
 
 export function getProduct () {
