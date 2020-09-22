@@ -3,7 +3,9 @@ import {
 } from './headerService'
 
 import {
-  getCustomText1
+  getCustomText1,
+  getQuestions,
+  getAnswers
 } from './homeService'
 
 import {
@@ -15,7 +17,9 @@ export const HeaderServices = {
 }
 
 export const HomeServices = {
-  getCustomText1
+  getCustomText1,
+  getQuestions,
+  getAnswers
 }
 
 export const ProductServices = {

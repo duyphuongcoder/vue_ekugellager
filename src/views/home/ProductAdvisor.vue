@@ -10,7 +10,7 @@
           </div>
           <div class="advisor_contents">
             <b-collapse id="contents"  class="contents pt-3 pb-3">
-              <QuestionBox
+              <QuestionBox v-if="question_answers_loaded"
               :currentQuestion="questions.length > index?questions[index]:null"
               :next="next"
               :register="register"
@@ -29,82 +29,113 @@
 </template>
 <script>
 import QuestionBox from './QuestionBox'
+import { HomeServices } from '@/services/index'
+import { Trans } from '@/lang/Translation'
 export default {
   components: {
     QuestionBox
   },
   data () {
     return {
+      question_answers_loaded: false,
       questions: [
-        {
-          question: 'Do you like fashion?',
-          answers: [
-            'Yes, I totally become one with my clothes',
-            'Yes, a bit',
-            'Not so much...'
-          ]
-        },
-        {
-          question: 'Do you like art?',
-          answers: [
-            'Totally',
-            'I appreciate it',
-            'No, i dont like it'
-          ]
-        },
-        {
-          question: 'What is your opinion about hanging images on your wall?',
-          answers: [
-            'I do it, already having several images in my livingroom!',
-            'Maybe one image here and there...',
-            'I prefer function over design with some shelfes',
-            'Clean walls all the way!'
-          ]
-        },
-        {
-          question: 'How does your work desk look like?',
-          answers: [
-            'Clean and Tidy',
-            'I am the master of chaos'
-          ]
-        },
-        {
-          question: 'Are you open minded?',
-          answers: [
-            'Yes, I don\'t like boundaries',
-            'I think so',
-            'No, I need structure'
-          ]
-        },
-        {
-          question: 'Do you think the climate change exists?',
-          answers: [
-            'Yes, definetely',
-            'No, Trump is right'
-          ]
-        },
-        {
-          question: 'Do you do something active against it?',
-          answers: [
-            'Yes, I want solar panels on my roof at some time!',
-            'I just accept it.'
-          ]
-        }
+        // {
+        //   question: 'Do you like fashion?',
+        //   answers: [
+        //     'Yes, I totally become one with my clothes',
+        //     'Yes, a bit',
+        //     'Not so much...'
+        //   ]
+        // },
+        // {
+        //   question: 'Do you like art?',
+        //   answers: [
+        //     'Totally',
+        //     'I appreciate it',
+        //     'No, i dont like it'
+        //   ]
+        // },
+        // {
+        //   question: 'What is your opinion about hanging images on your wall?',
+        //   answers: [
+        //     'I do it, already having several images in my livingroom!',
+        //     'Maybe one image here and there...',
+        //     'I prefer function over design with some shelfes',
+        //     'Clean walls all the way!'
+        //   ]
+        // },
+        // {
+        //   question: 'How does your work desk look like?',
+        //   answers: [
+        //     'Clean and Tidy',
+        //     'I am the master of chaos'
+        //   ]
+        // },
+        // {
+        //   question: 'Are you open minded?',
+        //   answers: [
+        //     'Yes, I don\'t like boundaries',
+        //     'I think so',
+        //     'No, I need structure'
+        //   ]
+        // },
+        // {
+        //   question: 'Do you think the climate change exists?',
+        //   answers: [
+        //     'Yes, definetely',
+        //     'No, Trump is right'
+        //   ]
+        // },
+        // {
+        //   question: 'Do you do something active against it?',
+        //   answers: [
+        //     'Yes, I want solar panels on my roof at some time!',
+        //     'I just accept it.'
+        //   ]
+        // }
       ],
       index: 0,
       selectedAnswers: []
     }
   },
+  created () {
+    this.getQuestions()
+    // this.getAnswers()
+  },
   methods: {
+    getQuestions () {
+      HomeServices.getQuestions(Trans.getLangId(Trans.currentLanguage)).then(resp => {
+        // console.log(resp)
+        // get all questions
+        this.questions = resp.roccproductadvisor
+        this.getAnswers()
+      })
+    },
+    getAnswers () {
+      HomeServices.getAnswers(Trans.getLangId(Trans.currentLanguage)).then(resp => {
+        // add answers field to each question
+        var that = this
+        this.questions.forEach(function (question, index) {
+          that.questions[index].answers = resp.roccproductadvisor.filter((answer) => that.filterAnswers(answer, question.id))
+        })
+        this.question_answers_loaded = true
+        // console.log(this.questions)
+      })
+    },
+    filterAnswers (answer, questionId) {
+      return answer.id_roccproductadvisor_question === questionId
+    },
     next (answer) {
+      //  save selected question and answer id
       const selectedAnswer = {
-        question: this.index,
-        answer: answer
+        question: this.questions[this.index].id,
+        answer: this.questions[this.index].answers[answer].id
       }
       this.index++
       this.selectedAnswers.push(selectedAnswer)
     },
     register () {
+      console.log(this.selectedAnswers)
       this.$router.push(this.$i18nRoute({ name: 'login' }))
     }
   }

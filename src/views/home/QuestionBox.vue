@@ -10,7 +10,8 @@
           :value="index"
           v-model="selectedIndex"
           >
-          {{answer}}
+          {{answer.answer}}
+          <!-- test -->
         </b-form-radio>
       </b-form-group>
       <b-button  variant="danger" @click="nextQuestion">{{$t('product_advisor.furthur')}}</b-button>
@@ -39,6 +40,7 @@ export default {
       immediate: true,
       handler () {
         this.selectedIndex = null
+        console.log(this.currentQuestion)
       }
     }
   },

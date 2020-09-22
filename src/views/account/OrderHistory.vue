@@ -31,6 +31,10 @@
             </b-form-group>
           </b-form>
         </b-row>
+        <div class="day-orders mt-5">
+          <h4 class="text-left">24.12.2019</h4>
+          <OrderOfDay />
+        </div>
       </b-col>
     </b-row>
   </b-container>
@@ -38,9 +42,57 @@
 
 <script>
 import AccountNav from '@/components/common/AccountNav'
+import OrderOfDay from '@/components/common/OrderOfDay'
 export default {
   components: {
-    AccountNav
+    AccountNav,
+    OrderOfDay
+  },
+  data () {
+    return {
+      items:
+      [
+        {
+          img: 'https://ekugellager.roccshow.com/24-cart_default/hummingbird-notebook.jpg',
+          category: 'Startseite',
+          name: 'hummingbird notebook',
+          quantity: 1,
+          price: {
+            unit: '€',
+            regular: '15.35',
+            discount_type: '%',
+            discount: '20',
+            current: '12.28'
+          }
+        },
+        {
+          img: 'https://ekugellager.roccshow.com/24-cart_default/hummingbird-notebook.jpg',
+          category: 'Startseite',
+          name: 'hummingbird notebook',
+          quantity: 1,
+          price: {
+            unit: '€',
+            regular: '15.35',
+            discount_type: '%',
+            discount: '20',
+            current: '12.28'
+          }
+        },
+        {
+          img: 'https://ekugellager.roccshow.com/24-cart_default/hummingbird-notebook.jpg',
+          category: 'Startseite',
+          name: 'hummingbird notebook',
+          quantity: 1,
+          price: {
+            unit: '€',
+            regular: '15.35',
+            discount_type: '%',
+            discount: '20',
+            current: '12.28'
+          }
+        }
+      ]
+    }
   }
 }
 </script>
