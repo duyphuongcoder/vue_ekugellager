@@ -170,7 +170,8 @@
         "title": "PRODUCT ADVISOR",
         "description": "Use our product advisor and let us help you find the right product.",
         "furthur": "Further",
-        "register": "Register"
+        "register": "Register",
+        "view_products": "View Products"
     },
     "last_order": {
         "self": "STATUS OF YOUR LAST ORDER",

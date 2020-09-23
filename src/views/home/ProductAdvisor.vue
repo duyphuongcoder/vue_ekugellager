@@ -14,6 +14,7 @@
               :currentQuestion="questions.length > index?questions[index]:null"
               :next="next"
               :register="register"
+              :view_products="view_products"
               />
             </b-collapse>
             <div class="nav-link-up-question" v-if="questions.length > index" v-b-toggle.contents>
@@ -135,9 +136,13 @@ export default {
       this.selectedAnswers.push(selectedAnswer)
     },
     register () {
-      console.log(this.selectedAnswers)
+      // console.log(this.selectedAnswers)
+      this.$router.push(this.$i18nRoute({ name: 'login' }))
+    },
+    view_products () {
       this.$router.push(this.$i18nRoute({ name: 'login' }))
     }
+
   }
 }
 </script>

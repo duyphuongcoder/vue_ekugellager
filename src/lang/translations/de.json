@@ -170,7 +170,8 @@
         "title": "PRODUKTBERATER",
         "description": "Nutzen Sie unseren Produktberater und lassen Sie sich bei der Suche nach dem richtigen Produkt helfen.",
         "furthur": "Weiter",
-        "register": "Register"
+        "register": "Register",
+        "view_products": "View Products"
     },
     "last_order": {
         "self": "STATUS IHRER LETZTEN BESTELLUNG",
