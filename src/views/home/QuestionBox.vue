@@ -18,7 +18,8 @@
     </b-form>
   </div>
   <div class="advisor_question_block" v-else>
-    <b-button  variant="danger" @click="register">{{$t('product_advisor.register')}}</b-button>
+    <b-button  variant="danger" @click="view_products" v-if="this.$store.getters.isLoggedIn">{{$t('product_advisor.view_products')}}</b-button>
+    <b-button  variant="danger" @click="register" v-else>{{$t('product_advisor.register')}}</b-button>
   </div>
 </template>
 <script>
@@ -27,7 +28,8 @@ export default {
   props: {
     currentQuestion: Object,
     next: Function,
-    register: Function
+    register: Function,
+    view_products: Function
   },
   data () {
     return {
@@ -40,14 +42,12 @@ export default {
       immediate: true,
       handler () {
         this.selectedIndex = null
-        console.log(this.currentQuestion)
       }
     }
   },
   methods: {
     nextQuestion () {
       if (this.selectedIndex != null) {
-        console.log('selected')
         this.next(this.selectedIndex)
       } else {
         console.log('please select one')
