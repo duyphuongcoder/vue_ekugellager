@@ -6,6 +6,14 @@
         <FilterWrapper :filterdata="filterdata" :updatevalues="updatevalues" :dragend="dragend"/>
       </b-col>
       <b-col md="9" sm="12">
+        <div>
+          <b-form-tags
+           input-id="tags-basic"
+           v-model="activeFilters"
+           tag-variant="primary"
+           size="lg"
+          ></b-form-tags>
+        </div>
         <b-row class="products">
           <b-col lg="4" md="6" sm="12" v-for="(item, index) in products" :key="index">
             <ProductBox :product="products[index]" :addtocart="addToCart"/>
@@ -366,6 +374,7 @@ export default {
           image: 'https://ekugellager.roccshow.com/2-large_default/hummingbird-printed-t-shirt.jpg'
         }
       ],
+      activeFilters: ['Categories:Clothes', 'Size:S'],
       modalId: BLOCK_CART_MODAL,
       loader: null
     }
@@ -387,6 +396,7 @@ export default {
       setTimeout(() => {
         this.loader.hide()
       }, 2000)
+      this.activeFilters.push('Test:test')
     },
     dragend (value, id) {
       const max = this.filterdata[id].max
