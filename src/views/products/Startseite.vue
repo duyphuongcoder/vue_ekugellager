@@ -6,12 +6,15 @@
         <FilterWrapper :filterdata="filterdata" :updatevalues="updatevalues" :dragend="dragend"/>
       </b-col>
       <b-col md="9" sm="12">
-        <div>
+        <div class="active-filters-block mb-4">
+          <div class="filter-title"> <span> Active Filters: </span> </div>
           <b-form-tags
            input-id="tags-basic"
            v-model="activeFilters"
-           tag-variant="primary"
            size="lg"
+           no-add-on-enter
+           placeholder=""
+           disableAddButton
           ></b-form-tags>
         </div>
         <b-row class="products">
@@ -374,7 +377,7 @@ export default {
           image: 'https://ekugellager.roccshow.com/2-large_default/hummingbird-printed-t-shirt.jpg'
         }
       ],
-      activeFilters: ['Categories:Clothes', 'Size:S'],
+      activeFilters: ['Categories: Clothes', 'Size: S'],
       modalId: BLOCK_CART_MODAL,
       loader: null
     }
@@ -396,7 +399,7 @@ export default {
       setTimeout(() => {
         this.loader.hide()
       }, 2000)
-      this.activeFilters.push('Test:test')
+      this.activeFilters.push('Test: test')
     },
     dragend (value, id) {
       const max = this.filterdata[id].max
@@ -426,6 +429,28 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.active-filters-block {
+  display: flex;
+  .filter-title {
+    width: 150px;
+    padding-top: 12px;
+    background: #ced4da;
+    font-weight: 600;
+  }
+  .b-form-tags {
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    background-color: #ced4da;
+    input {
+      outline: none !important;
+    }
+  }
+  .b-form-tags.focus {
+    border-color: #ced4da;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+}
 .products {
   margin-bottom: 20px;
 }

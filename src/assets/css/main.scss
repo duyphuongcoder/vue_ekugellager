@@ -468,3 +468,9 @@ a:hover {
 .removed {
     display: none;
 }
+
+.active-filters-block {
+    .b-form-tags-button {
+        display: none !important;
+    }
+}
