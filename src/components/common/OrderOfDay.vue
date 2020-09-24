@@ -79,7 +79,7 @@ export default {
     word-break: break-word;
   }
   .header {
-    word-break: break-word;
+    // word-break: break-word;
   }
   .item {
     border-top: 1px solid #E9E9E9;
@@ -93,6 +93,14 @@ export default {
     }
     .detail {
       line-height: 1;
+    }
+    .image {
+      @media screen and (max-width: 992px) and (min-width: 768px) {
+        img {
+          position: relative;
+          left: -100%;
+        }
+      }
     }
   }
   .day-total {
