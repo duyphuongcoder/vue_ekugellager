@@ -6,34 +6,54 @@
       </b-col>
       <b-col class="account-right" md="9" sm="12">
         <b-row class="header">
-          <b-col cols="12" sm="6">
+          <b-col cols="12" md="6">
             <h1 class="header-title text-center text-sm-left">{{$t('account.order_history')}}</h1>
           </b-col>
-          <b-col cols="12" sm="6">
+          <b-col cols="12" md="6" class="d-none d-md-block">
             <p class="text-right"><a href="#" class="return-history">Merchandise returns<b-icon icon="arrow-counterclockwise"></b-icon></a></p>
           </b-col>
         </b-row>
-        <b-row class="my-3 float-right search-section">
+        <b-row class="my-3 float-right search-section d-none d-md-block">
           <b-form inline>
-            <b-form-group class="">
-              <b-form-input class="search-input"
+            <b-input-group>
+              <b-input class="search-input"
                 type="text"
                 placeholder="Auftragsübersicht Oder Artikel"
               >
-              </b-form-input>
-              <b-button class="search-btn"><b-icon icon="search"></b-icon></b-button>
-            </b-form-group>
-            <b-form-group>
-              <b-form-input
-                type="date"
-              >
-              </b-form-input>
-            </b-form-group>
+              </b-input>
+              <b-input-group-append>
+                <b-button class="search-btn"><b-icon icon="search"></b-icon></b-button>
+              </b-input-group-append>
+            </b-input-group>
+            <b-form-input
+              type="date"
+            >
+            </b-form-input>
           </b-form>
         </b-row>
-        <div class="day-orders mt-5">
-          <h4 class="text-left">24.12.2019</h4>
-          <OrderOfDay />
+        <div class="day-orders">
+          <b-row class="date-time">
+            <div class="sidebar d-none d-md-block">
+              24 Dez
+            </div>
+            <h4 class="text-left">24.12.2019</h4>
+          </b-row>
+          <b-row class="content-section">
+            <div class="sidebar d-none d-md-block"></div>
+            <div class="content"><OrderOfDay/></div>
+          </b-row>
+        </div>
+        <div class="day-orders mt-0">
+          <b-row class="date-time">
+            <div class="sidebar d-none d-md-block">
+              24 Dez
+            </div>
+            <h4 class="text-left">24.12.2019</h4>
+          </b-row>
+          <b-row class="content-section">
+            <div class="sidebar d-none d-md-block"></div>
+            <div class="content"><OrderOfDay/></div>
+          </b-row>
         </div>
       </b-col>
     </b-row>
@@ -125,12 +145,57 @@ export default {
   .search-section {
     .search-input {
       padding-right: 40px;
+      // border-right: none;
     }
     .search-btn {
+      // border: 1px solid #ced4da;
       border: none;
+      z-index: 100;
       color: #495057;
       background: none;
       transform: translate(-100%, 0);
+    }
+  }
+  .day-orders {
+    margin-top: 70px;
+    h4 {
+      color: #12407E;
+    }
+    .sidebar {
+      width: 15px;
+      background: #12407E;
+      box-shadow: 0 0 0 1px #12407E;
+      left: -20px;
+      @media screen and (max-width: 992px) {
+        left: -10px;
+      }
+      position: relative;
+    }
+    .content {
+      width: calc( 100% - 15px );
+    }
+    .date-time {
+      .sidebar {
+        color: white;
+        border-radius: 100%;
+        width: 60px;
+        padding: 10px;
+        position: relative;
+        left: -42px;
+        // top: 5px;
+        font-size: 20px;
+        @media screen and (max-width: 992px) {
+          left: -30px;
+        }
+      }
+      .text-left {
+        left: -20px;
+        top: 20px;
+        position: relative;
+        @media screen and (max-width: 768px) {
+          position: unset;
+        }
+      }
     }
   }
 }
