@@ -31,9 +31,17 @@
             </b-form-group>
           </b-form>
         </b-row>
-        <div class="day-orders mt-5">
-          <h4 class="text-left">24.12.2019</h4>
-          <OrderOfDay />
+        <div class="day-orders">
+          <b-row class="date-time">
+            <div class="sidebar d-none d-md-block">
+              24 Dez
+            </div>
+            <h4 class="text-left">24.12.2019</h4>
+          </b-row>
+          <b-row class="content-section">
+            <div class="sidebar d-none d-md-block"></div>
+            <div class="content"><OrderOfDay/></div>
+          </b-row>
         </div>
       </b-col>
     </b-row>
@@ -133,5 +141,73 @@ export default {
       transform: translate(-100%, 0);
     }
   }
+  .day-orders {
+    margin-top: 70px;
+    h4 {
+      color: #12407E;
+    }
+    .sidebar {
+      width: 15px;
+      background: #12407E;
+      left: -20px;
+      position: relative;
+    }
+    .content {
+      width: calc( 100% - 15px );
+    }
+    .date-time {
+      .sidebar {
+        color: white;
+        border-radius: 100%;
+        /* width: auto; */
+        width: 60px;
+        padding: 10px;
+        position: relative;
+        left: -40px;
+        top: 5px;
+        font-size: 20px;
+      }
+    }
+  }
 }
+// .circle {
+//   position: relative;
+//   display: block;
+//   margin: 2em 0;
+//   background-color: transparent;
+//   color: #222;
+//   text-align: center;
+// }
+
+// .circle:after {
+//   display: block;
+//   padding-bottom: 100%;
+//   width: 100%;
+//   height: 0;
+//   border-radius: 50%;
+//   background-color: #ddd;
+//   content: "";
+// }
+
+// .circle__inner {
+//   position: absolute;
+//   top: 0;
+//   bottom: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+// }
+
+// .circle__wrapper {
+//   display: table;
+//   width: 100%;
+//   height: 100%;
+// }
+
+// .circle__content {
+//   display: table-cell;
+//   padding: 1em;
+//   vertical-align: middle;
+// }
+
 </style>
