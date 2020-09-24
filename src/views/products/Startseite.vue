@@ -384,8 +384,14 @@ export default {
   },
   mounted () {
     this.loader = this.$loading.show(loadingSpinnerConfig)
-    ProductServices.getProduct(1).then(resp => {
-      console.log(resp)
+    // ProductServices.getProduct(1).then(resp => {
+    //   console.log(resp)
+    // })
+    ProductServices.getProductFilters().then(resp => {
+      console.log('filters resp', resp)
+      this.loader.hide()
+    }).catch(err => {
+      console.log('error', err)
       this.loader.hide()
     })
   },
