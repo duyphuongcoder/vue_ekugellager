@@ -72,238 +72,7 @@ export default {
           route: 'home'
         }
       ],
-      filterdata: [
-        {
-          type: 'box',
-          content: {
-            title: 'Categories',
-            items: [
-              {
-                name: 'Clothes',
-                count: 5
-              },
-              {
-                name: 'Laufrolle',
-                count: 1
-              },
-              {
-                name: 'Lineartechnik',
-                count: 1
-              }
-            ]
-          }
-        },
-        {
-          type: 'box',
-          content: {
-            title: 'Size',
-            items: [
-              {
-                name: 'S',
-                count: 1
-              },
-              {
-                name: 'M',
-                count: 1
-              },
-              {
-                name: 'L',
-                count: 1
-              },
-              {
-                name: 'XL',
-                count: 1
-              }
-            ]
-          }
-        },
-        {
-          type: 'box',
-          content: {
-            title: 'Color',
-            items: [
-              {
-                name: 'White',
-                count: 4
-              },
-              {
-                name: 'Black',
-                count: 4
-              }
-            ]
-          }
-        },
-        {
-          type: 'box',
-          content: {
-            title: 'Property',
-            items: [
-              {
-                name: '120 pages',
-                count: 4
-              },
-              {
-                name: 'Long sleeves',
-                count: 1
-              },
-              {
-                name: 'Removable cover',
-                count: 4
-              },
-              {
-                name: 'Short sleeves',
-                count: 1
-              }
-            ]
-          }
-        },
-        {
-          type: 'box',
-          content: {
-            title: 'Composition',
-            items: [
-              {
-                name: 'Ceramic',
-                count: 4
-              },
-              {
-                name: 'Cotton',
-                count: 2
-              },
-              {
-                name: 'Matt paper',
-                count: 3
-              },
-              {
-                name: 'Polyester',
-                count: 3
-              },
-              {
-                name: 'Recycled cardboard',
-                count: 3
-              }
-            ]
-          }
-        },
-        {
-          type: 'box',
-          content: {
-            title: 'Size',
-            items: [
-              {
-                name: 'S',
-                count: 1
-              },
-              {
-                name: 'M',
-                count: 1
-              },
-              {
-                name: 'L',
-                count: 1
-              },
-              {
-                name: 'XL',
-                count: 1
-              }
-            ]
-          }
-        },
-        {
-          type: 'box',
-          content: {
-            title: 'Availability',
-            items: [
-              {
-                name: 'Not available',
-                count: 2
-              },
-              {
-                name: 'In stock',
-                count: 27
-              }
-            ]
-          }
-        },
-        {
-          type: 'box',
-          content: {
-            title: 'Brand',
-            items: [
-              {
-                name: 'FAG',
-                count: 1
-              },
-              {
-                name: 'NKE',
-                count: 1
-              },
-              {
-                name: 'TIMKEN',
-                count: 1
-              }
-            ]
-          }
-        },
-        {
-          type: 'slide',
-          title: 'Weight',
-          min: 0,
-          max: 7.664,
-          unit: 'kg'
-        },
-        {
-          type: 'slide',
-          title: 'Price',
-          min: 0.00,
-          max: 781.00,
-          unit: '€'
-        },
-        {
-          type: 'box',
-          content: {
-            title: 'Dimension',
-            items: [
-              {
-                name: '40x60cm',
-                count: 3
-              },
-              {
-                name: '60x90cm',
-                count: 3
-              },
-              {
-                name: '80x120cm',
-                count: 3
-              }
-            ]
-          }
-        },
-        {
-          type: 'box',
-          content: {
-            title: 'Paper Type',
-            items: [
-              {
-                name: 'Ruled',
-                count: 2
-              },
-              {
-                name: 'Plain',
-                count: 2
-              },
-              {
-                name: 'Squarred',
-                count: 2
-              },
-              {
-                name: 'Dotes',
-                count: 2
-              }
-            ]
-          }
-        }
-      ],
+      filterdata: [],
       rows: 100,
       perPage: 10,
       currentPage: 1,
@@ -388,7 +157,21 @@ export default {
     //   console.log(resp)
     // })
     ProductServices.getProductFilters().then(resp => {
-      console.log('filters resp', resp)
+      const facets = resp.roccomediaproductfacets
+      const filters = resp.roccomediaproductfilters
+      facets.forEach(facet => {
+        const filter = { type: facet.widgetType }
+        if (facet.widgetType === 'slider') {
+          filter.title = facet.label
+          filter.min = facet.min
+          filter.max = facet.max
+          filter.unit = facet.unit
+        }
+        if (facet.widgetType === 'checkbox') {
+          filter.content = { title: facet.label, items: filters.filter(item => item.id_facet === facet.id) }
+        }
+        this.filterdata.push(filter)
+      })
       this.loader.hide()
     }).catch(err => {
       console.log('error', err)
@@ -396,7 +179,6 @@ export default {
     })
   },
   created () {
-    console.log('Startseite:', this.$store.state.auth)
   },
   methods: {
     updatevalues (values, id) {
