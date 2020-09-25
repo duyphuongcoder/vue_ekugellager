@@ -10,7 +10,7 @@
             <h1 class="header-title text-center text-sm-left">{{$t('account.order_history')}}</h1>
           </b-col>
           <b-col cols="12" md="6" class="d-none d-md-block">
-            <p class="text-right"><a href="#" class="return-history">Merchandise returns<b-icon icon="arrow-counterclockwise"></b-icon></a></p>
+            <p class="text-right"><a href="#" class="return-history">{{$t('account.merchandise_returns')}}<b-icon icon="arrow-counterclockwise"></b-icon></a></p>
           </b-col>
         </b-row>
         <b-row class="my-3 float-right search-section d-none d-md-block">
@@ -18,7 +18,7 @@
             <b-input-group>
               <b-input class="search-input"
                 type="text"
-                placeholder="Auftragsübersicht Oder Artikel"
+                :placeholder="$t('order_history.search_placeholder')"
               >
               </b-input>
               <b-input-group-append>
@@ -31,28 +31,16 @@
             </b-form-input>
           </b-form>
         </b-row>
-        <div class="day-orders">
+        <div class="day-orders" v-for="(order, index) in order_history" :key="index" :class="{'mt-0':(index!=0)}">
           <b-row class="date-time">
             <div class="sidebar d-none d-md-block">
               24 Dez
             </div>
-            <h4 class="text-left">24.12.2019</h4>
+            <h4 class="text-left">{{order.date}}</h4>
           </b-row>
           <b-row class="content-section">
             <div class="sidebar d-none d-md-block"></div>
-            <div class="content"><OrderOfDay/></div>
-          </b-row>
-        </div>
-        <div class="day-orders mt-0">
-          <b-row class="date-time">
-            <div class="sidebar d-none d-md-block">
-              24 Dez
-            </div>
-            <h4 class="text-left">24.12.2019</h4>
-          </b-row>
-          <b-row class="content-section">
-            <div class="sidebar d-none d-md-block"></div>
-            <div class="content"><OrderOfDay/></div>
+            <div class="content"><OrderOfDay :items="order.items"/></div>
           </b-row>
         </div>
       </b-col>
@@ -70,6 +58,78 @@ export default {
   },
   data () {
     return {
+      order_history: [
+        {
+          date: '24.12.2019',
+          items: [
+            {
+              name: 'Rillenkugellager',
+              image: 'https://ekugellager.roccshow.com/24-cart_default/hummingbird-notebook.jpg',
+              sn: '16002 BE-XL-JPA-T41A',
+              type: 'BOSCH-Rexroth',
+              size: '10 x 26 x 8 mm',
+              amount: 100,
+              unit_price: '0.5',
+              unit: '€'
+            },
+            {
+              name: 'Rillenkugellager',
+              image: 'https://ekugellager.roccshow.com/24-cart_default/hummingbird-notebook.jpg',
+              sn: '16002 BE-XL-JPA-T41A',
+              type: 'BOSCH-Rexroth',
+              size: '10 x 26 x 8 mm',
+              amount: 100,
+              unit_price: '0.5',
+              unit: '€'
+            },
+            {
+              name: 'Rillenkugellager',
+              image: 'https://ekugellager.roccshow.com/24-cart_default/hummingbird-notebook.jpg',
+              sn: '16002 BE-XL-JPA-T41A',
+              type: 'BOSCH-Rexroth',
+              size: '10 x 26 x 8 mm',
+              amount: 100,
+              unit_price: '0.5',
+              unit: '€'
+            }
+          ]
+        },
+        {
+          date: '24.12.2019',
+          items: [
+            {
+              name: 'Rillenkugellager',
+              image: 'https://ekugellager.roccshow.com/24-cart_default/hummingbird-notebook.jpg',
+              sn: '16002 BE-XL-JPA-T41A',
+              type: 'BOSCH-Rexroth',
+              size: '10 x 26 x 8 mm',
+              amount: 100,
+              unit_price: 0.5,
+              unit: '€'
+            },
+            {
+              name: 'Rillenkugellager',
+              image: 'https://ekugellager.roccshow.com/24-cart_default/hummingbird-notebook.jpg',
+              sn: '16002 BE-XL-JPA-T41A',
+              type: 'BOSCH-Rexroth',
+              size: '10 x 26 x 8 mm',
+              amount: 100,
+              unit_price: '0.5',
+              unit: '€'
+            },
+            {
+              name: 'Rillenkugellager',
+              image: 'https://ekugellager.roccshow.com/24-cart_default/hummingbird-notebook.jpg',
+              sn: '16002 BE-XL-JPA-T41A',
+              type: 'BOSCH-Rexroth',
+              size: '10 x 26 x 8 mm',
+              amount: 100,
+              unit_price: '0.5',
+              unit: '€'
+            }
+          ]
+        }
+      ],
       items:
       [
         {

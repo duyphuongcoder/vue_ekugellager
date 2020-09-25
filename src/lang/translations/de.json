@@ -120,6 +120,17 @@
         "invoice_address": "Rechnungsadresse",
         "checkout": "Auschecken"
     },
+    "order_history": {
+        "search_placeholder": "Autragsnummer oder Artikel",
+        "name": "AUFTRAG 123456",
+        "details": "BESTELLDETAILS",
+        "return": "AUFTRAG RETOURNIEREN",
+        "track_delivery": "LIEFERUNG VERFOLGEN",
+        "invoice": "RECHNUNG",
+        "items": "ARTIKEL",
+        "re_order": "Erneut bestellen",
+        "total": "Gesamt"
+    },
     "products": {
         "manufacturer": "Hersteller",
         "quality": "Qualität",

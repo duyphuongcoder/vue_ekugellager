@@ -120,6 +120,17 @@
         "invoice_address": "Invoice Address",
         "checkout": "checkout"
     },
+    "order_history": {
+        "search_placeholder": "Order number or article",
+        "name": "ORDER 123456",
+        "details": "ORDER DETAILS",
+        "return": "RETURN ORDER",
+        "track_delivery": "TRACK DELIVERY",
+        "invoice": "INVOICE",
+        "items": "ITEMS",
+        "re_order": "Re-Order", 
+        "total": "total"
+    },
     "products": {
         "manufacturer": "Manufacturer",
         "quality": "Quality",
@@ -178,7 +189,7 @@
         "step_1": "Order received",
         "step_2": "Composition of your delivery",
         "step_3": "Quality control",
-        "step_4": "shipping"
+        "step_4": "Shipping"
     },
     "custom_text_1": {
         "left": "Specialist dealer for ball bearings, linear technology & V-belts",

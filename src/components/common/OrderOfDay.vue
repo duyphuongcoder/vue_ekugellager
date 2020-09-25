@@ -1,70 +1,46 @@
 <template>
   <div class="order-of-day">
     <b-row class="quick-actions p-3 mx-0">
-      <b-col md="2">AuftraG 123456</b-col>
-      <b-col md="2">Bestelldetails</b-col>
-      <b-col md="3">Auftrag RetouRnieren</b-col>
-      <b-col md="3">Lieferung verfolgen</b-col>
-      <b-col md="2">Rechnung</b-col>
+      <b-col md="2">{{$t('order_history.name')}}</b-col>
+      <b-col md="2">{{$t('order_history.details')}}</b-col>
+      <b-col md="3">{{$t('order_history.return')}}</b-col>
+      <b-col md="3">{{$t('order_history.track_delivery')}}</b-col>
+      <b-col md="2">{{$t('invoice')}}</b-col>
     </b-row>
     <b-row class="header p-3 mx-0">
-      <b-col md="2">ARTIKEL</b-col>
+      <b-col md="2">{{$t('order_history.items')}}</b-col>
       <b-col md="3"></b-col>
-      <b-col md="2">MENGE</b-col>
-      <b-col md="2">STÜCKPREIS</b-col>
-      <b-col md="1">GESAMT</b-col>
+      <b-col md="2">{{$t('products.amount')}}</b-col>
+      <b-col md="2">{{$t('products.unit_price')}}</b-col>
+      <b-col md="1">{{$t('products.total')}}</b-col>
       <b-col md="2"></b-col>
     </b-row>
-    <b-row class="item p-3 align-items-center mx-0">
-      <b-col md="2" class="image"><b-img src="https://ekugellager.roccshow.com/24-cart_default/hummingbird-notebook.jpg"></b-img></b-col>
+    <b-row class="item p-3 align-items-center mx-0" v-for="(item, index) in items" :key="index">
+      <b-col md="2" class="image"><b-img :src="item.image"></b-img></b-col>
       <b-col md="3" class="detail">
-        <p>Rillenkugellager</p>
-        <p>16002 BE-XL-JPA-T41A</p>
-        <p>BOSCH-Rexroth</p>
-        <p>10 x 26 x 8 mm</p>
+        <p>{{item.name}}</p>
+        <p>{{item.sn}}</p>
+        <p>{{item.type}}</p>
+        <p>{{item.size}}</p>
       </b-col>
-      <b-col md="2" class="count"><b-input value="1000"></b-input></b-col>
-      <b-col md="2" class="unit-price">0.50 €</b-col>
-      <b-col md="1" class="total-price">21.50 €</b-col>
-      <b-col md="2" class="return-btn"><b-button>Erneut bestellen</b-button></b-col>
-    </b-row>
-    <b-row class="item p-3 align-items-center mx-0">
-      <b-col md="2" class="image"><b-img src="https://ekugellager.roccshow.com/24-cart_default/hummingbird-notebook.jpg"></b-img></b-col>
-      <b-col md="3" class="detail">
-        <p>Rillenkugellager</p>
-        <p>16002 BE-XL-JPA-T41A</p>
-        <p>BOSCH-Rexroth</p>
-        <p>10 x 26 x 8 mm</p>
-      </b-col>
-      <b-col md="2" class="count"><b-input value="1000"></b-input></b-col>
-      <b-col md="2" class="unit-price">0.50 €</b-col>
-      <b-col md="1" class="total-price">21.50 €</b-col>
-      <b-col md="2" class="return-btn"><b-button>Erneut bestellen</b-button></b-col>
-    </b-row>
-    <b-row class="item p-3 align-items-center mx-0">
-      <b-col md="2" class="image"><b-img src="https://ekugellager.roccshow.com/24-cart_default/hummingbird-notebook.jpg"></b-img></b-col>
-      <b-col md="3" class="detail">
-        <p>Rillenkugellager</p>
-        <p>16002 BE-XL-JPA-T41A</p>
-        <p>BOSCH-Rexroth</p>
-        <p>10 x 26 x 8 mm</p>
-      </b-col>
-      <b-col md="2" class="count"><b-input value="1000"></b-input></b-col>
-      <b-col md="2" class="unit-price">0.50 €</b-col>
-      <b-col md="1" class="total-price">21.50 €</b-col>
-      <b-col md="2" class="return-btn"><b-button>Erneut bestellen</b-button></b-col>
+      <b-col md="2" class="count"><b-input :value="item.amount"></b-input></b-col>
+      <b-col md="2" class="unit-price">{{item.unit_price}}{{item.unit}}</b-col>
+      <b-col md="1" class="total-price">{{item.unit_price * item.amount}} {{item.unit}}</b-col>
+      <b-col md="2" class="return-btn"><b-button>{{$t('order_history.re_order')}}</b-button></b-col>
     </b-row>
     <b-row class="day-total mx-0 p-3">
       <b-col md="7"></b-col>
-      <b-col md="2" >GESAMT</b-col>
-      <b-col md="1" >64.50€</b-col>
+      <b-col md="2">{{$t('order_history.total')}}</b-col>
+      <b-col md="1" >150€</b-col>
       <b-col md="2"></b-col>
     </b-row>
   </div>
 </template>
 <script>
 export default {
-
+  props: {
+    items: Array
+  }
 }
 </script>>
 <style lang="scss" scoped>
@@ -80,6 +56,7 @@ export default {
   }
   .header {
     // word-break: break-word;
+    text-transform: uppercase;
   }
   .item {
     border-top: 1px solid #E9E9E9;
@@ -105,6 +82,7 @@ export default {
   }
   .day-total {
     border-top: 1px solid #E9E9E9;
+    text-transform: uppercase;
   }
 }
 </style>
