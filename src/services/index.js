@@ -9,7 +9,8 @@ import {
 } from './homeService'
 
 import {
-  getProduct
+  getProduct,
+  getProductFilters
 } from './productService'
 
 export const HeaderServices = {
@@ -23,5 +24,6 @@ export const HomeServices = {
 }
 
 export const ProductServices = {
-  getProduct
+  getProduct,
+  getProductFilters
 }
