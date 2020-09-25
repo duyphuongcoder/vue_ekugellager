@@ -36,7 +36,7 @@ import Startseite from '../views/products/Startseite.vue'
 import Women from '../views/products/Women.vue'
 import Product from '../views/products/Product.vue'
 import Cart from '../views/products/Cart.vue'
-
+import RecommendProducts from '@/views/products/RecommendProducts'
 import Order from '../views/order/Order.vue'
 
 Vue.use(VueRouter)
@@ -221,6 +221,11 @@ const routes = [
         meta: {
           layout: 'order'
         }
+      },
+      {
+        path: 'recommend-products',
+        name: 'recommend-products',
+        component: RecommendProducts
       }
     ]
   },

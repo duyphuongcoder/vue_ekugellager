@@ -140,7 +140,7 @@ export default {
       this.$router.push(this.$i18nRoute({ name: 'login' }))
     },
     view_products () {
-      this.$router.push(this.$i18nRoute({ name: 'login' }))
+      this.$router.push(this.$i18nRoute({ name: 'recommend-products' }))
     }
 
   }
