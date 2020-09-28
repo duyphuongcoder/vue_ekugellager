@@ -13,7 +13,7 @@
       <b-col cols="3" v-for="(step, index) in steps" :key="index">
         <b-col lg="12">
           <b-row>
-            <div class="step"> {{index+1}} </div>
+            <div class="step" :class="{'active':(step.status)}"> {{step.status?index+1:''}}<b-icon icon="check" v-if="!step.status"></b-icon> </div>
           </b-row>
         </b-col>
         <div class="description">
@@ -26,6 +26,7 @@
   </b-container>
 </template>
 <script>
+import { HomeServices } from '@/services/index'
 export default {
   data () {
     return {
@@ -33,24 +34,44 @@ export default {
         {
           description: this.$t('last_order.step_1'),
           icon_type: 'b-icon',
-          icon_name: 'cart3'
+          icon_name: 'cart3',
+          status: 0
         },
         {
           description: this.$t('last_order.step_2'),
           icon_type: 'fa-icon',
-          icon_name: 'hand-paper-o'
+          icon_name: 'hand-paper-o',
+          status: 0
         },
         {
           description: this.$t('last_order.step_3'),
           icon_type: 'fa-icon',
-          icon_name: 'thumbs-o-up'
+          icon_name: 'thumbs-o-up',
+          status: 0
         },
         {
           description: this.$t('last_order.step_4'),
           icon_type: 'b-icon',
-          icon_name: 'truck'
+          icon_name: 'truck',
+          status: 0
         }
-      ]
+      ],
+      last_order: {}
+    }
+  },
+  created () {
+    this.lastOrder()
+  },
+  methods: {
+    lastOrder () {
+      HomeServices.lastOrder().then(res => {
+        this.last_order = res.lastorder
+        this.steps[0].status = this.last_order.step1
+        this.steps[1].status = this.last_order.step2
+        this.steps[2].status = this.last_order.step3
+        this.steps[3].status = this.last_order.step4
+        // console.log(this.last_order)
+      })
     }
   },
   watch: {
@@ -102,7 +123,8 @@ export default {
   .row {
     .step {
       color: #fff;
-      background: #12407E;
+      // background: #12407E;
+      background: #ccc;
       font-size: 24px;
       line-height: 70px;
       height: 70px;
@@ -115,9 +137,14 @@ export default {
        line-height: 40px;
       }
     }
+    .step.active {
+      background: #12407E;
+      z-index: 10;
+    }
     :not(:first-child) .step:before {
       content: '';
-      background: #12407E;
+      // background: #12407E;
+      background: #ccc;
       height: 25px;
       display: block;
       position: absolute;
@@ -130,6 +157,9 @@ export default {
         left: -75%;
         width: 100%;
       }
+    }
+    :not(:first-child) .step.active:before {
+      background: #12407E;
     }
     .description {
       width: 100%;

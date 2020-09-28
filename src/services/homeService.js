@@ -10,3 +10,6 @@ export function getQuestions (langId) {
 export function getAnswers (langId) {
   return fetch(`${apiBaseUrl}/roccproductadvisor?output_format=JSON&display=full&query=answers`, requestOptions).then(handleResponse)
 }
+export function lastOrder () {
+  return fetch(`${apiBaseUrl}/rocchomelastorder?output_format=JSON`, requestOptions).then(handleResponse)
+}
