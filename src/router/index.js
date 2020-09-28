@@ -38,7 +38,7 @@ import Product from '../views/products/Product.vue'
 import Cart from '../views/products/Cart.vue'
 import RecommendProducts from '@/views/products/RecommendProducts'
 import Order from '../views/order/Order.vue'
-
+import Error404 from '../views/errors/404.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -226,6 +226,11 @@ const routes = [
         path: 'recommend-products',
         name: 'recommend-products',
         component: RecommendProducts
+      },
+      {
+        path: '404',
+        name: '404',
+        component: Error404
       }
     ]
   },
