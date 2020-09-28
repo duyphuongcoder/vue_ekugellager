@@ -60,6 +60,7 @@
 </template>
 
 <script>
+import { UserServices } from '@/services/index'
 export default {
   name: 'login',
   data () {
@@ -75,8 +76,11 @@ export default {
   methods: {
     onSubmit (evt) {
       evt.preventDefault()
-      this.$store.dispatch('login', this.form)
-      this.$router.push('home')
+      UserServices.userLogin(this.form).then(response => {
+        console.log('login response result:', response)
+      })
+      // this.$store.dispatch('login', this.form)
+      // this.$router.push('home')
     },
     onReset (evt) {
       evt.preventDefault()

@@ -26,19 +26,19 @@
               <ul class="navbar-icon">
                 <li><a href class="topicon">
                   <b-icon icon="cash-stack" id="topicon1"></b-icon>
-                  <b-tooltip target="topicon1"><span v-html="this.$store.state.header.topnavbar.descw1"></span></b-tooltip>
+                  <b-tooltip v-if="this.$store.state.header && this.$store.state.header.topnavbar" target="topicon1"><span v-html="this.$store.state.header.topnavbar.descw1"></span></b-tooltip>
                 </a></li>
                 <li><a href class="topicon">
                   <b-icon icon="truck" id="topicon2"></b-icon>
-                  <b-tooltip target="topicon2"><span v-html="this.$store.state.header.topnavbar.descw2"></span></b-tooltip>
+                  <b-tooltip v-if="this.$store.state.header && this.$store.state.header.topnavbar" target="topicon2"><span v-html="this.$store.state.header.topnavbar.descw2"></span></b-tooltip>
                 </a></li>
                 <li><a href class="topicon">
                   <b-icon icon="telephone-plus" id="topicon3"></b-icon>
-                  <b-tooltip target="topicon3"><span v-html="this.$store.state.header.topnavbar.descw3"></span></b-tooltip>
+                  <b-tooltip v-if="this.$store.state.header && this.$store.state.header.topnavbar" target="topicon3"><span v-html="this.$store.state.header.topnavbar.descw3"></span></b-tooltip>
                 </a></li>
                 <li><a href class="topicon">
                   <b-icon icon="question-circle" id="topicon4"></b-icon>
-                  <b-tooltip target="topicon4"><span v-html="this.$store.state.header.topnavbar.descw4"></span></b-tooltip>
+                  <b-tooltip v-if="this.$store.state.header && this.$store.state.header.topnavbar" target="topicon4"><span v-html="this.$store.state.header.topnavbar.descw4"></span></b-tooltip>
                 </a></li>
               </ul>
             </b-col>

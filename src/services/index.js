@@ -1,4 +1,8 @@
 import {
+  userLogin
+} from './userService'
+
+import {
   getTopIcons
 } from './headerService'
 
@@ -13,6 +17,10 @@ import {
   getProduct,
   getProductFilters
 } from './productService'
+
+export const UserServices = {
+  userLogin
+}
 
 export const HeaderServices = {
   getTopIcons
