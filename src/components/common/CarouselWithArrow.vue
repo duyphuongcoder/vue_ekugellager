@@ -26,6 +26,7 @@
       <div class="item" v-for="(item, index) in items" :key="index" @click="selectItem(index)">
         <div :class="{active:(index==selected)}">
           <div class="rank_count">{{item}}</div>
+          <!-- <span v-if="current_rank==index+1">current rank</span> -->
         </div>
       </div>
     </carousel>
@@ -40,7 +41,8 @@ export default {
   props: {
     selectItem: Function,
     selected: Number,
-    items: Array
+    items: Array,
+    current_rank: Number
   },
   data () {
     return {
@@ -76,6 +78,12 @@ export default {
     background: #b60d27;
     color: #fff;
     border-color: #b60d27;
+  }
+  span {
+        font-weight: 300;
+    font-size: 16px;
+    color: #fff;
+    padding-top: 10px;
   }
 }
 </style>>

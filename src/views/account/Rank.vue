@@ -5,12 +5,12 @@
         <AccountNav />
       </b-col>
       <b-col class="account-right" md="9" sm="12">
-        <h1 class="header-title">{{$t('account.rank')}}</h1>
+        <h1 class="header-title">{{$t('rank.self')}}</h1>
         <div class="rank-rightbar">
           <div class="tab-content" :key="selected" v-if="selected!=null">
-            <div class="rank_view">0<span>Rang</span></div>
+            <div class="rank_view">{{current_rank}}<span>{{$t('rank.self')}}</span></div>
             <div class="rank_content">
-              <h2>Rangvorteile {{selected + 1}}</h2>
+              <h2>Rangvorteile {{selected+1}}</h2>
               <ul>
                 <li><b-icon icon="check" font-scale="2"></b-icon><span>Lorem ipsum dolor sit amet, consetetu</span></li>
                 <li><b-icon icon="check" font-scale="2"></b-icon><span>Lorem ipsum dolor sit amet, consetetu</span></li>
@@ -23,17 +23,18 @@
             <CarouselWithArrow
             :selectItem="selectRank"
             :selected="selected"
-            :items="ranks"/>
+            :items="ranks"
+            :current_rank="current_rank"/>
           </div>
           <div>
             <div class="progress-section pt-3">
               <b-row  class="mb-3">
                 <b-col cols="2" class="min"><span>{{progress.min}}</span></b-col>
-                <b-col cols="8" class="value"><b-progress variant="white" value="0.18" :max="progress.max" :min="progress.max"></b-progress></b-col>
+                <b-col cols="8" class="value"><b-progress variant="white" :value="progress.value" max="1"></b-progress></b-col>
                 <b-col cols="2" class="max"><span>{{progress.max}}</span></b-col>
               </b-row>
-              <p class="mb-5">45.51/250.00 €</p>
-              <p>204.49 € Umsatz bis zum nachsten Rang</p>
+              <p class="mb-5">{{current_value}}/{{next_value}} €</p>
+              <p>{{next_value - current_value}} € {{$t('rank.turn_over_description')}}</p>
             </div>
           </div>
         </div>
@@ -58,18 +59,35 @@ export default {
       [
         1, 2, 3, 4, 5, 6, 7, 8, 9, 10
       ],
+      current_rank: 0,
+      current_value: 0,
+      next_value: 0,
       progress:
       {
         min: 0,
         max: 1,
-        value: 0.18
+        value: 0
       }
     }
   },
   methods: {
     selectRank (index) {
       this.selected = index
+    },
+    currentRank () {
+      this.current_rank = 2
+      this.current_value = 682.88
+      this.next_value = 1000
+      this.progress.value = this.current_value / this.next_value
+      if (this.current_rank) {
+        this.selected = this.current_rank - 1
+        this.progress.min = this.current_rank
+        this.progress.max = this.current_rank + 1
+      }
     }
+  },
+  created () {
+    this.currentRank()
   }
 }
 </script>

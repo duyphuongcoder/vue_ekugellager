@@ -73,7 +73,7 @@
         "personal_advisor": "Persona Advisor",
         "compare": "Vergleichen Sie",
         "my_wishlist": "Meine Wunschliste",
-        "rank": "Rank",
+        "rank": "Rang",
         "log_out": "Abmelden",
         "order_reference": "Bestellnummer",
         "date": "Datum",
@@ -130,6 +130,10 @@
         "items": "ARTIKEL",
         "re_order": "Erneut bestellen",
         "total": "Gesamt"
+    },
+    "rank": {
+        "self": "Rang",
+        "turn_over_description": "Umsatz bis zum nachsten Rang"
     },
     "products": {
         "manufacturer": "Hersteller",

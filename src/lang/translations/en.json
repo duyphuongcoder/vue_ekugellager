@@ -131,6 +131,10 @@
         "re_order": "Re-Order", 
         "total": "total"
     },
+    "rank": {
+        "self": "Rank",
+        "turn_over_description": "turnover up to the next rank"
+    },
     "products": {
         "manufacturer": "Manufacturer",
         "quality": "Quality",
