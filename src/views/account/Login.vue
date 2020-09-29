@@ -8,6 +8,9 @@
         <div class="login-form login-form-mt">
           <b-form @submit="onSubmit" @reset="onReset" v-if="show">
             <b-row>
+              <b-col cols="12" class="text-center p-2" v-if="failedMessage">
+                <span class="failed-info"> {{failedMessage}} </span>
+              </b-col>
               <b-col md="6" xm="12">
                 <b-form-group id="input-group-1" label-for="input-1">
                   <b-form-input
@@ -60,7 +63,7 @@
 </template>
 
 <script>
-import { UserServices } from '@/services/index'
+import { loadingSpinnerConfig } from '@/config/settings'
 export default {
   name: 'login',
   data () {
@@ -70,17 +73,30 @@ export default {
         password: ''
       },
       show: true,
-      password_hidden: true
+      password_hidden: true,
+      failedMessage: ''
+    }
+  },
+  mounted () {
+    if (this.$store.getters.isLoggedIn) {
+      this.$router.push({ name: 'home' })
     }
   },
   methods: {
     onSubmit (evt) {
       evt.preventDefault()
-      UserServices.userLogin(this.form).then(response => {
-        console.log('login response result:', response)
+      this.failedMessage = ''
+      this.loader = this.$loading.show(loadingSpinnerConfig)
+      this.$store.dispatch('login', this.form).then(response => {
+        if (!response.customer) {
+          this.failedMessage = response.errors[0]
+        } else {
+          this.$router.push({ name: 'home' })
+        }
+        this.loader.hide()
+      }).catch(err => {
+        console.log(err)
       })
-      // this.$store.dispatch('login', this.form)
-      // this.$router.push('home')
     },
     onReset (evt) {
       evt.preventDefault()
