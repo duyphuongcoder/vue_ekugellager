@@ -97,6 +97,7 @@
         "select_country": "Select Country",
         "vat_number": "VAT Number",
         "save": "save",
+        "create_address": "Create new address",
         "countrySelectorLabel": "Country code",
         "countrySelectorError": "Choose a country",
         "phoneNumberLabel": "Phone number",

@@ -26,7 +26,7 @@
           <p class="add-new-address">
             <router-link :to="$i18nRoute({ name: 'address' })">
               <b-icon icon="plus"></b-icon>
-              <span>Create new address</span>
+              <span>{{$t('account.create_address')}}</span>
             </router-link>
           </p>
         </div>
