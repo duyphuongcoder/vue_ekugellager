@@ -41,9 +41,14 @@ const actions = {
       return err
     })
   },
-  register ({ commit }, user) {
-    return new Promise((resolve, reject) => {
-      commit('auth_request')
+  async register ({ commit }, payload) {
+    return await UserServices.register(payload).then(resp => {
+      if (resp.customer) {
+        commit('auth_success', { token: resp.customer.secure_key, user: resp.customer })
+      }
+      return resp
+    }).catch(err => {
+      return err
     })
   },
   logout ({ commit }) {
