@@ -30,7 +30,6 @@ export default {
   methods: {
     getCustomText1 () {
       HomeServices.getCustomText1(Trans.getLangId(Trans.currentLanguage)).then(resp => {
-        console.log(resp)
         this.text_left = resp.customhtml.left_desc
       })
     }

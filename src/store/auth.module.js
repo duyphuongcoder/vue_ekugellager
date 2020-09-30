@@ -1,3 +1,5 @@
+import { UserServices } from '@/services/index'
+
 const state = {
   status: '',
   token: localStorage.getItem('ekugellager_token') || '',
@@ -9,7 +11,6 @@ const mutations = {
     state.status = 'loading'
   },
   auth_success (state, data) {
-    console.log('auth_success', data)
     state.status = 'success'
     state.token = data.token
     state.user = data.user
@@ -29,15 +30,25 @@ const mutations = {
 }
 
 const actions = {
-  login ({ commit }, payload) {
-    return new Promise((resolve, reject) => {
-      commit('auth_request')
-      commit('auth_success', { token: 'token', user: payload }) // for TEST
+  async login ({ commit }, payload) {
+    return await UserServices.login(payload).then(resp => {
+      if (resp.customer) {
+        commit('auth_success', { token: resp.customer.secure_key, user: resp.customer })
+      }
+      return resp
+    }).catch(err => {
+      console.log(err)
+      return err
     })
   },
-  register ({ commit }, user) {
-    return new Promise((resolve, reject) => {
-      commit('auth_request')
+  async register ({ commit }, payload) {
+    return await UserServices.register(payload).then(resp => {
+      if (resp.customer) {
+        commit('auth_success', { token: resp.customer.secure_key, user: resp.customer })
+      }
+      return resp
+    }).catch(err => {
+      return err
     })
   },
   logout ({ commit }) {
@@ -50,10 +61,10 @@ const actions = {
 
 const getters = {
   isLoggedIn: state => !!state.token,
-  authStatus: state => state.status,
   user (state) {
     return state.user
-  }
+  },
+  authStatus: state => state.status
 }
 
 export default {

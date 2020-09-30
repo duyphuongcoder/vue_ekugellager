@@ -1,5 +1,6 @@
 import {
-  userLogin
+  login,
+  register
 } from './userService'
 
 import {
@@ -19,7 +20,8 @@ import {
 } from './productService'
 
 export const UserServices = {
-  userLogin
+  login,
+  register
 }
 
 export const HeaderServices = {

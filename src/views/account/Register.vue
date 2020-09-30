@@ -7,6 +7,9 @@
       <div class="register-form register-form-mt">
         <b-form @submit="onSubmit" @reset="onReset" v-if="show">
           <b-row>
+            <b-col cols="12" class="text-center p-2" v-if="failedMessage">
+              <span class="failed-info"> {{failedMessage}} </span>
+            </b-col>
             <b-col cols="12 text-left">
               <label class="form-control-label">
                 {{$t('register.social_title')}}
@@ -15,8 +18,8 @@
             <b-col cols="12 text-left">
               <b-form-group id="input-group-4">
                 <b-form-checkbox-group id="checkboxes-sex">
-                  <b-form-radio v-model="form.sex" name="some-radios" value="male">{{$t('register.Mr')}}</b-form-radio>
-                  <b-form-radio v-model="form.sex" name="some-radios" value="female">{{$t('register.Mrs')}}</b-form-radio>
+                  <b-form-radio v-model="form.id_gender" name="some-radios" :value="1">{{$t('register.Mr')}}</b-form-radio>
+                  <b-form-radio v-model="form.id_gender" name="some-radios" :value="0">{{$t('register.Mrs')}}</b-form-radio>
                 </b-form-checkbox-group>
               </b-form-group>
             </b-col>
@@ -24,7 +27,7 @@
               <b-form-group id="input-group-first-name" label-for="input-first">
                 <b-form-input
                   id="input-first"
-                  v-model="form.firstName"
+                  v-model="form.firstname"
                   type="text"
                   required
                   :placeholder="$t('register.first_name')"
@@ -36,7 +39,7 @@
                 <b-form-input
                   type="text"
                   id="input-last"
-                  v-model="form.lastName"
+                  v-model="form.lastname"
                   required
                   :placeholder="$t('register.last_name')"
                 ></b-form-input>
@@ -94,7 +97,7 @@
             <b-col>
             <b-form-checkbox
               id="checkbox-1"
-              v-model="form.check1"
+              v-model="form.optin"
               name="checkbox-1"
               :value="1"
               :unchecked-value="0"
@@ -108,7 +111,7 @@
             <b-col>
             <b-form-checkbox
               id="checkbox-2"
-              v-model="form.check2"
+              v-model="form.newsletter"
               name="checkbox-2"
               :value="1"
               :unchecked-value="0"
@@ -124,7 +127,7 @@
             <b-col>
             <b-form-checkbox
               id="checkbox-3"
-              v-model="form.check3"
+              v-model="is_checked_terms_privacy"
               name="checkbox-3"
               :value="1"
               :unchecked-value="0"
@@ -155,41 +158,60 @@
 </template>
 
 <script>
+import { loadingSpinnerConfig } from '@/config/settings'
 export default {
   name: 'register',
   data () {
     return {
       form: {
-        sex: 'male',
-        firstName: '',
-        lastName: '',
+        id_gender: 1,
+        firstname: '',
+        lastname: '',
         email: '',
         password: '',
         birthday: '',
-        check1: 0,
-        check2: 0,
-        check3: 0
+        optin: 0,
+        newsletter: 0
       },
+      is_checked_terms_privacy: 0,
       show: true,
-      password_hidden: true
+      password_hidden: true,
+      failedMessage: ''
     }
   },
   methods: {
     onSubmit (evt) {
       evt.preventDefault()
-      alert(JSON.stringify(this.form))
+      this.failedMessage = ''
+      if (this.is_checked_terms_privacy === 0) {
+        this.failedMessage = 'Please accept our Terms And Conditions'
+      }
+      if (this.failedMessage === '') {
+        this.loader = this.$loading.show(loadingSpinnerConfig)
+        this.$store.dispatch('register', this.form).then(response => {
+          if (!response.customer) {
+            this.failedMessage = response.errors[0].message
+          } else {
+            this.$router.push({ name: 'home' })
+          }
+          this.loader.hide()
+        }).catch(err => {
+          console.log(err)
+          this.loader.hide()
+        })
+      }
     },
     onReset (evt) {
       evt.preventDefault()
-      this.form.sex = 'male'
-      this.form.firstName = ''
-      this.form.lastName = ''
+      this.form.id_gender = 'male'
+      this.form.firstname = ''
+      this.form.lastname = ''
       this.form.email = ''
       this.form.password = ''
       this.form.birthday = ''
-      this.form.check1 = 0
-      this.form.check2 = 0
-      this.form.check3 = 0
+      this.form.optin = 0
+      this.form.newsletter = 0
+      this.form.is_checked_terms_privacy = 0
       this.show = false
       this.$nextTick(() => {
         this.show = true

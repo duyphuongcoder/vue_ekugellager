@@ -8,12 +8,20 @@ const requestOptions = {
   }
 }
 
-export function userLogin (payload) {
-  console.log(payload)
+export function login (payload) {
   const formData = new FormData()
   formData.append('email', payload.email)
   formData.append('password', payload.password)
   requestOptions.body = formData
-  console.log(requestOptions)
   return fetch(`${apiBaseUrl}/roccomediaapi/login?output_format=JSON`, requestOptions).then(handleResponse)
+}
+
+export function register (payload) {
+  const formData = new FormData()
+  let key
+  for (key in payload) {
+    formData.append(key, payload[key])
+  }
+  requestOptions.body = formData
+  return fetch(`${apiBaseUrl}/roccomediaapi/register`, requestOptions).then(handleResponse)
 }
