@@ -7,6 +7,10 @@
             {{$t('last_order.self')}}
           </span>
         </h1>
+        <div class="details-section" v-if="last_order.id_customer">
+          <span> <a href="#">Order: SUBHQOBUY</a></span>
+          <span>{{last_order.date_add}}</span><br>
+        </div>
       </b-col>
     </div>
     <b-row>
@@ -88,6 +92,20 @@ export default {
 .lastorder-section {
   margin-bottom: 50px;
   padding: 40px 0px;
+  .head-title {
+    .details-section {
+      text-align: right;
+      margin-bottom: 40px;
+      span, a {
+        font-weight: 400;
+        font-family: 'Lato';
+        text-align: right;
+        margin-left: 15px;
+        color: #12407E;
+        font-size: 14px;
+      }
+    }
+  }
   .head-title h1{
     color: #12407E;
     font-weight: 300;
