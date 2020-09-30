@@ -25,3 +25,10 @@ export function register (payload) {
   requestOptions.body = formData
   return fetch(`${apiBaseUrl}/roccomediaapi/register`, requestOptions).then(handleResponse)
 }
+
+export function logout (payload) {
+  const formData = new FormData()
+  formData.append('id_customer', payload.id_customer)
+  requestOptions.body = formData
+  return fetch(`${apiBaseUrl}/roccomediaapi/logout`, requestOptions).then(handleResponse)
+}
