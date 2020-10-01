@@ -25,3 +25,9 @@ export function register (payload) {
   requestOptions.body = formData
   return fetch(`${apiBaseUrl}/roccomediaapi/register`, requestOptions).then(handleResponse)
 }
+export function forgotPassword (email) {
+  var formData = new FormData()
+  formData.append('email', email)
+  requestOptions.body = formData
+  return fetch(`${apiBaseUrl}/roccomediaapi/forgotpassword?output_format=JSON`, requestOptions).then(handleResponse)
+}

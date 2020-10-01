@@ -58,9 +58,15 @@
     },
     "password_recovery": {
         "title": "Forgot your password?",
+        "email_address": "Email address",
         "description": "Please enter the email address you used to register. You will receive a temporary link to reset your password.",
-        "send_link": "Send Rest Link",
+        "send_link": "Send Reset Link",
         "send": "Send",
+        "email_sent": "If this email address has been registered in our shop, you will receive a link to reset your password at ",
+        "new_password": "New Password",
+        "password_confirm": "Password Confirm",
+        "change_password": "Change Password",
+        "wrong_or_expired_link": "The password change request expired. You should ask for a new one.",
         "back_to_login": "Back to login"
     },
     "account": {

@@ -58,9 +58,15 @@
     },
     "password_recovery": {
         "title": "Passwort vergessen?",
+        "email_address": "E-Mail-Adresse",
         "description": "Bitte geben Sie die E-Mail-Adresse ein, mit der Sie sich registriert haben. Sie erhalten einen temporären Link zum Zurücksetzen Ihres Passworts.",
         "send_link": "Reset-Link senden",
         "send": "senden",
+        "email_sent": "Wenn diese E-Mail-Adresse in unserem Shop registriert wurde, erhalten Sie einen Link zum Zurücksetzen Ihres Passworts unter ",
+        "new_password": "Neues Kennwort",
+        "password_confirm": "Passwortbestätigung",
+        "change_password": "Passwort ändern",
+        "wrong_or_expired_link": "Die Anforderung eines neuen Passworts ist abgelaufen. Fordern Sie es noch einmal an.",
         "back_to_login": "Zurück zur Anmeldeseite"
     },
     "account": {
