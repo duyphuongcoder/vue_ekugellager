@@ -228,7 +228,7 @@ const routes = [
         component: RecommendProducts
       },
       {
-        path: '404',
+        path: '*',
         name: '404',
         component: Error404
       }
