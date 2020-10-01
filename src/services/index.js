@@ -1,7 +1,8 @@
 import {
   login,
   register,
-  forgotPassword
+  forgotPassword,
+  logout
 } from './userService'
 
 import {
@@ -23,7 +24,8 @@ import {
 export const UserServices = {
   login,
   register,
-  forgotPassword
+  forgotPassword,
+  logout
 }
 
 export const HeaderServices = {

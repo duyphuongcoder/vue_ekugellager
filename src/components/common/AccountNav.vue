@@ -63,6 +63,7 @@
 </template>
 
 <script>
+import { loadingSpinnerConfig } from '@/config/settings'
 export default {
   data () {
     return {
@@ -71,8 +72,11 @@ export default {
   },
   methods: {
     logout () {
-      this.$store.dispatch('logout').then(resp => {
-        this.$router.push('home')
+      const user = this.$store.getters.user
+      this.loader = this.$loading.show(loadingSpinnerConfig)
+      this.$store.dispatch('logout', user.id).then(resp => {
+        this.loader.hide()
+        this.$router.push({ name: 'home' })
       })
     }
   }

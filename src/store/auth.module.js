@@ -51,10 +51,12 @@ const actions = {
       return err
     })
   },
-  logout ({ commit }) {
-    return new Promise((resolve, reject) => {
+  async logout ({ commit }, id) {
+    return await UserServices.logout({ id_customer: id }).then((resp) => {
       commit('logout')
-      resolve()
+      return resp
+    }).catch(err => {
+      return err
     })
   }
 }

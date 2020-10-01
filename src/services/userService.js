@@ -31,3 +31,9 @@ export function forgotPassword (email) {
   requestOptions.body = formData
   return fetch(`${apiBaseUrl}/roccomediaapi/forgotpassword?output_format=JSON`, requestOptions).then(handleResponse)
 }
+export function logout (payload) {
+  const formData = new FormData()
+  formData.append('id_customer', payload.id_customer)
+  requestOptions.body = formData
+  return fetch(`${apiBaseUrl}/roccomediaapi/logout`, requestOptions).then(handleResponse)
+}
