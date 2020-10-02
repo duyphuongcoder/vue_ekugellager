@@ -179,6 +179,11 @@ export default {
       failedMessage: ''
     }
   },
+  mounted () {
+    if (this.$store.getters.isLoggedIn) {
+      this.$router.push({ name: 'home' })
+    }
+  },
   methods: {
     onSubmit (evt) {
       evt.preventDefault()

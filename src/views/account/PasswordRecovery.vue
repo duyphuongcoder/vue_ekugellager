@@ -91,6 +91,9 @@ export default {
     }
   },
   mounted () {
+    if (this.$store.getters.isLoggedIn) {
+      this.$router.push({ name: 'home' })
+    }
     this.token = this.$route.query.token
     this.id_customer = this.$route.query.id_customer
     this.reset_token = this.$route.query.reset_token

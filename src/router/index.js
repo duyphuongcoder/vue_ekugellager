@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import { Trans } from '@/lang/Translation.js'
+import store from '../store'
 
 import Home from '../views/home/Home.vue'
 import Login from '../views/account/Login.vue'
@@ -65,64 +66,97 @@ const routes = [
         component: Register
       },
       {
-        path: 'my-account',
-        name: 'my-account',
-        component: MyAccount
-      },
-      {
         path: 'password-recovery',
         name: 'password-recovery',
         component: PasswordRecovery
       },
       {
+        path: 'my-account',
+        name: 'my-account',
+        component: MyAccount,
+        meta: {
+          requiresAuth: true
+        }
+      },
+      {
         path: 'order-history',
         name: 'order-history',
-        component: OrderHistory
+        component: OrderHistory,
+        meta: {
+          requiresAuth: true
+        }
       },
       {
         path: 'order-follow',
         name: 'order-follow',
-        component: OrderFollow
+        component: OrderFollow,
+        meta: {
+          requiresAuth: true
+        }
       },
       {
         path: 'addresses',
         name: 'addresses',
-        component: Addresses
+        component: Addresses,
+        meta: {
+          requiresAuth: true
+        }
       },
       {
         path: 'address',
         name: 'address',
-        component: Address
+        component: Address,
+        meta: {
+          requiresAuth: true
+        }
       },
       {
         path: 'advisor',
         name: 'advisor',
-        component: Advisor
+        component: Advisor,
+        meta: {
+          requiresAuth: true
+        }
       },
       {
         path: 'comparator',
         name: 'comparator',
-        component: Comparator
+        component: Comparator,
+        meta: {
+          requiresAuth: true
+        }
       },
       {
         path: 'identity',
         name: 'identity',
-        component: Identity
+        component: Identity,
+        meta: {
+          requiresAuth: true
+        }
       },
       {
         path: 'offene-posten',
         name: 'offene-posten',
-        component: OffenePosten
+        component: OffenePosten,
+        meta: {
+          requiresAuth: true
+        }
       },
       {
         path: 'rank',
         name: 'rank',
-        component: Rank
+        component: Rank,
+        meta: {
+          requiresAuth: true
+        }
       },
       {
         path: 'wishlist',
         name: 'wishlist',
-        component: Wishlist
+        component: Wishlist,
+        meta: {
+          requiresAuth: true
+        }
       },
       {
         path: 'product/:id_product',
@@ -246,6 +280,18 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    if (!store.getters.isLoggedIn) {
+      next({ name: 'login' })
+    } else {
+      next()
+    }
+  } else {
+    next()
+  }
 })
 
 export default router
