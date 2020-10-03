@@ -13,10 +13,10 @@
                 <b-icon icon="x-circle" font-scale="2"></b-icon>
               </a>
             </b-col>
-            <b-col md="7">test test, aaaaaa . 45673 aaaaa Germany, </b-col>
-            <b-col md="3">My Address invoice</b-col>
+            <b-col md="7">{{address.firstname +' '+ address.lastname + ', '+ address.address1+ '. '+ address.postcode + ' ' + address.city + ' ' + address.country + ','}} </b-col>
+            <b-col md="3">{{address.alias}}</b-col>
             <b-col md="1">
-              <router-link :to="$i18nRoute({ name: 'address', query: { id_address: index }})">
+              <router-link :to="$i18nRoute({ name: 'address', query: { id_address: address.id }})">
                 <b-icon icon="pencil" font-scale="2"></b-icon>
               </router-link>
             </b-col>
@@ -37,6 +37,7 @@
 
 <script>
 import AccountNav from '@/components/common/AccountNav'
+import { UserServices } from '@/services/index'
 export default {
   components: {
     AccountNav
@@ -45,7 +46,6 @@ export default {
     return {
       addresses:
       [
-        1, 2, 3, 4, 5
       ],
       removedAddresses: []
     }
@@ -54,7 +54,16 @@ export default {
     removeItem (index, $event) {
       $event.preventDefault()
       this.removedAddresses.push(index)
+    },
+    getAddresses (id) {
+      UserServices.getAddresses(id).then(res => {
+        console.log(res)
+        this.addresses = res.addresses
+      })
     }
+  },
+  mounted () {
+    this.getAddresses(this.$store.getters.user.id)
   }
 }
 </script>

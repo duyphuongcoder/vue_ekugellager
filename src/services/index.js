@@ -2,7 +2,9 @@ import {
   login,
   register,
   forgotPassword,
-  logout
+  logout,
+  getAddresses,
+  newAddress
 } from './userService'
 
 import {
@@ -25,7 +27,9 @@ export const UserServices = {
   login,
   register,
   forgotPassword,
-  logout
+  logout,
+  getAddresses,
+  newAddress
 }
 
 export const HeaderServices = {

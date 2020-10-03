@@ -7,7 +7,7 @@
       <b-col class="account-right" md="9" sm="12">
         <h1 class="header-title">{{ $t(headerTitle) }}</h1>
         <div class="address">
-          <b-form class="text-left">
+          <b-form class="text-left" @submit="submit">
             <b-row>
               <b-col cols="12" md="6">
                 <b-form-group >
@@ -69,7 +69,7 @@
                     {{$t('account.phone')}}
                   </template>
                   <VuePhoneNumberInput v-model="form.phone" @update="getPayload"
-                  default-country-code="DE"
+                  :default-country-code="form.country"
                   :translations="translations"/>
                 </b-form-group>
               </b-col>
@@ -191,6 +191,7 @@
 <script>
 import AccountNav from '@/components/common/AccountNav'
 import { countryList } from '@/constants/countries'
+import { UserServices } from '@/services/index'
 export default {
   components: {
     AccountNav
@@ -201,6 +202,7 @@ export default {
   data () {
     return {
       addressId: undefined,
+      address: '',
       headerTitle: 'account.new_address',
       form:
       {
@@ -229,26 +231,42 @@ export default {
     getPayload (payload) {
       // console.log(payload)
       // console.log(this.$i18n.locale)
+    },
+    getAddresses (id) {
+      UserServices.getAddresses(id).then(res => {
+        this.address = res.addresses.filter(item => item.id === this.addressId)[0]
+        if (this.address) {
+          this.form = {
+            alias: this.address.alias,
+            first_name: this.address.firstname,
+            last_name: this.address.lastname,
+            company: this.address.company,
+            phone: this.address.phone,
+            address: this.address.address1,
+            address_code: this.address.address2,
+            zip_postal_code: this.address.postcode,
+            city: this.address.city,
+            country: this.address.country_iso_code,
+            vat_number: this.address.vat_number
+          }
+        }
+      })
+    },
+    newAddress (payload) {
+      UserServices.newAddress(payload)
+    },
+    submit (e) {
+      e.preventDefault()
+      if (this.addressId === undefined) {
+        this.newAddress(this.form)
+      }
     }
   },
   mounted () {
     this.addressId = this.$route.query.id_address
     if (this.addressId !== undefined) {
       this.headerTitle = 'account.update_your_address'
-
-      this.form = {
-        alias: 'test alias',
-        first_name: 'test first name',
-        last_name: 'test last name',
-        company: 'test company',
-        phone: '439343',
-        address: 'test address',
-        address_code: 'test address code',
-        zip_postal_code: 'test postal code',
-        city: 'test city',
-        country: 'DE',
-        vat_number: '13434'
-      }
+      this.getAddresses(this.$store.getters.user.id)
     }
   },
   watch: {

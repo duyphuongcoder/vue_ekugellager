@@ -4,7 +4,6 @@ import createPersistedState from 'vuex-persistedstate'
 
 import auth from './auth.module'
 import header from './header.module'
-
 Vue.use(Vuex)
 
 export default new Vuex.Store({
