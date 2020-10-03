@@ -253,7 +253,7 @@ export default {
       })
     },
     newAddress (payload) {
-      UserServices.newAddress(payload)
+      UserServices.newAddress(payload, this.$store.getters.user)
     },
     submit (e) {
       e.preventDefault()
