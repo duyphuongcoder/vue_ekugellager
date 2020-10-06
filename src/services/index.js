@@ -4,7 +4,8 @@ import {
   forgotPassword,
   logout,
   getAddresses,
-  newAddress
+  newEditAddress,
+  deleteAddress
 } from './userService'
 
 import {
@@ -29,7 +30,8 @@ export const UserServices = {
   forgotPassword,
   logout,
   getAddresses,
-  newAddress
+  newEditAddress,
+  deleteAddress
 }
 
 export const HeaderServices = {

@@ -252,14 +252,15 @@ export default {
         }
       })
     },
-    newAddress (payload) {
-      UserServices.newAddress(payload, this.$store.getters.user)
+    newEditAddress (payload) {
+      UserServices.newEditAddress(payload, this.$store.getters.user, this.addressId).then(res => {
+        console.log(res)
+        this.$router.push({ name: 'addresses' })
+      })
     },
     submit (e) {
       e.preventDefault()
-      if (this.addressId === undefined) {
-        this.newAddress(this.form)
-      }
+      this.newEditAddress(this.form)
     }
   },
   mounted () {

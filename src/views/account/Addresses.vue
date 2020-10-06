@@ -9,7 +9,7 @@
         <div class="address-list">
           <b-row class="address align-items-center text-left" v-for="(address, index) in addresses" :key="index" :class="{removed:(removedAddresses.includes(index))}">
             <b-col md="1">
-              <a href="#" @click="removeItem(index, $event)">
+              <a href="#" @click="removeItem(address, index, $event)">
                 <b-icon icon="x-circle" font-scale="2"></b-icon>
               </a>
             </b-col>
@@ -51,8 +51,11 @@ export default {
     }
   },
   methods: {
-    removeItem (index, $event) {
+    removeItem (address, index, $event) {
       $event.preventDefault()
+      UserServices.deleteAddress(this.$store.getters.user, address.id).then(res => {
+        console.log(res)
+      })
       this.removedAddresses.push(index)
     },
     getAddresses (id) {

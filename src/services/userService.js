@@ -45,7 +45,7 @@ export function logout (payload) {
 export function getAddresses (id) {
   return fetch(`${apiBaseUrl}/roccomediaapi/getaddresses?id_customer=${id}&output_format=JSON`, getRequestOptions).then(handleResponse)
 }
-export function newAddress (payload, user) {
+export function newEditAddress (payload, user, addressId) {
   var formData = new FormData()
   formData.append('id_customer', user.id)
   formData.append('alias', payload.alias)
@@ -59,6 +59,18 @@ export function newAddress (payload, user) {
   formData.append('city', payload.city)
   formData.append('id_country', 1)
   formData.append('phone', payload.phone)
+  formData.append('id_address', addressId)
   requestOptions.body = formData
-  return fetch(`${apiBaseUrl}/roccomediaapi/addaddress?output_format=JSON`, requestOptions).then(handleResponse)
+  if (addressId === undefined) {
+    return fetch(`${apiBaseUrl}/roccomediaapi/addaddress?output_format=JSON`, requestOptions).then(handleResponse)
+  } else {
+    return fetch(`${apiBaseUrl}/roccomediaapi/editaddress?output_format=JSON`, requestOptions).then(handleResponse)
+  }
+}
+export function deleteAddress (user, addressId) {
+  var formData = new FormData()
+  formData.append('id_customer', user.id)
+  formData.append('id_address', addressId)
+  requestOptions.body = formData
+  return fetch(`${apiBaseUrl}/roccomediaapi/deleteaddress?output_format=JSON`, requestOptions).then(handleResponse)
 }
