@@ -138,6 +138,15 @@
         "re_order": "Erneut bestellen",
         "total": "Gesamt"
     },
+    "address": {
+        "confirm": "Bestätigen",
+        "delete_confirm_message": "Sind Sie sicher, diese Adresse zu löschen?",
+        "yes": "JA",
+        "no": "NEIN",
+        "new_address": "Sie haben erfolgreich eine neue Adresse erstellt",
+        "edit_address": "Sie haben die Adresse erfolgreich geändert",
+        "delete_address": "Sie haben die Adresse erfolgreich gelöscht"
+    },
     "rank": {
         "self": "Rang",
         "turn_over_description": "Umsatz bis zum nachsten Rang"

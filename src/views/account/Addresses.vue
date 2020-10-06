@@ -1,6 +1,18 @@
 <template>
   <b-container class="address mt-5">
     <b-row>
+      <b-col cols="12">
+        <b-alert class="text-left" v-if="this.$store.state.address.update_address"
+          :show="dismissCountDown"
+          dismissible
+          variant="success"
+          @dismissed="alertDismissed"
+          @dismiss-count-down="countDownChanged">
+          {{this.$store.state.address.update_address===1?$t('address.new_address'):this.$store.state.address.update_address===2?$t('address.edit_address'):$t('address.delete_address')}}
+        </b-alert>
+      </b-col>
+    </b-row>
+    <b-row>
       <b-col md="3" sm="12">
         <AccountNav />
       </b-col>
@@ -37,7 +49,7 @@
 
 <script>
 import AccountNav from '@/components/common/AccountNav'
-import { UserServices } from '@/services/index'
+// import { UserServices } from '@/services/index'
 export default {
   components: {
     AccountNav
@@ -47,25 +59,64 @@ export default {
       addresses:
       [
       ],
-      removedAddresses: []
+      removedAddresses: [],
+      removeConfirm: '',
+      dismissSecs: 5,
+      dismissCountDown: 5
     }
   },
   methods: {
     removeItem (address, index, $event) {
       $event.preventDefault()
-      UserServices.deleteAddress(this.$store.getters.user, address.id).then(res => {
-        console.log(res)
+      this.removeConfirm = ''
+      this.$bvModal.msgBoxConfirm(this.$t('address.delete_confirm_message'), {
+        title: this.$t('address.confirm'),
+        size: 'sm',
+        buttonSize: 'sm',
+        okVariant: 'danger',
+        okTitle: this.$t('address.yes'),
+        cancelTitle: this.$t('address.no'),
+        footerClass: 'p-2',
+        hideHeaderClose: false,
+        centered: true
       })
-      this.removedAddresses.push(index)
+        .then(value => {
+          this.removeConfirm = value
+          if (this.removeConfirm) {
+            var payload = {}
+            payload.user = this.$store.getters.user
+            payload.addressId = address.id
+            this.$store.dispatch('delete_address', payload).then(res => {
+              if (res.errors.length === 0) {
+                this.removedAddresses.push(index)
+                this.showAlert()
+              }
+            })
+          }
+        })
+        .catch(err => {
+          // An error occurred
+          console.log(err)
+        })
     },
     getAddresses (id) {
-      UserServices.getAddresses(id).then(res => {
-        console.log(res)
+      this.$store.dispatch('get_addresses', id).then(res => {
         this.addresses = res.addresses
       })
+    },
+    countDownChanged (dismissCountDown) {
+      this.dismissCountDown = dismissCountDown
+    },
+    alertDismissed () {
+      this.dismissCountDown = 0
+      this.$store.dispatch('update_address_alert', 0)
+    },
+    showAlert () {
+      this.dismissCountDown = this.dismissSecs
     }
   },
   mounted () {
+    this.showAlert()
     this.getAddresses(this.$store.getters.user.id)
   }
 }
@@ -110,5 +161,8 @@ export default {
     padding: 0px 15px;
     float: right;
   }
+}
+.btn-danger {
+  background-color: #B2162C;
 }
 </style>

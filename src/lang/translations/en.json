@@ -138,6 +138,15 @@
         "re_order": "Re-Order", 
         "total": "total"
     },
+    "address": {
+        "confirm": "Confirm",
+        "delete_confirm_message": "Are you sure to delete this address?",
+        "yes": "YES",
+        "no": "NO",
+        "new_address": "You have created new address successfully",
+        "edit_address": "You have changed the address successfully",
+        "delete_address": "You have deleted the address successfully"
+    },
     "rank": {
         "self": "Rank",
         "turn_over_description": "turnover up to the next rank"

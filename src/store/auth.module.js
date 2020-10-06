@@ -3,7 +3,7 @@ import { UserServices } from '@/services/index'
 const state = {
   status: '',
   token: localStorage.getItem('ekugellager_token') || '',
-  user: JSON.parse(localStorage.getItem('user')) || null
+  user: JSON.parse(localStorage.getItem('ekugellager_user')) || null
 }
 
 const mutations = {

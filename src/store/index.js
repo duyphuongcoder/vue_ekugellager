@@ -4,6 +4,7 @@ import createPersistedState from 'vuex-persistedstate'
 
 import auth from './auth.module'
 import header from './header.module'
+import address from './address.module'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -12,6 +13,7 @@ export default new Vuex.Store({
   })],
   modules: {
     auth,
-    header
+    header,
+    address
   }
 })
