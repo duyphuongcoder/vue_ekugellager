@@ -4,7 +4,8 @@ import { apiBaseUrl, appToken } from '@/config/settings'
 export const requestOptions = {
   method: 'GET',
   headers: {
-    Authorization: 'Basic ' + appToken
+    Authorization: 'Basic ' + appToken,
+    'Output-Format': 'JSON'
   }
 }
 
@@ -29,7 +30,8 @@ export const xapi = () => {
     'X-Requested-With': 'XMLHttpRequest',
     Accept: 'application/json',
     charset: 'UTF-8',
-    Authorization: 'Basic ' + appToken
+    Authorization: 'Basic ' + appToken,
+    'Output-Format': 'JSON'
   }
 
   const xapi = axios.create({

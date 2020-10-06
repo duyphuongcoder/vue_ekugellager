@@ -4,13 +4,15 @@ import { handleResponse } from './utils'
 const requestOptions = {
   method: 'POST',
   headers: {
-    Authorization: 'Basic ' + appToken
+    Authorization: 'Basic ' + appToken,
+    'Output-Format': 'JSON'
   }
 }
 const getRequestOptions = {
   method: 'GET',
   headers: {
-    Authorization: 'Basic ' + appToken
+    Authorization: 'Basic ' + appToken,
+    'Output-Format': 'JSON'
   }
 }
 export function login (payload) {
@@ -18,7 +20,7 @@ export function login (payload) {
   formData.append('email', payload.email)
   formData.append('password', payload.password)
   requestOptions.body = formData
-  return fetch(`${apiBaseUrl}/roccomediaapi/login?output_format=JSON`, requestOptions).then(handleResponse)
+  return fetch(`${apiBaseUrl}/roccomediaapi/login`, requestOptions).then(handleResponse)
 }
 
 export function register (payload) {
@@ -34,7 +36,7 @@ export function forgotPassword (email) {
   var formData = new FormData()
   formData.append('email', email)
   requestOptions.body = formData
-  return fetch(`${apiBaseUrl}/roccomediaapi/forgotpassword?output_format=JSON`, requestOptions).then(handleResponse)
+  return fetch(`${apiBaseUrl}/roccomediaapi/forgotpassword`, requestOptions).then(handleResponse)
 }
 export function logout (payload) {
   const formData = new FormData()
@@ -43,7 +45,7 @@ export function logout (payload) {
   return fetch(`${apiBaseUrl}/roccomediaapi/logout`, requestOptions).then(handleResponse)
 }
 export function getAddresses (id) {
-  return fetch(`${apiBaseUrl}/roccomediaapi/getaddresses?id_customer=${id}&output_format=JSON`, getRequestOptions).then(handleResponse)
+  return fetch(`${apiBaseUrl}/roccomediaapi/getaddresses?id_customer=${id}`, getRequestOptions).then(handleResponse)
 }
 export function newEditAddress (payload, user, addressId) {
   var formData = new FormData()
@@ -62,9 +64,9 @@ export function newEditAddress (payload, user, addressId) {
   formData.append('id_address', addressId)
   requestOptions.body = formData
   if (addressId === undefined) {
-    return fetch(`${apiBaseUrl}/roccomediaapi/addaddress?output_format=JSON`, requestOptions).then(handleResponse)
+    return fetch(`${apiBaseUrl}/roccomediaapi/addaddress`, requestOptions).then(handleResponse)
   } else {
-    return fetch(`${apiBaseUrl}/roccomediaapi/editaddress?output_format=JSON`, requestOptions).then(handleResponse)
+    return fetch(`${apiBaseUrl}/roccomediaapi/editaddress`, requestOptions).then(handleResponse)
   }
 }
 export function deleteAddress (user, addressId) {
@@ -72,5 +74,5 @@ export function deleteAddress (user, addressId) {
   formData.append('id_customer', user.id)
   formData.append('id_address', addressId)
   requestOptions.body = formData
-  return fetch(`${apiBaseUrl}/roccomediaapi/deleteaddress?output_format=JSON`, requestOptions).then(handleResponse)
+  return fetch(`${apiBaseUrl}/roccomediaapi/deleteaddress`, requestOptions).then(handleResponse)
 }
