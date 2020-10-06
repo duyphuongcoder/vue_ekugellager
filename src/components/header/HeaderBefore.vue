@@ -24,7 +24,7 @@
               <div class="user-info">
                 <router-link v-if="this.$store.getters.isLoggedIn" :to="$i18nRoute({ name: 'rank'})">
                   <b-button variant="outline-primary" class="btn-circle user-rank">
-                  0 Rank
+                  {{rank}} Rank
                   </b-button>
                 </router-link>
                 <router-link :to="this.$store.getters.isLoggedIn ? $i18nRoute({ name: 'my-account'}) : $i18nRoute({ name: 'login'})">
@@ -54,6 +54,7 @@
 import ShoppingCartModal from '@/components/common/ShoppingCartModal'
 import { SHOPPING_CART_MODAL } from '@/constants/modal'
 import Menu from './Menu'
+import { UserServices } from '@/services/index'
 export default {
   components: {
     ShoppingCartModal,
@@ -62,8 +63,16 @@ export default {
   data () {
     return {
       modalId: SHOPPING_CART_MODAL,
-      search_key: ''
+      search_key: '',
+      user: null,
+      rank: 0
     }
+  },
+  mounted () {
+    this.user = this.$store.getters.user
+    UserServices.getUserRank(this.user.id_customer).then(resp => {
+      this.rank = resp.customerrank.rank
+    })
   }
 }
 </script>

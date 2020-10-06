@@ -22,7 +22,9 @@ export function login (payload) {
   requestOptions.body = formData
   return fetch(`${apiBaseUrl}/roccomediaapi/login`, requestOptions).then(handleResponse)
 }
-
+export function getUserRank (id) {
+  return fetch(`${apiBaseUrl}/roccomediacustomerrank?id_customer=${id}`, getRequestOptions).then(handleResponse)
+}
 export function register (payload) {
   const formData = new FormData()
   let key
