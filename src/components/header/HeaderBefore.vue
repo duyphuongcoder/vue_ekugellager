@@ -70,9 +70,11 @@ export default {
   },
   mounted () {
     this.user = this.$store.getters.user
-    UserServices.getUserRank(this.user.id_customer).then(resp => {
-      this.rank = resp.customerrank.rank
-    })
+    if (this.$store.getters.isLoggedIn && this.user) {
+      UserServices.getUserRank(this.user.id_customer).then(resp => {
+        this.rank = resp.customerrank.rank
+      })
+    }
   }
 }
 </script>

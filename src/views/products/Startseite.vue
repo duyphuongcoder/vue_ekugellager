@@ -115,38 +115,6 @@ export default {
               unitprice: 9.95
             }
           ]
-        },
-        {
-          id_product: 1345,
-          name: 'Hummingbird notebook',
-          price: 15.35,
-          currency: '€',
-          image: 'https://ekugellager.roccshow.com/2-large_default/hummingbird-printed-t-shirt.jpg'
-        },
-        {
-          id_product: 342,
-          name: 'Hummingbird notebook',
-          price: 15.35,
-          currency: '€',
-          image: 'https://ekugellager.roccshow.com/28-home_default/brown-bear-printed-sweater.jpg',
-          quality: {
-            info: 'Product quality info',
-            content: [1, 1, 1, 1]
-          }
-        },
-        {
-          id_product: 32,
-          name: 'Hummingbird printed t-shirt',
-          price: 15.35,
-          currency: '€',
-          image: 'https://ekugellager.roccshow.com/6-home_default/mug-the-best-is-yet-to-come.jpg'
-        },
-        {
-          id_product: 14,
-          name: 'Hummingbird printed t-shirt',
-          price: 15.35,
-          currency: '€',
-          image: 'https://ekugellager.roccshow.com/2-large_default/hummingbird-printed-t-shirt.jpg'
         }
       ],
       products: [],
