@@ -5,7 +5,8 @@ import {
   logout,
   getAddresses,
   newEditAddress,
-  deleteAddress
+  deleteAddress,
+  getUserRank
 } from './userService'
 
 import {
@@ -31,7 +32,8 @@ export const UserServices = {
   logout,
   getAddresses,
   newEditAddress,
-  deleteAddress
+  deleteAddress,
+  getUserRank
 }
 
 export const HeaderServices = {
