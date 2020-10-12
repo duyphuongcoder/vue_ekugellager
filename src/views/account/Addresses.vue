@@ -56,9 +56,7 @@ export default {
   },
   data () {
     return {
-      addresses:
-      [
-      ],
+      addresses: this.$store.state.address.addresses || [],
       removedAddresses: [],
       removeConfirm: '',
       dismissSecs: 5,
