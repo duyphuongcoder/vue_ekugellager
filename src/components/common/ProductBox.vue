@@ -7,13 +7,13 @@
             </b-col>
             <b-col cols="6" class="name-product-thumb">
                 <h2 class="h3 product-title">
-                <router-link :to="$i18nRoute({ name: 'product', params: { id_product: product.id }})">
+                <router-link :to="$i18nRoute({ name: 'product', params: { id_product: product.id_product }})">
                     {{product.name}}
                 </router-link>
                 </h2>
             </b-col>
         </b-row>
-        <router-link :to="$i18nRoute({ name: 'product', params: { id_product: product.id }})" class="thumbnail product-thumbnail">
+        <router-link :to="$i18nRoute({ name: 'product', params: { id_product: product.id_product }})" class="thumbnail product-thumbnail">
             <img :src="product.image"/>
         </router-link>
         <div class="product-description">
@@ -36,7 +36,7 @@
             </b-row>
             <b-row class="best-preis-list">
                 <b-col cols="5" class="preis-title">{{$t('products.price_from')}}</b-col>
-                <b-col cols="7" class="preis">{{product.currency + product.price}}</b-col>
+                <b-col cols="7" class="preis">{{'€' + product.price}}</b-col>
             </b-row>
             <b-row class="show-price-list">
                 <b-collapse :id="collapseid">
@@ -49,7 +49,7 @@
                         <b-row class="table-prislist-content" v-for="(item, index) in product.pricelist" :key="index">
                             <b-col cols="4">{{item.quantity}}</b-col>
                             <b-col cols="4">{{item.discount}}</b-col>
-                            <b-col cols="4">{{product.currency + item.unitprice}}</b-col>
+                            <b-col cols="4">{{'€' + item.unitprice}}</b-col>
                         </b-row>
                     </div>
                     <b-card>
@@ -62,7 +62,7 @@
                                     <span @click="increament">+</span>
                                 </div>
                                 <div class="product-prislist-quantity">
-                                    <span>493</span>{{$t('products.in_stock')}}
+                                    <span>{{product.quantity}}</span>{{$t('products.in_stock')}}
                                 </div>
                             </b-col>
                             <b-col cols="7">
@@ -103,7 +103,7 @@ export default {
   },
   data () {
     return {
-      collapseid: 'product_collapse_' + this.product.id,
+      collapseid: 'product_collapse_' + this.product.id_product,
       count: 1
     }
   },

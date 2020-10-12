@@ -17,19 +17,22 @@
            disableAddButton
           ></b-form-tags>
         </div>
-        <b-row class="products">
+        <b-row class="products" v-if="products.length > 0">
           <b-col lg="4" md="6" sm="12" v-for="(item, index) in products" :key="index">
             <ProductBox :product="products[index]" :addtocart="addToCart"/>
           </b-col>
         </b-row>
+        <b-row class="no-products text-center" v-if="products.length == 0">
+          <span> No contents </span>
+        </b-row>
         <nav class="row page-bottom">
           <b-col md="4" sm="12" class="page-info">
-            Showing 1-1 of 1 item(s)
+            Showing {{(currentPage - 1) * perPage + 1}}-{{(currentPage - 1) * perPage + products.length}} of {{totalCount}} item(s)
           </b-col>
           <b-col md="8" sm="12" class="pagination-nav">
             <b-pagination
               v-model="currentPage"
-              :total-rows="rows"
+              :total-rows="totalCount"
               :per-page="perPage"
               @input="selectPage"
               align="right"
@@ -73,12 +76,12 @@ export default {
         }
       ],
       filterdata: [],
-      rows: 100,
-      perPage: 10,
+      totalCount: 0,
+      perPage: 5,
       currentPage: 1,
-      products: [
+      productsTest: [
         {
-          id: 231,
+          id_product: 231,
           name: 'Hummingbird printed t-shirt',
           price: 15.35,
           currency: '€',
@@ -114,14 +117,14 @@ export default {
           ]
         },
         {
-          id: 1345,
+          id_product: 1345,
           name: 'Hummingbird notebook',
           price: 15.35,
           currency: '€',
           image: 'https://ekugellager.roccshow.com/2-large_default/hummingbird-printed-t-shirt.jpg'
         },
         {
-          id: 342,
+          id_product: 342,
           name: 'Hummingbird notebook',
           price: 15.35,
           currency: '€',
@@ -132,20 +135,21 @@ export default {
           }
         },
         {
-          id: 32,
+          id_product: 32,
           name: 'Hummingbird printed t-shirt',
           price: 15.35,
           currency: '€',
           image: 'https://ekugellager.roccshow.com/6-home_default/mug-the-best-is-yet-to-come.jpg'
         },
         {
-          id: 14,
+          id_product: 14,
           name: 'Hummingbird printed t-shirt',
           price: 15.35,
           currency: '€',
           image: 'https://ekugellager.roccshow.com/2-large_default/hummingbird-printed-t-shirt.jpg'
         }
       ],
+      products: [],
       activeFilters: ['Categories: Clothes', 'Size: S'],
       modalId: BLOCK_CART_MODAL,
       loader: null
@@ -153,9 +157,17 @@ export default {
   },
   mounted () {
     this.loader = this.$loading.show(loadingSpinnerConfig)
-    // ProductServices.getProduct(1).then(resp => {
-    //   console.log(resp)
-    // })
+    const params = {
+      shopId: 1,
+      langId: 2,
+      cateId: 3,
+      page: this.currentPage,
+      perPage: this.perPage
+    }
+    ProductServices.getProduct(params).then(resp => {
+      this.products = resp.products
+      this.totalCount = resp.products_count
+    })
     ProductServices.getProductFilters().then(resp => {
       const facets = resp.roccomediaproductfacets
       const filters = resp.roccomediaproductfilters
@@ -174,7 +186,7 @@ export default {
       })
       this.loader.hide()
     }).catch(err => {
-      console.log('error', err)
+      console.log('err', err)
       this.loader.hide()
     })
   },
@@ -247,5 +259,11 @@ export default {
 }
 .page-bottom .pagination-nav {
   padding: 0px 0px !important;
+}
+.no-products {
+  min-height: 300px;
+  span {
+    margin: auto;
+  }
 }
 </style>
