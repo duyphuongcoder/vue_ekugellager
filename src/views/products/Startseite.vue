@@ -86,14 +86,16 @@ export default {
           price: 15.35,
           currency: '€',
           image: 'https://ekugellager.roccshow.com/28-home_default/brown-bear-printed-sweater.jpg',
-          head: {
-            heading: [
-              'Ø Inside', 'Ø External', 'Width'
-            ],
-            subhead: [
-              '10 mm', '26 mm', '8 mm'
-            ]
-          },
+          head: [{
+            name: 'Ø Inside',
+            value: '10 mm'
+          }, {
+            name: 'Ø External',
+            value: '26 mm'
+          }, {
+            name: 'Width',
+            value: '8 mm'
+          }],
           quality: {
             info: 'Product quality info',
             content: [1, 1, 1, 0]
@@ -133,7 +135,7 @@ export default {
       perPage: this.perPage
     }
     ProductServices.getProduct(params).then(resp => {
-      this.products = resp.products
+      this.freshProducts(resp.products)
       this.totalCount = resp.products_count
     })
     ProductServices.getProductFilters().then(resp => {
@@ -161,6 +163,43 @@ export default {
   created () {
   },
   methods: {
+    freshProducts (products) {
+      products.forEach(p => {
+        if (p.features && p.features.length > 0) {
+          p.head = []
+          p.features.forEach(e => {
+            if (e.name === 'Quality') {
+              switch (e.value) {
+                case 'Best':
+                  p.quality = {
+                    content: [1, 1, 1, 1]
+                  }
+                  break
+                case 'Very Good':
+                  p.quality = {
+                    content: [1, 1, 1, 0]
+                  }
+                  break
+                case 'Good':
+                  p.quality = {
+                    content: [1, 1, 0, 0]
+                  }
+                  break
+                default:
+                  break
+              }
+            }
+            if (e.id_feature === '7' || e.id_feature === '8' || e.id_feature === '9') {
+              p.head.push({
+                name: e.name,
+                value: e.value + ' mm'
+              })
+            }
+          })
+        }
+      })
+      this.products = products
+    },
     updatevalues (values, id) {
       console.log(this.filterdata[id].content.title, values)
       this.loader = this.$loading.show(loadingSpinnerConfig)
