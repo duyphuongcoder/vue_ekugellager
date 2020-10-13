@@ -262,6 +262,11 @@ const routes = [
         component: RecommendProducts
       },
       {
+        path: 'content/:content_key',
+        name: 'content',
+        component: () => import('../views/ContentModule.vue')
+      },
+      {
         path: '*',
         name: '404',
         component: Error404
