@@ -7,8 +7,8 @@
         <b-collapse :id="collapseid" :class="isline ? 'collapse-content top-line' : 'collapse-content'">
             <b-form-checkbox-group v-model="selected" @input="updatevalues(selected, id)">
                 <div class="sub-item" v-for="(item, index) in detail" :key="index">
-                    <a href="#" class="sub-item-text"><span>{{ iscount ? item.label + '(' + item.value + ')' : item.label}}</span></a>
-                    <b-form-checkbox :value="index"></b-form-checkbox>
+                    <a href="#" class="sub-item-text"><span>{{ iscount ? item.name + '(' + item.nbr + ')' : item.name}}</span></a>
+                    <b-form-checkbox :value="item.valueKey"></b-form-checkbox>
                 </div>
             </b-form-checkbox-group>
         </b-collapse>

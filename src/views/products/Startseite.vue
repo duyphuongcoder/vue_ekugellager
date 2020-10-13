@@ -79,46 +79,6 @@ export default {
       totalCount: 0,
       perPage: 5,
       currentPage: 1,
-      productsTest: [
-        {
-          id_product: 231,
-          name: 'Hummingbird printed t-shirt',
-          price: 15.35,
-          currency: '€',
-          image: 'https://ekugellager.roccshow.com/28-home_default/brown-bear-printed-sweater.jpg',
-          head: [{
-            name: 'Ø Inside',
-            value: '10 mm'
-          }, {
-            name: 'Ø External',
-            value: '26 mm'
-          }, {
-            name: 'Width',
-            value: '8 mm'
-          }],
-          quality: {
-            info: 'Product quality info',
-            content: [1, 1, 1, 0]
-          },
-          pricelist: [
-            {
-              quantity: 15,
-              discount: '15%',
-              unitprice: 13.05
-            },
-            {
-              quantity: 50,
-              discount: '25%',
-              unitprice: 11.05
-            },
-            {
-              quantity: 100,
-              discount: '35%',
-              unitprice: 9.95
-            }
-          ]
-        }
-      ],
       products: [],
       activeFilters: ['Categories: Clothes', 'Size: S'],
       modalId: BLOCK_CART_MODAL,
@@ -126,43 +86,53 @@ export default {
     }
   },
   mounted () {
-    this.loader = this.$loading.show(loadingSpinnerConfig)
     const params = {
       shopId: 1,
-      langId: 2,
+      langId: Trans.getLangId(Trans.currentLanguage),
       cateId: 3,
       page: this.currentPage,
       perPage: this.perPage
     }
+    this.loader = this.$loading.show(loadingSpinnerConfig)
     ProductServices.getProduct(params).then(resp => {
+      if (resp.navigation_layered && resp.navigation_layered.length > 0) {
+        this.getFilterData(resp.navigation_layered[0].filters)
+      }
       this.freshProducts(resp.products)
       this.totalCount = resp.products_count
-    })
-    ProductServices.getProductFilters().then(resp => {
-      const facets = resp.roccomediaproductfacets
-      const filters = resp.roccomediaproductfilters
-      facets.forEach(facet => {
-        const filter = { type: facet.widgetType }
-        if (facet.widgetType === 'slider') {
-          filter.title = facet.label
-          filter.min = facet.min
-          filter.max = facet.max
-          filter.unit = facet.unit
-        }
-        if (facet.widgetType === 'checkbox') {
-          filter.content = { title: facet.label, items: filters.filter(item => item.id_facet === facet.id) }
-        }
-        this.filterdata.push(filter)
-      })
-      this.loader.hide()
-    }).catch(err => {
-      console.log('err', err)
       this.loader.hide()
     })
+    // ProductServices.getProductFilters().then(resp => {
+    //   const facets = resp.roccomediaproductfacets
+    //   const filters = resp.roccomediaproductfilters
+    //   facets.forEach(facet => {
+    //     const filter = { type: facet.widgetType }
+    //     if (facet.widgetType === 'slider') {
+    //       filter.title = facet.label
+    //       filter.min = facet.min
+    //       filter.max = facet.max
+    //       filter.unit = facet.unit
+    //     }
+    //     if (facet.widgetType === 'checkbox') {
+    //       filter.content = { title: facet.label, items: filters.filter(item => item.id_facet === facet.id) }
+    //     }
+    //     this.filterdata.push(filter)
+    //   })
+    //   this.loader.hide()
+    // }).catch(err => {
+    //   console.log('err', err)
+    //   this.loader.hide()
+    // })
   },
   created () {
   },
   methods: {
+    getFilterData (filters) {
+      filters.forEach(f => {
+        f.filter_type = 'checkbox'
+        this.filterdata.push(f)
+      })
+    },
     freshProducts (products) {
       products.forEach(p => {
         if (p.features && p.features.length > 0) {
@@ -201,7 +171,7 @@ export default {
       this.products = products
     },
     updatevalues (values, id) {
-      console.log(this.filterdata[id].content.title, values)
+      console.log(this.filterdata[id].name, values)
       this.loader = this.$loading.show(loadingSpinnerConfig)
       setTimeout(() => {
         this.loader.hide()

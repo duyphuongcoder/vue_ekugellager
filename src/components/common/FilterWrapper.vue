@@ -2,18 +2,18 @@
   <div class="filter-wrapper">
     <p> FILTER BY </p>
     <div v-for="(data, index) in filterdata" :key="index">
-      <div v-if="data.type === 'checkbox'">
+      <div v-if="data.filter_type === 'checkbox'">
         <FilterBox
           :id="index"
           :collapseid="'filterbox_collapse_' + index"
-          :title="data.content.title"
-          :detail="data.content.items"
+          :title="data.name"
+          :detail="data.values"
           :updatevalues="updatevalues"
           :isline="false"
           :iscount="true"
         />
       </div>
-      <div v-if="data.type === 'slider'">
+      <div v-if="data.filter_type === 'slider'">
         <SliderBar :id="index" :name="data.title" :min="data.min" :max="data.max" :unit="data.unit" :dragend="dragend"/>
       </div>
     </div>
