@@ -20,7 +20,7 @@ export function login (payload) {
   formData.append('email', payload.email)
   formData.append('password', payload.password)
   requestOptions.body = formData
-  return fetch(`${apiBaseUrl}/roccomediaapi/login`, requestOptions).then(handleResponse)
+  return fetch(`${apiBaseUrl}/rmapi/rest/accounts/login`, requestOptions).then(handleResponse)
 }
 export function getUserRank (id) {
   return fetch(`${apiBaseUrl}/roccomediacustomerrank?id_customer=${id}`, getRequestOptions).then(handleResponse)
@@ -44,7 +44,7 @@ export function logout (payload) {
   const formData = new FormData()
   formData.append('id_customer', payload.id_customer)
   requestOptions.body = formData
-  return fetch(`${apiBaseUrl}/roccomediaapi/logout`, requestOptions).then(handleResponse)
+  return fetch(`${apiBaseUrl}/rmapi/rest/accounts/16/logout`, requestOptions).then(handleResponse)
 }
 export function getAddresses (id) {
   return fetch(`${apiBaseUrl}/roccomediaapi/getaddresses?id_customer=${id}`, getRequestOptions).then(handleResponse)

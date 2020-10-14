@@ -195,10 +195,15 @@ export default {
   },
   mounted () {
     this.getProductDetails()
+    console.log(this.$store.getters)
   },
   watch: {
     $route (to, from) {
-      this.manageProductDetails(this.product_details)
+      if (to.path !== from.path) {
+        this.getProductDetails()
+      } else {
+        this.manageProductDetails(this.product_details)
+      }
     }
   }
 }
