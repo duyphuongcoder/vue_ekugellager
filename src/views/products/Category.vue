@@ -94,22 +94,7 @@ export default {
     }
   },
   mounted () {
-    const params = {
-      shopId: 1,
-      langId: Trans.getLangId(Trans.currentLanguage),
-      cateId: this.$route.params.id_category,
-      page: this.currentPage,
-      perPage: this.perPage
-    }
-    this.loader = this.$loading.show(loadingSpinnerConfig)
-    ProductServices.getProduct(params).then(resp => {
-      if (resp.navigation_layered && resp.navigation_layered.length > 0) {
-        this.getFilterData(resp.navigation_layered[0].filters)
-      }
-      this.freshProducts(resp.products)
-      this.totalCount = resp.products_count
-      this.loader.hide()
-    })
+    this.callProducts()
     // ProductServices.getProductFilters().then(resp => {
     //   const facets = resp.roccomediaproductfacets
     //   const filters = resp.roccomediaproductfilters
@@ -135,7 +120,26 @@ export default {
   created () {
   },
   methods: {
+    callProducts () {
+      const params = {
+        shopId: 1,
+        langId: Trans.getLangId(Trans.currentLanguage),
+        cateId: this.$route.params.id_category,
+        page: this.currentPage,
+        perPage: this.perPage
+      }
+      this.loader = this.$loading.show(loadingSpinnerConfig)
+      ProductServices.getProduct(params).then(resp => {
+        if (resp.navigation_layered && resp.navigation_layered.length > 0) {
+          this.getFilterData(resp.navigation_layered[0].filters)
+        }
+        this.freshProducts(resp.products)
+        this.totalCount = resp.products_count
+        this.loader.hide()
+      })
+    },
     getFilterData (filters) {
+      this.filterdata = []
       filters.forEach(f => {
         f.filter_type = 'checkbox'
         this.filterdata.push(f)
@@ -200,7 +204,8 @@ export default {
       }, 2000)
     },
     selectPage (selectedpage) {
-      console.log(selectedpage)
+      this.currentPage = selectedpage
+      this.callProducts()
     },
     addToCart (n) {
       console.log('count to add', n)
