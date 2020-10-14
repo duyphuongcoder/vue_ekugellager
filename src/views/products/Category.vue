@@ -89,7 +89,7 @@ export default {
     const params = {
       shopId: 1,
       langId: Trans.getLangId(Trans.currentLanguage),
-      cateId: 2,
+      cateId: this.$route.params.id_category,
       page: this.currentPage,
       perPage: this.perPage
     }
@@ -201,7 +201,7 @@ export default {
   },
   watch: {
     $route (to, from) {
-      console.log('change language:', Trans.currentLanguage)
+      this.$router.go()
     }
   }
 }

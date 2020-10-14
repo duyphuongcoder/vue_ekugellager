@@ -34,6 +34,7 @@ import Rillenkugellager from '../views/products/Rillenkugellager.vue'
 import SchraegkugellagerSpindellager from '../views/products/SchraegkugellagerSpindellager.vue'
 import SpannlagerGehaeuselager from '../views/products/SpannlagerGehaeuselager.vue'
 import Startseite from '../views/products/Startseite.vue'
+import Category from '../views/products/Category.vue'
 import Women from '../views/products/Women.vue'
 import Product from '../views/products/Product.vue'
 import Cart from '../views/products/Cart.vue'
@@ -162,6 +163,11 @@ const routes = [
         path: 'product/:id_product',
         name: 'product',
         component: Product
+      },
+      {
+        path: 'category/:id_category',
+        name: 'category',
+        component: Category
       },
       {
         path: 'cart',

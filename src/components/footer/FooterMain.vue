@@ -90,7 +90,6 @@ export default {
     }
     FooterServices.getFooterContent(params).then(resp => {
       this.links = resp.footer.links
-      console.log(this.links)
     })
   }
 }

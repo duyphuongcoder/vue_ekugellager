@@ -10,7 +10,8 @@ import {
 } from './userService'
 
 import {
-  getTopIcons
+  getTopIcons,
+  getMenu
 } from './headerService'
 
 import {
@@ -43,7 +44,8 @@ export const UserServices = {
 }
 
 export const HeaderServices = {
-  getTopIcons
+  getTopIcons,
+  getMenu
 }
 
 export const HomeServices = {
