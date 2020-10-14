@@ -17,11 +17,11 @@
             <img :src="product.image"/>
         </router-link>
         <div class="product-description">
-            <b-row class="heading-prislist" v-if="product.head">
-                <b-col cols="4" v-for="(item, index) in product.head.heading" :key="index">{{item}}</b-col>
+            <b-row class="heading-prislist" v-if="product.head && product.head.length > 0">
+                <b-col cols="4" v-for="(item, index) in product.head" :key="index">{{item.name}}</b-col>
             </b-row>
-            <b-row class="subhead-prislist" v-if="product.head">
-                <b-col cols="4" v-for="(item, index) in product.head.subhead" :key="index">{{item}}</b-col>
+            <b-row class="subhead-prislist" v-if="product.head && product.head.length > 0">
+                <b-col cols="4" v-for="(item, index) in product.head" :key="index">{{item.value}}</b-col>
             </b-row>
             <b-row class="quality-prislist" v-if="product.quality">
                 <b-col cols="4" class="quality-title">

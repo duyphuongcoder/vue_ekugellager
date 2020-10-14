@@ -14,6 +14,10 @@ import {
 } from './headerService'
 
 import {
+  getContentModule
+} from './footerService'
+
+import {
   getCustomText1,
   getQuestions,
   getAnswers,
@@ -52,4 +56,8 @@ export const ProductServices = {
   getProduct,
   getProductFilters,
   productDetails
+}
+
+export const FooterServices = {
+  getContentModule
 }
