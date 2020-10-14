@@ -1,7 +1,7 @@
 <template>
 <div>
   <ul class="product-flags">
-    <li class="product-flag discount">-20%</li>
+    <li class="product-flag discount" v-if="reduction">{{reduction}}</li>
   </ul>
   <div class="images-container">
     <div class="product-cover">
@@ -18,7 +18,7 @@
       </ul>
     </div>
   </div>
-  <b-modal id="product_detail_modal"  hide-header hide-footer>
+  <b-modal size="xl" id="product_detail_modal"  hide-header hide-footer>
     <figure>
       <div>
         <b-img class="js-modal-product-cover product-cover-modal" width="800" :src="images[selected].url"></b-img>
@@ -45,12 +45,23 @@
 export default {
   props: {
     images: Array,
-    description_short: String
+    description_short: String,
+    prices: Object
   },
   data () {
     return {
-      selected: 0
+      selected: 0,
+      reduction: ''
     }
+  },
+  mounted () {
+    this.reduction = this.prices.reduction
+    if (this.prices.reduction_type === 'percentage') {
+      this.reduction = this.reduction * 100 + '%'
+    } else if (this.prices.reduction_type === 'amount') {
+      this.reduction = '€' + parseFloat(this.reduction).toFixed(2)
+    }
+    if (parseInt(this.prices.price) === -1) this.reduction = '-' + this.reduction
   },
   methods: {
     selectImage (index) {
