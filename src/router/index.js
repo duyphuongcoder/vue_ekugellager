@@ -19,22 +19,7 @@ import OffenePosten from '../views/account/OffenePosten.vue'
 import Rank from '../views/account/Rank.vue'
 import Wishlist from '../views/account/Wishlist.vue'
 
-import Axiallager from '../views/products/Axiallager.vue'
-import Clothes from '../views/products/Clothes.vue'
-import GehaeuseEinheiten from '../views/products/GehaeuseEinheiten.vue'
-import Gleitlager from '../views/products/Gleitlager.vue'
-import Kegelrollenlager from '../views/products/Kegelrollenlager.vue'
-import Keilriemen from '../views/products/Keilriemen.vue'
-import KombinierteExialRadiallager from '../views/products/KombinierteExialRadiallager.vue'
-import Laufrolle from '../views/products/Laufrolle.vue'
-import Lineartechnik from '../views/products/Lineartechnik.vue'
-import Men from '../views/products/Men.vue'
-import Nadellager from '../views/products/Nadellager.vue'
-import Rillenkugellager from '../views/products/Rillenkugellager.vue'
-import SchraegkugellagerSpindellager from '../views/products/SchraegkugellagerSpindellager.vue'
-import SpannlagerGehaeuselager from '../views/products/SpannlagerGehaeuselager.vue'
-import Startseite from '../views/products/Startseite.vue'
-import Women from '../views/products/Women.vue'
+import Category from '../views/products/Category.vue'
 import Product from '../views/products/Product.vue'
 import Cart from '../views/products/Cart.vue'
 import RecommendProducts from '@/views/products/RecommendProducts'
@@ -164,89 +149,14 @@ const routes = [
         component: Product
       },
       {
+        path: 'category/:id_category',
+        name: 'category',
+        component: Category
+      },
+      {
         path: 'cart',
         name: 'cart',
         component: Cart
-      },
-      {
-        path: 'axiallager',
-        name: 'axiallager',
-        component: Axiallager
-      },
-      {
-        path: 'clothes',
-        name: 'clothes',
-        component: Clothes
-      },
-      {
-        path: 'gehaeuse-einheiten',
-        name: 'gehaeuse-einheiten',
-        component: GehaeuseEinheiten
-      },
-      {
-        path: 'gleitlager',
-        name: 'gleitlager',
-        component: Gleitlager
-      },
-      {
-        path: 'kegelrollenlager',
-        name: 'kegelrollenlager',
-        component: Kegelrollenlager
-      },
-      {
-        path: 'keilriemen',
-        name: 'keilriemen',
-        component: Keilriemen
-      },
-      {
-        path: 'kombinierte-exial-radiallager',
-        name: 'kombinierte-exial-radiallager',
-        component: KombinierteExialRadiallager
-      },
-      {
-        path: 'laufrolle',
-        name: 'laufrolle',
-        component: Laufrolle
-      },
-      {
-        path: 'lineartechnik',
-        name: 'lineartechnik',
-        component: Lineartechnik
-      },
-      {
-        path: 'men',
-        name: 'men',
-        component: Men
-      },
-      {
-        path: 'nadellager',
-        name: 'nadellager',
-        component: Nadellager
-      },
-      {
-        path: 'rillenkugellager',
-        name: 'rillenkugellager',
-        component: Rillenkugellager
-      },
-      {
-        path: 'schraegkugellager-spindellager',
-        name: 'schraegkugellager-spindellager',
-        component: SchraegkugellagerSpindellager
-      },
-      {
-        path: 'spannlager-gehaeuselager',
-        name: 'spannlager-gehaeuselager',
-        component: SpannlagerGehaeuselager
-      },
-      {
-        path: 'startseite',
-        name: 'startseite',
-        component: Startseite
-      },
-      {
-        path: 'women',
-        name: 'women',
-        component: Women
       },
       {
         path: 'order',

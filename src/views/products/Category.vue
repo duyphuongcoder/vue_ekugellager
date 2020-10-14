@@ -73,6 +73,14 @@ export default {
         {
           text: 'header.home',
           route: 'home'
+        },
+        {
+          text: 'header.clothes',
+          route: 'clothes'
+        },
+        {
+          text: 'header.nadellager',
+          route: 'nadellager'
         }
       ],
       filterdata: [],
@@ -86,22 +94,7 @@ export default {
     }
   },
   mounted () {
-    const params = {
-      shopId: 1,
-      langId: Trans.getLangId(Trans.currentLanguage),
-      cateId: 3,
-      page: this.currentPage,
-      perPage: this.perPage
-    }
-    this.loader = this.$loading.show(loadingSpinnerConfig)
-    ProductServices.getProduct(params).then(resp => {
-      if (resp.navigation_layered && resp.navigation_layered.length > 0) {
-        this.getFilterData(resp.navigation_layered[0].filters)
-      }
-      this.freshProducts(resp.products)
-      this.totalCount = resp.products_count
-      this.loader.hide()
-    })
+    this.callProducts()
     // ProductServices.getProductFilters().then(resp => {
     //   const facets = resp.roccomediaproductfacets
     //   const filters = resp.roccomediaproductfilters
@@ -127,7 +120,26 @@ export default {
   created () {
   },
   methods: {
+    callProducts () {
+      const params = {
+        shopId: 1,
+        langId: Trans.getLangId(Trans.currentLanguage),
+        cateId: this.$route.params.id_category,
+        page: this.currentPage,
+        perPage: this.perPage
+      }
+      this.loader = this.$loading.show(loadingSpinnerConfig)
+      ProductServices.getProduct(params).then(resp => {
+        if (resp.navigation_layered && resp.navigation_layered.length > 0) {
+          this.getFilterData(resp.navigation_layered[0].filters)
+        }
+        this.freshProducts(resp.products)
+        this.totalCount = resp.products_count
+        this.loader.hide()
+      })
+    },
     getFilterData (filters) {
+      this.filterdata = []
       filters.forEach(f => {
         f.filter_type = 'checkbox'
         this.filterdata.push(f)
@@ -172,11 +184,13 @@ export default {
     },
     updatevalues (values, id) {
       console.log(this.filterdata[id].name, values)
-      this.loader = this.$loading.show(loadingSpinnerConfig)
-      setTimeout(() => {
-        this.loader.hide()
-      }, 2000)
-      this.activeFilters.push('Test: test')
+      this.$router.go({ path: '/startseite', query: { q: 'pp' } })
+
+      // this.loader = this.$loading.show(loadingSpinnerConfig)
+      // setTimeout(() => {
+      //   this.loader.hide()
+      // }, 2000)
+      // this.activeFilters.push('Test: test')
     },
     dragend (value, id) {
       const max = this.filterdata[id].max
@@ -190,7 +204,8 @@ export default {
       }, 2000)
     },
     selectPage (selectedpage) {
-      console.log(selectedpage)
+      this.currentPage = selectedpage
+      this.callProducts()
     },
     addToCart (n) {
       console.log('count to add', n)
@@ -199,7 +214,7 @@ export default {
   },
   watch: {
     $route (to, from) {
-      console.log('change language:', Trans.currentLanguage)
+      this.$router.go()
     }
   }
 }

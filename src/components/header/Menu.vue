@@ -3,74 +3,34 @@
   <b-container class="menu">
     <div class="menu-content">
       <b-collapse id="collapse-menu" class="navbar-collapse">
-        <b-list-group>
+        <b-list-group v-if="category">
           <b-list-group-item>
-            <router-link :to="$i18nRoute({ name: 'startseite'})" v-b-toggle.collapse-menu>{{ $t('header.home') }}</router-link>
+            <router-link :to="$i18nRoute({ name: 'category', params: { id_category: category.id } })" v-b-toggle.collapse-menu>{{ category.name }}</router-link>
           </b-list-group-item>
-          <b-list-group-item data-depth="0">
-            <router-link :to="$i18nRoute({ name: 'clothes'})" v-b-toggle.collapse-menu>{{ $t('header.clothes') }}</router-link>
-            <span v-b-toggle.collapse-menu-sub class="sub-menu-bar">
+          <b-list-group-item data-depth="0" v-for="(subCat, index) in category.children" :key="index">
+            <router-link :to="$i18nRoute({ name: 'category', params: { id_category: subCat.id } })" v-b-toggle.collapse-menu>{{ subCat.name }}</router-link>
+            <span v-b-toggle="'collapse-menu-sub-' + index" class="sub-menu-bar" v-if="subCat && subCat.children && subCat.children.length > 0">
               <b-icon icon="plus" class="collapsed-icon"></b-icon>
               <b-icon icon="dash" class="opened-icon"></b-icon>
             </span>
-            <b-collapse id="collapse-menu-sub" class="mt-1">
-              <b-list-group>
+            <b-collapse :id="'collapse-menu-sub-' + index" class="mt-1 collapse-menu-sub">
+              <b-list-group v-for="(subSubCat, subIndex) in subCat.children" :key="subIndex">
                 <b-list-group-item>
-                  <router-link :to="$i18nRoute({ name: 'men'})" v-b-toggle.collapse-menu>{{ $t('header.men') }}</router-link>
-                  <span v-b-toggle.collapse-menu-sub-sub class="sub-sub-menu-bar">
+                  <router-link :to="$i18nRoute({ name: 'category', params: { id_category: subSubCat.id } })" v-b-toggle.collapse-menu>{{ subSubCat.name }}</router-link>
+                  <span v-b-toggle="'collapse-menu-sub-sub-' + subIndex" class="sub-sub-menu-bar" v-if="subSubCat && subSubCat.children && subSubCat.children.length > 0">
                     <b-icon icon="chevron-right" class="collapsed-icon"></b-icon>
                     <b-icon icon="chevron-down" class="opened-icon"></b-icon>
                   </span>
-                  <b-collapse id="collapse-menu-sub-sub" class="mt-1">
-                    <b-list-group-item>
-                      <router-link :to="$i18nRoute({ name: 'rillenkugellager'})" v-b-toggle.collapse-menu>{{ $t('header.rillenkugellager') }}</router-link>
-                    </b-list-group-item>
-                    <b-list-group-item>
-                      <router-link :to="$i18nRoute({ name: 'schraegkugellager-spindellager'})" v-b-toggle.collapse-menu>{{ $t('header.achragkugellager_spindellager') }}</router-link>
-                    </b-list-group-item>
-                    <b-list-group-item>
-                      <router-link :to="$i18nRoute({ name: 'spannlager-gehaeuselager'})" v-b-toggle.collapse-menu>{{ $t('header.spannlager_gehauselager') }}</router-link>
-                    </b-list-group-item>
+                  <b-collapse :id="'collapse-menu-sub-sub-' + subIndex" class="mt-1">
+                    <b-list-group v-for="(subSubSubCat, subSubIndex) in subSubCat.children" :key="subSubIndex">
+                      <b-list-group-item>
+                        <router-link :to="$i18nRoute({ name: 'category', params: { id_category: subSubSubCat.id } })" v-b-toggle.collapse-menu>{{ subSubSubCat.name }}</router-link>
+                      </b-list-group-item>
+                    </b-list-group>
                   </b-collapse>
-                </b-list-group-item>
-                <b-list-group-item>
-                  <router-link :to="$i18nRoute({ name: 'women'})" v-b-toggle.collapse-menu>{{ $t('header.women') }}</router-link>
-                  <span v-b-toggle.collapse-menu-sub-sub-1 class="sub-sub-menu-bar-1">
-                    <b-icon icon="chevron-right" class="collapsed-icon"></b-icon>
-                    <b-icon icon="chevron-down" class="opened-icon"></b-icon>
-                  </span>
-                  <b-collapse id="collapse-menu-sub-sub-1" class="mt-1">
-                    <b-list-group-item>
-                      <router-link :to="$i18nRoute({ name: 'kegelrollenlager'})" v-b-toggle.collapse-menu>{{ $t('header.kegelrollenlager') }}</router-link>
-                    </b-list-group-item>
-                  </b-collapse>
-                </b-list-group-item>
-                <b-list-group-item>
-                  <router-link :to="$i18nRoute({ name: 'nadellager'})" v-b-toggle.collapse-menu>{{ $t('header.nadellager') }}</router-link>
-                </b-list-group-item>
-                <b-list-group-item>
-                  <router-link :to="$i18nRoute({ name: 'axiallager'})" v-b-toggle.collapse-menu>{{ $t('header.axiallager') }}</router-link>
-                </b-list-group-item>
-                <b-list-group-item>
-                  <router-link :to="$i18nRoute({ name: 'kombinierte-exial-radiallager'})" v-b-toggle.collapse-menu>{{ $t('header.kombinierte_exial_radiallager') }}</router-link>
                 </b-list-group-item>
               </b-list-group>
             </b-collapse>
-          </b-list-group-item>
-          <b-list-group-item data-depth="0">
-            <router-link :to="$i18nRoute({ name: 'laufrolle'})" v-b-toggle.collapse-menu>{{ $t('header.laufrolle') }}</router-link>
-          </b-list-group-item>
-          <b-list-group-item data-depth="0">
-            <router-link :to="$i18nRoute({ name: 'lineartechnik'})" v-b-toggle.collapse-menu>{{ $t('header.lineartechnik') }}</router-link>
-          </b-list-group-item>
-          <b-list-group-item data-depth="0">
-            <router-link :to="$i18nRoute({ name: 'gehaeuse-einheiten'})" v-b-toggle.collapse-menu>{{ $t('header.gehause_einheiten') }}</router-link>
-          </b-list-group-item>
-          <b-list-group-item data-depth="0">
-            <router-link :to="$i18nRoute({ name: 'gleitlager'})" v-b-toggle.collapse-menu>{{ $t('header.gleitlager') }}</router-link>
-          </b-list-group-item>
-          <b-list-group-item data-depth="0">
-            <router-link :to="$i18nRoute({ name: 'keilriemen'})" v-b-toggle.collapse-menu>{{ $t('header.keilriemen') }}</router-link>
           </b-list-group-item>
         </b-list-group>
       </b-collapse>
@@ -80,9 +40,27 @@
 </template>
 
 <script>
+import { Trans } from '@/lang/Translation'
+import { HeaderServices } from '@/services/index'
 export default {
   props: {
     data: String
+  },
+  data () {
+    return {
+      category: null
+    }
+  },
+  mounted () {
+    setTimeout(() => {
+      const params = {
+        shopId: 1,
+        langId: Trans.getLangId(Trans.currentLanguage)
+      }
+      HeaderServices.getMenu(params).then(resp => {
+        this.category = resp.header.menu.allcategories
+      })
+    }, 200)
   }
 }
 </script>
@@ -96,7 +74,7 @@ export default {
     box-shadow: 0px 3px 30px #00000029;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
-    #collapse-menu-sub {
+    .collapse-menu-sub {
       .list-group {
         max-width: 310px;
       }
@@ -166,7 +144,7 @@ export default {
     padding-right: 0px !important;
     padding-left: 0px !important;
   }
-  #collapse-menu-sub .list-group {
+  .collapse-menu-sub .list-group {
     max-width: 767px !important;
   }
 }

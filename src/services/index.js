@@ -10,12 +10,9 @@ import {
 } from './userService'
 
 import {
-  getTopIcons
+  getTopIcons,
+  getMenu
 } from './headerService'
-
-import {
-  getContentModule
-} from './footerService'
 
 import {
   getCustomText1,
@@ -30,6 +27,11 @@ import {
   productDetails
 } from './productService'
 
+import {
+  getContentModule,
+  getFooterContent
+} from './footerService'
+
 export const UserServices = {
   login,
   register,
@@ -42,7 +44,8 @@ export const UserServices = {
 }
 
 export const HeaderServices = {
-  getTopIcons
+  getTopIcons,
+  getMenu
 }
 
 export const HomeServices = {
@@ -59,5 +62,6 @@ export const ProductServices = {
 }
 
 export const FooterServices = {
-  getContentModule
+  getContentModule,
+  getFooterContent
 }

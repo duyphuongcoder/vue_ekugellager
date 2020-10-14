@@ -12,37 +12,32 @@
             <a href="mailto:" class="email-contact">info@ekugellager.de</a>
           </mdb-col>
           <hr class="clearfix w-100 d-md-none"/>
-          <mdb-col md="2" lg="2" class="ml-auto">
-            <h5 class="text-uppercase mb-4 font-weight-bold">{{ $t('footer.products.self') }}</h5>
-            <ul class="list-unstyled">
-              <p><a href="#!">{{ $t('footer.products.about_us') }}</a></p>
-              <p><a href="#!">{{ $t('footer.products.shipping_process') }}</a></p>
-              <p><a href="#!">{{ $t('footer.products.quality_promise') }}</a></p>
+          <mdb-col md="2" lg="2" class="ml-auto" v-if="links && links.length > 0">
+            <h5 class="text-uppercase mb-4 font-weight-bold">{{ links[0].title }}</h5>
+            <ul class="list-unstyled" v-for="(item, index) in links[0].links" :key="index">
+              <p><a :href="item.url_path" target="_blank">{{ item.title }}</a></p>
             </ul>
           </mdb-col>
           <hr class="clearfix w-100 d-md-none"/>
-          <mdb-col md="2" lg="2">
-            <h5 class="text-uppercase mb-4 font-weight-bold">{{ $t('footer.information.self') }}</h5>
-            <p><a href="#!">{{ $t('footer.information.discount_levels') }}</a></p>
-            <p><a href="#!"> {{ $t('footer.information.quality_levels') }}</a></p>
-            <p><a href="#!">{{ $t('footer.information.graduated_prices') }}</a></p>
-            <p><a href="#!">{{ $t('footer.information.personal_statement') }}</a></p>
+          <mdb-col md="2" lg="2" v-if="links && links.length > 1">
+            <h5 class="text-uppercase mb-4 font-weight-bold">{{ links[1].title }}</h5>
+            <ul v-for="(item, index) in links[1].links" :key="index">
+              <p><a :href="item.url_path" target="_blank">{{ item.title }}</a></p>
+            </ul>
           </mdb-col>
           <hr class="clearfix w-100 d-md-none"/>
-          <mdb-col md="2" lg="2">
-            <h5 class="text-uppercase mb-4 font-weight-bold">{{ $t('footer.legal.self') }}</h5>
-            <p><a href="#!">{{ $t('footer.legal.about_us') }}</a></p>
-            <p><a href="#!">{{ $t('footer.legal.delivery_information') }}</a></p>
-            <p><a href="#!">{{ $t('footer.legal.returns') }}</a></p>
-            <p><a href="#!">{{ $t('footer.legal.privacy_policy') }}</a></p>
+          <mdb-col md="2" lg="2" v-if="links && links.length > 2">
+            <h5 class="text-uppercase mb-4 font-weight-bold">{{ links[2].title }}</h5>
+            <ul v-for="(item, index) in links[2].links" :key="index">
+              <p><a :href="item.url_path" target="_blank">{{ item.title }}</a></p>
+            </ul>
           </mdb-col>
           <hr class="clearfix w-100 d-md-none"/>
-          <mdb-col md="2" lg="2">
-            <h5 class="text-uppercase mb-4 font-weight-bold">{{ $t('footer.customer_service.self') }}</h5>
-            <p><a href="#!">{{ $t('footer.customer_service.return') }}</a></p>
-            <p><a href="#!"> {{ $t('footer.customer_service.faq') }}</a></p>
-            <p><a href="#!">{{ $t('footer.customer_service.size_charts') }}</a></p>
-            <p><a href="#!">{{ $t('footer.customer_service.cookie_preferences') }}</a></p>
+          <mdb-col md="2" lg="2" v-if="links && links.length > 3">
+            <h5 class="text-uppercase mb-4 font-weight-bold">{{ links[3].title }}</h5>
+            <ul v-for="(item, index) in links[3].links" :key="index">
+              <p><a :href="item.url_path" target="_blank">{{ item.title }}</a></p>
+            </ul>
           </mdb-col>
           <hr class="clearfix w-100 d-md-none"/>
           <mdb-col md="2" lg="2" class="text-center">
@@ -72,6 +67,8 @@
 <script>
 import { mdbFooter, mdbContainer, mdbRow, mdbCol } from 'mdbvue'
 import NewsLetter from './NewsLetter'
+import { FooterServices } from '@/services/index'
+import { Trans } from '@/lang/Translation'
 export default {
   name: 'Footer',
   components: {
@@ -80,6 +77,20 @@ export default {
     mdbRow,
     mdbCol,
     NewsLetter
+  },
+  data () {
+    return {
+      links: []
+    }
+  },
+  created () {
+    const params = {
+      shopId: 1,
+      langId: Trans.getLangId(Trans.currentLanguage)
+    }
+    FooterServices.getFooterContent(params).then(resp => {
+      this.links = resp.footer.links
+    })
   }
 }
 </script>
