@@ -4,19 +4,19 @@
       <b-row>
         <b-col md="5">
           <section class="page-content">
-            <ProductImages :images="images" />
+            <ProductImages :images="images" v-if="images.length" :description_short="description_short"/>
             <div class="scroll-box-arrows"></div>
             <div class="product-configurators"></div>
-            <ProductDescription />
+            <ProductDescription :description="description"/>
           </section>
         </b-col>
         <b-col md="7">
           <b-row>
             <b-col lg="6" class="product_features">
-              <ProductTechnical :items="items" />
+              <ProductTechnical :items="product_features" v-if="product_features.length" />
             </b-col>
             <b-col lg="6" class="product_cart">
-              <ProductCart :addtocart="addToCart"/>
+              <ProductCart :addtocart="addToCart" :details="cart_details"/>
             </b-col>
           </b-row>
         </b-col>
@@ -34,6 +34,7 @@
   </b-container>
 </template>
 <script>
+import { ProductServices } from '@/services/index'
 import ProductImages from '@/components/common/ProductImages'
 import ProductTechnical from '@/components/common/ProductTechnical'
 import ProductDescription from '@/components/common/ProductDescription'
@@ -42,6 +43,11 @@ import ProductCart from '@/components/common/ProductCart'
 import BlockCartModal from '@/components/common/BlockCartModal'
 export default {
   name: 'product',
+  metaInfo () {
+    return {
+      title: this.product_name
+    }
+  },
   components: {
     ProductImages,
     ProductTechnical,
@@ -52,24 +58,27 @@ export default {
   },
   data () {
     return {
-      items:
+      product_features:
       [
-        { name: 'Composition', value: 'Cotton' },
-        { name: 'Property', value: 'Short Sleeves' },
-        { name: 'Ø Inside', value: '10' },
-        { name: 'Ø External', value: '26' },
-        { name: 'Width', value: '8' }
       ],
       images: [
-        {
-          id: 1,
-          url: 'https://ekugellager.roccshow.com/2-large_default/hummingbird-printed-t-shirt.jpg'
-        },
-        {
-          id: 2,
-          url: 'https://ekugellager.roccshow.com/28-home_default/brown-bear-printed-sweater.jpg'
-        }
       ],
+      description: {
+        text: '',
+        reference: '',
+        in_stock: ''
+      },
+      description_short: '',
+
+      product_name: '',
+      cart_details: {
+        name: '',
+        quality: '',
+        description_short: '',
+        groups: [],
+        base_price: '',
+        price: ''
+      },
       filterData:
       [
         {
@@ -137,6 +146,40 @@ export default {
       console.log('count to add', n)
       this.$bvModal.show('blockcart_modal')
     }
+  },
+  mounted () {
+    const params = {
+      shopId: 1,
+      langId: 2,
+      productId: this.$route.params.id_product
+    }
+    ProductServices.productDetails(params).then(res => {
+      console.log(res)
+      // browswer title
+      this.product_name = res.name
+      // product images
+      res.gallery.forEach((item, index) => {
+        this.images.push({
+          id: index + 1,
+          url: item[0].value
+        })
+      })
+      this.description_short = res.description_short
+      // product description
+      this.description.text = res.description
+      this.description.reference = res.reference
+      this.description.in_stock = res.quantity
+      // product technical features
+      this.product_features = res.features
+      // cart details
+      this.cart_details.name = res.name
+      var qualityFeature = res.features.filter((item, index) => item.name === 'Quality')
+      this.cart_details.quality = qualityFeature.length ? qualityFeature[0].value : ''
+      this.cart_details.description_short = res.description_short
+      this.cart_details.groups = res.groups
+      this.cart_details.base_price = res.base_price
+      this.cart_details.price = res.price
+    })
   }
 }
 </script>

@@ -1,6 +1,6 @@
 <template>
   <div class="product-cart">
-    <h1 class="h1 product_name_h1" itemprop="name">Hummingbird printed t-shirt</h1>
+    <h1 class="h1 product_name_h1" itemprop="name">{{details.name}}</h1>
     <b-row class="quality-pricelist">
       <b-col lg="4" cols="4" class="title">
         {{$t('products.quality')}}
@@ -8,31 +8,25 @@
       <b-col lg="8" cols="8">
         <ul class="grade">
           <li class="active"></li>
-          <li class="active"></li>
-          <li class="active"></li>
-          <li></li>
+          <li :class="{active : quality_1.includes(details.quality)}"></li>
+          <li :class="{active : quality_2.includes(details.quality)}"></li>
+          <li :class="{active : quality_3.includes(details.quality)}"></li>
         </ul>
       </b-col>
     </b-row>
     <div class="product-information">
-      <div class="product-description-short">
-        <p><span>Regular fit, round neckline, short sleeves. Made of extra long staple pima cotton. </span></p>
-        <p></p>
+      <div class="product-description-short" v-html="details.description_short">
       </div>
       <div class="product-actions">
         <b-form action="#">
           <div class="product-variants">
-            <div class="clearfix product-variants-item">
-              <span class="control-label">Size</span>
-              <b-form-select v-model="selected" :options="options"></b-form-select>
-              <div style="display: none;"> {{selected}} </div>
-            </div>
-            <div class="clearfix product-variants-item">
-              <span class="control-label">Color</span>
-              <b-form-group label="">
-                <b-form-radio  name="color-radio" value="white">White</b-form-radio>
-                <b-form-radio  name="color-radio" value="black">Black</b-form-radio>
+            <div class="clearfix product-variants-item" v-for="(group, index) in details.groups" :key="index">
+              <span class="control-label">{{group.group_name}}</span>
+              <b-form-select v-model="group.default" :options="group.attributes" v-if="group.group_type==='select'"></b-form-select>
+              <b-form-group label="" v-if="group.group_type==='color'">
+                <b-form-radio name="color-radio" v-for="(item, key) in group.attributes" :key="key" :value="key" v-model="group.default">{{item}}</b-form-radio>
               </b-form-group>
+              <div style="display: none;"> {{group.default}} </div>
             </div>
           </div>
           <div class="product-add-to-cart">
@@ -45,10 +39,10 @@
               </b-col>
               <b-col md="8" class="reduce-padding text-right">
                 <div class="product-discount">
-                  <span class="regular-price">€28.44</span>
+                  <span class="regular-price">€{{details.base_price}}</span>
                 </div>
                 <div class="product-price has-discount">
-                  <span>€22.75</span>
+                  <span>€{{details.price}}</span>
                 </div>
                 <div class="tax-shipping-delivery-label">{{$t('products.tax_included')}}</div>
               </b-col>
@@ -77,12 +71,16 @@
 <script>
 export default {
   props: {
-    addtocart: Function
+    addtocart: Function,
+    details: Object
   },
   data () {
     return {
       count: 1,
-      selected: '0',
+      selected: '1',
+      quality_3: ['Best'],
+      quality_2: ['Best', 'Very Good'],
+      quality_1: ['Best', 'Very Good', 'Good'],
       options:
       [
         { value: '0', text: 'S' },
@@ -90,6 +88,14 @@ export default {
         { value: '2', text: 'L' },
         { value: '3', text: 'XL' }
       ]
+    }
+  },
+  watch: {
+    details: {
+      immediate: true,
+      handler () {
+        // this.selected = this.details.groups.
+      }
     }
   }
 }
@@ -104,6 +110,9 @@ export default {
       padding-bottom: 10px;
       border: none;
       font-size: 18px;
+    }
+    .product_name_h1 {
+      text-transform: uppercase;
     }
     .quality-pricelist {
       height: 40px;

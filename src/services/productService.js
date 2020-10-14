@@ -8,5 +8,7 @@ export function getProduct (params) {
 // export function getProductFilters () {
 //   return fetch(`${apiBaseUrl}/roccomediaproductfilter?output_format=JSON&display=full`, requestOptions).then(handleResponse)
 // }
-
+export function productDetails (params) {
+  return fetch(`${apiBaseUrl}/rmapi/rest/product?id_shop=${params.shopId}&id_lang=${params.langId}&id_product=${params.productId}`, requestOptions).then(handleResponse)
+}
 export const getProductFilters = wrapRequest(async => xapi().get('/roccomediaproductfilter?display=full'))

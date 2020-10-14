@@ -337,8 +337,8 @@ a:hover {
 
 #product_detail_modal {
     .modal-dialog {
-        max-width: none;
-        width: fit-content;
+        // max-width: none;
+        // width: fit-content;
     }
     .modal-content {
         background: none;
@@ -350,6 +350,8 @@ a:hover {
         .main_image {
             background: #fff;
         }
+        display: flex;
+        margin-left: -30%;
     }
 }
 

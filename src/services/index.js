@@ -22,7 +22,8 @@ import {
 
 import {
   getProduct,
-  getProductFilters
+  getProductFilters,
+  productDetails
 } from './productService'
 
 export const UserServices = {
@@ -49,5 +50,6 @@ export const HomeServices = {
 
 export const ProductServices = {
   getProduct,
-  getProductFilters
+  getProductFilters,
+  productDetails
 }

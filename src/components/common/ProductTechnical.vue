@@ -35,5 +35,8 @@ export default {
       display: none;
     }
   }
+  td:nth-child(3), td:nth-child(4) {
+    display: none;
+  }
 }
 </style>

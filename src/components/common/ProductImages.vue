@@ -19,40 +19,33 @@
     </div>
   </div>
   <b-modal id="product_detail_modal"  hide-header hide-footer>
-    <b-row class="product_detail_modal">
-      <b-col md="9" class="pr-0 pl-0 main_image">
-        <figure>
-          <div>
-            <b-img class="js-modal-product-cover product-cover-modal" width="800" :src="images[selected].url"></b-img>
-          </div>
-          <figcaption class="image-caption">
-            <div>
-              <p></p>
-              <p><span>Regular fit, round neckline, short sleeves. Made of extra long staple pima cotton. </span></p>
-              <p></p>
-            </div>
-          </figcaption>
-        </figure>
-      </b-col>
-      <b-col md="3" class="pl-0">
-        <aside id="thumbnails" class="thumbnails js-thumbnails text-sm-center">
-          <div class="js-modal-mask mask  nomargin ">
-            <ul class="product-images js-modal-product-images">
-              <li class="thumb-container" v-for="(item, index) in images" :key="index" @click="selectImage(index)">
-                <b-img  class="thumb js-modal-thumb" :src="item.url" width="250"></b-img>
-              </li>
-            </ul>
-          </div>
-        </aside>
-      </b-col>
-    </b-row>
+    <figure>
+      <div>
+        <b-img class="js-modal-product-cover product-cover-modal" width="800" :src="images[selected].url"></b-img>
+      </div>
+      <figcaption class="image-caption">
+        <div v-html="description_short">
+
+        </div>
+      </figcaption>
+    </figure>
+    <aside id="thumbnails" class="thumbnails js-thumbnails text-sm-center">
+      <div class="js-modal-mask mask  nomargin ">
+        <ul class="product-images js-modal-product-images">
+          <li class="thumb-container" v-for="(item, index) in images" :key="index" @click="selectImage(index)">
+            <b-img  class="thumb js-modal-thumb" :src="item.url" width="250"></b-img>
+          </li>
+        </ul>
+      </div>
+    </aside>
   </b-modal>
 </div>
 </template>
 <script>
 export default {
   props: {
-    images: Array
+    images: Array,
+    description_short: String
   },
   data () {
     return {
@@ -146,7 +139,10 @@ export default {
 }
 .image-caption {
   // padding: 20px;
-  text-indent: 5%;
+    background: #fff;
+    width: 800px;
+    padding: .625rem 1.25rem;
+    border-top: 1px solid #f1f1f1;
 
 }
 .product_detail_modal {
@@ -163,6 +159,7 @@ export default {
     background: #fff;
     img {
       border: 3px solid transparent;
+      width: 9.25rem;
     }
     img:hover {
       border: 3px solid #2fb5d2;
@@ -172,4 +169,5 @@ export default {
 .thumb-container {
   cursor: pointer;
 }
+
 </style>

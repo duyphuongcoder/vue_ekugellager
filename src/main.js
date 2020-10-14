@@ -9,6 +9,7 @@ import router from './router'
 import store from './store'
 import { i18n } from './lang/i18n.js'
 import { Trans } from './lang/Translation'
+import VueMeta from 'vue-meta'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -27,6 +28,10 @@ Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 Vue.use(Loading)
 Vue.use(vueCountryRegionSelect)
+Vue.use(VueMeta, {
+  // optional pluginOptions
+  // refreshOnceOnNavigation: true
+})
 new Vue({
   router,
   store,

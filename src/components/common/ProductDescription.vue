@@ -1,24 +1,36 @@
 <template>
   <div class="tabs product-description">
     <b-tabs content-class="">
-      <b-tab :title="$t('products.description')" active><p>Symbol of lightness and delicacy, the hummingbird evokes curiosity and joy. Studio Design' PolyFaune collection features classic products with colorful patterns, inspired by the traditional japanese origamis. To wear with a chino or jeans. The sublimation textile printing process provides an exceptional color rendering and a color, guaranteed overtime.</p></b-tab>
+      <b-tab :title="$t('products.description')" v-html="description.text" active>
+        <!-- <p>
+          Symbol of lightness and delicacy, the hummingbird evokes curiosity and joy. Studio Design' PolyFaune collection features classic products with colorful patterns, inspired by the traditional japanese origamis. To wear with a chino or jeans. The sublimation textile printing process provides an exceptional color rendering and a color, guaranteed overtime.
+        </p> -->
+        </b-tab>
       <b-tab :title="$t('products.details')">
         <div class="product-reference">
-          <label class="label">Reference <span itemprop="sku">demo_1</span></label>
+          <label class="label">Reference <span itemprop="sku">{{description.reference}}</span></label>
         </div>
         <div class="product-quantities">
-          <label class="label">In stock <span data-stock="229" data-allow-oosp="0">229 Items</span></label>
+          <label class="label">In stock <span data-stock="" data-allow-oosp="0">{{description.in_stock}} Items</span></label>
         </div>
         <div class="product-out-of-stock"></div>
       </b-tab>
     </b-tabs>
   </div>
 </template>
+<script>
+export default {
+  props: {
+    description: Object
+  }
+}
+</script>>
 <style lang="scss">
 .product-description {
   margin-top: 2rem;
   padding: 0;
   box-shadow: none;
+  overflow-wrap: break-word;
   color: #7a7a7a;
   a{
     color: #7a7a7a;
