@@ -73,6 +73,14 @@ export default {
         {
           text: 'header.home',
           route: 'home'
+        },
+        {
+          text: 'header.clothes',
+          route: 'clothes'
+        },
+        {
+          text: 'header.nadellager',
+          route: 'nadellager'
         }
       ],
       filterdata: [],

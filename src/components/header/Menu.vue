@@ -59,7 +59,6 @@ export default {
       }
       HeaderServices.getMenu(params).then(resp => {
         this.category = resp.header.menu.allcategories
-        console.log(this.category)
       })
     }, 200)
   }
