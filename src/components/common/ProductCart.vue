@@ -1,7 +1,7 @@
 <template>
   <div class="product-cart">
     <h1 class="h1 product_name_h1" itemprop="name">{{details.name}}</h1>
-    <b-row class="quality-pricelist">
+    <b-row class="quality-pricelist" v-if="quality.length">
       <b-col lg="4" cols="4" class="title">
         {{$t('products.quality')}}
       </b-col>
@@ -75,7 +75,7 @@ export default {
   data () {
     return {
       count: 1,
-      quality: [1, 0, 0, 0]
+      quality: []
     }
   },
   methods: {
