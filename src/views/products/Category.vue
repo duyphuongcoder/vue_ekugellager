@@ -6,7 +6,7 @@
         <FilterWrapper v-if="filterdata && filterdata.length > 0" :filterdata="filterdata" :updatevalues="updatevalues" :dragend="dragend"/>
       </b-col>
       <b-col md="9" sm="12">
-        <div class="active-filters-block mb-4" v-if="filterdata && filterdata.length > 0">
+        <div class="active-filters-block mb-4 d-none" v-if="filterdata && filterdata.length > 0">
           <div class="filter-title"> <span> Active Filters: </span> </div>
           <b-form-tags
            input-id="tags-basic"
@@ -57,7 +57,7 @@ import { ProductServices } from '@/services/index'
 import BlockCartModal from '@/components/common/BlockCartModal'
 import CategoryForm from '@/components/common/CategoryForm'
 import { BLOCK_CART_MODAL } from '@/constants/modal'
-import { loadingSpinnerConfig } from '@/config/settings'
+import { loadingSpinnerConfig, pageSize, shopId } from '@/config/settings'
 export default {
   name: 'startseite',
   components: {
@@ -73,19 +73,19 @@ export default {
         {
           text: 'header.home',
           route: 'home'
-        },
-        {
-          text: 'header.clothes',
-          route: 'clothes'
-        },
-        {
-          text: 'header.nadellager',
-          route: 'nadellager'
         }
+        // {
+        //   text: 'header.clothes',
+        //   route: 'clothes'
+        // },
+        // {
+        //   text: 'header.nadellager',
+        //   route: 'nadellager'
+        // }
       ],
       filterdata: [],
       totalCount: 0,
-      perPage: 5,
+      perPage: pageSize,
       currentPage: 1,
       products: [],
       activeFilters: ['Categories: Clothes', 'Size: S'],
@@ -122,7 +122,7 @@ export default {
   methods: {
     callProducts () {
       const params = {
-        shopId: 1,
+        shopId: shopId,
         langId: Trans.getLangId(Trans.currentLanguage),
         cateId: this.$route.params.id_category,
         page: this.currentPage,
