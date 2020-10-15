@@ -1,16 +1,13 @@
 <template>
   <div class="product-cart">
     <h1 class="h1 product_name_h1" itemprop="name">{{details.name}}</h1>
-    <b-row class="quality-pricelist">
+    <b-row class="quality-pricelist" v-if="quality.length">
       <b-col lg="4" cols="4" class="title">
         {{$t('products.quality')}}
       </b-col>
       <b-col lg="8" cols="8">
         <ul class="grade">
-          <li class="active"></li>
-          <li :class="{active : quality_1.includes(details.quality)}"></li>
-          <li :class="{active : quality_2.includes(details.quality)}"></li>
-          <li :class="{active : quality_3.includes(details.quality)}"></li>
+          <li v-for="(item, index) in quality" :key="index" :class="{active : item === 1}"></li>
         </ul>
       </b-col>
     </b-row>
@@ -22,11 +19,11 @@
           <div class="product-variants">
             <div class="clearfix product-variants-item" v-for="(group, index) in details.groups" :key="index">
               <span class="control-label">{{group.group_name}}</span>
-              <b-form-select v-model="group.default" :options="group.attributes" v-if="group.group_type==='select'"></b-form-select>
-              <b-form-group label="" v-if="group.group_type==='color'">
-                <b-form-radio name="color-radio" v-for="(item, key) in group.attributes" :key="key" :value="key" v-model="group.default">{{item}}</b-form-radio>
-              </b-form-group>
-              <div style="display: none;"> {{group.default}} </div>
+              <b-form-select @change="changeGroup()" v-model="selected_groups[index]" :options="group.attributes" v-if="group.group_type==='select'"></b-form-select>
+              <b-form-radio-group @input="changeGroup()" name="color-radio" v-model="selected_groups[index]" v-if="group.group_type==='color'">
+                <b-form-radio   v-for="(item, key) in group.attributes" :key="key" :value="key" >{{item}}</b-form-radio>
+              </b-form-radio-group>
+              <div style="display: none;"> {{selected_groups[index]}} </div>
             </div>
           </div>
           <div class="product-add-to-cart">
@@ -39,15 +36,15 @@
               </b-col>
               <b-col md="8" class="reduce-padding text-right">
                 <div class="product-discount">
-                  <span class="regular-price">€{{details.base_price}}</span>
+                  <span class="regular-price">€{{parseFloat(details.base_price).toFixed(2)}}</span>
                 </div>
                 <div class="product-price has-discount">
-                  <span>€{{details.price}}</span>
+                  <span>€{{parseFloat(details.price).toFixed(2)}}</span>
                 </div>
                 <div class="tax-shipping-delivery-label">{{$t('products.tax_included')}}</div>
               </b-col>
             </b-row>
-            <p>229 {{$t('products.ready_to_ship')}}</p>
+            <p>{{details.quantity}} {{$t('products.ready_to_ship')}}</p>
             <b-row class="add-to-cart">
               <b-col cols="4" class="p-0">
                 <b-form-input type="number" v-model="count" value="1"></b-form-input>
@@ -72,23 +69,28 @@
 export default {
   props: {
     addtocart: Function,
-    details: Object
+    details: Object,
+    selected_groups: Array
   },
   data () {
     return {
       count: 1,
-      selected: '1',
-      quality_3: ['Best'],
-      quality_2: ['Best', 'Very Good'],
-      quality_1: ['Best', 'Very Good', 'Good'],
-      options:
-      [
-        { value: '0', text: 'S' },
-        { value: '1', text: 'M' },
-        { value: '2', text: 'L' },
-        { value: '3', text: 'XL' }
-      ]
+      quality: []
     }
+  },
+  methods: {
+    changeGroup () {
+      var json = {}
+      this.details.groups.forEach((item, index) => {
+        json[item.group_name] = this.selected_groups[index]
+      })
+      this.$router.push({ query: json })
+    }
+  },
+  mounted () {
+    if (this.details.quality === 'Good') this.quality = [1, 1, 0, 0]
+    if (this.details.quality === 'Very Good') this.quality = [1, 1, 1, 0]
+    if (this.details.quality === 'Best') this.quality = [1, 1, 1, 1]
   },
   watch: {
     details: {
