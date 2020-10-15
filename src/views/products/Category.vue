@@ -3,10 +3,10 @@
     <CatlogBar :catRoutes="catRoutes"/>
     <b-row>
       <b-col md="3" sm="12">
-        <FilterWrapper :filterdata="filterdata" :updatevalues="updatevalues" :dragend="dragend"/>
+        <FilterWrapper v-if="filterdata && filterdata.length > 0" :filterdata="filterdata" :updatevalues="updatevalues" :dragend="dragend"/>
       </b-col>
       <b-col md="9" sm="12">
-        <div class="active-filters-block mb-4">
+        <div class="active-filters-block mb-4" v-if="filterdata && filterdata.length > 0">
           <div class="filter-title"> <span> Active Filters: </span> </div>
           <b-form-tags
            input-id="tags-basic"

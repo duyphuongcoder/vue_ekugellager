@@ -83,14 +83,16 @@ export default {
       links: []
     }
   },
-  created () {
-    const params = {
-      shopId: 1,
-      langId: Trans.getLangId(Trans.currentLanguage)
-    }
-    FooterServices.getFooterContent(params).then(resp => {
-      this.links = resp.footer.links
-    })
+  mounted () {
+    setTimeout(() => {
+      const params = {
+        shopId: 1,
+        langId: Trans.getLangId(Trans.currentLanguage)
+      }
+      FooterServices.getFooterContent(params).then(resp => {
+        this.links = resp.footer.links
+      })
+    }, 200)
   }
 }
 </script>
