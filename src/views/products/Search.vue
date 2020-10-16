@@ -1,22 +1,8 @@
 <template>
-  <b-container class="startseite">
-    <CatlogBar :catRoutes="catRoutes"/>
-    <b-row>
-      <b-col md="3" sm="12">
-        <FilterWrapper v-if="filterdata && filterdata.length > 0" :filterdata="filterdata" :updatevalues="updatevalues" :dragend="dragend"/>
-      </b-col>
-      <b-col md="9" sm="12">
-        <div class="active-filters-block mb-4 d-none" v-if="filterdata && filterdata.length > 0">
-          <div class="filter-title"> <span> Active Filters: </span> </div>
-          <b-form-tags
-           input-id="tags-basic"
-           v-model="activeFilters"
-           size="lg"
-           no-add-on-enter
-           placeholder=""
-           disableAddButton
-          ></b-form-tags>
-        </div>
+  <b-container class="search-page">
+    <h4 class="mt-5"> SEARCH RESULTS </h4>
+    <b-row class="mt-5">
+      <b-col md="12" sm="12">
         <b-row class="products" v-if="products.length > 0">
           <b-col lg="4" md="6" sm="12" v-for="(item, index) in products" :key="index">
             <ProductBox :product="products[index]" :addtocart="addToCart"/>
@@ -50,40 +36,21 @@
 
 <script>
 import { Trans } from '@/lang/Translation'
-import CatlogBar from '@/components/common/CatlogBar'
-import FilterWrapper from '@/components/common/FilterWrapper'
 import ProductBox from '@/components/common/ProductBox'
-import { ProductServices } from '@/services/index'
+import { HeaderServices } from '@/services/index'
 import BlockCartModal from '@/components/common/BlockCartModal'
 import CategoryForm from '@/components/common/CategoryForm'
 import { BLOCK_CART_MODAL } from '@/constants/modal'
 import { loadingSpinnerConfig, pageSize, shopId } from '@/config/settings'
 export default {
-  name: 'startseite',
+  name: 'search',
   components: {
-    CatlogBar,
-    FilterWrapper,
     ProductBox,
     BlockCartModal,
     CategoryForm
   },
   data () {
     return {
-      catRoutes: [
-        {
-          text: 'header.home',
-          route: 'home'
-        }
-        // {
-        //   text: 'header.clothes',
-        //   route: 'clothes'
-        // },
-        // {
-        //   text: 'header.nadellager',
-        //   route: 'nadellager'
-        // }
-      ],
-      filterdata: [],
       totalCount: 0,
       perPage: pageSize,
       currentPage: 1,
@@ -95,27 +62,6 @@ export default {
   },
   mounted () {
     this.callProducts()
-    // ProductServices.getProductFilters().then(resp => {
-    //   const facets = resp.roccomediaproductfacets
-    //   const filters = resp.roccomediaproductfilters
-    //   facets.forEach(facet => {
-    //     const filter = { type: facet.widgetType }
-    //     if (facet.widgetType === 'slider') {
-    //       filter.title = facet.label
-    //       filter.min = facet.min
-    //       filter.max = facet.max
-    //       filter.unit = facet.unit
-    //     }
-    //     if (facet.widgetType === 'checkbox') {
-    //       filter.content = { title: facet.label, items: filters.filter(item => item.id_facet === facet.id) }
-    //     }
-    //     this.filterdata.push(filter)
-    //   })
-    //   this.loader.hide()
-    // }).catch(err => {
-    //   console.log('err', err)
-    //   this.loader.hide()
-    // })
   },
   created () {
   },
@@ -124,25 +70,15 @@ export default {
       const params = {
         shopId: shopId,
         langId: Trans.getLangId(Trans.currentLanguage),
-        cateId: this.$route.params.id_category,
+        query: this.$route.query.key,
         page: this.currentPage,
         perPage: this.perPage
       }
       this.loader = this.$loading.show(loadingSpinnerConfig)
-      ProductServices.getProduct(params).then(resp => {
-        if (resp.navigation_layered && resp.navigation_layered.length > 0) {
-          this.getFilterData(resp.navigation_layered[0].filters)
-        }
+      HeaderServices.searchProducts(params).then(resp => {
         this.freshProducts(resp.products)
         this.totalCount = resp.products_count
         this.loader.hide()
-      })
-    },
-    getFilterData (filters) {
-      this.filterdata = []
-      filters.forEach(f => {
-        f.filter_type = 'checkbox'
-        this.filterdata.push(f)
       })
     },
     freshProducts (products) {
@@ -182,27 +118,6 @@ export default {
       })
       this.products = products
     },
-    updatevalues (values, id) {
-      console.log(this.filterdata[id].name, values)
-      this.$router.go({ path: '/startseite', query: { q: 'pp' } })
-
-      // this.loader = this.$loading.show(loadingSpinnerConfig)
-      // setTimeout(() => {
-      //   this.loader.hide()
-      // }, 2000)
-      // this.activeFilters.push('Test: test')
-    },
-    dragend (value, id) {
-      const max = this.filterdata[id].max
-      const min = this.filterdata[id].min
-      const realMin = Math.round((max - min) / 100 * value[0])
-      const realMax = Math.round((max - min) / 100 * value[1])
-      console.log(this.filterdata[id].title, realMin, realMax)
-      this.loader = this.$loading.show(loadingSpinnerConfig)
-      setTimeout(() => {
-        this.loader.hide()
-      }, 2000)
-    },
     selectPage (selectedpage) {
       this.currentPage = selectedpage
       this.callProducts()
@@ -214,7 +129,9 @@ export default {
   },
   watch: {
     $route (to, from) {
-      this.$router.go()
+      if (to.query.key !== from.query.key) {
+        this.callProducts()
+      }
     }
   }
 }
