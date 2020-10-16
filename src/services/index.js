@@ -17,7 +17,9 @@ import {
 
 import {
   getTopIcons,
-  getMenu
+  getMenu,
+  searchProductsTerms,
+  searchProducts
 } from './headerService'
 
 import {
@@ -56,7 +58,9 @@ export const UserServices = {
 
 export const HeaderServices = {
   getTopIcons,
-  getMenu
+  getMenu,
+  searchProductsTerms,
+  searchProducts
 }
 
 export const HomeServices = {

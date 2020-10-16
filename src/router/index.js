@@ -21,6 +21,7 @@ import Wishlist from '../views/account/Wishlist.vue'
 
 import Category from '../views/products/Category.vue'
 import Product from '../views/products/Product.vue'
+import Search from '../views/products/Search.vue'
 import Cart from '../views/products/Cart.vue'
 import RecommendProducts from '@/views/products/RecommendProducts'
 import Order from '../views/order/Order.vue'
@@ -152,6 +153,11 @@ const routes = [
         path: 'category/:id_category',
         name: 'category',
         component: Category
+      },
+      {
+        path: 'search',
+        name: 'search',
+        component: Search
       },
       {
         path: 'cart',

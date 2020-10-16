@@ -112,7 +112,9 @@ export default {
       this.count++
     },
     descreament () {
-      this.count--
+      if (this.count > 1) {
+        this.count--
+      }
     }
   }
 }

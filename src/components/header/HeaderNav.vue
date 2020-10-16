@@ -56,11 +56,11 @@ export default {
   components: {
     TheLanguageSwitcher
   },
-  created () {
+  mounted () {
     this.topCounter()
-    if (!this.$store.state.header.topnavbar) {
+    setTimeout(() => {
       this.$store.dispatch('get_topnavbar', Trans.getLangId(Trans.currentLanguage))
-    }
+    }, 200)
   },
   methods: {
     topCounter () {

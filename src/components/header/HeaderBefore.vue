@@ -13,7 +13,17 @@
           </b-col>
           <b-col md="6" sm="12" class="search-section mt-2">
             <div id="search_widget" class="search-widget mb-2">
-              <b-form-input v-model="search_key" :placeholder="$t('header.search_for_catalog')"></b-form-input>
+              <vue-bootstrap-typeahead
+                :data="searchOptions"
+                v-model="search_key"
+                size="lg"
+                :serializer="s => s.name"
+                :placeholder="$t('header.search_for_catalog')"
+                @input="inputKey"
+                @hit="selected"
+                class="search-input"
+                ref="searchInput"
+              />
               <b-button variant="outline-primary">
                 <b-icon icon="search"></b-icon>
               </b-button>
@@ -51,21 +61,28 @@
 </template>
 
 <script>
+import { Trans } from '@/lang/Translation'
+import { shopId } from '@/config/settings'
 import ShoppingCartModal from '@/components/common/ShoppingCartModal'
 import { SHOPPING_CART_MODAL } from '@/constants/modal'
 import Menu from './Menu'
-import { UserServices } from '@/services/index'
+import { UserServices, HeaderServices } from '@/services/index'
+import VueBootstrapTypeahead from 'vue-bootstrap-typeahead'
+import $ from 'jquery'
 export default {
   components: {
     ShoppingCartModal,
-    Menu
+    Menu,
+    VueBootstrapTypeahead
   },
   data () {
     return {
       modalId: SHOPPING_CART_MODAL,
       search_key: '',
       user: null,
-      rank: 0
+      rank: 0,
+      searchOptions: [],
+      selectedAddress: null
     }
   },
   mounted () {
@@ -74,6 +91,47 @@ export default {
       UserServices.getUserRank(this.user.id_customer).then(resp => {
         this.rank = resp.customerrank.rank
       })
+    }
+    const self = this
+    $(document).keyup(function (event) {
+      if (event.keyCode === 13) {
+        self.$router.push({ name: 'search', query: { key: self.search_key } }).catch(() => {})
+      }
+    })
+  },
+  methods: {
+    freshData (data) {
+      data.forEach(e => {
+        e.name = e.title + `(${this.search_key})`
+        e.id = e.id_product
+        e.keyword = this.search_key
+      })
+      return data
+    },
+    inputKey (value) {
+      this.searchOptions = []
+      if (value.length < 3) {
+        return
+      }
+      const params = {
+        shopId: shopId,
+        langId: Trans.getLangId(Trans.currentLanguage),
+        query: value
+      }
+      HeaderServices.searchProductsTerms(params).then(resp => {
+        this.searchOptions = this.freshData(resp.products)
+      })
+    },
+    selected (item) {
+      this.$router.push({ name: 'product', params: { id_product: item.id_product } }).catch(() => {})
+      this.$refs.searchInput.inputValue = ''
+    }
+  },
+  watch: {
+    $route (to, from) {
+      if (to.query && to.query.key) {
+        this.search_key = to.query.key
+      }
     }
   }
 }
@@ -109,15 +167,17 @@ export default {
       max-width: 400px;
       margin: auto;
       margin-top: 3px;
-      input {
-        border: #D8D8D8 1px solid;
-        border-radius: 8px;
-      }
-      input:focus {
-        outline: none;
-        box-shadow: none !important;
-        border-radius: 8px;
-        border: #12407E 1px solid;
+      .input-group {
+        input, .dropdown-input {
+          border: #D8D8D8 1px solid !important;
+          border-radius: 8px !important;
+        }
+        input:focus, .dropdown-input:focus {
+          outline: none !important;
+          box-shadow: none !important;
+          border-radius: 8px !important;
+          border: #12407E 1px solid !important;
+        }
       }
       button {
         background: #12407E;
@@ -129,7 +189,6 @@ export default {
         transition: all .3s ease;
         cursor: pointer;
         border-color: transparent;
-        transform: translate(-17px, -7px);
       }
       button:hover {
         background: #B2162C;

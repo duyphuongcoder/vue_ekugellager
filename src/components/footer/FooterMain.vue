@@ -15,28 +15,28 @@
           <mdb-col md="2" lg="2" class="ml-auto" v-if="links && links.length > 0">
             <h5 class="text-uppercase mb-4 font-weight-bold">{{ links[0].title }}</h5>
             <ul class="list-unstyled" v-for="(item, index) in links[0].links" :key="index">
-              <p><a :href="item.url_path" target="_blank">{{ item.title }}</a></p>
+              <p><a :href="item.url_path">{{ item.title }}</a></p>
             </ul>
           </mdb-col>
           <hr class="clearfix w-100 d-md-none"/>
           <mdb-col md="2" lg="2" v-if="links && links.length > 1">
             <h5 class="text-uppercase mb-4 font-weight-bold">{{ links[1].title }}</h5>
             <ul v-for="(item, index) in links[1].links" :key="index">
-              <p><a :href="item.url_path" target="_blank">{{ item.title }}</a></p>
+              <p><a :href="item.url_path">{{ item.title }}</a></p>
             </ul>
           </mdb-col>
           <hr class="clearfix w-100 d-md-none"/>
           <mdb-col md="2" lg="2" v-if="links && links.length > 2">
             <h5 class="text-uppercase mb-4 font-weight-bold">{{ links[2].title }}</h5>
             <ul v-for="(item, index) in links[2].links" :key="index">
-              <p><a :href="item.url_path" target="_blank">{{ item.title }}</a></p>
+              <p><a :href="item.url_path">{{ item.title }}</a></p>
             </ul>
           </mdb-col>
           <hr class="clearfix w-100 d-md-none"/>
           <mdb-col md="2" lg="2" v-if="links && links.length > 3">
             <h5 class="text-uppercase mb-4 font-weight-bold">{{ links[3].title }}</h5>
             <ul v-for="(item, index) in links[3].links" :key="index">
-              <p><a :href="item.url_path" target="_blank">{{ item.title }}</a></p>
+              <p><a :href="item.url_path">{{ item.title }}</a></p>
             </ul>
           </mdb-col>
           <hr class="clearfix w-100 d-md-none"/>
@@ -83,14 +83,16 @@ export default {
       links: []
     }
   },
-  created () {
-    const params = {
-      shopId: 1,
-      langId: Trans.getLangId(Trans.currentLanguage)
-    }
-    FooterServices.getFooterContent(params).then(resp => {
-      this.links = resp.footer.links
-    })
+  mounted () {
+    setTimeout(() => {
+      const params = {
+        shopId: 1,
+        langId: Trans.getLangId(Trans.currentLanguage)
+      }
+      FooterServices.getFooterContent(params).then(resp => {
+        this.links = resp.footer.links
+      })
+    }, 200)
   }
 }
 </script>
