@@ -2,8 +2,8 @@ import { UserServices } from '@/services/index'
 
 const state = {
   status: '',
-  token: localStorage.getItem('ekugellager_token') || '',
-  user: JSON.parse(localStorage.getItem('ekugellager_user')) || null
+  token: '',
+  user: null
 }
 
 const mutations = {
@@ -14,8 +14,6 @@ const mutations = {
     state.status = 'success'
     state.token = data.token
     state.user = data.user
-    localStorage.setItem('ekugellager_token', data.token)
-    localStorage.setItem('ekugellager_user', JSON.stringify(data.user))
   },
   auth_error (state) {
     state.status = 'error'
@@ -24,8 +22,6 @@ const mutations = {
     state.status = ''
     state.token = ''
     state.user = null
-    localStorage.removeItem('ekugellager_token')
-    localStorage.removeItem('ekugellager_user')
   }
 }
 

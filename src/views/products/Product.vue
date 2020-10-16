@@ -30,7 +30,7 @@
         </b-row>
       </div>
     </div>
-    <BlockCartModal />
+    <BlockCartModal :details="modal_details" :ps_item_id="ps_item_id" :current_item="current_item"/>
   </b-container>
 </template>
 <script>
@@ -61,6 +61,8 @@ export default {
   data () {
     return {
       product_details: {},
+      ps_item_id: '0_0', // product id _ id_comination
+      current_item: {},
       product_features:
       [
       ],
@@ -85,6 +87,8 @@ export default {
         quantity: ''
       },
       selected_groups: [],
+      combinations: [],
+      modal_details: {},
       featured_products: [
         {
           id: 231,
@@ -105,8 +109,23 @@ export default {
   },
   methods: {
     addToCart (n) {
-      console.log('count to add', n)
-      this.$bvModal.show('blockcart_modal')
+      const idCombination = this.combinations.length ? this.combinations[0].id_combination : 0
+      this.ps_item_id = this.product_details.id_product + '_' + idCombination
+      const params = {
+        id_product: this.product_details.id_product,
+        id_lang: Trans.getLangId(Trans.currentLanguage),
+        id_shop: 1,
+        id_product_attribute: idCombination,
+        qty: n
+      }
+      this.$store.dispatch('addToCart', params).then(res => {
+        this.modal_details = res.cart
+        this.current_item = res.cart.items.filter(this.item_filter)[0]
+        this.$bvModal.show('blockcart_modal')
+      })
+    },
+    item_filter (item, index) {
+      return item.ps_item_id === this.ps_item_id
     },
     setTitle (name) {
       this.product_name = name
@@ -148,15 +167,15 @@ export default {
       var images = []
       if (res.groups.length) { // in case of group exists
         this.setSelectedGroups(res.groups)
-        var combinations = res.combinations.filter((item, index) => JSON.stringify(item.attributes) === JSON.stringify(this.selected_groups))
-        combinations[0].images.forEach((item, index) => {
+        this.combinations = res.combinations.filter((item, index) => JSON.stringify(item.attributes) === JSON.stringify(this.selected_groups))
+        this.combinations[0].images.forEach((item, index) => {
           images.push({
             id: index + 1,
             url: item.value
           })
         })
-        quantity = combinations[0].quantity
-        prices = combinations[0].specific_price
+        quantity = this.combinations[0].quantity
+        prices = this.combinations[0].specific_price
       } else { // in case of group doesn't exist
         res.gallery.forEach((item, index) => {
           images.push({
@@ -186,7 +205,6 @@ export default {
       }
       this.loader = this.$loading.show(loadingSpinnerConfig)
       ProductServices.productDetails(params).then(res => {
-        console.log(res)
         this.product_details = res
         this.manageProductDetails(this.product_details)
         this.loader.hide()
@@ -195,7 +213,6 @@ export default {
   },
   mounted () {
     this.getProductDetails()
-    console.log(this.$store.getters)
   },
   watch: {
     $route (to, from) {

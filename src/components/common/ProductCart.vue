@@ -47,7 +47,7 @@
             <p>{{details.quantity}} {{$t('products.ready_to_ship')}}</p>
             <b-row class="add-to-cart">
               <b-col cols="4" class="p-0">
-                <b-form-input type="number" v-model="count" value="1"></b-form-input>
+                <b-form-input type="number" v-model="count" min="1" value="1"></b-form-input>
               </b-col>
               <b-col cols="8" class="p-0">
                 <b-button @click="addtocart(count)">{{$t('products.shoppingcart')}}</b-button>

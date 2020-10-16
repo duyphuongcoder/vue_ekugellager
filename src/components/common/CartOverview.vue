@@ -15,22 +15,25 @@
         <li class="cart-item cart_page_detail_li" v-for="(item, index) in items" :key="index" :class="{removed:(removedItems.includes(index))}">
           <b-row class="product-line-grid cart-detail-desktop">
             <b-col md="2" class="img">
-              <div><b-img :src="item.img"></b-img></div>
+              <div><b-img :src="item.image"></b-img></div>
             </b-col>
             <b-col md="3" class="name_category">
                 <p class="category">{{item.category}}</p>
-                <a class="name" href="#">{{item.name}}</a>
+                <a class="name" href="#"><strong>{{item.name}}</strong></a>
+                <div v-if="item.attributes">
+                  <p v-for="(attr, i) in item.attributes.split('-')" :key="i" class="small">{{attr}}</p>
+                </div>
             </b-col>
             <b-col md="2" class="quantity">
-              <b-form-input type="number" min="1" :value="item.quantity" v-model="item.quantity"></b-form-input>
+              <b-form-input type="number" @change="updateItem(index, item.cart_quantity)" min="1" :value="item.cart_quantity" v-model="item.cart_quantity"></b-form-input>
             </b-col>
             <b-col md="2" class="unit_price">
-              <p class="regular_price">{{item.price.unit + item.price.regular}}</p>
-              <p class="discount">{{'-'+ item.price.discount + item.price.discount_type}}</p>
-              <p class="current_price">{{item.price.unit + item.price.current}}</p>
+              <p class="regular_price">€{{parseFloat(item.price_without_reduction).toFixed(2)}}</p>
+              <p class="discount">{{show_reduction(item.specific_prices)}}</p>
+              <p class="current_price">€{{parseFloat(item.price).toFixed(2)}}</p>
             </b-col>
             <b-col md="2" class="total_price">
-              <p>€{{(item.price.current * item.quantity).toFixed(2)}}</p>
+              <p>€{{parseFloat(item.total).toFixed(2)}}</p>
             </b-col>
             <b-col md="1" class="remove" @click="removeItem(index)">
               <b-icon icon="trash" font-scale="1.5"></b-icon>
@@ -44,7 +47,9 @@
 <script>
 export default {
   props: {
-    items: Array
+    items: Array,
+    removeItem: Function,
+    updateItem: Function
   },
   data () {
     return {
@@ -52,8 +57,15 @@ export default {
     }
   },
   methods: {
-    removeItem (index) {
-      this.removedItems.push(index)
+    show_reduction (prices) {
+      var reduction = prices.reduction
+      if (prices.reduction_type === 'percentage') {
+        reduction = reduction * 100 + '%'
+      } else if (prices.reduction_type === 'amount') {
+        reduction = '€' + parseFloat(reduction).toFixed(2)
+      }
+      if (parseInt(prices.price) === -1) reduction = '-' + reduction
+      return reduction
     }
   }
 }
@@ -78,6 +90,9 @@ export default {
     border-top: 1px solid #E9E9E9;
     .product-line-grid>div {
       margin: auto;
+      img {
+        width: 100%;
+      }
     }
     .name_category {
       p.cateogry {

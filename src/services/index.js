@@ -1,4 +1,10 @@
 import {
+  getCartDetails,
+  addToCart,
+  updateInCart,
+  removeFromCart
+} from './cartService'
+import {
   login,
   register,
   forgotPassword,
@@ -31,7 +37,12 @@ import {
   getContentModule,
   getFooterContent
 } from './footerService'
-
+export const CartServices = {
+  getCartDetails,
+  addToCart,
+  updateInCart,
+  removeFromCart
+}
 export const UserServices = {
   login,
   register,
