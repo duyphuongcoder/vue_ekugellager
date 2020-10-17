@@ -58,7 +58,7 @@
                             <b-col cols="5">
                                 <div class="product-add-to-cart">
                                     <span @click="descreament">-</span>
-                                    <b-form-input type="number" v-model="count" value="1" min="1"></b-form-input>
+                                    <b-form-input type="number" v-model="qty" value="1" min="1"></b-form-input>
                                     <span @click="increament">+</span>
                                 </div>
                                 <div class="product-prislist-quantity">
@@ -70,7 +70,7 @@
                                     <b-button
                                      variant="danger"
                                      class="add-to-cart"
-                                     @click="addtocart(count)"
+                                     @click="addtocart(product, qty)"
                                     >{{$t('products.shoppingcart')}}</b-button>
                                 </div>
                                 <div class="eku-compear">
@@ -95,7 +95,6 @@
 </template>
 
 <script>
-
 export default {
   props: {
     product: Object,
@@ -104,16 +103,16 @@ export default {
   data () {
     return {
       collapseid: 'product_collapse_' + this.product.id_product,
-      count: 1
+      qty: 1
     }
   },
   methods: {
     increament () {
-      this.count++
+      this.qty++
     },
     descreament () {
-      if (this.count > 1) {
-        this.count--
+      if (this.qty > 1) {
+        this.qty--
       }
     }
   }

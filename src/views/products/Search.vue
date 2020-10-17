@@ -29,7 +29,7 @@
     </b-row>
     <div>
     </div>
-    <BlockCartModal />
+    <BlockCartModal :details="modal_details" :ps_item_id="ps_item_id" :current_item="current_item"/>
     <CategoryForm />
   </b-container>
 </template>
@@ -37,7 +37,7 @@
 <script>
 import { Trans } from '@/lang/Translation'
 import ProductBox from '@/components/common/ProductBox'
-import { HeaderServices } from '@/services/index'
+import { HeaderServices, ProductServices } from '@/services/index'
 import BlockCartModal from '@/components/common/BlockCartModal'
 import CategoryForm from '@/components/common/CategoryForm'
 import { BLOCK_CART_MODAL } from '@/constants/modal'
@@ -57,6 +57,9 @@ export default {
       products: [],
       activeFilters: ['Categories: Clothes', 'Size: S'],
       modalId: BLOCK_CART_MODAL,
+      modal_details: {},
+      ps_item_id: '0_0', // product id _ id_comination
+      current_item: {},
       loader: null
     }
   },
@@ -122,9 +125,31 @@ export default {
       this.currentPage = selectedpage
       this.callProducts()
     },
-    addToCart (n) {
-      console.log('count to add', n)
-      this.$bvModal.show(this.modalId)
+    addToCart (product, qty) {
+      const params = {
+        shopId: shopId,
+        langId: Trans.getLangId(Trans.currentLanguage),
+        productId: product.id_product
+      }
+      ProductServices.productDetails(params).then(res => {
+        this.toCart(res, qty)
+      })
+    },
+    toCart (product, qty) {
+      const idCombination = product.combinations.length ? product.combinations[0].id_combination : 0
+      this.ps_item_id = product.id_product + '_' + idCombination
+      const params = {
+        id_product: product.id_product,
+        id_lang: Trans.getLangId(Trans.currentLanguage),
+        id_shop: shopId,
+        id_product_attribute: idCombination,
+        qty: qty
+      }
+      this.$store.dispatch('addToCart', params).then(res => {
+        this.modal_details = res.cart
+        this.current_item = res.cart.items.filter((item) => item.ps_item_id === this.ps_item_id)[0]
+        this.$bvModal.show(BLOCK_CART_MODAL)
+      })
     }
   },
   watch: {
