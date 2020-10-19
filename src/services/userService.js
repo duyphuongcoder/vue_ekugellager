@@ -41,10 +41,14 @@ export function forgotPassword (email) {
   return fetch(`${apiBaseUrl}/roccomediaapi/forgotpassword`, requestOptions).then(handleResponse)
 }
 export function logout (payload) {
-  const formData = new FormData()
-  formData.append('id_customer', payload.id_customer)
-  requestOptions.body = formData
-  return fetch(`${apiBaseUrl}/rmapi/rest/accounts/16/logout`, requestOptions).then(handleResponse)
+  const logoutRequestOptions = {
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Basic ' + appToken,
+      'Output-Format': 'JSON'
+    }
+  }
+  return fetch(`${apiBaseUrl}/rmapi/rest/accounts/${payload.id_customer}/logout`, logoutRequestOptions).then(handleResponse)
 }
 export function getAddresses (id) {
   return fetch(`${apiBaseUrl}/roccomediaapi/getaddresses?id_customer=${id}`, getRequestOptions).then(handleResponse)

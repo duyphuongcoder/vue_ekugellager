@@ -43,8 +43,8 @@
     </b-row>
     <div>
     </div>
-    <BlockCartModal />
     <CategoryForm />
+    <BlockCartModal :details="modal_details" :ps_item_id="ps_item_id" :current_item="current_item"/>
   </b-container>
 </template>
 
@@ -54,18 +54,18 @@ import CatlogBar from '@/components/common/CatlogBar'
 import FilterWrapper from '@/components/common/FilterWrapper'
 import ProductBox from '@/components/common/ProductBox'
 import { ProductServices } from '@/services/index'
-import BlockCartModal from '@/components/common/BlockCartModal'
 import CategoryForm from '@/components/common/CategoryForm'
-import { BLOCK_CART_MODAL } from '@/constants/modal'
 import { loadingSpinnerConfig, pageSize, shopId } from '@/config/settings'
+import BlockCartModal from '@/components/common/BlockCartModal'
+import { BLOCK_CART_MODAL } from '@/constants/modal'
 export default {
   name: 'startseite',
   components: {
     CatlogBar,
     FilterWrapper,
     ProductBox,
-    BlockCartModal,
-    CategoryForm
+    CategoryForm,
+    BlockCartModal
   },
   data () {
     return {
@@ -89,6 +89,9 @@ export default {
       currentPage: 1,
       products: [],
       activeFilters: ['Categories: Clothes', 'Size: S'],
+      modal_details: {},
+      ps_item_id: '0_0', // product id _ id_comination
+      current_item: {},
       modalId: BLOCK_CART_MODAL,
       loader: null
     }
@@ -185,12 +188,6 @@ export default {
     updatevalues (values, id) {
       console.log(this.filterdata[id].name, values)
       this.$router.go({ path: '/startseite', query: { q: 'pp' } })
-
-      // this.loader = this.$loading.show(loadingSpinnerConfig)
-      // setTimeout(() => {
-      //   this.loader.hide()
-      // }, 2000)
-      // this.activeFilters.push('Test: test')
     },
     dragend (value, id) {
       const max = this.filterdata[id].max
@@ -207,9 +204,31 @@ export default {
       this.currentPage = selectedpage
       this.callProducts()
     },
-    addToCart (n) {
-      console.log('count to add', n)
-      this.$bvModal.show(this.modalId)
+    addToCart (product, qty) {
+      const params = {
+        shopId: shopId,
+        langId: Trans.getLangId(Trans.currentLanguage),
+        productId: product.id_product
+      }
+      ProductServices.productDetails(params).then(res => {
+        this.toCart(res, qty)
+      })
+    },
+    toCart (product, qty) {
+      const idCombination = product.combinations.length ? product.combinations[0].id_combination : 0
+      this.ps_item_id = product.id_product + '_' + idCombination
+      const params = {
+        id_product: product.id_product,
+        id_lang: Trans.getLangId(Trans.currentLanguage),
+        id_shop: shopId,
+        id_product_attribute: idCombination,
+        qty: qty
+      }
+      this.$store.dispatch('addToCart', params).then(res => {
+        this.modal_details = res.cart
+        this.current_item = res.cart.items.filter((item) => item.ps_item_id === this.ps_item_id)[0]
+        this.$bvModal.show(BLOCK_CART_MODAL)
+      })
     }
   },
   watch: {
