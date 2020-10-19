@@ -16,6 +16,9 @@ const mutations = {
   },
   remove_from_cart (state, data) {
     state.cart = data.cart
+  },
+  apply_coupon_code (state, data) {
+    state.cart = data.cart
   }
 }
 
@@ -56,6 +59,18 @@ const actions = {
   async removeFromCart ({ commit }, payload) {
     return await CartServices.removeFromCart(payload).then(res => {
       if (res.errors === null) {
+
+      }
+      return res
+    }).catch(err => {
+      console.log(err)
+      return err
+    })
+  },
+  async applyCouponCode ({ commit }, payload) {
+    return await CartServices.applyCouponCode(payload).then(res => {
+      if (res.errors === null) {
+        commit('apply_coupon_code', { cart: res.cart })
       }
       return res
     }).catch(err => {

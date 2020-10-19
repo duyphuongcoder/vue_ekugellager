@@ -10,7 +10,7 @@
             <CartOverview :items="items" :removeItem="removeItem" :updateItem="updateItem"/>
           </b-col>
           <b-col lg="4" cols="12">
-            <CartCheckout />
+            <CartCheckout :details="details" :applyCouponCode="applyCouponCode" v-if="details && items.length"/>
           </b-col>
         </b-row>
       </b-container>
@@ -32,18 +32,19 @@ export default {
     return {
       items:
       [
-      ]
+      ],
+      details: ''
+    }
+  },
+  watch: {
+    '$store.getters.cart': function () {
+      this.updateCart()
     }
   },
   methods: {
-    updateCartDetails () {
-      const params = {
-        id_lang: Trans.getLangId(Trans.currentLanguage),
-        id_shop: 1
-      }
-      this.$store.dispatch('getCartDetails', params).then(res => {
-        this.items = res.cart.items
-      })
+    updateCart () {
+      this.items = this.$store.getters.cart ? this.$store.getters.cart.items : []
+      this.details = this.$store.getters.cart
     },
     removeItem (index) {
       const params = {
@@ -51,7 +52,13 @@ export default {
       }
       // this.items = this.items.filter((item, i) => { return i !== index })
       this.$store.dispatch('removeFromCart', params).then(res => {
-        this.updateCartDetails()
+        const params = {
+          id_lang: Trans.getLangId(Trans.currentLanguage),
+          id_shop: 1
+        }
+        this.$store.dispatch('getCartDetails', params).then(res => {
+          console.log('details: ', res)
+        })
       })
     },
     updateItem (index, value) {
@@ -65,13 +72,21 @@ export default {
         id_lang: Trans.getLangId(Trans.currentLanguage)
       }
       this.$store.dispatch('updateInCart', params).then(res => {
-        this.items = res.cart.items
+      })
+    },
+    applyCouponCode (code) {
+      const params = {
+        id_shop: 1,
+        id_lang: Trans.getLangId(Trans.currentLanguage),
+        code: code
+      }
+      this.$store.dispatch('applyCouponCode', params).then(res => {
+        // console.log(res)
       })
     }
   },
   mounted () {
-    this.items = this.$store.getters.cart ? this.$store.getters.cart.items : []
-    console.log(this.items)
+    this.updateCart()
   }
 }
 </script>

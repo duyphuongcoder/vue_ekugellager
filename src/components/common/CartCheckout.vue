@@ -8,7 +8,7 @@
             <h6>VERSANDKOSTENFREI AB 250€</h6>
           </b-col>
           <b-col cols="4" class="value">
-            <h6>€0.00</h6>
+            <h6>€{{shipping}}</h6>
           </b-col>
         </b-row>
         <b-row class="total pt-3">
@@ -16,14 +16,14 @@
             <h6>{{$t('products.total')}}</h6>
           </b-col>
           <b-col cols="4" class="value">
-            <h6>€1080.98</h6>
+            <h6>{{total}}</h6>
           </b-col>
         </b-row>
       </div>
       <div class="voucher pt-3">
         <b-row>
-          <b-col cols="6" lg="8" class="pr-0"><b-form-input :placeholder="$t('order.coupon_code')"></b-form-input></b-col>
-          <b-col cols="6" lg="4" class="pl-0"><b-button>{{$t('products.use')}}</b-button></b-col>
+          <b-col cols="6" lg="8" class="pr-0"><b-form-input v-model="coupon_code" :placeholder="$t('order.coupon_code')"></b-form-input></b-col>
+          <b-col cols="6" lg="4" class="pl-0"><b-button @click="applyCouponCode(coupon_code)">{{$t('products.use')}}</b-button></b-col>
         </b-row>
       </div>
       <div class="checkout pt-3">
@@ -56,7 +56,31 @@
 </template>>
 <script>
 export default {
-
+  props: {
+    details: Object,
+    applyCouponCode: Function
+  },
+  data () {
+    return {
+      shipping: 0,
+      total: 0,
+      coupon_code: null
+    }
+  },
+  methods: {
+    updateCart () {
+      this.shipping = this.details.subtotals.shipping.amount
+      this.total = this.details.subtotals.products.value
+    }
+  },
+  mounted () {
+    this.updateCart()
+  },
+  watch: {
+    details: function (to, from) {
+      this.updateCart()
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>

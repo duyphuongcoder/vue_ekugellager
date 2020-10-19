@@ -48,7 +48,7 @@
               <div class="blockcart cart-preview inactive">
                 <b-button variant="outline-primary" v-b-modal="modalId" class="btn-circle">
                   <b-icon icon="cart3"></b-icon>
-                  <span class="cart-products-count">0</span>
+                  <span class="cart-products-count">{{this.$store.getters.cart?this.$store.getters.cart.products_count:0}}</span>
                 </b-button>
               </div>
             </div>
