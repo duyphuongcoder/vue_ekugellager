@@ -289,7 +289,7 @@ export default {
         id_product: product.id_product,
         id_lang: Trans.getLangId(Trans.currentLanguage),
         id_shop: shopId,
-        id_product_attribute: 1,
+        id_product_attribute: 0,
         qty: qty
       }
       this.$store.dispatch('addToCart', params).then(res => {
