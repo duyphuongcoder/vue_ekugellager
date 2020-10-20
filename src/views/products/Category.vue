@@ -76,7 +76,7 @@ export default {
   },
   data () {
     return {
-      categoryId: this.$route.params.id_category,
+      categoryId: parseInt(this.$route.params.id_category),
       queryParams: this.$route.query.q,
       filterdata: [],
       totalCount: 0,
@@ -289,7 +289,7 @@ export default {
         id_product: product.id_product,
         id_lang: Trans.getLangId(Trans.currentLanguage),
         id_shop: shopId,
-        id_product_attribute: 0,
+        id_product_attribute: 1,
         qty: qty
       }
       this.$store.dispatch('addToCart', params).then(res => {
