@@ -294,9 +294,24 @@ export default {
       }
       this.$store.dispatch('addToCart', params).then(res => {
         this.modal_details = res.cart
+        console.log(product)
+        var idCombination = this.getCombinationId(product, res.cart.combination_list)
+        this.ps_item_id = product.id_product + '_' + idCombination
         this.current_item = res.cart.items.filter((item) => item.ps_item_id === this.ps_item_id)[0]
         this.$bvModal.show(BLOCK_CART_MODAL)
       })
+    },
+    getCombinationId (product, combinationList) {
+      if (combinationList.length) {
+        var combination = combinationList.filter((item) => item.id_product === product.id_product)
+        if (combination.length) {
+          return combination[0].combinations[0].id_combination
+        } else {
+          return 0
+        }
+      } else {
+        return 0
+      }
     },
     toCart (product, qty) {
       const idCombination = product.combinations.length ? product.combinations[0].id_combination : 0
