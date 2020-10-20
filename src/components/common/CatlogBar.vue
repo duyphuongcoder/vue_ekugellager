@@ -19,7 +19,7 @@ import { Trans } from '@/lang/Translation'
 import { shopId } from '@/config/settings'
 export default {
   props: {
-    categoryId: String
+    categoryId: Number
   },
   data () {
     return {
