@@ -1,12 +1,14 @@
 <template>
   <div class="filter-wrapper">
-    <p> FILTER BY </p>
+    <p>{{$t('products.filter_by')}}</p>
+    <b-button v-if="queryParams" variant="danger" class="mb-4" block @click="clear">{{$t('products.clear')}}</b-button>
     <div v-for="(data, index) in filterdata" :key="index">
       <div v-if="data.filter_type === 'checkbox'">
         <FilterBox
           :id="index"
           :collapseid="'filterbox_collapse_' + index"
           :title="data.name"
+          :nameKey="data.nameKey"
           :detail="data.values"
           :updatevalues="updatevalues"
           :isline="false"
@@ -32,6 +34,17 @@ export default {
   components: {
     FilterBox,
     SliderBar
+  },
+  data () {
+    return {
+      categoryId: this.$route.params.id_category,
+      queryParams: this.$route.query.q
+    }
+  },
+  methods: {
+    clear () {
+      this.$router.replace({ name: 'category', params: { id_category: this.categoryId } })
+    }
   }
 }
 </script>

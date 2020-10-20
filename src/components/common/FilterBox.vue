@@ -21,6 +21,7 @@ export default {
     id: Number,
     collapseid: String,
     title: String,
+    nameKey: String,
     detail: Array,
     updatevalues: Function,
     isline: Boolean,
@@ -28,7 +29,30 @@ export default {
   },
   data () {
     return {
-      selected: []
+      selected: [],
+      queryParams: this.$route.query.q,
+      activeFilters: []
+    }
+  },
+  mounted () {
+    if (this.queryParams) {
+      this.getActiveFilters()
+    }
+  },
+  methods: {
+    getActiveFilters () {
+      this.activeFilters = []
+      const queryParamsArray = this.queryParams.split('/')
+      queryParamsArray.forEach(query => {
+        const queryArray = query.split('-')
+        const nameKey = queryArray[0]
+        if (nameKey === this.nameKey) {
+          queryArray.splice(0, 1)
+          queryArray.forEach(e => {
+            this.selected.push(e)
+          })
+        }
+      })
     }
   }
 }

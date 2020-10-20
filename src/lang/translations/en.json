@@ -175,7 +175,10 @@
         "unit_price": "unit price",
         "total": "total",
         "shipping": "shipping",
-        "use": "use"
+        "use": "use",
+        "filter_by": "FILTER BY",
+        "clear": "Clear",
+        "active_filters": "Active Filters"
     },
     "compare": {
         "no_compare": "There is no products to compare.",

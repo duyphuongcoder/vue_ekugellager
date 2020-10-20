@@ -41,7 +41,7 @@
 
 <script>
 import { Trans } from '@/lang/Translation'
-import { HeaderServices } from '@/services/index'
+import { shopId } from '@/config/settings'
 export default {
   props: {
     data: String
@@ -54,11 +54,11 @@ export default {
   mounted () {
     setTimeout(() => {
       const params = {
-        shopId: 1,
+        shopId: shopId,
         langId: Trans.getLangId(Trans.currentLanguage)
       }
-      HeaderServices.getMenu(params).then(resp => {
-        this.category = resp.header.menu.allcategories
+      this.$store.dispatch('get_menu', params).then(resp => {
+        this.category = this.$store.getters.topmenu
       })
     }, 200)
   }

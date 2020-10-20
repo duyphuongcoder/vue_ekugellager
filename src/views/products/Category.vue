@@ -1,21 +1,28 @@
 <template>
   <b-container class="startseite">
-    <CatlogBar :catRoutes="catRoutes"/>
+    <CatlogBar :categoryId="categoryId"/>
     <b-row>
       <b-col md="3" sm="12">
         <FilterWrapper v-if="filterdata && filterdata.length > 0" :filterdata="filterdata" :updatevalues="updatevalues" :dragend="dragend"/>
       </b-col>
       <b-col md="9" sm="12">
-        <div class="active-filters-block mb-4 d-none" v-if="filterdata && filterdata.length > 0">
-          <div class="filter-title"> <span> Active Filters: </span> </div>
+        <div class="active-filters-block mb-4" v-if="filterdata && filterdata.length > 0 && activeFiltersTags.length > 0">
+          <div class="filter-title"> <span> {{$t('products.active_filters')}}: </span> </div>
           <b-form-tags
            input-id="tags-basic"
-           v-model="activeFilters"
            size="lg"
            no-add-on-enter
            placeholder=""
            disableAddButton
-          ></b-form-tags>
+          >
+          <b-form-tag
+            v-for="tag in activeFiltersTags"
+            @remove="removeTag(tag)"
+            :key="tag"
+            :title="tag"
+            class="mr-1"
+          >{{ tag }}</b-form-tag>
+          </b-form-tags>
         </div>
         <b-row class="products" v-if="products.length > 0">
           <b-col lg="4" md="6" sm="12" v-for="(item, index) in products" :key="index">
@@ -69,26 +76,15 @@ export default {
   },
   data () {
     return {
-      catRoutes: [
-        {
-          text: 'header.home',
-          route: 'home'
-        }
-        // {
-        //   text: 'header.clothes',
-        //   route: 'clothes'
-        // },
-        // {
-        //   text: 'header.nadellager',
-        //   route: 'nadellager'
-        // }
-      ],
+      categoryId: this.$route.params.id_category,
+      queryParams: this.$route.query.q,
       filterdata: [],
       totalCount: 0,
       perPage: pageSize,
       currentPage: 1,
       products: [],
-      activeFilters: ['Categories: Clothes', 'Size: S'],
+      activeFilters: [],
+      activeFiltersTags: [],
       modal_details: {},
       ps_item_id: '0_0', // product id _ id_comination
       current_item: {},
@@ -123,18 +119,79 @@ export default {
   created () {
   },
   methods: {
+    getActiveFilters () {
+      this.activeFilters = []
+      const queryParamsArray = this.queryParams.split('/')
+      queryParamsArray.forEach(query => {
+        const queryArray = query.split('-')
+        const nameKey = queryArray[0]
+        queryArray.splice(0, 1)
+        this.activeFilters.push({
+          nameKey: nameKey,
+          values: queryArray
+        })
+        queryArray.forEach(query => {
+          this.activeFiltersTags.push(`${nameKey}: ${query}`)
+        })
+      })
+    },
+    removeTag (tag) {
+      const index = this.activeFiltersTags.findIndex(e => e === tag)
+      this.activeFiltersTags.splice(index, 1)
+      const nameKey = tag.split(': ')[0]
+      const value = tag.split(': ')[1]
+      this.activeFilters.forEach((e, index) => {
+        if (e.nameKey === nameKey) {
+          e.values.forEach((val, i) => {
+            if (val === value) {
+              e.values.splice(i, 1)
+            }
+          })
+        }
+        if (e.values.length === 0) {
+          this.activeFilters.splice(index, 1)
+        }
+      })
+      const query = this.getQueryFromActiveFilters()
+      this.$router.replace({ name: 'category', params: { id_category: this.categoryId }, query: { q: query } })
+    },
+    getQueryFromActiveFilters () {
+      const arr = []
+      this.activeFilters.forEach(item => {
+        arr.push(item.nameKey + '-' + item.values.join('-'))
+      })
+      return arr.join('/')
+    },
     callProducts () {
       const params = {
         shopId: shopId,
         langId: Trans.getLangId(Trans.currentLanguage),
         cateId: this.$route.params.id_category,
         page: this.currentPage,
-        perPage: this.perPage
+        perPage: this.perPage,
+        selected_filters: this.$route.query.q
       }
       this.loader = this.$loading.show(loadingSpinnerConfig)
-      ProductServices.getProduct(params).then(resp => {
+      if (this.queryParams) {
+        this.getActiveFilters()
+      }
+      ProductServices.getProductsList(params).then(resp => {
         if (resp.navigation_layered && resp.navigation_layered.length > 0) {
-          this.getFilterData(resp.navigation_layered[0].filters)
+          const filtersData = resp.navigation_layered[0].filters
+          filtersData.forEach(item => {
+            const index = this.activeFilters.findIndex(e => e.nameKey === item.nameKey)
+            if (index > -1) {
+              this.activeFilters[index].values.forEach(value => {
+                item.values.push({
+                  name: value,
+                  nbr: resp.products_count,
+                  link: null,
+                  valueKey: value
+                })
+              })
+            }
+          })
+          this.getFilterData(filtersData)
         }
         this.freshProducts(resp.products)
         this.totalCount = resp.products_count
@@ -185,9 +242,32 @@ export default {
       })
       this.products = products
     },
-    updatevalues (values, id) {
-      console.log(this.filterdata[id].name, values)
-      this.$router.go({ path: '/startseite', query: { q: 'pp' } })
+    updatevalues (selectedValues, id) {
+      console.log(this.filterdata[id].nameKey, selectedValues)
+      const nameKey = this.filterdata[id].nameKey
+      const index = this.activeFilters.findIndex(e => e.nameKey === nameKey)
+      if (selectedValues.length > 0) {
+        if (this.activeFilters.length === 0 || index === -1) {
+          this.activeFilters.push({
+            nameKey: nameKey,
+            values: selectedValues
+          })
+        } else {
+          this.activeFilters.forEach((e, i) => {
+            if (e.nameKey === nameKey) {
+              e.values = selectedValues
+            }
+          })
+        }
+      } else {
+        this.activeFilters.forEach((e, i) => {
+          if (e.nameKey === nameKey) {
+            this.activeFilters.splice(i, 1)
+          }
+        })
+      }
+      const query = this.getQueryFromActiveFilters()
+      this.$router.replace({ name: 'category', params: { id_category: this.categoryId }, query: { q: query } })
     },
     dragend (value, id) {
       const max = this.filterdata[id].max
@@ -206,12 +286,16 @@ export default {
     },
     addToCart (product, qty) {
       const params = {
-        shopId: shopId,
-        langId: Trans.getLangId(Trans.currentLanguage),
-        productId: product.id_product
+        id_product: product.id_product,
+        id_lang: Trans.getLangId(Trans.currentLanguage),
+        id_shop: shopId,
+        id_product_attribute: 0,
+        qty: qty
       }
-      ProductServices.productDetails(params).then(res => {
-        this.toCart(res, qty)
+      this.$store.dispatch('addToCart', params).then(res => {
+        this.modal_details = res.cart
+        this.current_item = res.cart.items.filter((item) => item.ps_item_id === this.ps_item_id)[0]
+        this.$bvModal.show(BLOCK_CART_MODAL)
       })
     },
     toCart (product, qty) {
@@ -252,6 +336,7 @@ export default {
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
     background-color: #ced4da;
+    text-align: left;
     input {
       outline: none !important;
     }

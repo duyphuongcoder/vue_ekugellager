@@ -175,7 +175,10 @@
         "unit_price": "STÜCKPREIS",
         "total": "Gesamt",
         "shipping": "Versand",
-        "use": "Verwenden"
+        "use": "Verwenden",
+        "filter_by": "FILTERN NACH",
+        "clear": "Alles löschen",
+        "active_filters": "Aktive Filter"
     },
     "compare": {
         "no_compare": "Es gibt keine vergleichbaren Produkte.",

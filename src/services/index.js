@@ -30,7 +30,7 @@ import {
 } from './homeService'
 
 import {
-  getProduct,
+  getProductsList,
   getProductFilters,
   productDetails
 } from './productService'
@@ -71,7 +71,7 @@ export const HomeServices = {
 }
 
 export const ProductServices = {
-  getProduct,
+  getProductsList,
   getProductFilters,
   productDetails
 }
