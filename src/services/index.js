@@ -2,7 +2,8 @@ import {
   getCartDetails,
   addToCart,
   updateInCart,
-  removeFromCart
+  removeFromCart,
+  applyCouponCode
 } from './cartService'
 import {
   login,
@@ -43,7 +44,8 @@ export const CartServices = {
   getCartDetails,
   addToCart,
   updateInCart,
-  removeFromCart
+  removeFromCart,
+  applyCouponCode
 }
 export const UserServices = {
   login,

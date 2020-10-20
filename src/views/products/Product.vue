@@ -168,12 +168,21 @@ export default {
       if (res.groups.length) { // in case of group exists
         this.setSelectedGroups(res.groups)
         this.combinations = res.combinations.filter((item, index) => JSON.stringify(item.attributes) === JSON.stringify(this.selected_groups))
-        this.combinations[0].images.forEach((item, index) => {
-          images.push({
-            id: index + 1,
-            url: item.value
+        if (this.combinations[0].id_image === -1) { // in case of combination image doesn't exists
+          res.gallery.forEach((item, index) => {
+            images.push({
+              id: index + 1,
+              url: item[0].value
+            })
           })
-        })
+        } else {
+          this.combinations[0].images.forEach((item, index) => {
+            images.push({
+              id: index + 1,
+              url: item.value
+            })
+          })
+        }
         quantity = this.combinations[0].quantity
         prices = this.combinations[0].specific_price
       } else { // in case of group doesn't exist
