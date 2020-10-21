@@ -1,5 +1,5 @@
 <template>
-<b-container>
+<b-container class="px-0">
   <div class="parallax-window bluemain-col mt-4" v-if="!open_filter" data-parallax="scroll" data-img-src="@/assets/img/bg-animation.png">
     <div class="search-filters">
       <div class="head-title">

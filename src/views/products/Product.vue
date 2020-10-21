@@ -4,7 +4,7 @@
       <b-row>
         <b-col md="5">
           <section class="page-content">
-            <ProductImages :images="images" v-if="images.length" :description_short="description_short" :prices="prices"/>
+            <ProductImages  v-if="images.length" :images="images" :description_short="description_short" :prices="prices" :pack_items="pack_items"/>
             <div class="scroll-box-arrows"></div>
             <div class="product-configurators"></div>
             <ProductDescription :description="description" v-if="description"/>
@@ -68,6 +68,7 @@ export default {
       ],
       images: [
       ],
+      pack_items: [],
       prices: {},
       description: {
         text: '',
@@ -130,11 +131,12 @@ export default {
     setTitle (name) {
       this.product_name = name
     },
-    setProductImages (images, description, prices) {
+    setProductImages (images, description, prices, pack) {
       this.images = images
 
       this.description_short = description
       this.prices = prices
+      this.pack_items = pack
     },
     setProductDescription (description, reference, quantity) {
       this.description.text = description
@@ -163,7 +165,7 @@ export default {
       })
     },
     manageProductDetails (res) {
-      var quantity, prices
+      var quantity, prices, pack
       var images = []
       if (res.groups.length) { // in case of group exists
         this.setSelectedGroups(res.groups)
@@ -195,6 +197,7 @@ export default {
         quantity = res.quantity
         prices = res.specific_prices
       }
+      pack = res.pack_items
       // browswer title
       this.setTitle(res.name)
       // product technical features
@@ -202,7 +205,7 @@ export default {
       // cart details
       this.setProductCart(res, quantity)
       // product images
-      this.setProductImages(images, res.description_short, prices)
+      this.setProductImages(images, res.description_short, prices, pack)
       // product description
       this.setProductDescription(res.description, res.reference, quantity)
     },

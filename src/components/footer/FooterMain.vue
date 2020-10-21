@@ -5,42 +5,44 @@
     <mdb-footer color="mdb-color" class="font-small lighten-3 pt-4 mt-4">
       <mdb-container class="text-center text-md-left footer-container">
         <mdb-row class="my-4">
-          <mdb-col md="2" lg="2">
+          <mdb-col xl="2" lg="4" md="6">
             <img class="logo img-responsive" src="../../assets/img/logo.jpg"/>
             <h5 class="font-weight-bold">{{ $t('footer.contact.self') }}</h5>
             <p>+49 (0)234 5450120</p>
             <a href="mailto:" class="email-contact">info@ekugellager.de</a>
           </mdb-col>
           <hr class="clearfix w-100 d-md-none"/>
-          <mdb-col md="2" lg="2" class="ml-auto" v-if="links && links.length > 0">
-            <h5 class="text-uppercase mb-4 font-weight-bold">{{ links[0].title }}</h5>
+          <mdb-col xl="2" lg="4" md="6" class="ml-auto" v-if="links && links.length > 0">
+            <h5 class="text-uppercase mb-4 font-weight-bold" v-b-toggle.products>{{ links[0].title }}</h5>
+            <b-collapse visible id="products">
             <ul class="list-unstyled" v-for="(item, index) in links[0].links" :key="index">
               <p><a :href="item.url_path">{{ item.title }}</a></p>
             </ul>
+            </b-collapse>
           </mdb-col>
           <hr class="clearfix w-100 d-md-none"/>
-          <mdb-col md="2" lg="2" v-if="links && links.length > 1">
+          <mdb-col xl="2" lg="4" md="6" v-if="links && links.length > 1">
             <h5 class="text-uppercase mb-4 font-weight-bold">{{ links[1].title }}</h5>
             <ul v-for="(item, index) in links[1].links" :key="index">
               <p><a :href="item.url_path">{{ item.title }}</a></p>
             </ul>
           </mdb-col>
           <hr class="clearfix w-100 d-md-none"/>
-          <mdb-col md="2" lg="2" v-if="links && links.length > 2">
+          <mdb-col xl="2" lg="4" md="6" v-if="links && links.length > 2">
             <h5 class="text-uppercase mb-4 font-weight-bold">{{ links[2].title }}</h5>
             <ul v-for="(item, index) in links[2].links" :key="index">
               <p><a :href="item.url_path">{{ item.title }}</a></p>
             </ul>
           </mdb-col>
           <hr class="clearfix w-100 d-md-none"/>
-          <mdb-col md="2" lg="2" v-if="links && links.length > 3">
+          <mdb-col xl="2" lg="4" md="6" v-if="links && links.length > 3">
             <h5 class="text-uppercase mb-4 font-weight-bold">{{ links[3].title }}</h5>
             <ul v-for="(item, index) in links[3].links" :key="index">
               <p><a :href="item.url_path">{{ item.title }}</a></p>
             </ul>
           </mdb-col>
           <hr class="clearfix w-100 d-md-none"/>
-          <mdb-col md="2" lg="2" class="text-center">
+          <mdb-col xl="2" lg="4" md="6">
             <h5 class="text-uppercase mb-4 font-weight-bold">{{ $t('footer.shippment_payment.self') }}</h5>
             <div class="mt-2 ">
               <ul class="list-unstyled shipping">
