@@ -1,5 +1,5 @@
 <template>
-  <b-container class="startseite">
+  <b-container class="category-page">
     <CatlogBar :categoryId="categoryId"/>
     <b-row>
       <b-col md="3" sm="12">
@@ -66,7 +66,7 @@ import { loadingSpinnerConfig, pageSize, shopId } from '@/config/settings'
 import BlockCartModal from '@/components/common/BlockCartModal'
 import { BLOCK_CART_MODAL } from '@/constants/modal'
 export default {
-  name: 'startseite',
+  name: 'category',
   components: {
     CatlogBar,
     FilterWrapper,
