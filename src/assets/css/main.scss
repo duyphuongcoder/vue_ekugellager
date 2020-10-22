@@ -14,9 +14,21 @@ ul {
 }
 
 @media screen and (max-width: 768px) {
-    .container {
+    .container-fluid .container {
         padding-right: 0px;
         padding-left: 0px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .category-page {
+        .page-bottom {
+            .pagination-nav {
+                .justify-content-end {
+                    justify-content: center !important;
+                }
+            }
+        }
     }
 }
 
