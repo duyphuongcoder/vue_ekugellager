@@ -1,23 +1,30 @@
 <template>
-  <div class="sub_carousel">
+  <div class="sub_carousel carousel-with-arrow px-4 px-sm-0">
     <carousel
       :autoplay="false"
       :margin="15"
-      :loop="true"
-      :nav="false"
+      :navText="[prev, next]"
       :dots="true"
       :responsive="{
         0: {
-          items: 1
+          items: 1,
+          loop: false,
+          nav: true
         },
         576: {
-          items: 2
+          items: 2,
+          loop: true,
+          nav: false
         },
         768: {
-          items: 3
+          items: 3,
+          loop: true,
+          nav: false
         },
         992: {
-          items: 4
+          items: 4,
+          loop: true,
+          nav: false
         }
       }"
       >
@@ -44,7 +51,9 @@ export default {
   },
   data () {
     return {
-      current_sub: []
+      current_sub: [],
+      prev: '<i aria-hidden="true" class="fa fa-2x fa-chevron-left"></i>',
+      next: '<i aria-hidden="true" class="fa fa-2x fa-chevron-right"></i>'
     }
   },
   props: {
@@ -71,7 +80,10 @@ export default {
   .sub_carousel {
     padding: 50px 0 15px;
     .item {
-      width: 90%;
+      width: 100%;
+      @media screen and (max-width: 576px) {
+        width: 90%;
+      }
       margin:auto;
     }
     .pro_view {

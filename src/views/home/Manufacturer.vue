@@ -109,6 +109,12 @@ export default {
         top: 18px;
         left: 0;
         width: 40%;
+        @media screen and (max-width: 1197px){
+          width: 30%;
+        }
+        @media screen and (max-width: 576px){
+          width: 10%;
+        }
       }
       span:after {
         content: '';
@@ -119,6 +125,12 @@ export default {
         top: 18px;
         right: 0;
         width: 40%;
+        @media screen and (max-width: 1197px){
+          width: 30%;
+        }
+        @media screen and (max-width: 576px){
+          width: 10%;
+        }
       }
     }
   }

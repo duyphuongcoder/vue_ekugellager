@@ -10,18 +10,20 @@
         </b-col>
         <b-col md="2" class="d-none d-md-block right-side"> <span class="eku-num"> 3 </span><span class="eku-text">{{$t('parallax.step')}}</span> </b-col>
       </div>
-      <div class="tab-carousel  carousel-with-arrow">
-        <carousel class="pro_carousel"
+      <div class="tab-carousel">
+        <carousel class="pro_carousel carousel-with-arrow px-4 px-sm-0"
+          ref="carousel"
           :autoplay="false"
           :margin="15"
           :loop="false"
-          :nav="false"
+          :navText="[prev, next]"
           :dots="false"
           :responsive="{
             0: {
               items: 2,
               mouseDrag: true,
               touchDrag: true,
+              nav: true
             },
             576: {
               items: 3

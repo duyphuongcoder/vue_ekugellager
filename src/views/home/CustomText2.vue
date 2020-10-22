@@ -1,7 +1,7 @@
 <template>
   <b-container class="custom_text_2">
     <b-row>
-      <b-col lg="12" class="header-title">
+      <b-col lg="12" class="header-title d-none d-sm-block">
         <h2>
           {{$t('custom_text_2.title')}}
         </h2>
@@ -81,10 +81,14 @@ export default {
     border-radius: 8px;
     margin-bottom: 80px;
     min-height: 600px;
+    @media screen and (max-width: 576px) {
+      min-height: auto;
+      padding-top: 30px;
+    }
     .row {
       display: flex;
       flex-wrap: wrap;
-      min-height: 600px;
+      // min-height: 600px;
       .header-title {
         padding-top: 80px;
         padding-bottom: 80px;
