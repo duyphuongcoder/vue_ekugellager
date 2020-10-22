@@ -238,6 +238,15 @@ export default {
   }
 }
 @media screen and (max-width: 410px) {
+  .left_nav_section {
+    .top_hint {
+      padding-left: 0px !important;
+      font-size: 12px !important;
+      font-weight: 400 !important;
+    }
+  }
+}
+@media screen and (max-width: 370px) {
   .left_nav_section .top_treker {
     display: none !important;
   }
