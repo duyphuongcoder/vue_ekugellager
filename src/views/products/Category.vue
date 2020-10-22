@@ -32,7 +32,7 @@
         <b-row class="no-products text-center" v-if="products.length == 0">
           <span> No contents </span>
         </b-row>
-        <nav class="row page-bottom">
+        <nav class="row page-bottom" v-if="products.length > 0">
           <b-col md="4" sm="12" class="page-info">
             Showing {{(currentPage - 1) * perPage + 1}}-{{(currentPage - 1) * perPage + products.length}} of {{totalCount}} item(s)
           </b-col>
