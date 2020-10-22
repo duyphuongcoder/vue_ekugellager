@@ -19,19 +19,19 @@
         :dots="false"
         :responsive="{
           0: {
-            items: 1
-          },
-          576: {
-            items: 2
-          },
-          768: {
-            items: 2
-          },
-          992: {
             items: 3
           },
-          1200: {
+          576: {
+            items: 3
+          },
+          768: {
+            items: 3
+          },
+          992: {
             items: 4
+          },
+          1200: {
+            items: 5
           }
         }">
         <div class="item" v-for="(item, index) in carousel_items" :key="index">
@@ -126,8 +126,8 @@ export default {
     .item {
       padding-top: 50px;
       padding-bottom: 31px;
-      padding-left: 40px;
-      padding-right: 40px;
+      // padding-left: 40px;
+      // padding-right: 40px;
       margin-bottom: 17px;
     }
     .img-logos {
@@ -141,9 +141,13 @@ export default {
       margin-bottom: 10px;
       margin-left: auto;
       margin-right: auto;
+      @media screen and (max-width: 768px) {
+        height: 120px;
+        width: 120px;
+      }
       @media screen and (max-width: 576px) {
-        height: 150px;
-        width: 150px;
+        height: 80px;
+        width: 80px;
       }
     }
     .title-logos {

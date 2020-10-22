@@ -4,14 +4,14 @@
     <mdb-footer color="mdb-color" class="font-small lighten-3 pt-4 mt-4">
       <mdb-container class="text-center text-md-left footer-container">
         <mdb-row class="my-4">
-          <mdb-col md="2" lg="2">
+          <mdb-col lg="3" xl="2">
             <img class="logo img-responsive" src="../../assets/img/logo.jpg"/>
             <h5 class="font-weight-bold">{{ $t('footer.contact.self') }}</h5>
             <p>+49 (0)234 5450120</p>
             <a href="mailto:" class="email-contact">info@ekugellager.de</a>
           </mdb-col>
           <hr class="clearfix w-100 d-md-none"/>
-          <mdb-col md="2" lg="2" class="ml-auto">
+          <mdb-col lg="3" xl="2" class="ml-auto">
             <h5 class="text-uppercase mb-4 font-weight-bold">{{ $t('footer.products.self') }}</h5>
             <ul class="list-unstyled">
               <p><a href="#!">{{ $t('footer.products.about_us') }}</a></p>
@@ -20,7 +20,7 @@
             </ul>
           </mdb-col>
           <hr class="clearfix w-100 d-md-none"/>
-          <mdb-col md="2" lg="2">
+          <mdb-col lg="3" xl="2">
             <h5 class="text-uppercase mb-4 font-weight-bold">{{ $t('footer.information.self') }}</h5>
             <p><a href="#!">{{ $t('footer.information.discount_levels') }}</a></p>
             <p><a href="#!"> {{ $t('footer.information.quality_levels') }}</a></p>
@@ -28,7 +28,7 @@
             <p><a href="#!">{{ $t('footer.information.personal_statement') }}</a></p>
           </mdb-col>
           <hr class="clearfix w-100 d-md-none"/>
-          <mdb-col md="2" lg="2">
+          <mdb-col lg="3" xl="2">
             <h5 class="text-uppercase mb-4 font-weight-bold">{{ $t('footer.legal.self') }}</h5>
             <p><a href="#!">{{ $t('footer.legal.about_us') }}</a></p>
             <p><a href="#!">{{ $t('footer.legal.delivery_information') }}</a></p>
@@ -36,7 +36,7 @@
             <p><a href="#!">{{ $t('footer.legal.privacy_policy') }}</a></p>
           </mdb-col>
           <hr class="clearfix w-100 d-md-none"/>
-          <mdb-col md="2" lg="2">
+          <mdb-col lg="3" xl="2">
             <h5 class="text-uppercase mb-4 font-weight-bold">{{ $t('footer.customer_service.self') }}</h5>
             <p><a href="#!">{{ $t('footer.customer_service.return') }}</a></p>
             <p><a href="#!"> {{ $t('footer.customer_service.faq') }}</a></p>
@@ -44,7 +44,7 @@
             <p><a href="#!">{{ $t('footer.customer_service.cookie_preferences') }}</a></p>
           </mdb-col>
           <hr class="clearfix w-100 d-md-none"/>
-          <mdb-col md="2" lg="2" class="text-center">
+          <mdb-col lg="3" xl="2" class="text-center">
             <h5 class="text-uppercase mb-4 font-weight-bold">{{ $t('footer.shippment_payment.self') }}</h5>
             <div class="mt-2 ">
               <ul class="list-unstyled shipping">

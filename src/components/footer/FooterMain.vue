@@ -3,56 +3,68 @@
   <div>
     <NewsLetter />
     <mdb-footer color="mdb-color" class="font-small lighten-3 pt-4 mt-4">
-      <mdb-container class="text-center text-md-left footer-container">
+      <mdb-container class="text-md-left footer-container">
         <mdb-row class="my-4">
-          <mdb-col md="2" lg="2">
+          <mdb-col xl="2" lg="4" sm="6" class="d-none d-md-block">
             <img class="logo img-responsive" src="../../assets/img/logo.jpg"/>
             <h5 class="font-weight-bold">{{ $t('footer.contact.self') }}</h5>
             <p>+49 (0)234 5450120</p>
             <a href="mailto:" class="email-contact">info@ekugellager.de</a>
           </mdb-col>
-          <hr class="clearfix w-100 d-md-none"/>
-          <mdb-col md="2" lg="2" class="ml-auto" v-if="links && links.length > 0">
-            <h5 class="text-uppercase mb-4 font-weight-bold">{{ links[0].title }}</h5>
-            <ul class="list-unstyled" v-for="(item, index) in links[0].links" :key="index">
-              <p><a :href="item.url_path">{{ item.title }}</a></p>
-            </ul>
+          <mdb-col xl="2" lg="4" sm="6" class="d-block d-md-none mx-5 mx-sm-auto">
+            <img class="img-responsive" src="../../assets/img/logo.jpg"/>
           </mdb-col>
           <hr class="clearfix w-100 d-md-none"/>
-          <mdb-col md="2" lg="2" v-if="links && links.length > 1">
-            <h5 class="text-uppercase mb-4 font-weight-bold">{{ links[1].title }}</h5>
-            <ul v-for="(item, index) in links[1].links" :key="index">
-              <p><a :href="item.url_path">{{ item.title }}</a></p>
-            </ul>
-          </mdb-col>
-          <hr class="clearfix w-100 d-md-none"/>
-          <mdb-col md="2" lg="2" v-if="links && links.length > 2">
-            <h5 class="text-uppercase mb-4 font-weight-bold">{{ links[2].title }}</h5>
-            <ul v-for="(item, index) in links[2].links" :key="index">
-              <p><a :href="item.url_path">{{ item.title }}</a></p>
-            </ul>
-          </mdb-col>
-          <hr class="clearfix w-100 d-md-none"/>
-          <mdb-col md="2" lg="2" v-if="links && links.length > 3">
-            <h5 class="text-uppercase mb-4 font-weight-bold">{{ links[3].title }}</h5>
-            <ul v-for="(item, index) in links[3].links" :key="index">
-              <p><a :href="item.url_path">{{ item.title }}</a></p>
-            </ul>
-          </mdb-col>
-          <hr class="clearfix w-100 d-md-none"/>
-          <mdb-col md="2" lg="2" class="text-center">
-            <h5 class="text-uppercase mb-4 font-weight-bold">{{ $t('footer.shippment_payment.self') }}</h5>
-            <div class="mt-2 ">
-              <ul class="list-unstyled shipping">
-                <p><img src="../../assets/img/visa.png"></p>
-                <p><img src="../../assets/img/mastercard.png"></p>
-                <p><img src="../../assets/img/paypal.png"></p>
-                <p><img src="../../assets/img/sepa.png"></p>
-                <p><img src="../../assets/img/invoice_alternate.png"></p>
+          <template v-for="(link, i) in links">
+            <mdb-col xl="2" lg="4" sm="6" class="mx-5 mx-sm-auto" v-if="links && links.length > i" :key="'col'+i">
+              <h5 class="text-uppercase mb-4 font-weight-bold text-left" v-b-toggle="'footer'+(isMobile?i:'')">
+                {{ link.title }}
+                <span v-if="isMobile" class="float-right">
+                  <b-icon icon="chevron-down" class="collapsed-icon"></b-icon>
+                  <b-icon icon="chevron-up" class="opened-icon"></b-icon>
+                </span>
+              </h5>
+              <b-collapse :visible="!isMobile" :id="'footer'+i">
+              <ul class="list-unstyled" v-for="(item, index) in link.links" :key="'list'+index">
+                <p><a :href="item.url_path">{{ item.title }}</a></p>
               </ul>
-            </div>
+              </b-collapse>
+            </mdb-col>
+            <hr class="clearfix w-100 d-md-none" :key="'border'+i"/>
+          </template>
+          <mdb-col xl="2" lg="4" sm="6" class="mx-5 mx-sm-auto">
+            <h5 class="text-uppercase mb-4 font-weight-bold text-left" v-b-toggle="isMobile?'footer_ship':'none'">
+              {{ $t('footer.shippment_payment.self') }}
+              <span v-if="isMobile" class="float-right">
+                <b-icon icon="chevron-down" class="collapsed-icon"></b-icon>
+                <b-icon icon="chevron-up" class="opened-icon"></b-icon>
+              </span>
+            </h5>
+            <b-collapse :visible="!isMobile" id="footer_ship">
+              <div class="mt-2 ">
+                <ul class="list-unstyled shipping">
+                  <p><img src="../../assets/img/visa.png"></p>
+                  <p><img src="../../assets/img/mastercard.png"></p>
+                  <p><img src="../../assets/img/paypal.png"></p>
+                  <p><img src="../../assets/img/sepa.png"></p>
+                  <p><img src="../../assets/img/invoice_alternate.png"></p>
+                </ul>
+              </div>
+            </b-collapse>
           </mdb-col>
           <hr class="clearfix w-100 d-md-none"/>
+          <mdb-col xl="2" lg="4" sm="6" class="mx-5 mx-sm-auto d-block d-md-none">
+            <mdb-row>
+              <mdb-col class="text-left col-4 my-auto">
+                <img class="mb-img-responsive" src="../../assets/img/earphone.png">
+              </mdb-col>
+              <mdb-col class="text-center col-8">
+                <a href="mailto:" class="mb-email p-1 my-1">info@ekugellager.de</a>
+                <p class="mb-phone p-1 my-1">+49 (0)234 5450120</p>
+                <p class="small mb-0">Mo-Fr: 10:00 - 17:00 UHR</p>
+              </mdb-col>
+            </mdb-row>
+          </mdb-col>
         </mdb-row>
       </mdb-container>
       <div class="footer-copyright text-center py-3">
@@ -80,7 +92,23 @@ export default {
   },
   data () {
     return {
-      links: []
+      links: [],
+      isMobile: false
+    }
+  },
+  created () {
+    window.addEventListener('resize', this.changeScreen)
+  },
+  destroyed () {
+    window.removeEventListener('resize', this.changeScreen)
+  },
+  methods: {
+    changeScreen (e) {
+      if (window.innerWidth < 768) {
+        this.isMobile = true
+      } else {
+        this.isMobile = false
+      }
     }
   },
   mounted () {
@@ -93,6 +121,7 @@ export default {
         this.links = resp.footer.links
       })
     }, 200)
+    this.changeScreen()
   }
 }
 </script>
@@ -101,6 +130,12 @@ export default {
 .logo {
     max-width: 180px;
     margin-bottom: 21px;
+}
+.img-responsive {
+  width: 100%;
+}
+h5:focus {
+  outline: none;
 }
 .footer-container a {
     font-family: 'Lato';
@@ -121,5 +156,19 @@ export default {
 .footer-container ul.shipping {
     display: flex;
     flex-wrap: wrap;
+}
+a.mb-email {
+  display: block;
+  border-radius: 10px;
+  color: white;
+  background: #676767;
+}
+p.mb-phone {
+  border-radius: 10px;
+  color: white;
+  background: #12407E;
+}
+.mb-img-responsive {
+  width: 80%;
 }
 </style>

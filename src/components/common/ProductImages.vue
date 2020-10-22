@@ -2,6 +2,7 @@
 <div>
   <ul class="product-flags">
     <li class="product-flag discount" v-if="reduction">{{reduction}}</li>
+    <li class="product-flag pack" v-if="pack_items.length">PACK</li>
   </ul>
   <div class="images-container">
     <div class="product-cover">
@@ -46,7 +47,8 @@ export default {
   props: {
     images: Array,
     description_short: String,
-    prices: Object
+    prices: Object,
+    pack_items: Array
   },
   data () {
     return {
@@ -85,6 +87,18 @@ export default {
   li {
     background-color: #f39d72;
     width: fit-content;
+    font-weight: 700;
+    padding: .3125rem .4375rem;
+    text-transform: uppercase;
+    color: #fff;
+    margin-top: .625rem;
+    font-size: 1rem;
+    box-shadow: 2px 2px 4px 0 rgba(0,0,0,.2);
+  }
+  .pack {
+    pointer-events: auto;
+    width: fit-content;
+    background: #2fb5d2;
     font-weight: 700;
     padding: .3125rem .4375rem;
     text-transform: uppercase;

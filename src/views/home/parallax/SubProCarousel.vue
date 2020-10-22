@@ -70,6 +70,10 @@ export default {
 <style lang="scss" scoped>
   .sub_carousel {
     padding: 50px 0 15px;
+    .item {
+      width: 90%;
+      margin:auto;
+    }
     .pro_view {
       background: linear-gradient(135deg, #123e7a 1%,#113c77 100%);
       box-shadow: 0px 0 10px rgba(0,0,0,0.2);

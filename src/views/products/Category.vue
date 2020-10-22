@@ -294,8 +294,7 @@ export default {
       }
       this.$store.dispatch('addToCart', params).then(res => {
         this.modal_details = res.cart
-        console.log(product)
-        var idCombination = this.getCombinationId(product, res.cart.combination_list)
+        var idCombination = this.getCombinationId(product, res.cart.combination_list) // get combination id of newly added item
         this.ps_item_id = product.id_product + '_' + idCombination
         this.current_item = res.cart.items.filter((item) => item.ps_item_id === this.ps_item_id)[0]
         this.$bvModal.show(BLOCK_CART_MODAL)

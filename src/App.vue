@@ -12,7 +12,7 @@
       <b-container fluid>
         <router-view/>
       </b-container>
-      <Footer />
+      <FooterMain />
     </div>
   </div>
 </template>
@@ -21,14 +21,14 @@
 import Header from '@/components/header/Header'
 import HeaderOrder from '@/components/header/HeaderOrder'
 import FooterMain from '@/components/footer/FooterMain'
-import Footer from '@/components/footer/Footer'
+// import Footer from '@/components/footer/Footer'
 export default {
   name: 'app',
   components: {
     Header,
     HeaderOrder,
-    FooterMain,
-    Footer
+    FooterMain
+    // Footer
   }
 }
 </script>
