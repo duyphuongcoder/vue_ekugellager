@@ -10,7 +10,7 @@
         </b-col>
         <b-col md="2" class="d-none d-md-block right-side"> <span class="eku-num"> 3 </span><span class="eku-text">{{$t('parallax.step')}}</span> </b-col>
       </div>
-      <div class="tab-carousel">
+      <div class="tab-carousel  carousel-with-arrow">
         <carousel class="pro_carousel"
           :autoplay="false"
           :margin="15"
@@ -21,7 +21,7 @@
             0: {
               items: 2,
               mouseDrag: true,
-              touchDrag: true
+              touchDrag: true,
             },
             576: {
               items: 3
@@ -67,6 +67,8 @@ export default {
       current_pro_index: 0,
       sub_index: 0,
       open_filter: false,
+      prev: '<i aria-hidden="true" class="fa fa-chevron-left"></i>',
+      next: '<i aria-hidden="true" class="fa fa-chevron-right"></i>',
       pro_carousel_items: [
         {
           pro: 'Kugellager',

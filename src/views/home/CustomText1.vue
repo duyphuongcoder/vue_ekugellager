@@ -3,13 +3,24 @@
     <b-row>
       <b-col cols="12" xl="6"  class="business-left">
         <div class="business-details">
-          <p class="left_block_desc">{{$t('custom_text_1.left')}}</p>
+          <p class="px-5 left_block_desc text-left text-sm-center">
+            {{$t('custom_text_1.left')}}
+            <span class="float-right d-block d-sm-none" v-b-toggle.right_block>
+              <b-icon icon="chevron-down" class="collapsed-icon"></b-icon>
+              <b-icon icon="chevron-up" class="opened-icon"></b-icon>
+            </span>
+          </p>
         </div>
       </b-col>
       <b-col cols="12" xl="6"  class="business-right">
-        <div class="business-details">
+        <div class="business-details d-none d-sm-block" >
           <p class="right_block_desc">{{text_left}}</p>
         </div>
+        <b-collapse id="right_block">
+          <div class="business-details" >
+            <p class="right_block_desc">{{text_left}}</p>
+          </div>
+        </b-collapse>
       </b-col>
     </b-row>
   </b-container>
@@ -65,6 +76,14 @@ export default {
         @media screen and (max-width: 576px) {
           font-size: 24px;
           line-height: normal;
+        }
+      }
+      .left_block_desc {
+        span {
+          transform: translate(100%, -100%);
+        }
+        span:focus {
+          outline: none;
         }
       }
     }
