@@ -10,6 +10,12 @@
             <router-link :to="$i18nRoute({ name: 'home'})">
               <img class="logo img-responsive" src="../../assets/img/logo.jpg"/>
             </router-link>
+            <div class="shopping-cart">
+              <b-button variant="outline-primary" v-b-modal="modalId" class="btn-circle">
+                <b-icon icon="cart3"></b-icon>
+                <span class="cart-products-count">{{this.$store.getters.cart?this.$store.getters.cart.products_count:0}}</span>
+              </b-button>
+            </div>
           </b-col>
           <b-col md="6" sm="12" class="search-section mt-2">
             <div id="search_widget" class="search-widget mb-2">
@@ -153,6 +159,9 @@ export default {
     display: flex;
     width: 100%;
     margin: auto;
+    .top-logo .shopping-cart {
+      display: none;
+    }
     .menu_bar_btn {
       color: #12407E;
       position: absolute;
@@ -166,7 +175,6 @@ export default {
       display: flex;
       max-width: 400px;
       margin: auto;
-      margin-top: 3px;
       .input-group {
         input, .dropdown-input {
           border: #D8D8D8 1px solid !important;
@@ -189,6 +197,7 @@ export default {
         transition: all .3s ease;
         cursor: pointer;
         border-color: transparent;
+        transform: translateX(-15px);
       }
       button:hover {
         background: #B2162C;
@@ -213,21 +222,19 @@ export default {
           font-weight: bold;
         }
       }
-      .blockcart {
-        .cart-products-count {
-          background: #12407E;
-          color: #fff !important;
-          border-radius: 50%;
-          height: 22px;
-          width: 22px;
-          line-height: 22px;
-          position: absolute;
-          font-size: 12px;
-          transform: translate(12px, -40px);
-        }
-      }
     }
   }
+}
+.cart-products-count {
+  background: #12407E;
+  color: #fff !important;
+  border-radius: 50%;
+  height: 22px;
+  width: 22px;
+  line-height: 22px;
+  position: absolute;
+  font-size: 12px;
+  transform: translate(12px, -40px);
 }
 @media screen and (max-width: 768px) {
   .header-before .container-fluid {
@@ -249,6 +256,23 @@ export default {
   }
   .header-before-right-nav {
     display: none !important;
+  }
+  .top-logo .shopping-cart {
+    display: block !important;
+    float: right;
+    button {
+      width: 40px;
+      height: 40px;
+      svg {
+        font-size: 100%;
+        transform: translate(-2px, -4px);
+      }
+    }
+  }
+}
+@media screen and (max-width: 410px) {
+  .header-before .top_section img {
+    width: 170px;
   }
 }
 </style>
