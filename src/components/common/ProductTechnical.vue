@@ -23,7 +23,7 @@ export default {
   border-radius: 4px;
   margin-top: 0;
   margin-left: 0;
-  margin-right: 20px;
+  // margin-right: 20px;
   text-align: left;
   h6 {
     background: rgb(240, 240, 240);

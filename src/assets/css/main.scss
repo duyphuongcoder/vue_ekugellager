@@ -96,8 +96,9 @@ a:hover {
 /* ----------------- Shopping Cart Detail Modal ----------------- */
 #shopping_cart_modal {
     .modal-content {
-        max-height: 1831px;
+        // max-height: 1831px;
         position: absolute;
+        // width: 400px;
         max-width: 400px;
         -webkit-transition: all .45s cubic-bezier(.3,0,.15,1);
         transition: all .45s cubic-bezier(.3,0,.15,1);

@@ -1,6 +1,6 @@
 <template>
   <div class="shopping-cart-detail">
-    <b-modal :id="modalId" hide-footer hide-header class="cart-details-subhe show-cart-detail">
+    <b-modal :id="modalId" hide-footer hide-header size="md" class="cart-details-subhe show-cart-detail">
         <div class="shopping_cart_top_heading">
             <h1>
                 WARENKORB
