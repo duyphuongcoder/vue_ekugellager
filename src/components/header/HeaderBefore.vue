@@ -22,7 +22,7 @@
               </b-button>
             </div>
           </b-col>
-          <b-col md="6" sm="12" class="search-section mt-3">
+          <b-col md="6" sm="12" class="search-section mt-2">
             <div id="search_widget" class="search-widget mb-2">
               <vue-bootstrap-typeahead
                 :data="searchOptions"
@@ -251,6 +251,9 @@ export default {
     box-shadow: 0px 3px 5px 0px #919090!important;
     border-bottom: 1px solid #e7e7e7;
     padding: 10px;
+  }
+  .header-before .top_section .search-section {
+    margin-top: 15px !important;
   }
   .header-before .top_section .search-section .search-widget {
      .input {
