@@ -2,7 +2,7 @@
   <div class="header-before">
     <b-container fluid>
       <b-row class="top_section">
-          <b-col md="3" sm="12" class="top-logo mt-2">
+          <b-col md="3" sm="12" class="top-logo">
             <span class="menu_bar_btn d-block d-md-none" v-b-toggle.collapse-menu>
               <b-icon icon="list" class="collapsed-icon"></b-icon>
               <b-icon icon="x" class="opened-icon"></b-icon>
@@ -11,6 +11,11 @@
               <img class="logo img-responsive" src="../../assets/img/logo.jpg"/>
             </router-link>
             <div class="shopping-cart">
+              <router-link :to="this.$store.getters.isLoggedIn ? $i18nRoute({ name: 'my-account'}) : $i18nRoute({ name: 'login'})">
+                <b-button variant="outline-primary" class="btn-circle" v-b-tooltip.hover.bottomright :title="this.$store.getters.isLoggedIn ? 'Visit my account' : $t('header.log_in_to_your_customer_account')">
+                  <b-icon icon="person"></b-icon>
+                </b-button>
+              </router-link>
               <b-button variant="outline-primary" v-b-modal="modalId" class="btn-circle">
                 <b-icon icon="cart3"></b-icon>
                 <span class="cart-products-count">{{this.$store.getters.cart?this.$store.getters.cart.products_count:0}}</span>
@@ -177,7 +182,7 @@ export default {
       margin: auto;
       .input-group {
         input, .dropdown-input {
-          border: #D8D8D8 1px solid !important;
+          border: #D8D8D8 1px solid;
           border-radius: 8px !important;
         }
         input:focus, .dropdown-input:focus {
@@ -198,6 +203,7 @@ export default {
         cursor: pointer;
         border-color: transparent;
         transform: translateX(-15px);
+        z-index: 100;
       }
       button:hover {
         background: #B2162C;
@@ -242,23 +248,32 @@ export default {
     padding-left: 0px !important;
   }
   .header-before .top_section .top-logo {
-    box-shadow: 0px 0px 3px 0px #0004!important;
+    box-shadow: 0px 3px 5px 0px #919090!important;
     border-bottom: 1px solid #e7e7e7;
     padding: 10px;
   }
-  .header-before .top_section .search-section .search-widget button {
-    border-top-left-radius: 0%;
-    border-bottom-left-radius: 0%;
-    border-top-right-radius: 20%;
-    border-bottom-right-radius: 20%;
-    height: 40px !important;
-    transform: translate(-8px, -1px) !important;
+  .header-before .top_section .search-section {
+    margin-top: 15px !important;
+  }
+  .header-before .top_section .search-section .search-widget {
+     .input {
+      border: #707070 1px solid !important;
+      border-color: #707070 !important;
+     }
+     button {
+      border-top-left-radius: 0%;
+      border-bottom-left-radius: 0%;
+      border-top-right-radius: 20%;
+      border-bottom-right-radius: 20%;
+      height: 41px !important;
+      transform: translate(-8px, -1px) !important;
+    }
   }
   .header-before-right-nav {
     display: none !important;
   }
   .top-logo .shopping-cart {
-    display: block !important;
+    display: flex !important;
     float: right;
     button {
       width: 40px;
@@ -273,6 +288,13 @@ export default {
 @media screen and (max-width: 410px) {
   .header-before .top_section img {
     width: 170px;
+    margin-left: 30px;
+  }
+}
+@media screen and (max-width: 360px) {
+  .header-before .top_section img {
+    width: 130px;
+    margin-top: 6px;
   }
 }
 </style>

@@ -143,7 +143,7 @@ export default {
   .header-top {
     height: 40px;
     background: #fff;
-    margin-top: 5px;
+    margin-top: 12px;
     .mainmenu {
       border-radius: 8px;
       overflow: hidden;

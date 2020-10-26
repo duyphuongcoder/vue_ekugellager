@@ -1,6 +1,6 @@
 <template>
   <b-row class="navbar-catlog">
-    <b-col md="6" sm="12">
+    <b-col>
         <nav class="breadcrumb">
             <ol>
                 <li v-for="(item, index) in catRoute" :key="index">
@@ -72,10 +72,12 @@ export default {
     background: #F9F9F9 0% 0% no-repeat padding-box;
     border-radius: 8px;
     line-height: 55px;
-    height: 60px;
     margin-left: 0px;
     margin-right: 0px;
     margin: 20px 0;
+    div {
+      overflow-x: auto;
+    }
     .breadcrumb {
         background: transparent;
         padding: 0;
