@@ -76,7 +76,7 @@ export default {
       this.loader = this.$loading.show(loadingSpinnerConfig)
       this.$store.dispatch('logout', user.id).then(resp => {
         this.loader.hide()
-        this.$router.push({ name: 'home' })
+        this.$router.push({ name: 'login' })
       })
     }
   }

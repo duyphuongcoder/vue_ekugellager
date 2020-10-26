@@ -1,11 +1,16 @@
 <template>
   <div id="app">
-    <div v-if="!this.$route.meta.layout">
+    <div v-if="this.$route.meta.layout === undefined">
       <Header />
       <b-container fluid>
         <router-view/>
       </b-container>
       <FooterMain />
+    </div>
+    <div v-if="this.$route.meta && this.$route.meta.layout === false">
+      <b-container fluid>
+        <router-view/>
+      </b-container>
     </div>
     <div v-if="this.$route.meta && this.$route.meta.layout === 'order'">
       <HeaderOrder />

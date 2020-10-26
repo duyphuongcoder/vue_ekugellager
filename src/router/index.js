@@ -44,17 +44,26 @@ const routes = [
       {
         path: 'login',
         name: 'login',
-        component: Login
+        component: Login,
+        meta: {
+          layout: false
+        }
       },
       {
         path: 'register',
         name: 'register',
-        component: Register
+        component: Register,
+        meta: {
+          layout: false
+        }
       },
       {
         path: 'password-recovery',
         name: 'password-recovery',
-        component: PasswordRecovery
+        component: PasswordRecovery,
+        meta: {
+          layout: false
+        }
       },
       {
         path: 'my-account',
