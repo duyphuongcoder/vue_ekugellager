@@ -38,6 +38,7 @@
         "login": "Login"
     },
     "register": {
+        "register": "Registrieren",
         "social_title": "Anrede",
         "Mr": "Herr",
         "Mrs": "Frau",

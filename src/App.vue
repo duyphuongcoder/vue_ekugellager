@@ -26,14 +26,12 @@
 import Header from '@/components/header/Header'
 import HeaderOrder from '@/components/header/HeaderOrder'
 import FooterMain from '@/components/footer/FooterMain'
-// import Footer from '@/components/footer/Footer'
 export default {
   name: 'app',
   components: {
     Header,
     HeaderOrder,
     FooterMain
-    // Footer
   }
 }
 </script>

@@ -38,6 +38,7 @@
         "login": "Login"
     },
     "register": {
+        "register": "Register",
         "social_title": "Social title",
         "Mr": "Mr.",
         "Mrs": "Mrs.",
