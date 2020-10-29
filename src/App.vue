@@ -19,6 +19,14 @@
       </b-container>
       <FooterMain />
     </div>
+    <go-top
+      :boundary="0"
+      :right="10"
+      :bottom="10"
+      bg-color='#12407E'
+      :max-width="320"
+      :has-outline="false"
+    ></go-top>
   </div>
 </template>
 
@@ -26,12 +34,14 @@
 import Header from '@/components/header/Header'
 import HeaderOrder from '@/components/header/HeaderOrder'
 import FooterMain from '@/components/footer/FooterMain'
+import GoTop from '@inotom/vue-go-top'
 export default {
   name: 'app',
   components: {
     Header,
     HeaderOrder,
-    FooterMain
+    FooterMain,
+    GoTop
   }
 }
 </script>
