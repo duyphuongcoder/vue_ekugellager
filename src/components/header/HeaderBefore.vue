@@ -11,12 +11,12 @@
               <img class="logo img-responsive" src="../../assets/img/logo.jpg"/>
             </router-link>
             <div class="shopping-cart">
-              <router-link :to="this.$store.getters.isLoggedIn ? $i18nRoute({ name: 'my-account'}) : $i18nRoute({ name: 'login'})">
+              <a href="javascript:void(0);" @click="openAccount">
                 <b-button variant="outline-primary" class="btn-circle" v-b-tooltip.hover.bottomright :title="this.$store.getters.isLoggedIn ? 'Visit my account' : $t('header.log_in_to_your_customer_account')">
                   <b-icon icon="person"></b-icon>
                 </b-button>
-              </router-link>
-              <b-button variant="outline-primary" v-b-modal="modalId" class="btn-circle">
+              </a>
+              <b-button variant="outline-primary" v-b-modal="modalIdShopingCart" class="btn-circle">
                 <b-icon icon="cart3"></b-icon>
                 <span class="cart-products-count">{{this.$store.getters.cart?this.$store.getters.cart.products_count:0}}</span>
               </b-button>
@@ -48,16 +48,16 @@
                   {{rank}} Rank
                   </b-button>
                 </router-link>
-                <router-link :to="this.$store.getters.isLoggedIn ? $i18nRoute({ name: 'my-account'}) : $i18nRoute({ name: 'login'})">
+                <a href="javascript:void(0);" @click="openAccount">
                   <b-button variant="outline-primary" class="btn-circle" v-b-tooltip.hover.bottomright :title="this.$store.getters.isLoggedIn ? 'Visit my account' : $t('header.log_in_to_your_customer_account')">
                     <b-icon icon="person"></b-icon>
                   </b-button>
-                </router-link>
+                </a>
               </div>
             </div>
             <div>
               <div class="blockcart cart-preview inactive">
-                <b-button variant="outline-primary" v-b-modal="modalId" class="btn-circle">
+                <b-button variant="outline-primary" v-b-modal="modalIdShopingCart" class="btn-circle">
                   <b-icon icon="cart3"></b-icon>
                   <span class="cart-products-count">{{this.$store.getters.cart?this.$store.getters.cart.products_count:0}}</span>
                 </b-button>
@@ -68,6 +68,7 @@
       <Menu data="d-block d-md-none"/>
     </b-container>
     <ShoppingCartModal />
+    <LoginModal />
   </div>
 </template>
 
@@ -75,7 +76,8 @@
 import { Trans } from '@/lang/Translation'
 import { shopId } from '@/config/settings'
 import ShoppingCartModal from '@/components/common/ShoppingCartModal'
-import { SHOPPING_CART_MODAL } from '@/constants/modal'
+import LoginModal from '@/components/common/LoginModal'
+import { SHOPPING_CART_MODAL, LOGIN_MODAL } from '@/constants/modal'
 import Menu from './Menu'
 import { UserServices, HeaderServices } from '@/services/index'
 import VueBootstrapTypeahead from 'vue-bootstrap-typeahead'
@@ -83,12 +85,14 @@ import $ from 'jquery'
 export default {
   components: {
     ShoppingCartModal,
+    LoginModal,
     Menu,
     VueBootstrapTypeahead
   },
   data () {
     return {
-      modalId: SHOPPING_CART_MODAL,
+      modalIdShopingCart: SHOPPING_CART_MODAL,
+      modalIdLogin: LOGIN_MODAL,
       search_key: '',
       user: null,
       rank: 0,
@@ -136,6 +140,13 @@ export default {
     selected (item) {
       this.$router.push({ name: 'product', params: { id_product: item.id_product } }).catch(() => {})
       this.$refs.searchInput.inputValue = ''
+    },
+    openAccount () {
+      if (this.$store.getters.isLoggedIn) {
+        this.$router.push({ name: 'my-account' }).catch(() => {})
+      } else {
+        this.$bvModal.show(LOGIN_MODAL)
+      }
     }
   },
   watch: {

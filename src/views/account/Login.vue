@@ -166,5 +166,13 @@ export default {
       }
     }
   }
+  .register_right {
+    background: url('../../assets/img/bg-animation.png') 0 0 no-repeat #0f3568;
+    display: flex;
+    height: 100vh;
+    background-size: cover;
+    align-items: center;
+    justify-content: center;
+  }
 }
 </style>
