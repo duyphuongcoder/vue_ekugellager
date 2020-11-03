@@ -267,7 +267,7 @@ a:hover {
 /* ------------------------------------------------------------------- */
 
 /* --------------------- Login Modal Style ---------------------- */
-#login_modal {
+#login_modal, #register_modal, #forgot_modal {
     header {
         display: none;
     }
