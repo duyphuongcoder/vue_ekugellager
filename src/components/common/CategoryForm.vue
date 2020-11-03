@@ -1,7 +1,7 @@
 <template>
   <b-container class="category_form">
     <b-row class="mr-0">
-      <b-col sm="12" md="6" class="pr-0">
+      <b-col sm="12" xl="6" class="pr-0">
         <img class="business_img" src="https://ekugellager.roccshow.com/modules/rocccategoryform/views/img/customhtmlblockimg.png" alt="Business">
         <div class="business_details_wrapper">
           <div class="overlay"></div>
@@ -13,9 +13,15 @@
               :navText="[prev, next]"
               :responsive="{
                 0: {
-                  items: 1
+                  items: 1,
                 },
                 576: {
+                  items: 2
+                },
+                992: {
+                  items: 3
+                },
+                1200: {
                   items: 2
                 }
               }">
@@ -30,7 +36,7 @@
           </div>
         </div>
       </b-col>
-      <b-col sm="12" md="6">
+      <b-col sm="12" xl="6">
         <div class="category_details">
         </div>
       </b-col>
@@ -58,6 +64,7 @@ export default {
     padding: 0px;
     border-radius: 8px;
     margin-bottom: 80px;
+    min-height: 660px;
     img.business_img {
       width: 100%;
     }
@@ -74,6 +81,10 @@ export default {
         font-weight: 500;
         line-height: 60px;
         padding: 80px 0px;
+        @media screen and (max-width: 1310px) {
+          font-size: 24px;
+          padding:40px 0px;
+        }
       }
       span {
         font-size: 40px;
@@ -162,4 +173,10 @@ export default {
     }
    }
  }
+ @media screen and (max-width: 1200px){
+   img.business_img {
+      display: none;
+    }
+ }
+
 </style>
