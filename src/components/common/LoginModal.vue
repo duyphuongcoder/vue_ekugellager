@@ -1,6 +1,6 @@
 <template>
-    <div class="login-modal">
-        <b-modal :id="modalId" hide-footer class="leo-quicklogin-modal"  size="xl">
+    <div>
+        <b-modal :id="modalId" hide-footer size="xl">
             <div class="modal-body">
                 <b-row class="login">
                     <b-col md="6" class="form_left_main">
@@ -51,20 +51,18 @@
                             </b-form>
                             </b-row>
                             <div class="no-account col-lg-12 col-xm-12">
-                            <router-link :to="$i18nRoute({ name: 'register'})">
+                            <a href="javascript:void(0);" @click="openRegisterModal">
                                 {{$t('register.register')}}
-                            </router-link>
-                            <router-link :to="$i18nRoute({ name: 'password-recovery'})" class="forgot-pass">
+                            </a>
+                            <a href="javascript:void(0);" @click="openForgotModal" class="forgot-pass">
                                 {{$t('login.forgot_your_password')}}
-                            </router-link>
+                            </a>
                             </div>
                         </div>
                         <b-icon icon="x" class="opened-icon" @click="closeModal"></b-icon>
                     </b-col>
                     <b-col md="6" class="register_right">
-                        <router-link :to="$i18nRoute({ name: 'login'})">
-                            <img src="../../assets/img/logo-eku.png">
-                        </router-link>
+                        <img src="../../assets/img/logo-eku.png">
                         <b-icon icon="x" class="opened-icon" @click="closeModal"></b-icon>
                     </b-col>
                 </b-row>
@@ -74,7 +72,7 @@
 </template>
 
 <script>
-import { LOGIN_MODAL } from '@/constants/modal'
+import { LOGIN_MODAL, REGISTER_MODAL, FORGOT_MODAL } from '@/constants/modal'
 import { loadingSpinnerConfig } from '@/config/settings'
 export default {
   data () {
@@ -116,6 +114,14 @@ export default {
     },
     closeModal () {
       this.$bvModal.hide(LOGIN_MODAL)
+    },
+    openRegisterModal () {
+      this.$bvModal.hide(LOGIN_MODAL)
+      this.$bvModal.show(REGISTER_MODAL)
+    },
+    openForgotModal () {
+      this.$bvModal.hide(LOGIN_MODAL)
+      this.$bvModal.show(FORGOT_MODAL)
     }
   },
   mounted () {

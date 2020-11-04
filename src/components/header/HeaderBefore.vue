@@ -12,7 +12,7 @@
             </router-link>
             <div class="shopping-cart">
               <a href="javascript:void(0);" @click="openAccount">
-                <b-button variant="outline-primary" class="btn-circle" v-b-tooltip.hover.bottomright :title="this.$store.getters.isLoggedIn ? 'Visit my account' : $t('header.log_in_to_your_customer_account')">
+                <b-button variant="outline-primary" class="btn-circle" v-b-tooltip.hover.bottomright :title="this.$store.getters.isLoggedIn ? 'Visit my account' : ''">
                   <b-icon icon="person"></b-icon>
                 </b-button>
               </a>
@@ -69,6 +69,8 @@
     </b-container>
     <ShoppingCartModal />
     <LoginModal />
+    <RegisterModal />
+    <ForgotModal />
   </div>
 </template>
 
@@ -77,6 +79,8 @@ import { Trans } from '@/lang/Translation'
 import { shopId } from '@/config/settings'
 import ShoppingCartModal from '@/components/common/ShoppingCartModal'
 import LoginModal from '@/components/common/LoginModal'
+import RegisterModal from '@/components/common/RegisterModal'
+import ForgotModal from '@/components/common/ForgotModal'
 import { SHOPPING_CART_MODAL, LOGIN_MODAL } from '@/constants/modal'
 import Menu from './Menu'
 import { UserServices, HeaderServices } from '@/services/index'
@@ -86,6 +90,8 @@ export default {
   components: {
     ShoppingCartModal,
     LoginModal,
+    RegisterModal,
+    ForgotModal,
     Menu,
     VueBootstrapTypeahead
   },

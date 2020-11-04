@@ -267,13 +267,16 @@ a:hover {
 /* ------------------------------------------------------------------- */
 
 /* --------------------- Login Modal Style ---------------------- */
-#login_modal {
+#login_modal, #register_modal, #forgot_modal {
     header {
         display: none;
     }
     .modal-body {
         padding: 0 !important;
     }
+}
+#register_modal {
+    padding-left: 0px !important;
 }
 /* -------------------------------------------------------------- */
 
