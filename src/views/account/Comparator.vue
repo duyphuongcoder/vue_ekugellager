@@ -136,7 +136,10 @@ export default {
       left: 0;
       font-weight: 900;
       text-transform: capitalize;
-      border-top: 1px solid #f6f6f6;
+      // border-top: 1px solid #f6f6f6;
+      @media screen and (max-width: 767px){
+        transform: translate(-50px);
+      }
     }
   }
   .regular-price {
