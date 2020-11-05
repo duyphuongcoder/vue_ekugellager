@@ -216,7 +216,7 @@ export default {
             }
         }
     }
-    svg {
+    .opened-icon {
         font-size: 35px;
         position: absolute;
         right: 25px;
@@ -244,7 +244,7 @@ export default {
 }
 @media screen and (max-width: 768px) {
     .form_left_main {
-        svg {
+        .opened-icon {
             display: block !important;
         }
     }
