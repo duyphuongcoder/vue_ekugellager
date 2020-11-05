@@ -62,16 +62,7 @@ export default {
 
 <style scoped lang="scss">
 .account-right {
-  padding-right: 0%;
-  padding-left: 80px;
-  margin-bottom: 50px;
-  .header-title {
-    color: #12407E;
-    font-size: 24px;
-    padding-bottom: 20px;
-    margin-bottom: 40px;
-    border-bottom: 1px solid #707070;
-  }
+
   .wishlist>div{
     // margin: auto;
   }

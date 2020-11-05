@@ -179,9 +179,9 @@ export default {
 
 <style scoped lang="scss">
 .account-right {
-  padding-right: 0%;
-  padding-left: 80px;
-  margin-bottom: 50px;
+  // padding-right: 0%;
+  // padding-left: 80px;
+  // margin-bottom: 50px;
   .header {
     border-bottom: 1px solid #707070;
     .return-history {
@@ -200,6 +200,7 @@ export default {
     font-size: 24px;
     padding-bottom: 20px;
     // margin-bottom: 40px;
+    border:none;
 
   }
   .search-section {
