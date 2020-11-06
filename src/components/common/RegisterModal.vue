@@ -98,7 +98,7 @@
                                     </b-col>
                                 </b-row>
 
-                                <b-row class="text-left">
+                                <b-row class="text-left mt-3">
                                     <b-col>
                                     <b-form-checkbox
                                     id="checkbox-1"
@@ -149,7 +149,7 @@
                             </div>
                             <hr>
                             <b-row class="select-options">
-                                <b-col cols="12">
+                                <b-col cols="12 text-center">
                                     <p>
                                     {{$t('register.already_have_an_account')}}
                                     <a href="javascript:void(0);" @click="openLoginModal">
