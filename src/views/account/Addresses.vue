@@ -122,16 +122,6 @@ export default {
 
 <style scoped lang="scss">
 .account-right {
-  padding-right: 0%;
-  padding-left: 80px;
-  margin-bottom: 50px;
-  .header-title {
-    color: #12407E;
-    font-size: 24px;
-    padding-bottom: 20px;
-    margin-bottom: 40px;
-    border-bottom: 1px solid #707070;
-  }
   .address-list {
     background: #FFFFFF 0% 0% no-repeat padding-box;
     box-shadow: 0px 3px 6px #00000029;
