@@ -196,9 +196,6 @@ export default {
     }
   },
   mounted () {
-    if (this.$store.getters.isLoggedIn) {
-      this.$router.push({ name: 'home' })
-    }
   },
   methods: {
     onSubmit (evt) {
@@ -213,7 +210,7 @@ export default {
           if (!response.customer) {
             this.failedMessage = response.errors[0].message
           } else {
-            this.$router.push({ name: 'home' })
+            this.$router.push({ name: 'home' }).catch(() => {})
           }
           this.loader.hide()
         }).catch(err => {

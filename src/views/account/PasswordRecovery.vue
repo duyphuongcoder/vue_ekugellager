@@ -92,7 +92,7 @@ export default {
   },
   mounted () {
     if (this.$store.getters.isLoggedIn) {
-      this.$router.push({ name: 'home' })
+      this.$router.push({ name: 'home' }).catch(() => {})
     }
     this.token = this.$route.query.token
     this.id_customer = this.$route.query.id_customer
