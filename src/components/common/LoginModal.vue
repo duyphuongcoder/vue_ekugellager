@@ -96,7 +96,8 @@ export default {
         if (!response.customer) {
           this.failedMessage = response.errors[0]
         } else {
-          this.$router.push({ name: 'home' })
+          this.$bvModal.hide(LOGIN_MODAL)
+          this.$router.push({ name: 'home' }).catch(() => {})
         }
         this.loader.hide()
       }).catch(err => {

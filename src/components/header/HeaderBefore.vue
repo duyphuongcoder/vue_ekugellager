@@ -302,7 +302,7 @@ export default {
     }
   }
 }
-@media screen and (max-width: 410px) {
+@media screen and (max-width: 414px) {
   .header-before .top_section img {
     width: 170px;
     margin-left: 30px;
