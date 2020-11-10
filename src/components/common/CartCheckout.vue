@@ -1,56 +1,50 @@
 <template>
-  <ul class="cart_checkout">
+  <ul class="cart_details_bottom_part">
     <li class="">
-      <div class="price">
-        <b-row class="shipping pb-3">
-          <b-col cols="8" class="desc">
-            <h6>{{$t('products.shipping')}}</h6>
-            <h6>VERSANDKOSTENFREI AB 250€</h6>
-          </b-col>
-          <b-col cols="4" class="value">
-            <h6>€{{shipping}}</h6>
-          </b-col>
-        </b-row>
-        <b-row class="total pt-3">
-          <b-col cols="8" class="desc">
-            <h6>{{$t('products.total')}}</h6>
-          </b-col>
-          <b-col cols="4" class="value">
-            <h6>{{total}}</h6>
-          </b-col>
-        </b-row>
-      </div>
-      <div class="voucher pt-3">
-        <b-row>
-          <b-col cols="6" lg="8" class="pr-0"><b-form-input v-model="coupon_code" :placeholder="$t('order.coupon_code')"></b-form-input></b-col>
-          <b-col cols="6" lg="4" class="pl-0"><b-button @click="applyCouponCode(coupon_code)">{{$t('products.use')}}</b-button></b-col>
-        </b-row>
-      </div>
-      <div class="checkout pt-3">
-        <b-row>
-          <router-link :to="$i18nRoute({ name: 'order'})">
-            {{$t('order.checkout')}}
-          </router-link>
-        </b-row>
-      </div>
-      <div class="blockreassurance_product pt-5">
-        <div class="d-flex mt-3 mb-3">
-          <span class="item-product mr-2"><b-icon icon="check2" font-scale="2"></b-icon></span>
-          <p class="block-title">Datenschutzbedingungen (bearbeiten im Modul "Kundenvorteile")</p>
+      <div class="card_title">Ubersicht</div>
+      <b-col cols="12" md="12" class="first_div">
+        <div class="cart-voucher">
+          <b-form action="" data-link-action="add-voucher" class="discount_name" method="post">
+            <b-form-input  name="token" value="" style="display:none;"></b-form-input>
+            <b-form-input  name="addDiscount" value="" style="display:none;"></b-form-input>
+            <b-input-group class="voucher-input-group">
+              <b-form-input type="text" name="discount_name" class="py-2 discount_name" placeholder="Voucher code"></b-form-input>
+              <b-input-group-append>
+                <b-button type="submit" class="btn-outline-secondary after-add-voucher"><span>use</span></b-button>
+              </b-input-group-append>
+            </b-input-group>
+          </b-form>
         </div>
-        <div class="d-flex mt-3 mb-3">
-          <span class="item-product mr-2"><b-icon icon="check2" font-scale="2"></b-icon></span>
-          <p class="block-title">Lieferbedingungen (bearbeiten im Modul "Kundenvorteile")</p>
+      </b-col>
+      <b-col md="12" class="second_div">
+          <b-row class="shipping">
+            <b-col cols="6" class="label text-uppercase text-left">
+              <p>shipping</p>
+            </b-col>
+            <b-col cols="6" class="value text-right">
+              <p>€{{shipping}}</p>
+            </b-col>
+          </b-row>
+          <b-row class="total font-weight-bold py-3">
+            <b-col cols="6" class="label text-uppercase text-left">
+              <p>total</p>
+            </b-col>
+            <b-col cols="6" class="value text-right">
+              <p>{{total}}</p>
+            </b-col>
+          </b-row>
+          <div class="progress_section">
+            <div class="up">
+              <b-progress variant="white" :value="value" max="1" class="mb-3"></b-progress>
+            </div>
+            <div class="down">only €154.80 until free shipping</div>
+          </div>
+      </b-col>
+      <b-col md="12" class="third_div">
+        <div class="checkout text-center">
+          <router-link :to="$i18nRoute({ name: 'order'})" class="to-checkout">checkout</router-link>
         </div>
-        <div class="d-flex mt-3 mb-3">
-          <span class="item-product mr-2"><b-icon icon="check2" font-scale="2"></b-icon></span>
-          <p class="block-title">Rücksendebedingungen (bearbeiten im Modul "Kundenvorteile")</p>
-        </div>
-        <div class="d-flex mt-3 mb-3">
-          <span class="item-product mr-2"><b-icon icon="check2" font-scale="2"></b-icon></span>
-          <p class="block-title"></p>
-        </div>
-      </div>
+      </b-col>
     </li>
   </ul>
 </template>>
@@ -64,7 +58,8 @@ export default {
     return {
       shipping: 0,
       total: 0,
-      coupon_code: null
+      coupon_code: null,
+      value: 0.5
     }
   },
   methods: {
@@ -84,65 +79,113 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.cart_checkout {
+.cart_details_bottom_part {
+  background: #12407e;
   background: linear-gradient(90deg, rgba(18,64,126,1) 0%, rgba(17,61,119,1) 68%, rgba(14,49,96,1) 100%);
+  -webkit-transition: all .45s cubic-bezier(.3,0,.15,1);
   transition: all .45s cubic-bezier(.3,0,.15,1);
+  min-height: 400px;
   margin-bottom: 20px;
   border: 1px solid #12407e;
   box-shadow: 0px 3px 6px #00000029;
-  padding: 30px 15px;
+  padding: 30px 0px;
   border-radius: 8px;
   color: #fff;
-  min-height: auto;
-  .price {
-    .desc {
-      text-align: left;
-      text-transform: uppercase;
-    };
-    .desc>h6:nth-child(2) {
-      font-weight: 100;
-    }
-    .value {
-      text-align: right;
-      margin-top: auto;
-    }
-    .shipping {
-      border-bottom: 1px solid;
-    }
+  li:last-child {
+    border-bottom: none;
   }
-  .voucher {
-    button {
-      width: 100%;
-      background-color: #ccc;
-      color: #113b72;
-      height: 50px;
-      text-transform: uppercase;
+  li:first-child {
+    text-transform: uppercase;
+    color: #303030;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 40px 30px;
+  }
+  li {
+    padding: 0 15px!important;
+  }
+  .card_title {
+    font-size: 18px;
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 1px;
+    margin: 0;
+    padding: 0px 0 25px 0;
+    border-bottom: 1px solid #8096b3;
+  }
+  .first_div {
+    border-bottom: 1px solid #8096b3;
+    padding-bottom: 30px;
+    margin-bottom: 0!important;
+    margin-top: 15px!important;
+    .voucher-input-group {
+      margin-top: 25px;
     }
-    button:hover {
-      background-color: #b2162c;
+    input.discount_name {
+      background: none;
+      border: 1px solid #8096b3;
+      color: #fff!important;
+      padding: 0 15px;
+      font-weight: 300;
+      width: calc(100% - 75px);
+      height: 50px;
+    }
+    .btn-outline-secondary {
+      background: none;
       color: #fff;
-    }
-    input {
-      height: 50px;
+      border: 1px solid #8096b3;
+      padding: 0 25px;
+      border-left: 0;
+      border-radius: 0 .25rem .25rem 0;
     }
   }
-  .checkout {
-    a {
+  .second_div {
+    color:white;
+    padding-top: 15px;
+    .shipping {
+      border-bottom: 1px solid #8096b3;
+    }
+    .progress_section {
+      max-width: 270px;
+      margin: 40px auto 30px;
+      .up {
+        .progress {
+          height: 20px;
+          border: 1px solid #fff;
+          border-radius: 10px;
+          background: none;
+        }
+        .progress-bar {
+          border-radius: 10px;
+        }
+      }
+      .down {
+        font-size: 14px;
+        margin-top: 12px;
+        text-align: center;
+        font-weight: 300;
+        text-transform: none;
+      }
+    }
+  }
+  .third_div {
+    .to-checkout {
+      width: 245px;
+      display: inline-block;
+      padding: 12px 15px;
+      font-weight: 500;
+      line-height: normal;
+      height: auto;
       background: #B2162C;
-      color: #fff ;
+      color: #fff !important;
       border: 1px solid #B2162C;
-      padding: 8px 25px;
       border-radius: 8px;
-      text-align: center;
       -webkit-transition: all .5s ease;
       transition: all .5s ease;
       text-transform: uppercase;
       font-weight: 700;
-      margin: auto;
     }
-  }
-  .blockreassurance_product {
-    text-align: left;
   }
 }
 </style>
