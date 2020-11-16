@@ -1,5 +1,5 @@
 <template>
-  <b-container class="category-page">
+  <b-container class="category-page pt-3">
     <CatlogBar :categoryId="categoryId"/>
     <b-row>
       <b-col md="3" sm="12">
@@ -338,42 +338,45 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.active-filters-block {
-  display: flex;
-  .filter-title {
-    width: 150px;
-    padding-top: 12px;
-    background: #ced4da;
-    font-weight: 600;
-  }
-  .b-form-tags {
-    border-top-left-radius: 0px;
-    border-bottom-left-radius: 0px;
-    background-color: #ced4da;
-    text-align: left;
-    input {
+.category-page {
+  .active-filters-block {
+    display: flex;
+    .filter-title {
+      width: 150px;
+      padding-top: 12px;
+      background: #ced4da;
+      font-weight: 600;
+    }
+    .b-form-tags {
+      border-top-left-radius: 0px;
+      border-bottom-left-radius: 0px;
+      background-color: #ced4da;
+      text-align: left;
+      input {
+        outline: none !important;
+      }
+    }
+    .b-form-tags.focus {
+      border-color: #ced4da;
       outline: none !important;
+      box-shadow: none !important;
     }
   }
-  .b-form-tags.focus {
-    border-color: #ced4da;
-    outline: none !important;
-    box-shadow: none !important;
+  .products {
+    margin-bottom: 20px;
+  }
+  .page-bottom .page-info {
+    padding: 7px 7px !important;
+  }
+  .page-bottom .pagination-nav {
+    padding: 0px 0px !important;
+  }
+  .no-products {
+    min-height: 300px;
+    span {
+      margin: auto;
+    }
   }
 }
-.products {
-  margin-bottom: 20px;
-}
-.page-bottom .page-info {
-  padding: 7px 7px !important;
-}
-.page-bottom .pagination-nav {
-  padding: 0px 0px !important;
-}
-.no-products {
-  min-height: 300px;
-  span {
-    margin: auto;
-  }
-}
+
 </style>
