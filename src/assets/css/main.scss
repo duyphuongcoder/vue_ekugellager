@@ -600,3 +600,26 @@ a:hover {
         border-radius: 10px;
     }
 }
+
+.navbar-catlog {
+    .products-sort-order {
+        .b-dropdown {
+          button.dropdown-toggle {
+            outline: none;
+            background: #F9F9F9 !important;
+            color: #232323;
+            border: none;
+          }
+          .dropdown-menu {
+            padding: 0px;
+            li {
+                line-height: 30px;
+            }
+            li a:hover {
+                background: #B2162C;
+                color: #fff;
+            }
+          }
+        }
+    }
+}

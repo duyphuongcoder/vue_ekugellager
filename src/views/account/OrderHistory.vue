@@ -1,10 +1,10 @@
 <template>
-  <b-container class="order-history mt-5">
+  <b-container class="order-history">
     <b-row>
       <b-col md="3" sm="12">
         <AccountNav />
       </b-col>
-      <b-col class="account-right" md="9" sm="12">
+      <b-col class="account-right mt-5" md="9" sm="12">
         <b-row class="header">
           <b-col cols="12" md="6">
             <h1 class="header-title text-center text-sm-left">{{$t('account.order_history')}}</h1>

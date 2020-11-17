@@ -1,10 +1,10 @@
 <template>
-  <b-container class="wishlist mt-5">
+  <b-container class="wishlist">
     <b-row>
       <b-col md="3" sm="12">
         <AccountNav />
       </b-col>
-      <b-col class="account-right" md="9" sm="12">
+      <b-col class="account-right mt-5" md="9" sm="12">
         <h1 class="header-title">{{$t('account.my_wishlist')}}</h1>
         <div v-for="(item, index) in items" :key="index" class="wishlist align-items-center" :class="{removed:(removedItems.includes(index))}">
           <b-row >
