@@ -1,10 +1,10 @@
 <template>
-  <b-container class="my-account mt-5">
+  <b-container class="my-account">
     <b-row>
       <b-col md="3" sm="12">
         <AccountNav />
       </b-col>
-      <b-col class="account-right" md="9" sm="12">
+      <b-col class="account-right mt-5" md="9" sm="12">
         <h1 class="header-title">{{ $t(headerTitle) }}</h1>
         <div class="address">
           <b-form class="text-left" @submit="submit">
