@@ -16,7 +16,7 @@
               <ProductTechnical :items="product_features" v-if="product_features.length" />
             </b-col>
             <b-col lg="6" class="product_cart">
-              <ProductCart :addtocart="addToCart" :details="cart_details" :selected_groups="selected_groups" v-if="cart_details.name"/>
+              <ProductCart :addtocart="addToCart" :details="cart_details" :selected_groups="selected_groups" v-if="cart_details.description_short"/>
             </b-col>
           </b-row>
         </b-col>

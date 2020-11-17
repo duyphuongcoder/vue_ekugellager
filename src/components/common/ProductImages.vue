@@ -3,6 +3,7 @@
   <ul class="product-flags">
     <li class="product-flag discount" v-if="reduction">{{reduction}}</li>
     <li class="product-flag pack" v-if="pack_items.length">PACK</li>
+    <li class="product-flag new">NEW</li>
   </ul>
   <div class="images-container">
     <div class="product-cover">
@@ -106,6 +107,9 @@ export default {
     margin-top: .625rem;
     font-size: 1rem;
     box-shadow: 2px 2px 4px 0 rgba(0,0,0,.2);
+  }
+  .new {
+    background: #2fb5d2;
   }
 }
 .images-container {

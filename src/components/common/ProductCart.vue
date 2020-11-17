@@ -12,6 +12,24 @@
       </b-col>
     </b-row>
     <div class="product-information">
+      <div>
+        <b-table
+          :striped="striped"
+          :bordered="bordered"
+          :borderless="borderless"
+          :outlined="outlined"
+          :small="small"
+          :hover="hover"
+          :dark="dark"
+          :fixed="fixed"
+          :foot-clone="footClone"
+          :no-border-collapse="noCollapse"
+          :items="items"
+          :fields="fields"
+          :head-variant="headVariant"
+          :table-variant="tableVariant"
+        ></b-table>
+      </div>
       <div class="product-description-short" v-html="details.description_short">
       </div>
       <div class="product-actions">
@@ -54,15 +72,76 @@
               </b-col>
             </b-row>
             <b-row class="compare-remember">
-              <b-col md="12">
-                <b-button>{{$t('products.remember')}}</b-button>
-                <b-button>{{$t('products.compare')}} &</b-button>
+              <b-col md="5" class="px-0">
+                <b-button v-b-modal.modal-pq class="px-0">Ask a question<img src="@/assets/img/comment.png" class="ask_question"/></b-button>
+              </b-col>
+              <b-col md="7" class="px-0">
+                <b-button class="pl-0">{{$t('products.remember')}}</b-button>
+                <b-button class="pr-0">{{$t('products.compare')}} &</b-button>
               </b-col>
             </b-row>
           </div>
         </b-form>
       </div>
     </div>
+    <b-modal id="modal-pq" centered title="" hide-footer hide-header>
+      <b-row class="close_modal" @click="$bvModal.hide('modal-pq')">
+        <b-icon icon="x-circle-fill" font-scale="2"></b-icon>
+      </b-row>
+      <b-row class="pt-3">
+        <b-col cols="5" class="pq_show_pi_left text-center my-auto">
+          <b-img src=""></b-img>
+          <span class="pq_name_holder"></span>
+          <span class="pq_price_holder product-price">€76.77</span>
+        </b-col>
+        <b-col cols="7" class="pq_show_pi_right">
+          <b-alert variant="success" :show="query_sent">Your query is sent</b-alert>
+          <div class="text-center"><img src="@/assets/img/load.gif" v-if="submitting"/></div>
+          <b-form @submit="onSubmit" v-if="!submitting">
+            <b-form-group
+              label-cols-sm="3"
+              label="Name"
+              label-align-sm="right"
+              label-for="pq_name"
+            >
+              <b-form-input id="pq_name"></b-form-input>
+            </b-form-group>
+            <b-form-group
+              label-cols-sm="3"
+              label-align-sm="right"
+              label-for="pq_email"
+            >
+              <template v-slot:label>
+                <span class="text-danger">*</span>Email
+              </template>
+              <b-form-input id="pq_email" type="email" required></b-form-input>
+            </b-form-group>
+            <b-form-group
+              label-cols-sm="3"
+              label="Phone"
+              label-align-sm="right"
+              label-for="pq_phone"
+            >
+              <b-form-input id="pq_phone"></b-form-input>
+            </b-form-group>
+            <b-form-group
+              label-cols-sm="3"
+              label-align-sm="right"
+              label-for="pq_message"
+            >
+              <template v-slot:label>
+                <span class="text-danger">*</span>Message
+              </template>
+              <b-form-textarea id="pq_message" rows="2" required></b-form-textarea>
+            </b-form-group>
+            <b-row class="mx-0 float-right">
+              <p class="my-auto mr-3 text-danger">*Required Fields</p>
+              <b-button type="submit" variant="primary" class="submitBtn">Submit</b-button>
+            </b-row>
+          </b-form>
+        </b-col>
+      </b-row>
+    </b-modal>
   </div>
 </template>
 <script>
@@ -75,7 +154,29 @@ export default {
   data () {
     return {
       count: 1,
-      quality: []
+      quality: [],
+      submitting: false,
+      query_sent: false,
+      fields: ['quantity_form', 'your_discount', 'unit_price'],
+      items: [
+        { quantity_form: 6, your_discount: '€10', unit_price: '€69.19' },
+        { quantity_form: 20, your_discount: '€9', unit_price: '€69.95' },
+        { quantity_form: 45, your_discount: '€9', unit_price: '€69.95' },
+        { quantity_form: 70, your_discount: '€8', unit_price: '€70.72' }
+
+      ],
+      striped: false,
+      bordered: false,
+      borderless: false,
+      outlined: false,
+      small: false,
+      hover: false,
+      dark: false,
+      fixed: false,
+      footClone: false,
+      headVariant: null,
+      tableVariant: '',
+      noCollapse: false
     }
   },
   methods: {
@@ -85,6 +186,17 @@ export default {
         json[item.group_name] = this.selected_groups[index]
       })
       this.$router.push({ query: json })
+    },
+    onSubmit (evt) {
+      evt.preventDefault()
+      this.submitting = true
+      setTimeout(() => {
+        this.submitting = false
+        this.query_sent = true
+      }, 2000)
+      setTimeout(() => {
+        this.query_sent = false
+      }, 4000)
     }
   },
   mounted () {
@@ -97,6 +209,7 @@ export default {
       immediate: true,
       handler () {
         // this.selected = this.details.groups.
+        console.log(this.details)
       }
     }
   }
@@ -141,6 +254,11 @@ export default {
       }
     }
     .product-information {
+      .table {
+        color: white;
+        text-align: center;
+        font-size: 14px;
+      }
       text-align: left;
       .product-description-short{
         border-top: 1px solid rgb(240, 240, 240);
@@ -193,5 +311,36 @@ export default {
         }
       }
     }
+  }
+  .pq_show_pi_right {
+    .submitBtn {
+      background: #B2162C 0% 0% no-repeat padding-box;
+      box-shadow: 0px 3px 30px #00000029;
+      border-radius: 4px;
+      color: #fff;
+      border: none;
+      -webkit-transition: all .3s ease;
+      transition: all .3s ease;
+      font-size: 16px;
+      font-weight: 500;
+    }
+    .submitBtn:hover {
+      outline: none;
+      background: #113d79;
+    }
+  }
+  .ask_question {
+    margin-left: 10px;
+    width: 14px;
+    height: 14px;
+    vertical-align: text-top;
+  }
+  .close_modal {
+    position: absolute;
+    right: 0px;
+    top: -20px;
+    background: white;
+    border-radius: 100%;
+    cursor: pointer;
   }
 </style>
