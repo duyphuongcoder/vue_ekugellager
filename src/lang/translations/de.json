@@ -80,6 +80,10 @@
         "personal_advisor": "Persona Advisor",
         "compare": "Vergleichen Sie",
         "my_wishlist": "Meine Wunschliste",
+        "contact_person": "Gesprächspartner",
+        "order_templates": "Bestellvorlagen",
+        "support": "Hilfe",
+        "contact_us": "KONTAKTIEREN SIE UNS",
         "rank": "Rang",
         "log_out": "Abmelden",
         "order_reference": "Bestellnummer",
@@ -152,6 +156,16 @@
         "self": "Rang",
         "turn_over_description": "Umsatz bis zum nachsten Rang"
     },
+    "support": {
+        "subject": "Betreff",
+        "email": "E-Mail Adresse",
+        "order": "Bestellnummer",
+        "attachment": "Anhang",
+        "message": "Nachricht",
+        "message_placeholder": "wie können wir helfen?",
+        "check_label": "Ich akzeptiere die Allgemeinen Geschäftsbedingungen und die Datenschutzerklärung",
+        "send": "senden"
+    },
     "products": {
         "manufacturer": "Hersteller",
         "quality": "Qualität",
@@ -179,7 +193,14 @@
         "use": "Verwenden",
         "filter_by": "FILTERN NACH",
         "clear": "Alles löschen",
-        "active_filters": "Aktive Filter"
+        "active_filters": "Aktive Filter",
+        "ask_question": "Stelle eine Frage",
+        "name": "Name",
+        "email": "Email",
+        "phone": "Telefon",
+        "message": "Botschaft",
+        "required_fileds": "Benötigte Felder",
+        "submit": "einreichen"
     },
     "compare": {
         "no_compare": "Es gibt keine vergleichbaren Produkte.",

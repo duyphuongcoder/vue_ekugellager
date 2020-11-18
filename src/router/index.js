@@ -18,6 +18,9 @@ import Identity from '../views/account/Identity.vue'
 import OffenePosten from '../views/account/OffenePosten.vue'
 import Rank from '../views/account/Rank.vue'
 import Wishlist from '../views/account/Wishlist.vue'
+import ContactPerson from '../views/account/ContactPerson.vue'
+import OrderTemplates from '../views/account/OrderTemplates.vue'
+import Support from '../views/account/Support.vue'
 
 import Category from '../views/products/Category.vue'
 import Product from '../views/products/Product.vue'
@@ -149,6 +152,30 @@ const routes = [
         path: 'wishlist',
         name: 'wishlist',
         component: Wishlist,
+        meta: {
+          requiresAuth: true
+        }
+      },
+      {
+        path: 'contact-person',
+        name: 'contact-person',
+        component: ContactPerson,
+        meta: {
+          requiresAuth: true
+        }
+      },
+      {
+        path: 'order-templates',
+        name: 'order-templates',
+        component: OrderTemplates,
+        meta: {
+          requiresAuth: true
+        }
+      },
+      {
+        path: 'support',
+        name: 'support',
+        component: Support,
         meta: {
           requiresAuth: true
         }

@@ -22,7 +22,7 @@
             </b-row>
           </div>
         </b-col>
-        <b-col cols="12" lg="6" class="order-address-section">
+        <b-col cols="12" lg="6" class="order-address-section mt-5 mt-lg-0">
           <div class="order-address">
             <b-row class="content">
               <b-col cols="12" class=""><p class="title">Follow your order's status step-by-step</p></b-col>

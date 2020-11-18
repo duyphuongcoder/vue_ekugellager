@@ -47,6 +47,21 @@
                         <span>{{$t('account.my_wishlist')}}</span>
                     </router-link>
                 </li>
+                 <li :class="routePath === 'conatact-preson' ? 'active' : ''">
+                    <router-link :to="$i18nRoute({ name: 'contact-person'})">
+                        <span>{{$t('account.contact_person')}}</span>
+                    </router-link>
+                </li>
+                 <li :class="routePath === 'order-templates' ? 'active' : ''">
+                    <router-link :to="$i18nRoute({ name: 'order-templates'})">
+                        <span>{{$t('account.order_templates')}}</span>
+                    </router-link>
+                </li>
+                 <li :class="routePath === 'support' ? 'active' : ''">
+                    <router-link :to="$i18nRoute({ name: 'support'})">
+                        <span>{{$t('account.support')}}</span>
+                    </router-link>
+                </li>
                 <li :class="routePath === 'rank' ? 'active' : ''">
                     <router-link :to="$i18nRoute({ name: 'rank'})">
                         <span>{{$t('account.rank')}}</span>

@@ -49,7 +49,7 @@
               <b-col md="4" class="reduce-padding">
                 <p class="cusomter_rank_proud">
                   <span class="rank_val">0</span>
-                  <span class="rank_text">Rang</span>
+                  <span class="rank_text">{{$t('account.rank')}}</span>
                 </p>
               </b-col>
               <b-col md="8" class="reduce-padding text-right">
@@ -73,7 +73,7 @@
             </b-row>
             <b-row class="compare-remember">
               <b-col md="5" class="px-0">
-                <b-button v-b-modal.modal-pq class="px-0">Ask a question<img src="@/assets/img/comment.png" class="ask_question"/></b-button>
+                <b-button v-b-modal.modal-pq class="px-0">{{$t('products.ask_question')}}<img src="@/assets/img/comment.png" class="ask_question"/></b-button>
               </b-col>
               <b-col md="7" class="px-0">
                 <b-button class="pl-0">{{$t('products.remember')}}</b-button>
@@ -95,12 +95,12 @@
           <span class="pq_price_holder product-price">€76.77</span>
         </b-col>
         <b-col cols="7" class="pq_show_pi_right">
-          <b-alert variant="success" :show="query_sent">Your query is sent</b-alert>
+          <b-alert variant="success" :show="query_sent">{{$t('products.query_sent')}}</b-alert>
           <div class="text-center"><img src="@/assets/img/load.gif" v-if="submitting"/></div>
           <b-form @submit="onSubmit" v-if="!submitting">
             <b-form-group
               label-cols-sm="3"
-              label="Name"
+              :label="$t('products.name')"
               label-align-sm="right"
               label-for="pq_name"
             >
@@ -112,13 +112,13 @@
               label-for="pq_email"
             >
               <template v-slot:label>
-                <span class="text-danger">*</span>Email
+                <span class="text-danger">*</span>{{$t('products.email')}}
               </template>
               <b-form-input id="pq_email" type="email" required></b-form-input>
             </b-form-group>
             <b-form-group
               label-cols-sm="3"
-              label="Phone"
+              :label="$t('products.phone')"
               label-align-sm="right"
               label-for="pq_phone"
             >
@@ -130,13 +130,13 @@
               label-for="pq_message"
             >
               <template v-slot:label>
-                <span class="text-danger">*</span>Message
+                <span class="text-danger">*</span>{{$t('products.message')}}
               </template>
               <b-form-textarea id="pq_message" rows="2" required></b-form-textarea>
             </b-form-group>
             <b-row class="mx-0 float-right">
-              <p class="my-auto mr-3 text-danger">*Required Fields</p>
-              <b-button type="submit" variant="primary" class="submitBtn">Submit</b-button>
+              <p class="my-auto mr-3 text-danger">*{{$t('products.required_fileds')}}</p>
+              <b-button type="submit" variant="primary" class="submitBtn">{{$t('products.submit')}}</b-button>
             </b-row>
           </b-form>
         </b-col>
