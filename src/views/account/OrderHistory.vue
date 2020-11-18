@@ -4,7 +4,7 @@
       <b-col md="3" sm="12">
         <AccountNav />
       </b-col>
-      <b-col class="account-right mt-5" md="9" sm="12">
+      <b-col class="account-right mt-5" md="9" sm="12" v-if="!id_order">
         <b-row class="header">
           <b-col cols="12" md="6">
             <h1 class="header-title text-center text-sm-left">{{$t('account.order_history')}}</h1>
@@ -40,10 +40,11 @@
           </b-row>
           <b-row class="content-section">
             <div class="sidebar d-none d-md-block"></div>
-            <div class="content"><OrderOfDay :items="order.items"/></div>
+            <div class="content"><OrderOfDay :items="order.items" :show_details="show_details"/></div>
           </b-row>
         </div>
       </b-col>
+      <OrderDetails v-else/>
     </b-row>
   </b-container>
 </template>
@@ -51,13 +52,16 @@
 <script>
 import AccountNav from '@/components/common/AccountNav'
 import OrderOfDay from '@/components/common/OrderOfDay'
+import OrderDetails from './OrderDetails'
 export default {
   components: {
     AccountNav,
-    OrderOfDay
+    OrderOfDay,
+    OrderDetails
   },
   data () {
     return {
+      id_order: '',
       order_history: [
         {
           date: '24.12.2019',
@@ -173,6 +177,18 @@ export default {
         }
       ]
     }
+  },
+  methods: {
+    show_details (id) {
+      console.log(id)
+      this.$router.push({ path: 'order-history', query: { id_order: id } })
+      this.id_order = id
+    }
+  },
+  mounted () {
+    if (this.$route.query.id_order !== 'undefined') {
+      this.id_order = this.$route.query.id_order
+    }
   }
 }
 </script>
@@ -255,6 +271,90 @@ export default {
         position: relative;
         @media screen and (max-width: 768px) {
           position: unset;
+        }
+      }
+    }
+  }
+}
+.order-details-content {
+  .order-address-section {
+    .order-address {
+      min-height: 280px;
+      height: 100%;
+      background: #FFFFFF 0% 0% no-repeat padding-box;
+      box-shadow: 0px 3px 6px #00000029;
+      border: 0.5px solid #00000029;
+      color: #919191;
+      border-radius: 8px;
+      font-size: 14px;
+      .content {
+        .title {
+          color: #707070;
+          font-size: 16px;
+          font-weight: 500;
+          background: #f1f1f1;
+          border-bottom: 0px;
+          padding: 18px 18px;
+          border-top-right-radius: 8px;
+          border-top-left-radius: 8px;
+          overflow: hidden
+        }
+        p {
+          text-align: left;
+          padding-left: 18px;
+        }
+        p.status {
+          background: #F0F0F0;
+          width: fit-content;
+          padding-left: 0;
+          margin-left: 18px;
+        }
+      }
+      .reorder {
+        background: #fff 0% 0% no-repeat padding-box;
+        border: 1px solid #E9E9E9;
+        border-radius: 4px;
+        color: #707070;
+        -webkit-transition: all .3s ease;
+        transition: all .3s ease;
+        font-size: 14px;
+        font-weight: 500;
+        box-shadow: none;
+        padding: .5rem;
+        cursor: pointer;
+      }
+      .reorder:hover {
+        background: #707070;
+        color: #fff;
+      }
+    }
+  }
+  .order-tracking-section {
+    .order-tracking {
+      height: 100%;
+      background: #FFFFFF 0% 0% no-repeat padding-box;
+      box-shadow: 0px 3px 6px #00000029;
+      border: 0.5px solid #00000029;
+      color: #919191;
+      border-radius: 8px;
+      font-size: 14px;
+      .content {
+        .title {
+          color: #707070;
+          font-size: 16px;
+          font-weight: 500;
+          background: #f1f1f1;
+          border-bottom: 0px;
+          padding: 18px 18px;
+          border-top-right-radius: 8px;
+          border-top-left-radius: 8px;
+          overflow: hidden
+        }
+      }
+      .tracking-row {
+        border-bottom: 1px solid #E9E9E9;
+        .price {
+          // border-right: 1px solid #E9E9E9;
         }
       }
     }

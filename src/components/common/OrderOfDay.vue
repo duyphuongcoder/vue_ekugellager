@@ -2,7 +2,7 @@
   <div class="order-of-day">
     <b-row class="quick-actions p-3 mx-0">
       <b-col md="2">{{$t('order_history.name')}}</b-col>
-      <b-col md="2">{{$t('order_history.details')}}</b-col>
+      <b-col md="2" class="order_details" @click="show_details(1)">{{$t('order_history.details')}}</b-col>
       <b-col md="3">{{$t('order_history.return')}}</b-col>
       <b-col md="3">{{$t('order_history.track_delivery')}}</b-col>
       <b-col md="2">{{$t('invoice')}}</b-col>
@@ -39,7 +39,8 @@
 <script>
 export default {
   props: {
-    items: Array
+    items: Array,
+    show_details: Function
   }
 }
 </script>>
@@ -48,6 +49,9 @@ export default {
   border: 1px solid #E9E9E9;
   border-radius: 8px;
   box-shadow: 0px 3px 6px #00000029;
+  .order_details {
+    cursor: pointer;
+  }
   .quick-actions {
     text-transform: uppercase;
     background-color: #E4E4E4;
