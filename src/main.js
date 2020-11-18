@@ -10,6 +10,7 @@ import store from './store'
 import { i18n } from './lang/i18n.js'
 import { Trans } from './lang/Translation'
 import VueMeta from 'vue-meta'
+import './gtm.js'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'

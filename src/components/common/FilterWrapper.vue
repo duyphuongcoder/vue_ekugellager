@@ -1,6 +1,8 @@
 <template>
   <div class="filter-wrapper">
-    <p>{{$t('products.filter_by')}}</p>
+    <div class="card-header">
+      <span>{{$t('products.filter_by')}}</span>
+    </div>
     <b-button v-if="queryParams" variant="danger" class="mb-4" block @click="clear">{{$t('products.clear')}}</b-button>
     <div v-for="(data, index) in filterdata" :key="index">
       <div v-if="data.filter_type === 'checkbox'">
@@ -59,10 +61,19 @@ export default {
   min-width: 180px;
   max-width: 600px;
   margin-bottom: 20px;
-  p {
-    font-size: 14px;
-    font-weight: 500;
-    margin-bottom: 20px;
+  .card-header {
+    span {
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+    border-bottom: 1px solid #fff;
+    margin-bottom: 25px;
+  }
+  .card-header::after {
+    content: "";
+    display: table;
+    clear: both;
   }
 }
 </style>
