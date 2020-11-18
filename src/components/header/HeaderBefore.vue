@@ -114,7 +114,7 @@ export default {
       })
     }
     const self = this
-    $(document).keyup(function (event) {
+    $('#search_widget').keyup(function (event) {
       if (event.keyCode === 13) {
         self.$router.push({ name: 'search', query: { key: self.search_key } }).catch(() => {})
       }
