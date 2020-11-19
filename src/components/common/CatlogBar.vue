@@ -12,7 +12,7 @@
         </nav>
         <div class="row eku-product-list-top">
           <div class="col-md-6">
-          43720 products.
+          {{total}} products.
           </div>
           <div class="col-md-6">
             <div class="row sort-by-row">
@@ -37,7 +37,8 @@ import { Trans } from '@/lang/Translation'
 import { shopId } from '@/config/settings'
 export default {
   props: {
-    categoryId: Number
+    categoryId: Number,
+    total: Number
   },
   data () {
     return {

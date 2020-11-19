@@ -1,6 +1,6 @@
 <template>
   <b-container class="category-page pt-3">
-    <CatlogBar :categoryId="categoryId"/>
+    <CatlogBar :categoryId="categoryId" :total="totalCount"/>
     <b-row>
       <b-col md="3" sm="12">
         <FilterWrapper v-if="filterdata && filterdata.length > 0" :filterdata="filterdata" :updatevalues="updatevalues" :dragend="dragend"/>
