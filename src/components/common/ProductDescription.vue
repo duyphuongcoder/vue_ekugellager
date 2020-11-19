@@ -25,6 +25,8 @@
         </div>
         <div class="product-out-of-stock"></div>
       </b-tab>
+      <b-tab :title="$t('products.specialist')">
+      </b-tab>
     </b-tabs>
   </div>
 </template>
