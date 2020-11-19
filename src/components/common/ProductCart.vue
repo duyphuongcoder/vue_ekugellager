@@ -65,7 +65,8 @@
             <p>{{details.quantity}} {{$t('products.ready_to_ship')}}</p>
             <b-row class="add-to-cart">
               <b-col cols="4" class="p-0">
-                <b-form-input type="number" v-model="count" min="1" value="1"></b-form-input>
+                <vue-numeric-input  v-model="count" :min="1" align="center" size="100%"></vue-numeric-input>
+                <!-- <b-form-input type="number" v-model="count" min="1" value="1"></b-form-input> -->
               </b-col>
               <b-col cols="8" class="p-0">
                 <b-button @click="addtocart(count)">{{$t('products.shoppingcart')}}</b-button>
@@ -157,13 +158,12 @@ export default {
       quality: [],
       submitting: false,
       query_sent: false,
-      fields: ['quantity_form', 'your_discount', 'unit_price'],
+      fields: [
+        { key: 'scale_quantity', label: this.$t('products.scale_quantity') },
+        { key: 'your_discount', label: this.$t('products.your_discount') },
+        { key: 'unit_price', label: this.$t('products.discount_unit_price') }
+      ],
       items: [
-        { quantity_form: 6, your_discount: '€10', unit_price: '€69.19' },
-        { quantity_form: 20, your_discount: '€9', unit_price: '€69.95' },
-        { quantity_form: 45, your_discount: '€9', unit_price: '€69.95' },
-        { quantity_form: 70, your_discount: '€8', unit_price: '€70.72' }
-
       ],
       striped: false,
       bordered: false,
@@ -203,6 +203,13 @@ export default {
     if (this.details.quality === 'Good') this.quality = [1, 1, 0, 0]
     if (this.details.quality === 'Very Good') this.quality = [1, 1, 1, 0]
     if (this.details.quality === 'Best') this.quality = [1, 1, 1, 1]
+    this.details.quantity_discounts.forEach((item, index) => {
+      this.items.push({
+        scale_quantity: item.quantity,
+        your_discount: item.real_value.toFixed(4) + '%',
+        unit_price: '€' + item.price
+      })
+    })
   },
   watch: {
     details: {

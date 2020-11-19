@@ -18,6 +18,7 @@ import './assets/css/main.scss'
 import 'font-awesome/css/font-awesome.min.css'
 import 'vue-loading-overlay/dist/vue-loading.css'
 import 'vue-phone-number-input/dist/vue-phone-number-input.css'
+import VueNumericInput from 'vue-numeric-input'
 
 Vue.component('VuePhoneNumberInput', VuePhoneNumberInput)
 Vue.component('VueZipCodeInput', VueZipCodeInput)
@@ -33,6 +34,7 @@ Vue.use(VueMeta, {
   // optional pluginOptions
   // refreshOnceOnNavigation: true
 })
+Vue.use(VueNumericInput)
 new Vue({
   router,
   store,

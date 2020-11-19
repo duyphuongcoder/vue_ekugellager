@@ -186,6 +186,11 @@ const routes = [
         component: Product
       },
       {
+        path: 'brand/:id_brand',
+        name: 'brand',
+        component: RecommendProducts
+      },
+      {
         path: 'category/:id_category',
         name: 'category',
         component: Category

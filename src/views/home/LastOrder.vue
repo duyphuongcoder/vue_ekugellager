@@ -7,13 +7,19 @@
             {{$t('last_order.self')}}
           </span>
         </h1>
-        <div class="details-section" v-if="last_order.id_customer">
+        <!-- <div class="details-section" v-if="last_order.id_customer">
           <span> <a href="#">Order: SUBHQOBUY</a></span>
           <span>{{last_order.date_add}}</span><br>
-        </div>
+        </div> -->
+        <b-row class="details-section">
+          <b-form-group label-cols="3" label="Order" label-for="order" class="text-right my-auto">
+            <b-form-select v-model="selected_order" :options="order_options"></b-form-select>
+          </b-form-group>
+          <span class="my-auto">{{order_date[selected_order]}}</span><br>
+        </b-row>
       </b-col>
     </div>
-    <b-row>
+    <b-row class="pt-5 mt-5">
       <b-col cols="3" v-for="(step, index) in steps" :key="index">
         <b-col lg="12">
           <b-row>
@@ -60,6 +66,15 @@ export default {
           status: 0
         }
       ],
+      order_options: [
+        { value: 0, text: 'SUBHQQBUY' },
+        { value: 1, text: 'BQQCQZGYI' }
+      ],
+      selected_order: 1,
+      order_date: [
+        '2020-09-21 13:07:52',
+        '2020-09-07 04:39:49'
+      ],
       last_order: {}
     }
   },
@@ -94,6 +109,8 @@ export default {
   padding: 40px 0px;
   .head-title {
     .details-section {
+      position:absolute;
+      right: 15px;
       text-align: right;
       margin-bottom: 40px;
       span, a {

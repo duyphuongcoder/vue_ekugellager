@@ -59,6 +59,10 @@ export default {
   },
   mounted () {
     this.reduction = this.prices.reduction
+    if (parseFloat(this.reduction) === 0) {
+      this.reduction = 0
+      return
+    }
     if (this.prices.reduction_type === 'percentage') {
       this.reduction = this.reduction * 100 + '%'
     } else if (this.prices.reduction_type === 'amount') {

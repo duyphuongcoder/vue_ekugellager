@@ -3,7 +3,7 @@
     <b-modal :id="modalId" hide-footer hide-header size="md" class="cart-details-subhe show-cart-detail">
         <div class="shopping_cart_top_heading">
             <h1>
-                WARENKORB
+                {{$t('products.cart')}}
                 <a href="#" @click="$bvModal.hide(modalId)" class="close_shopping_cart_top">
                     <b-icon icon="x"></b-icon>
                 </a>

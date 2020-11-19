@@ -13,7 +13,7 @@
         <b-col md="7">
           <b-row>
             <b-col lg="6" class="product_features">
-              <ProductTechnical :items="product_features" v-if="product_features.length" />
+              <ProductTechnical :items="product_features" :manufacturer="product_manufacturer" v-if="product_features.length" />
             </b-col>
             <b-col lg="6" class="product_cart">
               <ProductCart :addtocart="addToCart" :details="cart_details" :selected_groups="selected_groups" v-if="cart_details.description_short"/>
@@ -72,8 +72,10 @@ export default {
       prices: {},
       description: {
         text: '',
+        manufacturer: '',
         reference: '',
-        in_stock: ''
+        in_stock: '',
+        available_date: ''
       },
       description_short: '',
 
@@ -85,8 +87,10 @@ export default {
         groups: [],
         base_price: '',
         price: '',
-        quantity: ''
+        quantity: '',
+        quantity_discounts: []
       },
+      product_manufacturer: '',
       selected_groups: [],
       combinations: [],
       modal_details: {},
@@ -138,13 +142,20 @@ export default {
       this.prices = prices
       this.pack_items = pack
     },
-    setProductDescription (description, reference, quantity) {
-      this.description.text = description
-      this.description.reference = reference
+    setProductDescription (res, quantity) {
+      this.description.text = res.description
+      this.description.manufacturer = res.product_manufacturer
+      this.description.reference = res.reference
       this.description.in_stock = quantity
+      this.description.available_date = res.available_date
     },
-    setProductFeatures (features) {
+    setProductFeatures (features, manufacturer) {
       this.product_features = features.filter((item, index) => item.name !== 'Quality')
+      this.product_features.unshift({
+        name: this.$t('products.technical_specifications'),
+        value: ''
+      })
+      this.product_manufacturer = manufacturer
     },
     setProductCart (res, quantity) {
       this.cart_details.name = res.name
@@ -155,6 +166,7 @@ export default {
       this.cart_details.base_price = res.base_price
       this.cart_details.price = res.price
       this.cart_details.quantity = quantity
+      this.cart_details.quantity_discounts = res.quantity_discounts
     },
     setSelectedGroups (groups) {
       this.selected_groups = []
@@ -165,6 +177,7 @@ export default {
       })
     },
     manageProductDetails (res) {
+      console.log('res-', res)
       var quantity, prices, pack
       var images = []
       if (res.groups.length) { // in case of group exists
@@ -201,13 +214,13 @@ export default {
       // browswer title
       this.setTitle(res.name)
       // product technical features
-      this.setProductFeatures(res.features)
+      this.setProductFeatures(res.features, res.product_manufacturer.name)
       // cart details
       this.setProductCart(res, quantity)
       // product images
       this.setProductImages(images, res.description_short, prices, pack)
       // product description
-      this.setProductDescription(res.description, res.reference, quantity)
+      this.setProductDescription(res, quantity)
     },
     getProductDetails () {
       const params = {

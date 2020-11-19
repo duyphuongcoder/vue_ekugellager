@@ -176,8 +176,9 @@
         "compare_remember": "Compare & remember",
         "details_quickl_purchase": "Details & Quick Purchase",
         "shoppingcart": "Shoppingcart",
+        "cart": "Cart",
         "also_bought": "Customers who bought this product also bought:",
-        "technical_specifications": "Technical Specifications",
+        "technical_specifications": "Technical Data",
         "description": "Description",
         "details": "Product Details",
         "tax_included": "Tax included",
@@ -200,7 +201,10 @@
         "phone": "phone",
         "message": "Message",
         "required_fileds": "Required Fields",
-        "submit": "Submit"
+        "submit": "Submit",
+        "scale_quantity": "Scale quantity",
+        "your_discount": "Your discount",
+        "discount_unit_price": "Unit price"
     },
     "compare": {
         "no_compare": "There is no products to compare.",

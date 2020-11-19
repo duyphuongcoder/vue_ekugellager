@@ -1,6 +1,6 @@
 <template>
   <section class="product-features">
-    <h6>{{$t('products.technical_specifications')}}</h6>
+    <h6>{{manufacturer}}</h6>
     <b-table :items="items" class="data-sheet no-header">
     </b-table>
   </section>
@@ -8,7 +8,8 @@
 <script>
 export default {
   props: {
-    items: Array
+    items: Array,
+    manufacturer: String
   },
   data () {
     return {
@@ -34,6 +35,9 @@ export default {
     thead {
       display: none;
     }
+  }
+  tr:nth-child(1) {
+    font-weight: bold;
   }
   td:nth-child(3), td:nth-child(4) {
     display: none;

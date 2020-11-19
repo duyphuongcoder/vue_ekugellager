@@ -176,6 +176,7 @@
         "compare_remember": "Vergleichen & Merken",
         "details_quickl_purchase": "Details & Schnellkauf",
         "shoppingcart": "WARENKORB",
+        "cart": "Einkaufswagen",
         "also_bought": "Kunden, die diesen Artikel gekauft haben, kauften auch:",
         "technical_specifications": "Technische Daten",
         "description": "Beschreibung",
@@ -200,7 +201,10 @@
         "phone": "Telefon",
         "message": "Botschaft",
         "required_fileds": "Benötigte Felder",
-        "submit": "einreichen"
+        "submit": "einreichen",
+        "scale_quantity": "Menge ab",
+        "your_discount": "Ihr Rabatt",
+        "discount_unit_price": "Stückpreis"
     },
     "compare": {
         "no_compare": "Es gibt keine vergleichbaren Produkte.",
