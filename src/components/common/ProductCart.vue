@@ -216,7 +216,6 @@ export default {
       immediate: true,
       handler () {
         // this.selected = this.details.groups.
-        console.log(this.details)
       }
     }
   }

@@ -57,9 +57,7 @@
                         <b-row>
                             <b-col cols="5">
                                 <div class="product-add-to-cart">
-                                    <span @click="descreament">-</span>
-                                    <b-form-input type="number" v-model="qty" value="1" min="1"></b-form-input>
-                                    <span @click="increament">+</span>
+                                    <vue-numeric-input  v-model="qty" :min="1" align="center" size="100%"></vue-numeric-input>
                                 </div>
                                 <div class="product-prislist-quantity">
                                     <span>{{product.quantity}}</span>{{$t('products.in_stock')}}

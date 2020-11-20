@@ -23,7 +23,9 @@
         <p>{{item.type}}</p>
         <p>{{item.size}}</p>
       </b-col>
-      <b-col md="2" class="count"><b-input :value="item.amount"></b-input></b-col>
+      <b-col md="2" class="count">
+        <vue-numeric-input  v-model="item.amount" :min="1" align="center" size="100%"></vue-numeric-input>
+      </b-col>
       <b-col md="2" class="unit-price">{{item.unit_price}}{{item.unit}}</b-col>
       <b-col md="1" class="total-price">{{item.unit_price * item.amount}} {{item.unit}}</b-col>
       <b-col md="2" class="return-btn"><b-button>{{$t('order_history.re_order')}}</b-button></b-col>

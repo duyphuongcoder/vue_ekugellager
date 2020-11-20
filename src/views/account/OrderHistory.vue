@@ -180,7 +180,6 @@ export default {
   },
   methods: {
     show_details (id) {
-      console.log(id)
       this.$router.push({ path: 'order-history', query: { id_order: id } })
       this.id_order = id
     }

@@ -205,7 +205,8 @@
         "submit": "Submit",
         "scale_quantity": "Scale quantity",
         "your_discount": "Your discount",
-        "discount_unit_price": "Unit price"
+        "discount_unit_price": "Unit price",
+        "query_sent": "Your query is sent"
     },
     "compare": {
         "no_compare": "There is no products to compare.",

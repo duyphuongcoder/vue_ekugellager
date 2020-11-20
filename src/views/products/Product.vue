@@ -4,7 +4,7 @@
       <b-row>
         <b-col md="5">
           <section class="page-content">
-            <ProductImages  v-if="images.length" :images="images" :description_short="description_short" :prices="prices" :pack_items="pack_items"/>
+            <ProductImages  v-if="images.length" :images="images" :description_short="description_short" :prices="prices" :banner_info="banner_info"/>
             <div class="scroll-box-arrows"></div>
             <div class="product-configurators"></div>
             <ProductDescription :description="description" v-if="description"/>
@@ -68,7 +68,7 @@ export default {
       ],
       images: [
       ],
-      pack_items: [],
+      banner_info: [],
       prices: {},
       description: {
         text: '',
@@ -135,12 +135,12 @@ export default {
     setTitle (name) {
       this.product_name = name
     },
-    setProductImages (images, description, prices, pack) {
+    setProductImages (images, description, prices, banner) {
       this.images = images
 
       this.description_short = description
       this.prices = prices
-      this.pack_items = pack
+      this.banner_info = banner
     },
     setProductDescription (res, quantity) {
       this.description.text = res.description
@@ -177,8 +177,7 @@ export default {
       })
     },
     manageProductDetails (res) {
-      console.log('res-', res)
-      var quantity, prices, pack
+      var quantity, prices
       var images = []
       if (res.groups.length) { // in case of group exists
         this.setSelectedGroups(res.groups)
@@ -210,7 +209,6 @@ export default {
         quantity = res.quantity
         prices = res.specific_prices
       }
-      pack = res.pack_items
       // browswer title
       this.setTitle(res.name)
       // product technical features
@@ -218,7 +216,7 @@ export default {
       // cart details
       this.setProductCart(res, quantity)
       // product images
-      this.setProductImages(images, res.description_short, prices, pack)
+      this.setProductImages(images, res.description_short, prices, res.banner_info)
       // product description
       this.setProductDescription(res, quantity)
     },

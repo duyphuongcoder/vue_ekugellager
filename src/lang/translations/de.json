@@ -205,7 +205,8 @@
         "submit": "einreichen",
         "scale_quantity": "Menge ab",
         "your_discount": "Ihr Rabatt",
-        "discount_unit_price": "Stückpreis"
+        "discount_unit_price": "Stückpreis",
+        "query_sent": "Ihre Anfrage wird gesendet"
     },
     "compare": {
         "no_compare": "Es gibt keine vergleichbaren Produkte.",

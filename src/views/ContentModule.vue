@@ -37,7 +37,6 @@ export default {
       }
       this.loader = this.$loading.show(loadingSpinnerConfig)
       FooterServices.getContentModule(params).then(resp => {
-        console.log(resp)
         this.loader.hide()
         if (resp && !resp.errors) {
           this.title = resp.cms.meta_title

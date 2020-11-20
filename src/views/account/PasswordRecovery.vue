@@ -105,7 +105,6 @@ export default {
     onSubmit (e) {
       e.preventDefault()
       UserServices.forgotPassword(this.form.email).then(res => {
-        // console.log(res)
         this.is_sent = true
       })
     },

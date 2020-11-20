@@ -2,8 +2,9 @@
 <div>
   <ul class="product-flags">
     <li class="product-flag discount" v-if="reduction">{{reduction}}</li>
-    <li class="product-flag pack" v-if="pack_items.length">PACK</li>
-    <li class="product-flag new">NEW</li>
+    <template v-for="(banner, i) in banner_info">
+      <li class="product-flag" :class="banner.code" v-if="parseInt(banner.value)" :key="i">{{banner.label}}</li>
+    </template>
   </ul>
   <div class="images-container">
     <div class="product-cover">
@@ -49,7 +50,7 @@ export default {
     images: Array,
     description_short: String,
     prices: Object,
-    pack_items: Array
+    banner_info: Array
   },
   data () {
     return {

@@ -229,8 +229,7 @@ export default {
   },
   methods: {
     getPayload (payload) {
-      // console.log(payload)
-      // console.log(this.$i18n.locale)
+
     },
     getAddresses (id) {
       this.address = this.$store.state.address.addresses.filter(item => item.id === this.addressId)[0]
