@@ -71,7 +71,7 @@
                                      variant="danger"
                                      class="add-to-cart"
                                      @click="addtocart(product, qty)"
-                                    >{{$t('products.shoppingcart')}}</b-button>
+                                    >{{$t('products.cart')}}</b-button>
                                 </div>
                                 <div class="eku-compear">
                                     <a href="/">
