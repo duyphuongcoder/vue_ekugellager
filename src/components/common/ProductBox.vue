@@ -42,9 +42,9 @@
                 <b-collapse :id="collapseid">
                     <div v-if="product.pricelist && product.pricelist.length">
                         <b-row class="table-prislist-header">
-                            <b-col cols="4">Quantity</b-col>
-                            <b-col cols="4">Discount</b-col>
-                            <b-col cols="4">Unit price</b-col>
+                            <b-col cols="4">{{$t('products.quantity')}}</b-col>
+                            <b-col cols="4">{{$t('products.discount')}}</b-col>
+                            <b-col cols="4">{{$t('products.unitprice')}}</b-col>
                         </b-row>
                         <b-row class="table-prislist-content" v-for="(item, index) in product.pricelist" :key="index">
                             <b-col cols="4">{{item.quantity}}</b-col>
@@ -105,14 +105,6 @@ export default {
     }
   },
   methods: {
-    increament () {
-      this.qty++
-    },
-    descreament () {
-      if (this.qty > 1) {
-        this.qty--
-      }
-    }
   }
 }
 </script>
