@@ -27,6 +27,7 @@ import Product from '../views/products/Product.vue'
 import Search from '../views/products/Search.vue'
 import Cart from '../views/products/Cart.vue'
 import RecommendProducts from '@/views/products/RecommendProducts'
+import BrandProducts from '@/views/products/BrandProducts'
 import Order from '../views/order/Order.vue'
 import Error404 from '../views/errors/404.vue'
 Vue.use(VueRouter)
@@ -188,7 +189,7 @@ const routes = [
       {
         path: 'brand/:id_brand',
         name: 'brand',
-        component: RecommendProducts
+        component: BrandProducts
       },
       {
         path: 'category/:id_category',
