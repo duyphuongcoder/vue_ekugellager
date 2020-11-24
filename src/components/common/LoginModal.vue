@@ -17,6 +17,9 @@
                                 <b-col cols="12" class="text-center p-2" v-if="failedMessage">
                                     <span class="failed-info"> {{failedMessage}} </span>
                                 </b-col>
+                                <b-col cols="12" class="text-center p-2" v-if="successMessage">
+                                    <span class="success-info"> {{successMessage}} </span>
+                                </b-col>
                                 <b-col cols="12">
                                     <b-form-group id="input-group-1" label-for="input-1">
                                     <b-form-input
@@ -84,7 +87,8 @@ export default {
       },
       show: true,
       password_hidden: true,
-      failedMessage: ''
+      failedMessage: '',
+      successMessage: ''
     }
   },
   methods: {
@@ -96,8 +100,12 @@ export default {
         if (!response.customer) {
           this.failedMessage = response.errors[0]
         } else {
-          this.$bvModal.hide(LOGIN_MODAL)
-          this.$router.push({ name: 'home' }).catch(() => {})
+          this.successMessage = 'You have successfully logged in'
+          const self = this
+          setTimeout(function () {
+            self.$bvModal.hide(LOGIN_MODAL)
+            self.$router.push({ name: 'home' }).catch(() => {})
+          }, 1000)
         }
         this.loader.hide()
       }).catch(err => {
