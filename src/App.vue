@@ -28,6 +28,7 @@
       :max-width="320"
       :has-outline="false"
     ></go-top>
+    <notifications group="notification-1" classes="notification-1" />
   </div>
 </template>
 

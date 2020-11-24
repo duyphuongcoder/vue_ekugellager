@@ -7,7 +7,7 @@
       <b-container>
         <b-row>
           <b-col lg="8" cols="12">
-            <CartOverview :items="items" :removeItem="removeItem" :updateItem="updateItem"/>
+            <CartOverview :items="items" :removeItem="removeItem" :updateItem="updateItem" v-if="items.length" />
           </b-col>
           <b-col lg="4" cols="12">
             <CartCheckout :details="details" :applyCouponCode="applyCouponCode" v-if="details && items.length"/>
@@ -44,6 +44,9 @@ export default {
   methods: {
     updateCart () {
       this.items = this.$store.getters.cart ? this.$store.getters.cart.items : []
+      this.items.forEach((item, index) => {
+        item.cart_quantity = parseInt(item.cart_quantity)
+      })
       this.details = this.$store.getters.cart
     },
     removeItem (index) {
@@ -71,7 +74,9 @@ export default {
         id_shop: 1,
         id_lang: Trans.getLangId(Trans.currentLanguage)
       }
+      // console.log('params', params)
       this.$store.dispatch('updateInCart', params).then(res => {
+        // console.log(res)
       })
     },
     applyCouponCode (code) {

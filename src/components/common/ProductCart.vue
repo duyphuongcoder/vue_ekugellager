@@ -65,7 +65,7 @@
             <p>{{details.quantity}} {{$t('products.ready_to_ship')}}</p>
             <b-row class="add-to-cart">
               <b-col cols="4" class="p-0">
-                <vue-numeric-input  v-model="count" :min="1" align="center" size="100%"></vue-numeric-input>
+                <vue-numeric-input  v-model="count" @input="updatePrice" :min="1" align="center" size="100%"></vue-numeric-input>
                 <!-- <b-form-input type="number" v-model="count" min="1" value="1"></b-form-input> -->
               </b-col>
               <b-col cols="8" class="p-0">
@@ -77,8 +77,8 @@
                 <b-button v-b-modal.modal-pq class="px-0">{{$t('products.ask_question')}}<img src="@/assets/img/comment.png" class="ask_question"/></b-button>
               </b-col>
               <b-col md="7" class="px-0">
-                <b-button class="pl-0">{{$t('products.remember')}}</b-button>
-                <b-button class="pr-0">{{$t('products.compare')}} &</b-button>
+                <b-button @click="addRemember" class="pl-0">{{$t('products.remember')}}</b-button>
+                <b-button @click="addCompare" class="pr-0">{{$t('products.compare')}} &</b-button>
               </b-col>
             </b-row>
           </div>
@@ -197,6 +197,37 @@ export default {
       setTimeout(() => {
         this.query_sent = false
       }, 4000)
+    },
+    updatePrice () {
+      // update price only after no change of 500ms
+      clearTimeout(this.timer)
+      this.timer = setTimeout(() => {
+        this.items.forEach((item, index) => {
+          if (this.count < this.items[0].scale_quantity) {
+            this.details.price = this.details.base_price
+          } else if (item.scale_quantity <= this.count) {
+            this.details.price = item.unit_price.substring(1)
+          }
+        })
+      }, 500)
+    },
+    addRemember () {
+      setTimeout(() => {
+        this.showNotify('success', 'success', 'Added to remember')
+      }, 500)
+    },
+    addCompare () {
+      setTimeout(() => {
+        this.showNotify('success', 'success', 'Added to compare')
+      }, 500)
+    },
+    showNotify (type, title, text) {
+      this.$notify({
+        group: 'notification-1',
+        type: type,
+        title: title,
+        text: text
+      })
     }
   },
   mounted () {

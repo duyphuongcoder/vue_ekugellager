@@ -25,15 +25,16 @@
                 </div>
             </b-col>
             <b-col md="2" class="quantity">
-              <b-form-input type="number" @change="updateItem(index, item.cart_quantity)" min="1" :value="item.cart_quantity" v-model="item.cart_quantity"></b-form-input>
+              <!-- <b-form-input type="number" @change="updateItem(index, item.cart_quantity)" v-model="item.cart_quantity" :value="item.cart_quantity"></b-form-input> -->
+              <vue-numeric-input v-model="item.cart_quantity" @input="change_amount(index, item.cart_quantity)"  :min="1" align="center" size="100%"></vue-numeric-input>
             </b-col>
             <b-col md="2" class="unit_price">
-              <p class="regular_price">€{{parseFloat(item.price_without_reduction).toFixed(2)}}</p>
-              <p class="discount">{{show_reduction(item.specific_prices)}}</p>
-              <p class="current_price">€{{parseFloat(item.price).toFixed(2)}}</p>
+              <p v-if="item.reduction_applies" class="regular_price">€{{parseFloat(item.price_without_reduction).toFixed(2)}}</p>
+              <p v-if="item.reduction_applies" class="discount mb-0">{{show_reduction(item.specific_prices)}}</p>
+              <p class="current_price mt-3">€{{parseFloat(item.price).toFixed(2)}}</p>
             </b-col>
             <b-col md="2" class="total_price">
-              <p>€{{parseFloat(item.total).toFixed(2)}}</p>
+              <p class="my-auto">€{{parseFloat(item.total).toFixed(2)}}</p>
             </b-col>
             <b-col md="1" class="remove" @click="removeItem(index)">
               <b-icon icon="trash" font-scale="1.5"></b-icon>
@@ -52,6 +53,7 @@ export default {
     updateItem: Function
   },
   data () {
+    console.log(this.items)
     return {
       removedItems: []
     }
@@ -60,16 +62,22 @@ export default {
     show_reduction (prices) {
       var reduction = prices.reduction
       if (prices.reduction_type === 'percentage') {
-        reduction = reduction * 100 + '%'
+        reduction = parseFloat(reduction * 100).toFixed(2) + '%'
       } else if (prices.reduction_type === 'amount') {
         reduction = '€' + parseFloat(reduction).toFixed(2)
       }
       if (parseInt(prices.price) === -1) reduction = '-' + reduction
       return reduction
+    },
+    change_amount (index, quantity) {
+      clearTimeout(this.timer)
+      this.timer = setTimeout(() => {
+        this.updateItem(index, quantity)
+      }, 500)
     }
   }
 }
-</script>>
+</script>
 <style lang="scss" scoped>
 .cart-overview {
   background: #fff;
