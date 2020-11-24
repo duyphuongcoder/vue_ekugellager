@@ -2,11 +2,39 @@
   <b-container class="support mt-5">
     <b-row>
       <b-col md="3" sm="12">
-        <AccountNav />
+        <div class="contact-rich">
+            <h4>Store information</h4>
+            <div class="block">
+                <div class="icon">
+                    <b-icon icon="geo-alt"></b-icon>
+                </div>
+                <div class="data">Ekugellager<br>Germany</div>
+            </div>
+                <hr>
+                <div class="block">
+                <div class="icon">
+                    <b-icon icon="telephone-fill"></b-icon>
+                </div>
+                <div class="data">
+                    Call us:<br>
+                    <a href="tel:+49 (0)234 5450120">+49 (0)234 5450120</a>
+                </div>
+                </div>
+                    <hr>
+                <div class="block">
+                <div class="icon">
+                    <b-icon icon="envelope-fill"></b-icon>
+                </div>
+                <div class="data email">
+                    Email us:<br>
+                </div>
+                <a href="mailto:info@ekugellager.de">info@ekugellager.de</a>
+                </div>
+            </div>
       </b-col>
       <b-col class="account-right" md="9" sm="12">
-        <h1 class="header-title text-uppercase">{{$t('account.contact_us')}}</h1>
         <b-form @submit="onSubmit">
+          <h4 class="text-uppercase text-left">{{$t('account.contact_us')}}</h4>
           <b-form-group label-cols="12" label-cols-sm="3" label="Subject" label-for="subject" class="text-left">
             <template v-slot:label>
               <span class="text-danger">* </span>{{$t('support.subject')}}
@@ -70,10 +98,8 @@
 </template>
 
 <script>
-import AccountNav from '@/components/common/AccountNav'
 export default {
   components: {
-    AccountNav
   },
   data () {
     return {
@@ -106,6 +132,38 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.contact-rich {
+    color: #7a7a7a;
+    margin-bottom: 2rem;
+    h4 {
+        text-transform: uppercase;
+        color: #232323;
+        margin-bottom: 2rem;
+    }
+    .block {
+        height: auto;
+        overflow: hidden;
+        .icon {
+            float: left;
+            width: 3.5rem;
+            font-size: 1.4rem;
+        }
+        .data {
+            text-align: left;
+            color: #232323;
+            font-size: .875rem;
+            width: auto;
+            overflow: hidden;
+        }
+        a {
+            color: #2fb5d2 !important;
+            text-decoration: none;
+        }
+        a[href^="mailto:"] {
+            float: left;
+        }
+    }
+}
 .account-right {
   .btn-primary {
     background: #B2162C 0% 0% no-repeat padding-box;

@@ -1,10 +1,10 @@
 <template>
-  <b-container class="compare">
+  <b-container class="compare mt-5">
     <b-row>
       <b-col md="3" sm="12">
         <AccountNav />
       </b-col>
-      <b-col class="account-right mt-5" md="9" sm="12">
+      <b-col class="account-right" md="9" sm="12">
         <h1 class="header-title">{{$t('account.compare')}}</h1>
         <div class="text-center" v-if="items.length==removedItems.length">
           <p class="alert alert-danger" >{{$t('compare.no_compare')}}</p>

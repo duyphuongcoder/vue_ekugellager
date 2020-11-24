@@ -1,5 +1,5 @@
 <template>
-  <b-container class="address">
+  <b-container class="address mt-5">
     <b-row>
       <b-col cols="12">
         <b-alert class="text-left" v-if="this.$store.state.address.update_address"
@@ -16,7 +16,7 @@
       <b-col md="3" sm="12">
         <AccountNav />
       </b-col>
-      <b-col class="account-right mt-5" md="9" sm="12">
+      <b-col class="account-right" md="9" sm="12">
         <h1 class="header-title">{{$t('account.addresses')}}</h1>
         <div class="address-list">
           <b-row class="address align-items-center text-left" v-for="(address, index) in addresses" :key="index" :class="{removed:(removedAddresses.includes(index))}">

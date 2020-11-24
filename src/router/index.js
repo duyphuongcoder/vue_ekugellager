@@ -21,6 +21,7 @@ import Wishlist from '../views/account/Wishlist.vue'
 import ContactPerson from '../views/account/ContactPerson.vue'
 import OrderTemplates from '../views/account/OrderTemplates.vue'
 import Support from '../views/account/Support.vue'
+import ContactUs from '../views/account/ContactUs.vue'
 
 import Category from '../views/products/Category.vue'
 import Product from '../views/products/Product.vue'
@@ -177,6 +178,14 @@ const routes = [
         path: 'support',
         name: 'support',
         component: Support,
+        meta: {
+          requiresAuth: true
+        }
+      },
+      {
+        path: 'contact-us',
+        name: 'contact-us',
+        component: ContactUs,
         meta: {
           requiresAuth: true
         }
