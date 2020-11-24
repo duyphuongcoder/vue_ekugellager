@@ -22,10 +22,10 @@
                     <b-icon icon="eye" class="red-icon"></b-icon>
                 </router-link>
                 <span class="right">
-                    <a href="https://ekugellager.roccshow.com/en/contact-us">
-                    Kontaktformular
-                    <b-icon icon="question-circle"></b-icon>
-                    </a>
+                    <router-link :to="$i18nRoute({ name: 'contact-us'})">
+                        Kontaktformular
+                        <b-icon icon="question-circle"></b-icon>
+                    </router-link>
                 </span>
             </li>
         </ul>
