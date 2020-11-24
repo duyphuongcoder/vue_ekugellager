@@ -111,7 +111,6 @@ export default {
     box-shadow: 0px 3px 6px #00000029;
     padding: 30px;
     margin-bottom: 50px;
-    margin-top: 46px;
     .link-list {
         li {
             margin-bottom: 15px;

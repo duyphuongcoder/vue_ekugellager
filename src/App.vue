@@ -3,6 +3,7 @@
     <div v-if="this.$route.meta.layout === undefined">
       <Header />
       <b-container fluid>
+        <SideContact />
         <router-view/>
       </b-container>
       <FooterMain />
@@ -34,6 +35,7 @@
 import Header from '@/components/header/Header'
 import HeaderOrder from '@/components/header/HeaderOrder'
 import FooterMain from '@/components/footer/FooterMain'
+import SideContact from '@/components/common/SideContact'
 import GoTop from '@inotom/vue-go-top'
 export default {
   name: 'app',
@@ -41,6 +43,7 @@ export default {
     Header,
     HeaderOrder,
     FooterMain,
+    SideContact,
     GoTop
   }
 }

@@ -1,10 +1,10 @@
 <template>
-  <b-container class="support">
+  <b-container class="support mt-5">
     <b-row>
       <b-col md="3" sm="12">
         <AccountNav />
       </b-col>
-      <b-col class="account-right mt-5" md="9" sm="12">
+      <b-col class="account-right" md="9" sm="12">
         <h1 class="header-title text-uppercase">{{$t('account.contact_us')}}</h1>
         <b-form @submit="onSubmit">
           <b-form-group label-cols="12" label-cols-sm="3" label="Subject" label-for="subject" class="text-left">

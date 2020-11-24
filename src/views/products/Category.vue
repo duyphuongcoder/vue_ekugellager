@@ -1,5 +1,5 @@
 <template>
-  <b-container class="category-page pt-3">
+  <b-container class="category-page mt-3">
     <CatlogBar :categoryId="categoryId" :total="totalCount"/>
     <b-row>
       <b-col md="3" sm="12">
