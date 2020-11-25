@@ -43,11 +43,11 @@
           <b-col md="3" sm="12" class="header-before-right-nav mt-2">
             <div>
               <div class="user-info">
-                <!-- <router-link v-if="this.$store.getters.isLoggedIn" :to="$i18nRoute({ name: 'rank'})">
+                <router-link v-if="this.$store.getters.isLoggedIn" :to="$i18nRoute({ name: 'rank'})">
                   <b-button variant="outline-primary" class="btn-circle user-rank">
                   {{rank}} Rank
                   </b-button>
-                </router-link> -->
+                </router-link>
                 <a href="javascript:void(0);" @click="openAccount">
                   <b-button variant="outline-primary" class="btn-circle" v-b-tooltip.hover.bottomright :title="this.$store.getters.isLoggedIn ? 'Visit my account' : $t('header.log_in_to_your_customer_account')">
                     <b-icon icon="person"></b-icon>

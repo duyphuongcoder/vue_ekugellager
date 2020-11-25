@@ -1,34 +1,35 @@
 <template>
-    <div v-if="this.$store.getters.isLoggedIn" :class="opened ? 'side_contact open' : 'side_contact'">
-        <ul>
-            <li>
-                <a href="javascript:void(0)" class="icon-tab1 opentab" @click="opened = !opened">
-                    <b-icon :icon="opened ? 'chevron-right' : 'chevron-left'" class="red-icon"></b-icon>
-                </a>
-                <span class="right">
-                <a href="#">Kd Nr: 21</a>
-                </span>
-            </li>
-            <li>
-                <router-link :to="$i18nRoute({ name: 'my-account'})" class="icon-tab1">
-                    <b-icon icon="person" class="red-icon"></b-icon>
-                </router-link>
-                <span class="right">
-                    <a href="#">Kontakt<span>+49 (0)234 5450120</span><em>Mo.-Fr. 8:00 bis 17:00 Uhr</em></a>
-                </span>
-            </li>
-            <li class="kontaktformular">
-                <router-link :to="$i18nRoute({ name: 'comparator'})" class="icon-tab1">
-                    <b-icon icon="eye" class="red-icon"></b-icon>
-                </router-link>
-                <span class="right">
-                    <router-link :to="$i18nRoute({ name: 'contact-us'})">
-                        Kontaktformular
-                        <b-icon icon="question-circle"></b-icon>
-                    </router-link>
-                </span>
-            </li>
-        </ul>
+    <div>
+        <div v-if="this.$store.getters.isLoggedIn" :class="opened ? 'side_contact open' : 'side_contact'">
+            <ul>
+                <li>
+                    <div class="left_col">
+                        <a href="javascript:void(0)" class="icon-tab1 opentab" @click="opened = !opened">
+                            <span class="red-icon">
+                                <b-icon :icon="opened ? 'chevron-right' : 'chevron-left'" ></b-icon>
+                            </span>
+                        </a>
+                        <router-link :to="$i18nRoute({ name: 'my-account'})" class="icon-tab1">
+                            <span class="red-icon">
+                                <b-icon icon="person"></b-icon>
+                            </span>
+                        </router-link>
+                    </div>
+                    <div class="right_col">
+                        <span class="right"><a href="#">Kd Nr: 21</a></span>
+                        <span class="right text-left">
+                            <a href="#">Kontakt<span>+49 (0)234 5450120</span><em>Mo.-Fr. 8:00 bis 17:00 Uhr</em></a>
+                        </span>
+                        <span class="right kontaktformular">
+                            <router-link :to="$i18nRoute({ name: 'contact-us'})">
+                                Kontaktformular
+                                <b-icon icon="question-circle" class="icon-bubble-question"></b-icon>
+                            </router-link>
+                        </span>
+                    </div>
+                </li>
+            </ul>
+        </div>
     </div>
 </template>
 
@@ -45,8 +46,8 @@ export default {
 <style lang="scss" scoped>
 .side_contact {
     position: fixed;
-    right: -235px;
-    background: #b2162c;
+    width: 330px;
+    right: -245px;
     border-radius: 10px 0 0 10px;
     z-index: 100;
     color: #000;
@@ -55,31 +56,85 @@ export default {
     ul {
         margin: 0;
         padding: 0;
+        li:first-child {
+            z-index: 2;
+        }
         li {
             margin: 0;
             padding: 0;
-            display: flex;
-            align-items: center;
+            display: table;
+            align-items: flex-start;
             font-size: 20px;
-            line-height: 130%;
-            position: relative;
-            border-bottom: 1px solid #efe4e4;
-            cursor: pointer;
             a {
                 color:#000 !important;
-                padding: 30px 0;
             }
-            .right {
-                display: flex;
-                border-bottom: 1px solid #ffff;
-                padding: 0px 25px;
-                width: calc(100% - 85px);
-                height: 95px;
-                align-items: center;
+            .left_col {
+                position: relative;
+                top: 0;
+                left: 0;
+                /* height: 95px; */
+                border-radius: 10px 0 0 10px;
+                overflow: hidden;
+                width: 85px;
+                background: #b2162c;
+                a {
+                    display: inline-block;
+                }
+                [class^="icon-"] {
+                    font-family: 'Linearicons';
+                    font-style: normal;
+                    font-weight: normal;
+                    font-variant: normal;
+                    text-transform: none;
+                    line-height: 1;
+                }
+                .icon-tab1:first-child .red-icon {
+                    border-top: 0;
+                }
+                .red-icon {
+                    border-top: 1px solid #c65262;
+                    transition: all 0.5s ease 0s;
+                    width: 85px;
+                    display: flex;
+                    color: #ffff;
+                    padding: 0;
+                    text-align: center;
+                    font-size: 24px;
+                    margin-right: 0;
+                    position: relative;
+                    overflow: hidden;
+                    height: 95px;
+                    align-items: center;
+                    justify-content: center;
+                }
+                .red-icon:hover {
+                    background: #e1213c;
+                }
+            }
+            .right_col {
+                padding: 0;
+                width: 100%;
+                height: 100%;
                 background: #f0f0f0;
-                text-align: left;
-                span {
+                display: table-cell;
+                .right:first-child {
+                    border-top: 0;
+                }
+                .right {
                     display: block;
+                    height: 92px;
+                    display: flex;
+                    align-items: center;
+                    padding: 0 25px 0 25px;
+                    border-top: 1px solid #ffff;
+                    width: 100%;
+                    line-height: 130%;
+                    span {
+                        display: block;
+                        font-weight: 300;
+                    }
+                }
+                .kontaktformular {
                     font-weight: 300;
                 }
                 em {
@@ -88,29 +143,6 @@ export default {
                     font-style: normal;
                     font-size: 14px;
                 }
-            }
-            svg.red-icon {
-                transition: all 0.5s ease 0s;
-                width: 85px;
-                display: block;
-                color: #ffff;
-                padding: 0px 0px;
-                text-align: center;
-                // border-bottom: 1px solid #da8e98;
-                font-size: 24px;
-                margin-right: 0;
-                position: relative;
-                overflow: hidden;
-                // border-bottom: 1px solid #da8e98;
-            }
-        }
-        li:hover {
-            background: #e1213c;
-        }
-        .kontaktformular {
-            border-bottom: none;
-            .right{
-                font-weight: 300;
             }
         }
     }
